@@ -19,6 +19,7 @@
   <meta name="twitter:description" content="Preguntas bíblicas para aprender, recordar y disfrutar. Proyecto en desarrollo.">
   <title>Quiz Bible | Neuronova Apps</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="hero-orbit.css">
   <link rel="stylesheet" href="https://neuronova-apps.github.io/assets/accessibility/accessibility.css">
   <script src="https://neuronova-apps.github.io/assets/accessibility/accessibility.js" defer></script>
 </head>
@@ -59,12 +60,18 @@
         </div>
 
         <div class="hero-visual" aria-hidden="true">
-          <div class="orbit orbit-one"></div>
-          <div class="orbit orbit-two"></div>
-          <div class="core"><span>?</span><strong>QB</strong><small>QUIZ BIBLE</small></div>
-          <div class="floating-word word-one">recordar</div>
-          <div class="floating-word word-two">aprender</div>
-          <div class="floating-word word-three">descubrir</div>
+          <div class="qb-orbit qb-orbit-outer">
+            <span class="qb-node qb-node-top"><b>LEER</b></span>
+            <span class="qb-node qb-node-right"><b>PREGUNTAR</b></span>
+            <span class="qb-node qb-node-bottom"><b>RECORDAR</b></span>
+            <span class="qb-node qb-node-left"><b>APRENDER</b></span>
+          </div>
+          <div class="qb-orbit qb-orbit-inner">
+            <span class="qb-chip qb-chip-top"><b>ANTIGUO</b></span>
+            <span class="qb-chip qb-chip-right"><b>NUEVO</b></span>
+            <span class="qb-chip qb-chip-left"><b>FE</b></span>
+          </div>
+          <div class="qb-core"><span>?</span><strong>QB</strong><small>QUIZ BIBLE</small></div>
         </div>
       </div>
     </section>
