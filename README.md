@@ -8,6 +8,15 @@ En desarrollo inicial.
 
 La versión web actual funciona únicamente como presentación del proyecto y acceso a su política de privacidad. Los modos de juego, categorías, niveles, sistema de progreso y demás funciones se definirán y documentarán conforme avance el desarrollo.
 
+## Estructura
+
+- `index.html`: presentación principal del proyecto.
+- `styles.css`: estilos base compartidos.
+- `hero-orbit.css`: estilos y animaciones de la órbita del hero.
+- `privacy/index.html`: política de privacidad.
+- `privacy/privacy.css`: estilos exclusivos de la política de privacidad.
+- `sitemap.xml`: rutas públicas indexables.
+
 ## Accesibilidad
 
 La web utiliza el módulo central de accesibilidad de Neuronova Apps.
