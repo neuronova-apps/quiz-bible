@@ -14,8 +14,9 @@ La web utiliza el módulo central de accesibilidad de Neuronova Apps.
 
 ## Enlaces
 
-- Web: https://neuronova-apps.github.io/quiz-bible/
-- Política de privacidad: https://neuronova-apps.github.io/quiz-bible/privacy/
+- Web: https://neuronova-apps.github.io/quizbible-app/
+- Política de privacidad: https://neuronova-apps.github.io/quizbible-app/privacy/
+- Repositorio: https://github.com/neuronova-apps/quizbible-app
 - Ecosistema: https://neuronova-apps.github.io/
 
 ## Autoría
