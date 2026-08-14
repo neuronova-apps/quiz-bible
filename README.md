@@ -26,9 +26,13 @@ La versión actual incluye:
 - persistencia local mediante `localStorage`;
 - reinicio explícito que elimina el progreso guardado;
 - resultado final restaurable;
+- instrucciones visibles de teclado;
+- estados accesibles para respuesta correcta y elección incorrecta;
+- foco gestionado al avanzar, reiniciar y mostrar el resultado;
+- anuncios de progreso mediante una región `aria-live` separada;
+- foco visible reforzado sobre las opciones y el enunciado;
 - diseño responsive;
-- skip link y foco visible;
-- módulo central de accesibilidad de Neuronova Apps;
+- skip link y módulo central de accesibilidad de Neuronova Apps;
 - soporte para `prefers-reduced-motion`;
 - metadatos SEO/social básicos;
 - sitemap con portada y privacidad;
@@ -39,9 +43,11 @@ Todavía no están implementados:
 - categorías o niveles seleccionables;
 - cuentas, sincronización o ranking;
 - banco amplio o generación dinámica de preguntas;
-- validación formal de accesibilidad del flujo completo del quiz.
+- páginas educativas/indexables específicas de Quiz Bible;
+- pruebas manuales exhaustivas con lectores de pantalla y otras tecnologías de asistencia;
+- certificación o auditoría formal de conformidad WCAG.
 
-Estas funciones deben considerarse futuras hasta estar implementadas y verificadas.
+Estas funciones o validaciones deben considerarse futuras hasta estar implementadas y verificadas.
 
 ## Banco inicial
 
@@ -70,11 +76,11 @@ La sesión sigue este recorrido:
 6. **Comprobar respuesta** evalúa la opción una sola vez y guarda esa respuesta;
 7. se actualiza la puntuación calculándola desde las respuestas válidas;
 8. aparece el bloque **Para aprender**, con explicación y referencia bíblica;
-9. **Siguiente pregunta** actualiza la posición guardada;
-10. al terminar se guarda el estado de finalización y se muestra el resultado;
-11. **Reiniciar progreso** elimina el estado local y vuelve a la primera pregunta.
+9. **Siguiente pregunta** actualiza la posición guardada y lleva el foco al nuevo enunciado;
+10. al terminar se guarda el estado de finalización, se muestra el resultado y el foco pasa al resumen;
+11. **Reiniciar progreso** elimina el estado local, vuelve a la primera pregunta y enfoca el nuevo enunciado.
 
-Si el banco no puede cargarse o no contiene preguntas aprobadas con los datos requeridos, la interfaz muestra un estado de error en lugar de bloquear la página.
+La carga inicial y la restauración automática no fuerzan el foco fuera de la posición actual del navegador. Si el banco no puede cargarse o no contiene preguntas aprobadas con los datos requeridos, la interfaz muestra un estado de error en lugar de bloquear la página.
 
 ## Persistencia local
 
@@ -145,19 +151,30 @@ El progreso permanece en el navegador mediante `localStorage`; no existe base de
 
 La política pública se mantiene en `privacy/index.html`.
 
-## Alcance de accesibilidad actual
+## Accesibilidad específica del quiz
 
-La página conserva la base semántica y el módulo central de accesibilidad de Neuronova Apps. El quiz utiliza `fieldset`, controles radio nativos, botones, foco visible y una región `aria-live` para el resultado básico de la comprobación. La explicación y la referencia se presentan en una sección titulada **Contexto de la respuesta**.
+Además de la base compartida de Neuronova Apps, el flujo jugable incorpora ahora medidas específicas:
 
-Esta base no equivale todavía a validación formal del flujo completo del quiz ni a certificación WCAG. La accesibilidad específica se reforzará en la siguiente etapa.
+- `fieldset` y radios nativos para conservar el comportamiento estándar del grupo de respuestas;
+- instrucciones visibles sobre Tab, flechas y barra espaciadora;
+- foco visual aplicado a toda la tarjeta de la opción cuando su radio recibe `:focus-visible`;
+- texto oculto asociado al label que indica, después de comprobar, **Respuesta correcta**, **Respuesta correcta y seleccionada** o **Tu respuesta, incorrecta**;
+- región `aria-live` para el resultado de cada comprobación;
+- región `aria-live` separada para anunciar pregunta y puntuación al avanzar o reiniciar;
+- el nuevo enunciado recibe foco programático después de **Siguiente pregunta** y **Reiniciar progreso**;
+- el resumen final recibe foco al completar el recorrido;
+- la carga inicial o restaurada evita mover el foco automáticamente;
+- el bloque educativo conserva un encabezado semántico y la referencia aparece como texto legible.
+
+Estas medidas mejoran el flujo técnico, pero **no constituyen una certificación WCAG**. Siguen siendo necesarias pruebas manuales con lectores de pantalla, navegación ampliada, alto contraste, zoom, dispositivos móviles y otras tecnologías de asistencia antes de realizar una afirmación formal de conformidad.
 
 ## Estructura
 
-- `index.html`: presentación, quiz y estado actual del proyecto.
+- `index.html`: presentación, quiz, instrucciones y estado actual del proyecto.
 - `styles.css`: estilos base compartidos.
 - `hero-orbit.css`: estilos y animaciones de la órbita del hero.
-- `quiz.css`: layout, opciones, feedback y bloque educativo.
-- `quiz.js`: carga, validación de persistencia, respuestas, feedback, puntuación, avance y reinicio.
+- `quiz.css`: layout, opciones, feedback, bloque educativo y foco específico del quiz.
+- `quiz.js`: carga, validación de persistencia, respuestas, estados accesibles, foco, feedback, puntuación, avance y reinicio.
 - `docs/content-model.md`: modelo editorial del contenido bíblico.
 - `data/question.schema.json`: contrato JSON Schema para preguntas.
 - `data/questions.json`: banco inicial aprobado.
@@ -167,7 +184,7 @@ Esta base no equivale todavía a validación formal del flujo completo del quiz 
 
 ## Próxima etapa
 
-El siguiente trabajo previsto es reforzar la **accesibilidad específica del quiz**: estados accesibles de las respuestas comprobadas, foco al restaurar/avanzar, anuncios de progreso y resultado, y revisión completa del flujo por teclado sin declarar conformidad WCAG sin pruebas formales.
+El siguiente trabajo previsto es crear **páginas educativas e indexables** para ampliar Quiz Bible fuera de la experiencia jugable: guías sobre cómo utilizar preguntas para estudiar, cómo leer referencias bíblicas y cómo se revisa el contenido del proyecto, manteniendo un enfoque neutral y verificable.
 
 ## Enlaces
 
