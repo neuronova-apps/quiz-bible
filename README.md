@@ -6,7 +6,7 @@ Quiz Bible es un proyecto de Neuronova Apps orientado a una futura experiencia d
 
 **En desarrollo inicial.**
 
-La versión web disponible es una **landing pública de presentación** y acceso a la política de privacidad. Actualmente no existe todavía un quiz jugable ni un banco público de preguntas dentro del repositorio.
+La versión web disponible es una **landing pública de presentación** y acceso a la política de privacidad. Actualmente no existe todavía un quiz jugable ni un banco público de preguntas aprobadas.
 
 La web actual sí incluye:
 
@@ -18,19 +18,46 @@ La web actual sí incluye:
 - módulo central de accesibilidad de Neuronova Apps;
 - soporte para `prefers-reduced-motion`;
 - metadatos SEO/social básicos;
-- sitemap con portada y privacidad.
+- sitemap con portada y privacidad;
+- modelo editorial y contrato técnico para futuras preguntas bíblicas.
 
 Todavía no están implementados:
 
 - preguntas jugables;
-- opciones de respuesta;
+- banco de preguntas `approved` consumido por la interfaz;
+- opciones de respuesta interactivas;
 - comprobación y feedback;
 - puntuación;
-- categorías o niveles;
+- categorías o niveles jugables;
 - progreso o persistencia local;
 - cuentas, sincronización o ranking.
 
 Estas funciones deben considerarse futuras hasta estar implementadas y verificadas.
+
+## Modelo de contenido bíblico
+
+El repositorio dispone ahora de un modelo explícito para separar el contenido bíblico de la futura lógica de juego:
+
+- `docs/content-model.md`: política editorial, reglas de redacción, referencias, revisión y flujo de aprobación;
+- `data/question.schema.json`: JSON Schema que define la estructura técnica de cada pregunta.
+
+Cada pregunta futura debe incluir como mínimo:
+
+- identificador estable y versión;
+- estado editorial (`draft`, `reviewed`, `approved` o `retired`);
+- categoría y dificultad;
+- tipo de contenido (`textual_fact` o `contextual`);
+- enunciado;
+- entre tres y cuatro opciones;
+- una única opción correcta;
+- explicación educativa;
+- una o más referencias bíblicas;
+- etiquetas;
+- registro de revisión editorial.
+
+El MVP inicial priorizará hechos textuales y contexto directamente sustentable por referencias bíblicas. Las interpretaciones doctrinales discutibles no deben presentarse como una respuesta correcta universal. Una pregunta solo debe incorporarse al juego cuando su estado sea `approved` y se haya comprobado tanto la referencia como la existencia de una única respuesta correcta.
+
+El modelo no obliga todavía a una traducción bíblica concreta. Las explicaciones deben redactarse principalmente como paráfrasis propias y cualquier cita literal futura deberá respetar la licencia de la traducción utilizada.
 
 ## Alcance de accesibilidad actual
 
@@ -41,13 +68,15 @@ La landing utiliza el módulo central de accesibilidad de Neuronova Apps y una b
 - `index.html`: presentación principal y estado actual del proyecto.
 - `styles.css`: estilos base compartidos.
 - `hero-orbit.css`: estilos y animaciones de la órbita del hero.
+- `docs/content-model.md`: modelo editorial del contenido bíblico.
+- `data/question.schema.json`: contrato JSON Schema para preguntas.
 - `privacy/index.html`: política de privacidad.
 - `privacy/privacy.css`: estilos exclusivos de la política de privacidad.
 - `sitemap.xml`: rutas públicas indexables.
 
 ## Próximas etapas
 
-El desarrollo de la experiencia jugable se documentará de forma incremental. El siguiente trabajo previsto es definir un modelo de contenido bíblico verificable para preguntas, opciones, respuesta correcta, explicación y referencia antes de construir el primer quiz funcional.
+El modelo de contenido ya está definido. El siguiente trabajo previsto es crear un **primer quiz web funcional** apoyado en un banco inicial de preguntas revisadas conforme a este contrato, con selección de respuesta, comprobación, puntuación y reinicio.
 
 ## Enlaces
 
