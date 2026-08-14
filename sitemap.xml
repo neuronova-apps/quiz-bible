@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://neuronova-apps.github.io/quizbible-app/</loc>
-    <lastmod>2026-08-14</lastmod>
-  </url>
-  <url>
-    <loc>https://neuronova-apps.github.io/quizbible-app/privacy/</loc>
-    <lastmod>2026-08-14</lastmod>
-  </url>
+  <url><loc>https://neuronova-apps.github.io/quizbible-app/</loc><lastmod>2026-08-14</lastmod></url>
+  <url><loc>https://neuronova-apps.github.io/quizbible-app/como-estudiar-con-preguntas-biblicas.html</loc><lastmod>2026-08-14</lastmod></url>
+  <url><loc>https://neuronova-apps.github.io/quizbible-app/leer-referencias-biblicas.html</loc><lastmod>2026-08-14</lastmod></url>
+  <url><loc>https://neuronova-apps.github.io/quizbible-app/revision-contenido-biblico.html</loc><lastmod>2026-08-14</lastmod></url>
+  <url><loc>https://neuronova-apps.github.io/quizbible-app/usar-feedback-quiz-bible.html</loc><lastmod>2026-08-14</lastmod></url>
+  <url><loc>https://neuronova-apps.github.io/quizbible-app/guia-quiz-bible-principiantes.html</loc><lastmod>2026-08-14</lastmod></url>
+  <url><loc>https://neuronova-apps.github.io/quizbible-app/privacy/</loc><lastmod>2026-08-14</lastmod></url>
 </urlset>
