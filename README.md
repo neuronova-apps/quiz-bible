@@ -6,36 +6,21 @@ Quiz Bible es un proyecto de Neuronova Apps orientado a una experiencia de pregu
 
 **MVP web inicial en desarrollo.**
 
-La versión web disponible incorpora un **quiz jugable de seis preguntas aprobadas**. La experiencia permite responder, comprobar, revisar una explicación y referencia bíblica, continuar por el banco, conservar el avance localmente y reiniciar el progreso.
+La versión web disponible incorpora un **quiz jugable de seis preguntas aprobadas** y cinco páginas educativas públicas. La experiencia permite responder, comprobar, revisar una explicación y referencia bíblica, continuar por el banco, conservar el avance localmente, reiniciar el progreso y ampliar el estudio mediante guías indexables.
 
 La versión actual incluye:
 
-- presentación del concepto Quiz Bible;
-- identidad visual propia dentro de Neuronova Apps;
 - primer banco de seis preguntas con estado `approved`;
 - preguntas cargadas desde `data/questions.json`;
 - cuatro opciones por pregunta;
-- selección mediante controles nativos de tipo radio;
 - comprobación de una única respuesta por pregunta;
-- indicación de respuesta correcta o incorrecta;
-- explicación educativa visible después de comprobar;
-- referencia bíblica visible después de comprobar;
-- avance secuencial por las seis preguntas;
-- puntuación calculada a partir de las respuestas comprobadas;
-- restauración de pregunta actual, respuestas y resultado después de recargar;
-- persistencia local mediante `localStorage`;
+- explicación educativa y referencia bíblica visibles después de comprobar;
+- puntuación calculada desde las respuestas válidas;
+- progreso restaurable mediante `localStorage`;
 - reinicio explícito que elimina el progreso guardado;
-- resultado final restaurable;
-- instrucciones visibles de teclado;
-- estados accesibles para respuesta correcta y elección incorrecta;
-- foco gestionado al avanzar, reiniciar y mostrar el resultado;
-- anuncios de progreso mediante una región `aria-live` separada;
-- foco visible reforzado sobre las opciones y el enunciado;
-- diseño responsive;
-- skip link y módulo central de accesibilidad de Neuronova Apps;
-- soporte para `prefers-reduced-motion`;
-- metadatos SEO/social básicos;
-- sitemap con portada y privacidad;
+- flujo de teclado reforzado, foco gestionado y estados accesibles de respuestas;
+- cinco guías educativas públicas e indexables;
+- sitemap con portada, cinco guías y privacidad;
 - modelo editorial y contrato técnico para el contenido bíblico.
 
 Todavía no están implementados:
@@ -43,11 +28,9 @@ Todavía no están implementados:
 - categorías o niveles seleccionables;
 - cuentas, sincronización o ranking;
 - banco amplio o generación dinámica de preguntas;
-- páginas educativas/indexables específicas de Quiz Bible;
+- tarjeta social dedicada 1200×630;
 - pruebas manuales exhaustivas con lectores de pantalla y otras tecnologías de asistencia;
 - certificación o auditoría formal de conformidad WCAG.
-
-Estas funciones o validaciones deben considerarse futuras hasta estar implementadas y verificadas.
 
 ## Banco inicial
 
@@ -66,29 +49,23 @@ Cada entrada incluye `explanation` y `references`. Después de comprobar una res
 
 ## Flujo de juego actual
 
-La sesión sigue este recorrido:
+1. `quiz.js` carga `data/questions.json`.
+2. Se filtran preguntas `approved` con opción correcta, explicación y referencia válidas.
+3. Se intenta restaurar un estado local compatible.
+4. Se presenta la pregunta pendiente o la última respuesta comprobada.
+5. La persona selecciona una respuesta.
+6. **Comprobar respuesta** evalúa y guarda esa elección una sola vez.
+7. Se recalcula la puntuación desde las respuestas válidas.
+8. Aparece el bloque **Para aprender**, con explicación y referencia.
+9. **Siguiente pregunta** actualiza la posición guardada y lleva el foco al nuevo enunciado.
+10. Al terminar se guarda el estado de finalización y se muestra el resultado.
+11. **Reiniciar progreso** elimina el estado local y vuelve a la primera pregunta.
 
-1. `quiz.js` carga `data/questions.json`;
-2. se filtran únicamente preguntas `approved` con opción correcta, explicación y referencia jugables;
-3. se intenta restaurar un estado local válido;
-4. se presenta la pregunta pendiente o la última respuesta comprobada;
-5. la persona selecciona una respuesta;
-6. **Comprobar respuesta** evalúa la opción una sola vez y guarda esa respuesta;
-7. se actualiza la puntuación calculándola desde las respuestas válidas;
-8. aparece el bloque **Para aprender**, con explicación y referencia bíblica;
-9. **Siguiente pregunta** actualiza la posición guardada y lleva el foco al nuevo enunciado;
-10. al terminar se guarda el estado de finalización, se muestra el resultado y el foco pasa al resumen;
-11. **Reiniciar progreso** elimina el estado local, vuelve a la primera pregunta y enfoca el nuevo enunciado.
-
-La carga inicial y la restauración automática no fuerzan el foco fuera de la posición actual del navegador. Si el banco no puede cargarse o no contiene preguntas aprobadas con los datos requeridos, la interfaz muestra un estado de error en lugar de bloquear la página.
+La carga inicial y la restauración automática no fuerzan el foco. Si el banco no puede cargarse o no contiene preguntas válidas, la interfaz muestra un estado de error.
 
 ## Persistencia local
 
-La clave utilizada es:
-
-`quizbible-progress-v1`
-
-El formato actual almacena:
+La clave utilizada es `quizbible-progress-v1`.
 
 ```json
 {
@@ -101,90 +78,91 @@ El formato actual almacena:
 }
 ```
 
-La puntuación **no se almacena como fuente de verdad**. Cada vez que se renderiza el quiz se calcula comparando las respuestas válidas con `correctOptionId` del banco actual.
+La puntuación no se almacena como fuente de verdad. Se calcula comparando las respuestas restauradas con `correctOptionId` del banco actual.
 
-### Validación al restaurar
-
-`quiz.js` valida el estado antes de utilizarlo:
+La restauración:
 
 - exige `version: 1`;
-- solo acepta IDs presentes en el banco jugable actual;
-- solo acepta opciones que existan realmente en cada pregunta;
-- solo conserva un prefijo secuencial de respuestas válidas;
-- la pregunta restaurada debe ser la última respondida o la siguiente pendiente;
-- `completed: true` solo se acepta cuando todas las preguntas tienen una respuesta válida;
-- los datos incompatibles se normalizan o descartan.
+- solo acepta IDs presentes en el banco actual;
+- solo acepta opciones existentes;
+- conserva un prefijo secuencial de respuestas válidas;
+- valida la posición restaurada;
+- solo acepta `completed: true` cuando todas las preguntas tienen una respuesta válida.
 
-Si `localStorage` no está disponible o lanza un error, el quiz continúa funcionando en memoria durante la sesión.
+Si `localStorage` falla, el quiz continúa funcionando en memoria durante la sesión.
 
 ## Modelo de contenido bíblico
 
-El repositorio mantiene separado el contenido bíblico de la lógica del juego:
+El contenido se mantiene separado de la lógica del juego:
 
-- `docs/content-model.md`: política editorial, reglas de redacción, referencias, revisión y flujo de aprobación;
-- `data/question.schema.json`: JSON Schema que define la estructura técnica de cada pregunta;
-- `data/questions.json`: banco aprobado consumido por el MVP actual.
+- `docs/content-model.md`: política editorial, referencias, revisión y flujo de aprobación;
+- `data/question.schema.json`: contrato JSON Schema para cada pregunta;
+- `data/questions.json`: banco aprobado consumido por el MVP.
 
-Cada pregunta debe incluir como mínimo:
+El proyecto prioriza hechos textuales y contexto directamente sustentable por referencias. Las interpretaciones doctrinales discutibles no deben presentarse como respuesta correcta universal.
 
-- identificador estable y versión;
-- estado editorial (`draft`, `reviewed`, `approved` o `retired`);
-- categoría y dificultad;
-- tipo de contenido (`textual_fact` o `contextual`);
-- enunciado;
-- entre tres y cuatro opciones;
-- una única opción correcta;
-- explicación educativa;
-- una o más referencias bíblicas;
-- etiquetas;
-- registro de revisión editorial.
+## Guías educativas públicas
 
-El MVP prioriza hechos textuales y contexto directamente sustentable por referencias bíblicas. Las interpretaciones doctrinales discutibles no deben presentarse como una respuesta correcta universal. Solo las preguntas `approved` se consideran elegibles para el juego.
+El sitio dispone ahora de cinco páginas estáticas e indexables:
 
-El modelo no obliga a una traducción bíblica concreta. Las explicaciones se redactan principalmente como paráfrasis propias y cualquier cita literal futura deberá respetar la licencia de la traducción utilizada.
+- `como-estudiar-con-preguntas-biblicas.html`: cómo convertir preguntas, explicación y referencia en una rutina breve de estudio;
+- `leer-referencias-biblicas.html`: cómo interpretar libro, capítulo y versículos;
+- `revision-contenido-biblico.html`: cómo funciona el flujo editorial y qué intenta evitar;
+- `usar-feedback-quiz-bible.html`: cómo aprovechar aciertos, errores, explicación y puntuación;
+- `guia-quiz-bible-principiantes.html`: recorrido completo por uso, teclado, progreso local y reinicio.
+
+Estas guías **no modifican la partida**, no responden preguntas automáticamente y no representan nuevas modalidades del motor. Son contenido educativo complementario y enlazan de vuelta al quiz.
+
+Todas incluyen:
+
+- meta description propia;
+- canonical absoluto;
+- `robots="index, follow"`;
+- H1 único;
+- skip link;
+- navegación cruzada entre recursos;
+- CTA de regreso al quiz.
+
+Comparten `resources.css`, mientras la portada utiliza `guide-cards.css` para presentar las cinco tarjetas.
 
 ## Privacidad
 
-El progreso permanece en el navegador mediante `localStorage`; no existe base de datos propia, cuenta de usuario ni sincronización remota. Las respuestas guardadas no se envían a un servidor propio de Quiz Bible.
+El progreso permanece en el navegador mediante `localStorage`; no existe cuenta ni sincronización remota. **Reiniciar progreso** elimina la clave utilizada por el quiz. La política pública está en `privacy/index.html`.
 
-**Reiniciar progreso** elimina la clave local utilizada por el quiz. El usuario también puede borrar los datos del sitio desde la configuración del navegador.
-
-La política pública se mantiene en `privacy/index.html`.
+Las páginas educativas son contenido estático y no añaden datos personales ni un nuevo formato de persistencia.
 
 ## Accesibilidad específica del quiz
 
-Además de la base compartida de Neuronova Apps, el flujo jugable incorpora ahora medidas específicas:
+Además de la base compartida de Neuronova Apps, el flujo jugable incorpora:
 
-- `fieldset` y radios nativos para conservar el comportamiento estándar del grupo de respuestas;
+- `fieldset` y radios nativos;
 - instrucciones visibles sobre Tab, flechas y barra espaciadora;
-- foco visual aplicado a toda la tarjeta de la opción cuando su radio recibe `:focus-visible`;
-- texto oculto asociado al label que indica, después de comprobar, **Respuesta correcta**, **Respuesta correcta y seleccionada** o **Tu respuesta, incorrecta**;
-- región `aria-live` para el resultado de cada comprobación;
-- región `aria-live` separada para anunciar pregunta y puntuación al avanzar o reiniciar;
-- el nuevo enunciado recibe foco programático después de **Siguiente pregunta** y **Reiniciar progreso**;
-- el resumen final recibe foco al completar el recorrido;
-- la carga inicial o restaurada evita mover el foco automáticamente;
-- el bloque educativo conserva un encabezado semántico y la referencia aparece como texto legible.
+- foco visual sobre toda la tarjeta de respuesta;
+- estados textuales ocultos para respuesta correcta o elección incorrecta;
+- regiones `aria-live` separadas para resultado y progreso;
+- foco programático al avanzar, reiniciar y mostrar el resumen;
+- carga/restauración sin robo de foco.
 
-Estas medidas mejoran el flujo técnico, pero **no constituyen una certificación WCAG**. Siguen siendo necesarias pruebas manuales con lectores de pantalla, navegación ampliada, alto contraste, zoom, dispositivos móviles y otras tecnologías de asistencia antes de realizar una afirmación formal de conformidad.
+Estas medidas no constituyen una certificación WCAG. Siguen pendientes pruebas manuales con lectores de pantalla, zoom, alto contraste y otras tecnologías de asistencia.
 
-## Estructura
+## Estructura principal
 
-- `index.html`: presentación, quiz, instrucciones y estado actual del proyecto.
-- `styles.css`: estilos base compartidos.
-- `hero-orbit.css`: estilos y animaciones de la órbita del hero.
-- `quiz.css`: layout, opciones, feedback, bloque educativo y foco específico del quiz.
-- `quiz.js`: carga, validación de persistencia, respuestas, estados accesibles, foco, feedback, puntuación, avance y reinicio.
-- `docs/content-model.md`: modelo editorial del contenido bíblico.
-- `data/question.schema.json`: contrato JSON Schema para preguntas.
-- `data/questions.json`: banco inicial aprobado.
+- `index.html`: presentación, quiz, guías y estado del proyecto.
+- `styles.css`: estilos base.
+- `hero-orbit.css`: hero.
+- `quiz.css`: interfaz y accesibilidad específica del quiz.
+- `guide-cards.css`: tarjetas de guías en portada.
+- `resources.css`: estilos compartidos de las páginas educativas.
+- `quiz.js`: carga, persistencia, respuestas, accesibilidad, feedback y puntuación.
+- `docs/content-model.md`: política editorial.
+- `data/question.schema.json`: esquema de preguntas.
+- `data/questions.json`: banco inicial.
 - `privacy/index.html`: política de privacidad.
-- `privacy/privacy.css`: estilos exclusivos de la política de privacidad.
-- `sitemap.xml`: rutas públicas indexables.
+- `sitemap.xml`: siete URLs públicas indexables.
 
 ## Próxima etapa
 
-El siguiente trabajo previsto es crear **páginas educativas e indexables** para ampliar Quiz Bible fuera de la experiencia jugable: guías sobre cómo utilizar preguntas para estudiar, cómo leer referencias bíblicas y cómo se revisa el contenido del proyecto, manteniendo un enfoque neutral y verificable.
+El siguiente trabajo previsto es crear una **tarjeta social dedicada de 1200×630** y normalizar Open Graph/Twitter en portada, cinco guías y privacidad. Actualmente las páginas siguen utilizando `favicon.svg` como imagen social.
 
 ## Enlaces
 
