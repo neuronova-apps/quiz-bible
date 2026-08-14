@@ -6,7 +6,7 @@ Quiz Bible es un proyecto de Neuronova Apps orientado a una experiencia de pregu
 
 **MVP web inicial en desarrollo.**
 
-La versión web disponible incorpora un **quiz jugable de seis preguntas aprobadas**. La sesión funciona directamente en el navegador y permite seleccionar una respuesta, comprobarla, revisar una explicación educativa y su referencia bíblica, avanzar por el banco, consultar la puntuación temporal y reiniciar el recorrido.
+La versión web disponible incorpora un **quiz jugable de seis preguntas aprobadas**. La experiencia permite responder, comprobar, revisar una explicación y referencia bíblica, continuar por el banco, conservar el avance localmente y reiniciar el progreso.
 
 La versión actual incluye:
 
@@ -21,9 +21,11 @@ La versión actual incluye:
 - explicación educativa visible después de comprobar;
 - referencia bíblica visible después de comprobar;
 - avance secuencial por las seis preguntas;
-- puntuación de sesión;
-- resultado final y reinicio del quiz;
-- funcionamiento completamente en memoria, sin progreso persistente;
+- puntuación calculada a partir de las respuestas comprobadas;
+- restauración de pregunta actual, respuestas y resultado después de recargar;
+- persistencia local mediante `localStorage`;
+- reinicio explícito que elimina el progreso guardado;
+- resultado final restaurable;
 - diseño responsive;
 - skip link y foco visible;
 - módulo central de accesibilidad de Neuronova Apps;
@@ -35,7 +37,6 @@ La versión actual incluye:
 Todavía no están implementados:
 
 - categorías o niveles seleccionables;
-- progreso o puntuación persistentes mediante `localStorage`;
 - cuentas, sincronización o ranking;
 - banco amplio o generación dinámica de preguntas;
 - validación formal de accesibilidad del flujo completo del quiz.
@@ -63,16 +64,52 @@ La sesión sigue este recorrido:
 
 1. `quiz.js` carga `data/questions.json`;
 2. se filtran únicamente preguntas `approved` con opción correcta, explicación y referencia jugables;
-3. se presenta una pregunta con sus opciones;
-4. la persona selecciona una respuesta;
-5. **Comprobar respuesta** evalúa la opción una sola vez;
-6. se indica si la elección fue correcta y se actualiza la puntuación;
-7. aparece el bloque **Para aprender**, con explicación y referencia bíblica;
-8. **Siguiente pregunta** avanza por el banco;
-9. al terminar se muestra el total de respuestas correctas;
-10. **Reiniciar quiz** vuelve a la primera pregunta con puntuación cero.
+3. se intenta restaurar un estado local válido;
+4. se presenta la pregunta pendiente o la última respuesta comprobada;
+5. la persona selecciona una respuesta;
+6. **Comprobar respuesta** evalúa la opción una sola vez y guarda esa respuesta;
+7. se actualiza la puntuación calculándola desde las respuestas válidas;
+8. aparece el bloque **Para aprender**, con explicación y referencia bíblica;
+9. **Siguiente pregunta** actualiza la posición guardada;
+10. al terminar se guarda el estado de finalización y se muestra el resultado;
+11. **Reiniciar progreso** elimina el estado local y vuelve a la primera pregunta.
 
-El bloque educativo se limpia al cambiar de pregunta, reiniciar, finalizar o entrar en estado de error. Si el banco no puede cargarse o no contiene preguntas aprobadas con los datos requeridos, la interfaz muestra un estado de error en lugar de bloquear la página.
+Si el banco no puede cargarse o no contiene preguntas aprobadas con los datos requeridos, la interfaz muestra un estado de error en lugar de bloquear la página.
+
+## Persistencia local
+
+La clave utilizada es:
+
+`quizbible-progress-v1`
+
+El formato actual almacena:
+
+```json
+{
+  "version": 1,
+  "currentQuestionId": "qb-eventos-001",
+  "answers": {
+    "qb-eventos-001": "b"
+  },
+  "completed": false
+}
+```
+
+La puntuación **no se almacena como fuente de verdad**. Cada vez que se renderiza el quiz se calcula comparando las respuestas válidas con `correctOptionId` del banco actual.
+
+### Validación al restaurar
+
+`quiz.js` valida el estado antes de utilizarlo:
+
+- exige `version: 1`;
+- solo acepta IDs presentes en el banco jugable actual;
+- solo acepta opciones que existan realmente en cada pregunta;
+- solo conserva un prefijo secuencial de respuestas válidas;
+- la pregunta restaurada debe ser la última respondida o la siguiente pendiente;
+- `completed: true` solo se acepta cuando todas las preguntas tienen una respuesta válida;
+- los datos incompatibles se normalizan o descartan.
+
+Si `localStorage` no está disponible o lanza un error, el quiz continúa funcionando en memoria durante la sesión.
 
 ## Modelo de contenido bíblico
 
@@ -100,17 +137,19 @@ El MVP prioriza hechos textuales y contexto directamente sustentable por referen
 
 El modelo no obliga a una traducción bíblica concreta. Las explicaciones se redactan principalmente como paráfrasis propias y cualquier cita literal futura deberá respetar la licencia de la traducción utilizada.
 
-## Privacidad y estado de sesión
+## Privacidad
 
-El quiz no utiliza actualmente `localStorage`, base de datos remota ni cuentas. La pregunta actual, respuesta seleccionada y puntuación existen únicamente mientras la página permanece abierta. Recargar reinicia la sesión.
+El progreso permanece en el navegador mediante `localStorage`; no existe base de datos propia, cuenta de usuario ni sincronización remota. Las respuestas guardadas no se envían a un servidor propio de Quiz Bible.
 
-El banco de preguntas se descarga como contenido estático del propio sitio. Las respuestas elegidas se procesan localmente en `quiz.js` y no se envían a una base de datos propia de Quiz Bible.
+**Reiniciar progreso** elimina la clave local utilizada por el quiz. El usuario también puede borrar los datos del sitio desde la configuración del navegador.
+
+La política pública se mantiene en `privacy/index.html`.
 
 ## Alcance de accesibilidad actual
 
 La página conserva la base semántica y el módulo central de accesibilidad de Neuronova Apps. El quiz utiliza `fieldset`, controles radio nativos, botones, foco visible y una región `aria-live` para el resultado básico de la comprobación. La explicación y la referencia se presentan en una sección titulada **Contexto de la respuesta**.
 
-Esta base no equivale todavía a validación formal del flujo completo del quiz ni a certificación WCAG. La accesibilidad específica se reforzará en una etapa posterior.
+Esta base no equivale todavía a validación formal del flujo completo del quiz ni a certificación WCAG. La accesibilidad específica se reforzará en la siguiente etapa.
 
 ## Estructura
 
@@ -118,7 +157,7 @@ Esta base no equivale todavía a validación formal del flujo completo del quiz 
 - `styles.css`: estilos base compartidos.
 - `hero-orbit.css`: estilos y animaciones de la órbita del hero.
 - `quiz.css`: layout, opciones, feedback y bloque educativo.
-- `quiz.js`: carga de preguntas, selección, comprobación, explicación, referencias, puntuación, avance y reinicio.
+- `quiz.js`: carga, validación de persistencia, respuestas, feedback, puntuación, avance y reinicio.
 - `docs/content-model.md`: modelo editorial del contenido bíblico.
 - `data/question.schema.json`: contrato JSON Schema para preguntas.
 - `data/questions.json`: banco inicial aprobado.
@@ -128,7 +167,7 @@ Esta base no equivale todavía a validación formal del flujo completo del quiz 
 
 ## Próxima etapa
 
-El siguiente trabajo previsto es el **progreso local**: conservar de forma segura el avance y la puntuación del quiz en el navegador, con validación del estado almacenado, reinicio explícito y actualización de la política de privacidad antes de considerar esa persistencia disponible.
+El siguiente trabajo previsto es reforzar la **accesibilidad específica del quiz**: estados accesibles de las respuestas comprobadas, foco al restaurar/avanzar, anuncios de progreso y resultado, y revisión completa del flujo por teclado sin declarar conformidad WCAG sin pruebas formales.
 
 ## Enlaces
 
