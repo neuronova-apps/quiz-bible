@@ -9,9 +9,14 @@
   const form = document.querySelector('#quizForm');
   const optionsNode = document.querySelector('#quizOptions');
   const feedback = document.querySelector('#quizFeedback');
+  const learning = document.querySelector('#quizLearning');
+  const explanationNode = document.querySelector('#quizExplanation');
+  const referenceNode = document.querySelector('#quizReference');
   const checkButton = document.querySelector('#checkAnswer');
   const nextButton = document.querySelector('#nextQuestion');
   const restartButton = document.querySelector('#restartQuiz');
+
+  if (!progress || !scoreNode || !category || !questionNode || !form || !optionsNode || !feedback || !learning || !explanationNode || !referenceNode || !checkButton || !nextButton || !restartButton) return;
 
   let questions = [];
   let currentIndex = 0;
@@ -35,7 +40,9 @@
     if (!question || question.status !== 'approved') return false;
     if (!Array.isArray(question.options) || question.options.length < 3) return false;
     if (!question.correctOptionId || !question.options.some(option => option.id === question.correctOptionId)) return false;
-    return typeof question.prompt === 'string' && question.prompt.trim().length > 0;
+    if (typeof question.prompt !== 'string' || !question.prompt.trim()) return false;
+    if (typeof question.explanation !== 'string' || !question.explanation.trim()) return false;
+    return Array.isArray(question.references) && question.references.some(reference => typeof reference?.display === 'string' && reference.display.trim());
   }
 
   function getSelectedOptionId() {
@@ -52,6 +59,21 @@
     scoreNode.textContent = `Puntuación: ${score}/${questions.length}`;
   }
 
+  function hideLearning() {
+    learning.hidden = true;
+    explanationNode.textContent = '';
+    referenceNode.textContent = '';
+  }
+
+  function showLearning(question) {
+    explanationNode.textContent = question.explanation;
+    referenceNode.textContent = question.references
+      .map(reference => reference.display)
+      .filter(Boolean)
+      .join(' · ');
+    learning.hidden = false;
+  }
+
   function renderQuestion() {
     const question = questions[currentIndex];
     answered = false;
@@ -63,6 +85,7 @@
     checkButton.disabled = true;
     feedback.textContent = 'Elige una opción y comprueba tu respuesta.';
     feedback.className = 'quiz-feedback neutral';
+    hideLearning();
 
     progress.textContent = `Pregunta ${currentIndex + 1} de ${questions.length}`;
     updateScore();
@@ -119,13 +142,14 @@
 
     if (isCorrect) {
       score += 1;
-      feedback.textContent = 'Correcto.';
+      feedback.textContent = 'Correcto. Revisa el contexto y la referencia antes de continuar.';
       feedback.className = 'quiz-feedback success';
     } else {
-      feedback.textContent = `No es correcto. La respuesta es ${correctOption.text}.`;
+      feedback.textContent = `No es correcto. La respuesta es ${correctOption.text}. Revisa el contexto y la referencia.`;
       feedback.className = 'quiz-feedback error';
     }
 
+    showLearning(question);
     updateScore();
     checkButton.hidden = true;
     nextButton.hidden = false;
@@ -145,6 +169,7 @@
     restartButton.hidden = false;
     feedback.textContent = 'Puedes reiniciar para volver a recorrer el banco inicial.';
     feedback.className = 'quiz-feedback neutral';
+    hideLearning();
     restartButton.focus({ preventScroll: true });
   }
 
@@ -196,6 +221,7 @@
       checkButton.hidden = true;
       nextButton.hidden = true;
       restartButton.hidden = true;
+      hideLearning();
       feedback.textContent = 'Recarga la página para intentarlo de nuevo.';
       feedback.className = 'quiz-feedback error';
     });
