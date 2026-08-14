@@ -121,7 +121,7 @@ Para el MVP:
 2. La respuesta correcta debe poder justificarse con esas referencias sin depender de conocimiento externo obligatorio.
 3. Comentarios, diccionarios, cronologías y estudios secundarios pueden servir para revisión interna, pero no sustituyen la referencia bíblica cuando la pregunta se presenta como contenido bíblico textual.
 4. Las diferencias de traducción deben resolverse mediante redacción neutral o documentando la traducción necesaria.
-5. La interfaz futura mostrará como mínimo la referencia después de responder; no necesita mostrar un versículo completo para que la pregunta sea verificable.
+5. El banco puede contener explicación y referencia antes de que la interfaz las muestre. La mejora educativa posterior debe presentar como mínimo la referencia después de responder; no necesita reproducir un versículo completo para que la pregunta sea verificable.
 
 ## Ejemplo estructural
 
@@ -176,4 +176,6 @@ El siguiente ejemplo ilustra la forma del dato y no representa una pregunta publ
 
 ## Relación con el desarrollo
 
-Este modelo no habilita todavía un quiz jugable. El paso siguiente del proyecto puede crear un banco inicial de preguntas `approved` conforme a este contrato y un motor web que consuma esos datos sin mezclar contenido bíblico con lógica de interfaz.
+El modelo ya se utiliza en `data/questions.json`, que contiene el primer banco aprobado consumido por `quiz.js`. El motor mantiene separada la lógica de interfaz del contenido bíblico y filtra únicamente preguntas `approved` con una opción correcta válida.
+
+La experiencia actual ofrece comprobación y puntuación básica. La siguiente mejora puede utilizar los campos `explanation` y `references` ya presentes en cada pregunta para ofrecer feedback educativo después de responder, sin cambiar el contrato de datos.
