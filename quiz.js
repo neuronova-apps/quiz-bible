@@ -146,7 +146,7 @@
     const storedIndex = questions.findIndex(question => question.id === stored.currentQuestionId);
     const lastAnsweredIndex = answeredCount - 1;
     const nextUnansweredIndex = answeredCount < questions.length ? answeredCount : Math.max(0, questions.length - 1);
-    const storedPositionIsValid = storedIndex === lastAnsweredIndex || storedIndex === nextUnansweredIndex;
+    const storedPositionIsValid = storedIndex >= 0 && (storedIndex === lastAnsweredIndex || storedIndex === nextUnansweredIndex);
 
     currentIndex = storedPositionIsValid
       ? storedIndex
@@ -161,7 +161,8 @@
     const isCorrect = selectedId === question.correctOptionId;
     answered = true;
 
-    const selectedInput = optionsNode.querySelector(`input[value="${CSS.escape(selectedId)}"]`);
+    const selectedInput = Array.from(optionsNode.querySelectorAll('input[name="quiz-answer"]'))
+      .find(input => input.value === selectedId);
     if (selectedInput) selectedInput.checked = true;
     setOptionsDisabled(true);
 
