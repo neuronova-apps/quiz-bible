@@ -128,30 +128,69 @@
   display: grid;
   place-items: center;
   align-content: center;
+  overflow: hidden;
+  border: 1px solid rgba(95, 119, 101, .42);
+  border-radius: 27px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, .98), rgba(235, 239, 230, .92)),
+    #f4f1e8;
+  box-shadow:
+    0 20px 44px rgba(70, 82, 74, .16),
+    inset 0 0 28px rgba(183, 154, 93, .10),
+    0 0 28px rgba(121, 145, 126, .10);
+  transform: rotate(5deg);
+  isolation: isolate;
+}
+
+.qb-core::before {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  z-index: -1;
   border: 1px solid rgba(121, 145, 126, .28);
-  border-radius: 29px;
-  background: rgba(255, 255, 255, .82);
-  box-shadow: 0 22px 58px rgba(70, 82, 74, .12), inset 0 0 26px rgba(183, 154, 93, .06);
+  border-radius: 21px;
+  background: linear-gradient(145deg, rgba(121, 145, 126, .07), rgba(183, 154, 93, .05));
+  box-shadow: inset 0 0 18px rgba(95, 119, 101, .06);
+}
+
+.qb-core::after {
+  content: "";
+  position: absolute;
+  width: 74px;
+  height: 74px;
+  left: 50%;
+  top: 50%;
+  z-index: -2;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(183, 154, 93, .12), rgba(121, 145, 126, .05) 48%, transparent 72%);
+  transform: translate(-50%, -50%);
+  filter: blur(4px);
 }
 
 .qb-core > span {
   color: var(--gold);
-  font-size: 1.28rem;
+  font-size: 1rem;
+  font-weight: 800;
   line-height: 1;
+  text-shadow: 0 0 14px rgba(183, 154, 93, .18);
 }
 
 .qb-core strong {
   margin-top: 2px;
-  color: #52695a;
-  font-size: 1.95rem;
-  line-height: 1;
+  color: #4f6b58;
+  font-size: 2.05rem;
+  font-weight: 950;
+  letter-spacing: -.045em;
+  line-height: .95;
+  text-shadow: 0 0 16px rgba(95, 119, 101, .12);
 }
 
 .qb-core small {
-  margin-top: 6px;
-  color: var(--muted);
-  font-size: .48rem;
-  letter-spacing: .10em;
+  margin-top: 7px;
+  color: #7d867f;
+  font-size: .44rem;
+  font-weight: 800;
+  letter-spacing: .13em;
 }
 
 @keyframes qbOuter {
@@ -203,7 +242,12 @@
   .qb-core {
     width: 100px;
     height: 100px;
-    border-radius: 27px;
+    border-radius: 25px;
+  }
+
+  .qb-core::before {
+    inset: 6px;
+    border-radius: 20px;
   }
 
   .qb-node {
@@ -225,11 +269,16 @@
   .qb-core {
     width: 92px;
     height: 92px;
-    border-radius: 25px;
+    border-radius: 23px;
+  }
+
+  .qb-core::before {
+    inset: 6px;
+    border-radius: 18px;
   }
 
   .qb-core strong {
-    font-size: 1.72rem;
+    font-size: 1.78rem;
   }
 
   .qb-node {
