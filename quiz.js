@@ -15,11 +15,12 @@
   const learning = document.querySelector('#quizLearning');
   const explanationNode = document.querySelector('#quizExplanation');
   const referenceNode = document.querySelector('#quizReference');
+  const a11yStatus = document.querySelector('#quizA11yStatus');
   const checkButton = document.querySelector('#checkAnswer');
   const nextButton = document.querySelector('#nextQuestion');
   const restartButton = document.querySelector('#restartQuiz');
 
-  if (!progress || !scoreNode || !category || !questionNode || !form || !optionsNode || !feedback || !learning || !explanationNode || !referenceNode || !checkButton || !nextButton || !restartButton) return;
+  if (!progress || !scoreNode || !category || !questionNode || !form || !optionsNode || !feedback || !learning || !explanationNode || !referenceNode || !a11yStatus || !checkButton || !nextButton || !restartButton) return;
 
   let questions = [];
   let currentIndex = 0;
@@ -65,6 +66,18 @@
 
   function updateScore() {
     scoreNode.textContent = `Puntuación: ${calculateScore()}/${questions.length}`;
+  }
+
+  function announceProgress(prefix = '') {
+    const message = `${prefix}${progress.textContent}. ${scoreNode.textContent}.`.trim();
+    a11yStatus.textContent = '';
+    requestAnimationFrame(() => {
+      a11yStatus.textContent = message;
+    });
+  }
+
+  function focusQuestion() {
+    questionNode.focus({ preventScroll: false });
   }
 
   function hideLearning() {
@@ -168,8 +181,24 @@
 
     optionsNode.querySelectorAll('.quiz-option').forEach(label => {
       const optionId = label.dataset.optionId;
-      label.classList.toggle('correct', optionId === question.correctOptionId);
-      label.classList.toggle('incorrect', optionId === selectedId && !isCorrect);
+      const isCorrectOption = optionId === question.correctOptionId;
+      const isSelectedOption = optionId === selectedId;
+      const optionState = label.querySelector('.quiz-option-state');
+
+      label.classList.toggle('correct', isCorrectOption);
+      label.classList.toggle('incorrect', isSelectedOption && !isCorrect);
+
+      if (optionState) {
+        if (isCorrectOption && isSelectedOption) {
+          optionState.textContent = 'Respuesta correcta y seleccionada.';
+        } else if (isCorrectOption) {
+          optionState.textContent = 'Respuesta correcta.';
+        } else if (isSelectedOption) {
+          optionState.textContent = 'Tu respuesta, incorrecta.';
+        } else {
+          optionState.textContent = '';
+        }
+      }
     });
 
     const restoredPrefix = restored ? 'Progreso restaurado. ' : '';
@@ -188,7 +217,7 @@
     nextButton.textContent = currentIndex === questions.length - 1 ? 'Ver resultado' : 'Siguiente pregunta';
   }
 
-  function renderQuestion({ restored = false, focus = true } = {}) {
+  function renderQuestion({ restored = false, focus = 'none' } = {}) {
     const question = questions[currentIndex];
     answered = false;
     completed = false;
@@ -208,7 +237,7 @@
     updateScore();
     category.textContent = `${categoryLabel(question.category)} · Dificultad ${difficultyLabel(question.difficulty).toLowerCase()}`;
     questionNode.textContent = question.prompt;
-    optionsNode.innerHTML = '<legend class="visually-hidden">Elige una respuesta</legend>';
+    optionsNode.innerHTML = '<legend class="visually-hidden">Elige una respuesta para la pregunta actual</legend>';
 
     question.options.forEach(option => {
       const label = document.createElement('label');
@@ -229,15 +258,22 @@
       text.className = 'quiz-option-text';
       text.textContent = option.text;
 
-      label.append(input, marker, text);
+      const optionState = document.createElement('span');
+      optionState.className = 'quiz-option-state visually-hidden';
+
+      label.append(input, marker, text, optionState);
       optionsNode.append(label);
     });
 
     const restoredAnswer = answers[question.id];
     if (restoredAnswer) {
       markAnsweredQuestion(question, restoredAnswer, restored);
-    } else if (focus) {
-      optionsNode.querySelector('input')?.focus({ preventScroll: true });
+    }
+
+    if (focus === 'question') {
+      requestAnimationFrame(focusQuestion);
+    } else if (focus === 'option' && !restoredAnswer) {
+      optionsNode.querySelector('input')?.focus({ preventScroll: false });
     }
   }
 
@@ -255,7 +291,7 @@
     markAnsweredQuestion(question, selectedId);
     updateScore();
     persistProgress();
-    nextButton.focus({ preventScroll: true });
+    nextButton.focus({ preventScroll: false });
   }
 
   function showResult({ restored = false, focus = true } = {}) {
@@ -275,7 +311,7 @@
     feedback.className = 'quiz-feedback neutral';
     hideLearning();
     persistProgress();
-    if (focus) restartButton.focus({ preventScroll: true });
+    if (focus) requestAnimationFrame(focusQuestion);
   }
 
   function nextQuestion() {
@@ -287,7 +323,8 @@
     currentIndex += 1;
     completed = false;
     persistProgress();
-    renderQuestion();
+    renderQuestion({ focus: 'question' });
+    announceProgress();
   }
 
   function restartQuiz() {
@@ -295,8 +332,9 @@
     currentIndex = 0;
     answers = {};
     completed = false;
-    renderQuestion();
+    renderQuestion({ focus: 'question' });
     feedback.textContent = 'Progreso reiniciado. Elige una opción para comenzar de nuevo.';
+    announceProgress('Progreso reiniciado. ');
   }
 
   optionsNode.addEventListener('change', () => {
@@ -324,7 +362,7 @@
       if (completed) {
         showResult({ restored: true, focus: false });
       } else {
-        renderQuestion({ restored, focus: !restored });
+        renderQuestion({ restored, focus: 'none' });
       }
     })
     .catch(() => {
