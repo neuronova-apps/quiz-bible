@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Quiz Bible es un proyecto de preguntas bíblicas en desarrollo. La web actual presenta la propuesta mientras se construye la primera experiencia jugable.">
+  <meta name="description" content="Quiz Bible es un MVP web en desarrollo con un primer quiz bíblico de seis preguntas revisadas, respuestas seleccionables y puntuación de sesión.">
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <meta name="application-name" content="Quiz Bible">
   <meta name="theme-color" content="#f6f3e9">
@@ -13,7 +13,7 @@
   <meta property="og:locale" content="es_PE">
   <meta property="og:site_name" content="Neuronova Apps">
   <meta property="og:title" content="Quiz Bible | Preguntas para aprender y recordar">
-  <meta property="og:description" content="Proyecto de preguntas bíblicas de Neuronova Apps. La aplicación jugable se encuentra en desarrollo.">
+  <meta property="og:description" content="Primer quiz web funcional de Quiz Bible: seis preguntas bíblicas revisadas con selección de respuesta, comprobación y puntuación.">
   <meta property="og:url" content="https://neuronova-apps.github.io/quizbible-app/">
   <meta property="og:image" content="https://neuronova-apps.github.io/quizbible-app/favicon.svg">
   <meta property="og:image:type" content="image/svg+xml">
@@ -22,14 +22,16 @@
   <meta property="og:image:alt" content="Símbolo de Quiz Bible">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Quiz Bible | Neuronova Apps">
-  <meta name="twitter:description" content="Proyecto de preguntas bíblicas en desarrollo. La web actual presenta la propuesta; el quiz jugable todavía no está disponible.">
+  <meta name="twitter:description" content="Primer MVP jugable de Quiz Bible con seis preguntas bíblicas y puntuación de sesión.">
   <meta name="twitter:image" content="https://neuronova-apps.github.io/quizbible-app/favicon.svg">
   <meta name="twitter:image:alt" content="Símbolo de Quiz Bible">
   <title>Quiz Bible | Neuronova Apps</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="hero-orbit.css">
+  <link rel="stylesheet" href="quiz.css">
   <link rel="stylesheet" href="https://neuronova-apps.github.io/assets/accessibility/accessibility.css">
   <script src="https://neuronova-apps.github.io/assets/accessibility/accessibility.js" defer></script>
+  <script src="quiz.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
@@ -44,6 +46,7 @@
         <span><strong>Quiz Bible</strong><small>by Neuronova Apps</small></span>
       </a>
       <nav aria-label="Navegación principal">
+        <a href="#jugar">Jugar</a>
         <a href="#proyecto">Proyecto</a>
         <a href="privacy/">Privacidad</a>
         <a href="https://neuronova-apps.github.io/">Neuronova</a>
@@ -57,14 +60,14 @@
         <div class="hero-copy">
           <p class="eyebrow"><span aria-hidden="true"></span> Biblia · Preguntas · Aprendizaje</p>
           <h1>Aprender, recordar y descubrir <em>una pregunta a la vez.</em></h1>
-          <p class="lead">Quiz Bible es un proyecto de Neuronova Apps orientado a preguntas y desafíos sobre contenidos bíblicos. La web actual presenta la propuesta y su estado de desarrollo; todavía no incluye un quiz jugable.</p>
+          <p class="lead">Quiz Bible ya ofrece un primer quiz web funcional con seis preguntas bíblicas revisadas. Selecciona una respuesta, comprueba tu elección y completa la sesión para conocer tu puntuación.</p>
           <div class="actions">
-            <a class="button primary" href="#proyecto">Conocer el proyecto</a>
-            <a class="button secondary" href="privacy/">Política de privacidad</a>
+            <a class="button primary" href="#jugar">Probar el quiz</a>
+            <a class="button secondary" href="#proyecto">Ver alcance actual</a>
           </div>
-          <div class="hero-metrics" aria-label="Estado actual de Quiz Bible">
-            <div><strong>En desarrollo</strong><span>aplicación en construcción</span></div>
-            <div><strong>Web pública</strong><span>presentación del proyecto</span></div>
+          <div class="hero-metrics" aria-label="Características actuales de Quiz Bible">
+            <div><strong>06</strong><span>preguntas aprobadas</span></div>
+            <div><strong>01</strong><span>quiz inicial jugable</span></div>
             <div><strong>A11Y</strong><span>base compartida de accesibilidad</span></div>
           </div>
         </div>
@@ -86,14 +89,49 @@
       </div>
     </section>
 
+    <section id="jugar" class="section quiz-section">
+      <div class="container">
+        <div class="quiz-heading">
+          <div>
+            <p class="eyebrow">Primer quiz funcional</p>
+            <h2>Seis preguntas para comenzar.</h2>
+          </div>
+          <p>El banco inicial utiliza preguntas de hechos narrativos directos y referencias bíblicas revisadas. En este paso la sesión funciona en memoria: al recargar la página, la puntuación comienza de nuevo.</p>
+        </div>
+
+        <div id="quizApp" class="quiz-shell" data-state="loading" aria-labelledby="quizQuestion">
+          <div class="quiz-topbar" aria-label="Estado del quiz">
+            <span id="quizProgress">Cargando preguntas…</span>
+            <span id="quizScore">Puntuación: 0/6</span>
+          </div>
+
+          <div class="quiz-card">
+            <p id="quizCategory" class="quiz-category">Banco inicial</p>
+            <h2 id="quizQuestion" class="quiz-question">Preparando la primera pregunta…</h2>
+            <form id="quizForm">
+              <fieldset id="quizOptions" class="quiz-options">
+                <legend class="visually-hidden">Elige una respuesta</legend>
+              </fieldset>
+              <div class="quiz-actions">
+                <button id="checkAnswer" class="button primary" type="submit" disabled>Comprobar respuesta</button>
+                <button id="nextQuestion" class="button primary" type="button" hidden>Siguiente pregunta</button>
+                <button id="restartQuiz" class="button secondary" type="button" hidden>Reiniciar quiz</button>
+              </div>
+            </form>
+            <p id="quizFeedback" class="quiz-feedback neutral" role="status" aria-live="polite" aria-atomic="true">Elige una opción y comprueba tu respuesta.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="proyecto" class="section">
       <div class="container project-panel">
         <div>
           <p class="eyebrow">Estado actual</p>
-          <h2>Una base pública mientras se construye el primer quiz.</h2>
-          <p>La versión disponible es una landing de presentación y acceso a privacidad. Ya se definió un modelo editorial y técnico para que cada futura pregunta tenga opciones, una respuesta correcta, explicación y referencia bíblica revisable. Todavía no existe un banco de preguntas aprobado ni una experiencia jugable.</p>
+          <h2>Un primer MVP jugable, todavía en desarrollo.</h2>
+          <p>Quiz Bible dispone ahora de un banco inicial de seis preguntas aprobadas y una experiencia funcional con selección de respuesta, comprobación, puntuación de sesión, avance y reinicio. Todavía no incorpora categorías jugables, niveles, progreso persistente, cuentas, ranking ni sincronización.</p>
         </div>
-        <span class="status">En desarrollo</span>
+        <span class="status">MVP inicial</span>
       </div>
     </section>
   </main>
@@ -105,10 +143,11 @@
           <span class="brand-mark" aria-hidden="true">QB</span>
           <span><strong>Quiz Bible</strong><small>by Neuronova Apps</small></span>
         </a>
-        <p>Proyecto de preguntas bíblicas en desarrollo. La web actual presenta la propuesta mientras se construye la primera experiencia jugable.</p>
+        <p>Primer MVP web de preguntas bíblicas con un banco inicial revisado, respuestas seleccionables y puntuación de sesión.</p>
       </div>
       <div class="footer-column">
         <h2>Explorar</h2>
+        <a href="#jugar">Jugar</a>
         <a href="#proyecto">Proyecto</a>
         <a href="privacy/">Privacidad</a>
         <a href="https://github.com/neuronova-apps/quizbible-app" target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -122,7 +161,7 @@
     </div>
     <div class="container footer-bottom">
       <p>© 2026 Quiz Bible · Neuronova Apps. Todos los derechos reservados.</p>
-      <p>Proyecto en desarrollo · Base web accesible</p>
+      <p>MVP web en desarrollo · 6 preguntas iniciales</p>
     </div>
   </footer>
 </body>
