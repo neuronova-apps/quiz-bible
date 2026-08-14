@@ -84,7 +84,9 @@ La explicación debe:
 - estar redactada principalmente como paráfrasis propia;
 - evitar reproducir pasajes extensos de una traducción bíblica protegida por derechos de autor.
 
-Cuando sea necesario citar texto literal, la traducción y su licencia deberán estar documentadas antes de publicar ese contenido.
+La interfaz actual muestra esta explicación una vez comprobada la respuesta y la oculta al pasar a la siguiente pregunta, reiniciar, finalizar o entrar en estado de error.
+
+Cuando sea necesario citar texto literal en el futuro, la traducción y su licencia deberán estar documentadas antes de publicar ese contenido.
 
 ## Referencias bíblicas
 
@@ -101,6 +103,8 @@ Cada referencia contiene:
 - `note`: observación editorial breve, opcional.
 
 La referencia canónica es el elemento de verificación principal. El modelo no obliga a una traducción concreta para permitir que el proyecto defina más adelante una política de traducciones y licencias.
+
+La interfaz actual utiliza `display` para presentar la referencia después de comprobar la respuesta. No reproduce el texto completo del pasaje.
 
 ## Revisión y sensibilidad doctrinal
 
@@ -121,7 +125,7 @@ Para el MVP:
 2. La respuesta correcta debe poder justificarse con esas referencias sin depender de conocimiento externo obligatorio.
 3. Comentarios, diccionarios, cronologías y estudios secundarios pueden servir para revisión interna, pero no sustituyen la referencia bíblica cuando la pregunta se presenta como contenido bíblico textual.
 4. Las diferencias de traducción deben resolverse mediante redacción neutral o documentando la traducción necesaria.
-5. El banco puede contener explicación y referencia antes de que la interfaz las muestre. La mejora educativa posterior debe presentar como mínimo la referencia después de responder; no necesita reproducir un versículo completo para que la pregunta sea verificable.
+5. Después de responder, la interfaz debe mostrar como mínimo la explicación editorial y la referencia bíblica preparada en los datos; no necesita reproducir un versículo completo para que la pregunta sea verificable.
 
 ## Ejemplo estructural
 
@@ -176,6 +180,8 @@ El siguiente ejemplo ilustra la forma del dato y no representa una pregunta publ
 
 ## Relación con el desarrollo
 
-El modelo ya se utiliza en `data/questions.json`, que contiene el primer banco aprobado consumido por `quiz.js`. El motor mantiene separada la lógica de interfaz del contenido bíblico y filtra únicamente preguntas `approved` con una opción correcta válida.
+El modelo se utiliza en `data/questions.json`, que contiene el primer banco aprobado consumido por `quiz.js`. El motor mantiene separada la lógica de interfaz del contenido bíblico y filtra únicamente preguntas `approved` con opción correcta, explicación y referencia válidas.
 
-La experiencia actual ofrece comprobación y puntuación básica. La siguiente mejora puede utilizar los campos `explanation` y `references` ya presentes en cada pregunta para ofrecer feedback educativo después de responder, sin cambiar el contrato de datos.
+Después de cada comprobación, la interfaz utiliza `explanation` y `references[].display` para presentar el contexto educativo de la respuesta. Esta mejora no cambia el contrato de datos ni añade almacenamiento de progreso.
+
+La siguiente etapa del producto puede centrarse en persistencia local de avance y puntuación sin mezclar esa responsabilidad con el contenido bíblico.
