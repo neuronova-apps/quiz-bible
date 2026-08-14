@@ -6,7 +6,7 @@ Quiz Bible es un proyecto de Neuronova Apps orientado a una experiencia de pregu
 
 **MVP web inicial en desarrollo.**
 
-La versión web disponible ya incorpora un **primer quiz jugable de seis preguntas aprobadas**. La sesión funciona directamente en el navegador y permite seleccionar una respuesta, comprobarla, avanzar por el banco, consultar la puntuación temporal y reiniciar el recorrido.
+La versión web disponible incorpora un **quiz jugable de seis preguntas aprobadas**. La sesión funciona directamente en el navegador y permite seleccionar una respuesta, comprobarla, revisar una explicación educativa y su referencia bíblica, avanzar por el banco, consultar la puntuación temporal y reiniciar el recorrido.
 
 La versión actual incluye:
 
@@ -17,7 +17,9 @@ La versión actual incluye:
 - cuatro opciones por pregunta;
 - selección mediante controles nativos de tipo radio;
 - comprobación de una única respuesta por pregunta;
-- indicación básica de respuesta correcta o incorrecta;
+- indicación de respuesta correcta o incorrecta;
+- explicación educativa visible después de comprobar;
+- referencia bíblica visible después de comprobar;
 - avance secuencial por las seis preguntas;
 - puntuación de sesión;
 - resultado final y reinicio del quiz;
@@ -33,7 +35,6 @@ La versión actual incluye:
 Todavía no están implementados:
 
 - categorías o niveles seleccionables;
-- explicación educativa y referencia visibles después de responder;
 - progreso o puntuación persistentes mediante `localStorage`;
 - cuentas, sincronización o ranking;
 - banco amplio o generación dinámica de preguntas;
@@ -54,23 +55,24 @@ Estas funciones deben considerarse futuras hasta estar implementadas y verificad
 
 Todas están marcadas como `approved`, con `referenceChecked: true`, `singleCorrectAnswerChecked: true` y `doctrinalSensitivity: "none"`.
 
-El banco ya incluye explicaciones y referencias porque forman parte del contrato editorial, aunque la interfaz del paso actual todavía no las muestra como feedback educativo. Esa presentación corresponde a la siguiente mejora.
+Cada entrada incluye `explanation` y `references`. Después de comprobar una respuesta, `quiz.js` utiliza esos campos para mostrar una paráfrasis educativa y la referencia canónica preparada en `display`. El MVP no reproduce versículos completos ni obliga a una traducción bíblica específica.
 
 ## Flujo de juego actual
 
 La sesión sigue este recorrido:
 
 1. `quiz.js` carga `data/questions.json`;
-2. se filtran únicamente preguntas con estado `approved` y estructura jugable básica;
+2. se filtran únicamente preguntas `approved` con opción correcta, explicación y referencia jugables;
 3. se presenta una pregunta con sus opciones;
 4. la persona selecciona una respuesta;
 5. **Comprobar respuesta** evalúa la opción una sola vez;
-6. la puntuación se actualiza en memoria;
-7. **Siguiente pregunta** avanza por el banco;
-8. al terminar se muestra el total de respuestas correctas;
-9. **Reiniciar quiz** vuelve a la primera pregunta con puntuación cero.
+6. se indica si la elección fue correcta y se actualiza la puntuación;
+7. aparece el bloque **Para aprender**, con explicación y referencia bíblica;
+8. **Siguiente pregunta** avanza por el banco;
+9. al terminar se muestra el total de respuestas correctas;
+10. **Reiniciar quiz** vuelve a la primera pregunta con puntuación cero.
 
-Si el banco no puede cargarse o no contiene preguntas aprobadas válidas, la interfaz muestra un estado de error en lugar de bloquear la página.
+El bloque educativo se limpia al cambiar de pregunta, reiniciar, finalizar o entrar en estado de error. Si el banco no puede cargarse o no contiene preguntas aprobadas con los datos requeridos, la interfaz muestra un estado de error en lugar de bloquear la página.
 
 ## Modelo de contenido bíblico
 
@@ -106,17 +108,17 @@ El banco de preguntas se descarga como contenido estático del propio sitio. Las
 
 ## Alcance de accesibilidad actual
 
-La página conserva la base semántica y el módulo central de accesibilidad de Neuronova Apps. El quiz utiliza `fieldset`, controles radio nativos, botones, foco visible y una región `aria-live` para feedback básico.
+La página conserva la base semántica y el módulo central de accesibilidad de Neuronova Apps. El quiz utiliza `fieldset`, controles radio nativos, botones, foco visible y una región `aria-live` para el resultado básico de la comprobación. La explicación y la referencia se presentan en una sección titulada **Contexto de la respuesta**.
 
 Esta base no equivale todavía a validación formal del flujo completo del quiz ni a certificación WCAG. La accesibilidad específica se reforzará en una etapa posterior.
 
 ## Estructura
 
-- `index.html`: presentación, primer quiz y estado actual del proyecto.
+- `index.html`: presentación, quiz y estado actual del proyecto.
 - `styles.css`: estilos base compartidos.
 - `hero-orbit.css`: estilos y animaciones de la órbita del hero.
-- `quiz.css`: layout y estados visuales del quiz.
-- `quiz.js`: carga de preguntas, selección, comprobación, puntuación, avance y reinicio.
+- `quiz.css`: layout, opciones, feedback y bloque educativo.
+- `quiz.js`: carga de preguntas, selección, comprobación, explicación, referencias, puntuación, avance y reinicio.
 - `docs/content-model.md`: modelo editorial del contenido bíblico.
 - `data/question.schema.json`: contrato JSON Schema para preguntas.
 - `data/questions.json`: banco inicial aprobado.
@@ -126,7 +128,7 @@ Esta base no equivale todavía a validación formal del flujo completo del quiz 
 
 ## Próxima etapa
 
-El siguiente trabajo previsto es el **feedback educativo y las referencias visibles**: después de responder, la interfaz podrá mostrar la explicación ya incluida en cada pregunta y su referencia bíblica sin reproducir pasajes extensos ni depender de una interpretación doctrinal específica.
+El siguiente trabajo previsto es el **progreso local**: conservar de forma segura el avance y la puntuación del quiz en el navegador, con validación del estado almacenado, reinicio explícito y actualización de la política de privacidad antes de considerar esa persistencia disponible.
 
 ## Enlaces
 
