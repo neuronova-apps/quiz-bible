@@ -317,11 +317,11 @@ h2 {
   align-items: center;
   justify-content: space-between;
   gap: 40px;
-  padding: clamp(28px, 5vw, 52px);
-  border: 1px solid var(--line);
-  border-radius: 30px;
-  background: rgba(255, 255, 255, .67);
-  box-shadow: var(--shadow);
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 .project-panel > div {
