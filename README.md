@@ -20,6 +20,8 @@ La versión actual incluye:
 - reinicio explícito que elimina el progreso guardado;
 - flujo de teclado reforzado, foco gestionado y estados accesibles de respuestas;
 - cinco guías educativas públicas e indexables;
+- tarjeta social dedicada de 1200×630 compartida por todas las páginas públicas;
+- Open Graph y Twitter normalizados con `summary_large_image`;
 - sitemap con portada, cinco guías y privacidad;
 - modelo editorial y contrato técnico para el contenido bíblico.
 
@@ -28,7 +30,6 @@ Todavía no están implementados:
 - categorías o niveles seleccionables;
 - cuentas, sincronización o ranking;
 - banco amplio o generación dinámica de preguntas;
-- tarjeta social dedicada 1200×630;
 - pruebas manuales exhaustivas con lectores de pantalla y otras tecnologías de asistencia;
 - certificación o auditoría formal de conformidad WCAG.
 
@@ -125,11 +126,32 @@ Todas incluyen:
 
 Comparten `resources.css`, mientras la portada utiliza `guide-cards.css` para presentar las cinco tarjetas.
 
+## Imagen social y metadatos
+
+El activo compartido es:
+
+`assets/social/quizbible-social.png`
+
+Tiene **1200×630 px** y se utiliza como imagen social en las siete páginas públicas: portada, cinco guías y privacidad.
+
+Todas declaran de forma consistente:
+
+- `og:image` con URL absoluta;
+- `og:image:type="image/png"`;
+- `og:image:width="1200"`;
+- `og:image:height="630"`;
+- `og:image:alt`;
+- `twitter:card="summary_large_image"`;
+- `twitter:image` con el mismo PNG;
+- `twitter:image:alt`.
+
+`favicon.svg` permanece como favicon del sitio, no como imagen de Open Graph o Twitter.
+
 ## Privacidad
 
 El progreso permanece en el navegador mediante `localStorage`; no existe cuenta ni sincronización remota. **Reiniciar progreso** elimina la clave utilizada por el quiz. La política pública está en `privacy/index.html`.
 
-Las páginas educativas son contenido estático y no añaden datos personales ni un nuevo formato de persistencia.
+Las páginas educativas son contenido estático y no añaden datos personales ni un nuevo formato de persistencia. La tarjeta social y sus metadatos tampoco modifican el tratamiento de datos.
 
 ## Accesibilidad específica del quiz
 
@@ -154,6 +176,7 @@ Estas medidas no constituyen una certificación WCAG. Siguen pendientes pruebas 
 - `guide-cards.css`: tarjetas de guías en portada.
 - `resources.css`: estilos compartidos de las páginas educativas.
 - `quiz.js`: carga, persistencia, respuestas, accesibilidad, feedback y puntuación.
+- `assets/social/quizbible-social.png`: tarjeta social compartida de 1200×630.
 - `docs/content-model.md`: política editorial.
 - `data/question.schema.json`: esquema de preguntas.
 - `data/questions.json`: banco inicial.
@@ -162,7 +185,7 @@ Estas medidas no constituyen una certificación WCAG. Siguen pendientes pruebas 
 
 ## Próxima etapa
 
-El siguiente trabajo previsto es crear una **tarjeta social dedicada de 1200×630** y normalizar Open Graph/Twitter en portada, cinco guías y privacidad. Actualmente las páginas siguen utilizando `favicon.svg` como imagen social.
+El siguiente trabajo previsto es **consolidar la documentación del proyecto** para dejar alcance, desarrollo, roadmap y política editorial alineados con el estado final del MVP actual, sin convertir funciones futuras en compromisos ya implementados.
 
 ## Enlaces
 
