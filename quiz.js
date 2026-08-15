@@ -1,4 +1,28 @@
 (() => {
+  const menuButton = document.querySelector('.site-header .menu-button');
+  const mainNav = document.querySelector('.site-header .main-nav');
+  if (!menuButton || !mainNav) return;
+
+  const closeMenu = ({ restoreFocus = false } = {}) => {
+    mainNav.classList.remove('open');
+    menuButton.setAttribute('aria-expanded', 'false');
+    menuButton.setAttribute('aria-label', 'Abrir menú de navegación');
+    if (restoreFocus) menuButton.focus({ preventScroll: true });
+  };
+
+  menuButton.addEventListener('click', () => {
+    const open = mainNav.classList.toggle('open');
+    menuButton.setAttribute('aria-expanded', String(open));
+    menuButton.setAttribute('aria-label', open ? 'Cerrar menú de navegación' : 'Abrir menú de navegación');
+  });
+
+  mainNav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => closeMenu()));
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && mainNav.classList.contains('open')) closeMenu({ restoreFocus: true });
+  });
+})();
+
+(() => {
   const app = document.querySelector('#quizApp');
   if (!app) return;
 
