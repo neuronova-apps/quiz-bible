@@ -38,3 +38,50 @@ jobs:
           mapfile -d '' files < <(find . -type f -name '*.js' -not -path './node_modules/*' -not -path './build/*' -not -path './dist/*' -not -path './.gradle/*' -not -path './.idea/*' -not -path './.kotlin/*' -print0)
           if ((${#files[@]} == 0)); then echo 'No JavaScript files found.'; exit 0; fi
           for file in "${files[@]}"; do echo "Checking ${file}"; node --check "${file}"; done
+
+  phase-2:
+    name: Phase 2 · browser smoke and responsive
+    needs: phase-1
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        name: Checkout
+      - uses: actions/setup-python@v5
+        name: Set up Python
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        name: Set up Node.js
+        with:
+          node-version: '22'
+      - name: Install Playwright
+        run: |
+          npm install --ignore-scripts --no-audit --no-fund
+          npx playwright install --with-deps chromium
+      - name: Responsive browser smoke tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m http.server 4173 --bind 127.0.0.1 >/tmp/neuronova-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID" 2>/dev/null || true' EXIT
+          ready=0
+          for attempt in {1..30}; do
+            if curl --fail --silent http://127.0.0.1:4173/ >/dev/null; then ready=1; break; fi
+            sleep 1
+          done
+          if [[ "$ready" != "1" ]]; then
+            cat /tmp/neuronova-http.log
+            echo 'Local test server did not become ready.'
+            exit 1
+          fi
+          npm run test:smoke
+      - name: Upload failure screenshots
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: responsive-smoke-failures
+          path: artifacts/smoke/
+          if-no-files-found: ignore
+          retention-days: 5
