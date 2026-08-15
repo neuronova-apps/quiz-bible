@@ -2,6 +2,12 @@
   "name": "quizbible-quality-checks",
   "private": true,
   "version": "0.0.0",
-  "scripts": {"test:smoke": "node scripts/browser_smoke.mjs"},
-  "devDependencies": {"playwright": "1.62.0"}
+  "scripts": {
+    "test:smoke": "node scripts/browser_smoke.mjs",
+    "test:phase3": "node scripts/phase3_checks.mjs"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.12.1",
+    "playwright": "1.62.0"
+  }
 }
