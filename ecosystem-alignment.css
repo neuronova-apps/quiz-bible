@@ -56,7 +56,7 @@ main p{font-size:var(--nv-body);line-height:1.6}
 :is(.hero-metrics,.metrics,.stats) span{font-size:var(--nv-metric-label);line-height:1.35}
 
 @media(max-width:900px){
-  .site-header .main-nav{display:none}
+  .site-header .main-nav:not(.open){display:none!important}
   .site-header .menu-button,.site-header .menu{display:block}
   .site-header .main-nav.open{display:flex;position:absolute;top:62px;left:14px;right:14px;flex-direction:column;align-items:stretch;padding:10px;border:1px solid var(--line);border-radius:14px;background:var(--ecosystem-menu-bg);z-index:120}
   .site-header .main-nav.open a,.site-header .main-nav.open button{width:100%;justify-content:flex-start;min-height:42px}
