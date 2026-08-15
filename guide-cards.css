@@ -286,3 +286,16 @@
     bottom: 16px;
   }
 }
+
+/* Escala tipográfica maestra · Neuronova Apps */
+:root{--nv-content-max:1180px;--nv-h1:clamp(2.15rem,4.25vw,4rem);--nv-h2:clamp(2rem,3.7vw,3.45rem);--nv-lead:clamp(.94rem,1.3vw,1.05rem);--nv-body:.95rem;--nv-eyebrow:.74rem;--nv-button:46px;--nv-metric-value:1.02rem;--nv-metric-label:.72rem}
+.container{width:min(calc(100% - 36px),var(--nv-content-max));margin-inline:auto}
+.hero h1{font-size:var(--nv-h1);line-height:1.01;letter-spacing:-.04em}
+main .section h2,main .section-heading h2{font-size:var(--nv-h2);line-height:1.06;letter-spacing:-.035em}
+main p{font-size:var(--nv-body);line-height:1.6}
+.hero .lead{font-size:var(--nv-lead);line-height:1.55}
+.eyebrow{font-size:var(--nv-eyebrow);line-height:1.2;letter-spacing:.14em}
+.button,a.button,button.button{min-height:var(--nv-button);font-size:.9rem;line-height:1}
+:is(.hero-metrics,.metrics,.stats) strong{font-size:var(--nv-metric-value);line-height:1.2}
+:is(.hero-metrics,.metrics,.stats) span{font-size:var(--nv-metric-label);line-height:1.35}
+@media(max-width:700px){.hero h1{font-size:clamp(1.9rem,9vw,3.1rem);line-height:1.03}main .section h2,main .section-heading h2{font-size:clamp(1.75rem,7.4vw,2.6rem)}main p{font-size:.93rem}.button,a.button,button.button{min-height:46px}:is(.hero-metrics,.metrics,.stats) strong{font-size:.96rem}:is(.hero-metrics,.metrics,.stats) span{font-size:.68rem}}
