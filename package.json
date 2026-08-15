@@ -4,7 +4,8 @@
   "version": "0.0.0",
   "scripts": {
     "test:smoke": "node scripts/browser_smoke.mjs",
-    "test:phase3": "node scripts/phase3_checks.mjs"
+    "test:phase3": "node scripts/phase3_checks.mjs",
+    "test:phase4": "node scripts/phase4_checks.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.12.1",
