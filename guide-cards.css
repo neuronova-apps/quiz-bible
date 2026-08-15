@@ -228,3 +228,61 @@
     min-height: 42px;
   }
 }
+
+/* Footer definitivo del ecosistema Neuronova */
+.site-footer {
+  position: relative;
+}
+
+.site-footer .footer-column:nth-child(3) span:last-child {
+  font-size: 0;
+}
+
+.site-footer .footer-column:nth-child(3) span:last-child::after {
+  content: "Proyecto independiente";
+  font-size: .88rem;
+  line-height: 1.45;
+}
+
+.site-footer .footer-column:nth-child(2) a[href="privacy/"] {
+  position: absolute;
+  right: max(18px, calc((100% - 1180px) / 2));
+  bottom: 20px;
+  z-index: 2;
+  font-size: 0;
+}
+
+.site-footer .footer-column:nth-child(2) a[href="privacy/"]::after {
+  content: "Política de privacidad";
+  font-size: .74rem;
+}
+
+.site-footer .footer-bottom {
+  min-height: 56px;
+}
+
+.site-footer .footer-bottom p:first-child {
+  font-size: 0;
+}
+
+.site-footer .footer-bottom p:first-child::before {
+  content: "© 2026 Quiz Bible · Neuronova Apps";
+  font-size: .74rem;
+}
+
+.site-footer .footer-bottom p:last-child {
+  display: none;
+}
+
+@media (max-width: 560px) {
+  .site-footer .footer-bottom {
+    min-height: 82px;
+    padding-bottom: 42px;
+  }
+
+  .site-footer .footer-column:nth-child(2) a[href="privacy/"] {
+    left: 18px;
+    right: auto;
+    bottom: 16px;
+  }
+}
