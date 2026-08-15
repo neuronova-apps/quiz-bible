@@ -1,0 +1,40 @@
+name: Quality checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: quality-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  phase-1:
+    name: Phase 1 · static integrity
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        name: Checkout
+      - uses: actions/setup-python@v5
+        name: Set up Python
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        name: Set up Node.js
+        with:
+          node-version: '20'
+      - name: Repository, HTML, links, SEO and sitemap
+        run: python scripts/quality_check.py
+      - name: JavaScript syntax
+        shell: bash
+        run: |
+          set -euo pipefail
+          mapfile -d '' files < <(find . -type f -name '*.js' -not -path './node_modules/*' -not -path './build/*' -not -path './dist/*' -not -path './.gradle/*' -not -path './.idea/*' -not -path './.kotlin/*' -print0)
+          if ((${#files[@]} == 0)); then echo 'No JavaScript files found.'; exit 0; fi
+          for file in "${files[@]}"; do echo "Checking ${file}"; node --check "${file}"; done
