@@ -5,17 +5,17 @@ const baseURL = process.env.SMOKE_BASE_URL || 'http://127.0.0.1:4173/';
 const baseOrigin = new URL(baseURL).origin;
 const artifactsDir = 'artifacts/smoke';
 const viewports = [
-  { name: 'desktop-1440', width: 1440, height: 900 },
-  { name: 'tablet-1024', width: 1024, height: 768 },
-  { name: 'tablet-768', width: 768, height: 1024 },
-  { name: 'mobile-390', width: 390, height: 844 },
-  { name: 'mobile-360', width: 360, height: 800 }
+  ['desktop-1440', 1440, 900],
+  ['tablet-1024', 1024, 768],
+  ['tablet-768', 768, 1024],
+  ['mobile-390', 390, 844],
+  ['mobile-360', 360, 800]
 ];
 const isLocal = (value) => { try { return new URL(value).origin === baseOrigin; } catch { return false; } };
 const browser = await chromium.launch({ headless: true });
 const failures = [];
-for (const viewport of viewports) {
-  const context = await browser.newContext({ viewport: { width: viewport.width, height: viewport.height }, reducedMotion: 'reduce' });
+for (const [name, width, height] of viewports) {
+  const context = await browser.newContext({ viewport: { width, height }, reducedMotion: 'reduce' });
   const page = await context.newPage();
   const errors = [];
   page.on('pageerror', (error) => errors.push(`JavaScript runtime error: ${error.message}`));
@@ -33,36 +33,39 @@ for (const viewport of viewports) {
       else if (!(await locator.isVisible())) errors.push(`Essential element is not visible: ${selector}`);
     }
     const layout = await page.evaluate(() => {
-      const viewportWidth = window.innerWidth;
-      const documentWidth = document.documentElement.scrollWidth;
-      const bodyWidth = document.body.scrollWidth;
-      const offenders = [...document.querySelectorAll('body *')].map((element) => {
-        const rect = element.getBoundingClientRect();
-        return { tag: element.tagName.toLowerCase(), id: element.id || '', className: typeof element.className === 'string' ? element.className.trim() : '', left: Math.round(rect.left), right: Math.round(rect.right), width: Math.round(rect.width) };
-      }).filter((item) => item.width > 0 && (item.right > viewportWidth + 2 || item.left < -2)).sort((a, b) => Math.max(b.right - viewportWidth, -b.left) - Math.max(a.right - viewportWidth, -a.left)).slice(0, 6);
-      return { viewportWidth, documentWidth, bodyWidth, offenders };
+      const root = document.documentElement;
+      const oldBehavior = root.style.scrollBehavior;
+      root.style.scrollBehavior = 'auto';
+      const y = window.scrollY;
+      window.scrollTo(100000, y);
+      const reachableScrollX = Math.round(window.scrollX);
+      window.scrollTo(0, y);
+      root.style.scrollBehavior = oldBehavior;
+      const controls = [...document.querySelectorAll('header a, header button')]
+        .filter((element) => { const style = getComputedStyle(element); const rect = element.getBoundingClientRect(); return style.display !== 'none' && style.visibility !== 'hidden' && rect.width > 0 && rect.height > 0; })
+        .map((element) => { const rect = element.getBoundingClientRect(); return { label: (element.getAttribute('aria-label') || element.textContent || element.tagName).trim().replace(/\s+/g, ' ').slice(0, 80), left: Math.round(rect.left), right: Math.round(rect.right) }; })
+        .filter((item) => item.left < -2 || item.right > window.innerWidth + 2);
+      return { reachableScrollX, controls };
     });
-    const widest = Math.max(layout.documentWidth, layout.bodyWidth);
-    if (widest > layout.viewportWidth + 2) {
-      const details = layout.offenders.map((item) => { const identity = `${item.tag}${item.id ? `#${item.id}` : ''}${item.className ? `.${item.className.split(/\s+/).join('.')}` : ''}`; return `${identity} [${item.left}, ${item.right}] width=${item.width}px`; }).join('; ');
-      errors.push(`Horizontal overflow: document ${widest}px > viewport ${layout.viewportWidth}px.${details ? ` Offenders: ${details}` : ''}`);
-    }
-    if (viewport.width <= 900) {
+    if (layout.reachableScrollX > 2) errors.push(`Page can scroll horizontally by ${layout.reachableScrollX}px.`);
+    layout.controls.forEach((control) => errors.push(`Header control outside viewport: "${control.label}" [${control.left}, ${control.right}] within ${width}px.`));
+    if (width <= 900) {
       const menuButton = page.locator('header .menu-button, header .menu').first();
       const nav = page.locator('header .main-nav').first();
       if ((await menuButton.count()) > 0 && (await menuButton.isVisible()) && (await nav.count()) > 0) {
         await menuButton.click();
         if ((await menuButton.getAttribute('aria-expanded')) !== 'true') errors.push('Mobile menu button did not set aria-expanded="true".');
         if (!(await nav.isVisible())) errors.push('Mobile navigation did not become visible after opening the menu.');
+        else { const box = await nav.boundingBox(); if (box && (box.x < -2 || box.x + box.width > width + 2)) errors.push('Open mobile navigation extends outside the viewport.'); }
       }
     }
   } catch (error) { errors.push(`Smoke test exception: ${error.message}`); }
   if (errors.length) {
     await mkdir(artifactsDir, { recursive: true });
-    await page.screenshot({ path: `${artifactsDir}/${viewport.name}.png`, fullPage: true }).catch(() => {});
-    failures.push({ viewport: viewport.name, errors });
-    console.error(`\n✗ ${viewport.name}`); errors.forEach((error) => console.error(`  - ${error}`));
-  } else console.log(`✓ ${viewport.name} (${viewport.width}×${viewport.height})`);
+    await page.screenshot({ path: `${artifactsDir}/${name}.png`, fullPage: true }).catch(() => {});
+    failures.push({ name, errors });
+    console.error(`\n✗ ${name}`); errors.forEach((error) => console.error(`  - ${error}`));
+  } else console.log(`✓ ${name} (${width}×${height})`);
   await context.close();
 }
 await browser.close();
