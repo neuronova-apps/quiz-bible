@@ -39,7 +39,7 @@ jobs:
             exit 1
           fi
 
-      - name: Consultar ApiBiblia sin persistir texto bíblico
+      - name: Consultar ApiBiblia y preparar versículos temporalmente
         env:
           APIBIBLIA_API_KEY: ${{ secrets.APIBIBLIA_API_KEY }}
         run: |
@@ -47,14 +47,20 @@ jobs:
             --book "${{ inputs.book }}" \
             --chapter "${{ inputs.chapter }}" \
             --version RVR1960 \
-            --output build/extraction-report.json
+            --output build/extraction-report.json \
+            --candidates-output build/question-candidates.json
 
       - name: Mostrar reporte técnico
         run: cat build/extraction-report.json
 
-      - name: Publicar solo reporte de validación
+      - name: Mostrar candidatos sin texto bíblico
+        run: cat build/question-candidates.json
+
+      - name: Publicar reporte y estructura de candidatos
         uses: actions/upload-artifact@v4
         with:
-          name: reporte-rvr1960-${{ inputs.book }}-${{ inputs.chapter }}
-          path: build/extraction-report.json
+          name: estructura-rvr1960-${{ inputs.book }}-${{ inputs.chapter }}
+          path: |
+            build/extraction-report.json
+            build/question-candidates.json
           retention-days: 1
