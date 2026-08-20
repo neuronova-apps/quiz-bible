@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Quiz Bible · Herramienta RVR1960</title>
+  <meta name="robots" content="noindex,nofollow">
+  <style>
+    :root{color-scheme:light;--bg:#f6f7fb;--card:#fff;--text:#1c2434;--muted:#667085;--line:#e4e7ec;--accent:#3657d6;--ok:#16794b;--warn:#9a6700}
+    *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text)}
+    main{max-width:980px;margin:0 auto;padding:32px 18px 56px}h1{font-size:clamp(1.7rem,4vw,2.4rem);margin:0 0 8px}h2{font-size:1.05rem;margin:0 0 14px}.lead{color:var(--muted);max-width:760px;margin:0 0 24px;line-height:1.6}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 4px 20px rgba(16,24,40,.04)}
+    label{display:block;font-size:.88rem;font-weight:650;margin:12px 0 6px}input,select{width:100%;padding:11px 12px;border:1px solid #cfd4dc;border-radius:10px;background:white;font:inherit}button,.button{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:10px;padding:11px 14px;font-weight:700;text-decoration:none;cursor:pointer}.primary{background:var(--accent);color:#fff}.secondary{background:#eef1ff;color:#263b9b}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+    .status{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}.status:last-child{border-bottom:0}.dot{width:10px;height:10px;border-radius:50%;background:#98a2b3;margin-top:5px;flex:0 0 auto}.ok .dot{background:var(--ok)}.pending .dot{background:var(--warn)}.small{font-size:.86rem;color:var(--muted);line-height:1.5}code{background:#f2f4f7;padding:2px 6px;border-radius:6px}.flow{counter-reset:step}.flow div{position:relative;padding:10px 0 10px 42px}.flow div:before{counter-increment:step;content:counter(step);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:#eef1ff;color:#263b9b;font-weight:800}.note{margin-top:16px;padding:12px 14px;border-radius:10px;background:#fff8e7;color:#6d4c00;font-size:.88rem;line-height:1.5}
+    footer{margin-top:26px;color:var(--muted);font-size:.8rem}
+  </style>
+</head>
+<body>
+<main>
+  <h1>Herramienta de recopilación RVR1960</h1>
+  <p class="lead">Página auxiliar de desarrollo para organizar la extracción temporal por capítulo desde ApiBiblia. Esta página no almacena ni solicita la API Key; la ejecución real se realiza mediante GitHub Actions usando un secreto del repositorio.</p>
+
+  <div class="grid">
+    <section class="card">
+      <h2>Preparar ejecución</h2>
+      <label for="book">Libro / referencia</label>
+      <input id="book" value="Genesis" autocomplete="off">
+      <label for="chapter">Capítulo</label>
+      <input id="chapter" type="number" min="1" value="1">
+      <label for="version">Versión</label>
+      <select id="version"><option value="RVR1960">RVR1960</option></select>
+      <div class="actions">
+        <button class="primary" id="prepare">Preparar</button>
+        <a class="button secondary" href="https://github.com/neuronova-apps/quizbible-app/actions" target="_blank" rel="noopener">Abrir Actions</a>
+      </div>
+      <p class="small" id="result" aria-live="polite">Referencia preparada: <code>Genesis 1</code></p>
+    </section>
+
+    <section class="card">
+      <h2>Estado de configuración</h2>
+      <div class="status ok"><span class="dot"></span><div><strong>Repositorio</strong><div class="small">quizbible-app</div></div></div>
+      <div class="status ok"><span class="dot"></span><div><strong>Versión objetivo</strong><div class="small">RVR1960</div></div></div>
+      <div class="status pending"><span class="dot"></span><div><strong>Secreto requerido</strong><div class="small"><code>APIBIBLIA_API_KEY</code> debe agregarse en Settings → Secrets and variables → Actions.</div></div></div>
+      <div class="status ok"><span class="dot"></span><div><strong>Seguridad</strong><div class="small">La clave no se expone en esta página ni en JavaScript.</div></div></div>
+    </section>
+  </div>
+
+  <section class="card" style="margin-top:16px">
+    <h2>Flujo previsto</h2>
+    <div class="flow">
+      <div>Elegir libro y capítulo.</div>
+      <div>Abrir GitHub Actions y ejecutar <code>Extraer RVR1960 por capítulo</code> con esos parámetros.</div>
+      <div>El workflow consulta ApiBiblia usando la API Key guardada como secreto.</div>
+      <div>El capítulo se mantiene únicamente en memoria durante el proceso.</div>
+      <div>Se genera un resultado normalizado para revisión y construcción del banco.</div>
+      <div>Al finalizar la ejecución no se conserva una copia temporal del capítulo en el repositorio.</div>
+    </div>
+    <div class="note">Esta herramienta es de desarrollo. No coloque la API Key en este HTML, en JavaScript, en commits, Issues ni archivos públicos.</div>
+  </section>
+
+  <footer>Quiz Bible · NeuroNova Apps · Herramienta auxiliar de desarrollo</footer>
+</main>
+<script>
+  const book=document.getElementById('book');
+  const chapter=document.getElementById('chapter');
+  const result=document.getElementById('result');
+  document.getElementById('prepare').addEventListener('click',()=>{
+    const b=(book.value||'Genesis').trim();
+    const c=Math.max(1,Number(chapter.value)||1);
+    chapter.value=c;
+    result.innerHTML='Referencia preparada: <code>'+b.replace(/[<>]/g,'')+' '+c+'</code>. Use estos dos valores al ejecutar el workflow.';
+  });
+</script>
+</body>
+</html>
