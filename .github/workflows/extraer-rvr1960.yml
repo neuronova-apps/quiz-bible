@@ -13,15 +13,20 @@ on:
         required: true
         default: "1"
         type: string
+      generator_model:
+        description: "Modelo Gemini para generar preguntas"
+        required: true
+        default: "gemini-3.6-flash"
+        type: string
 
 permissions:
   contents: read
 
 jobs:
   extract:
-    name: Validar capítulo temporal
+    name: Extraer y generar banco temporal
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
     steps:
       - name: Obtener repositorio
         uses: actions/checkout@v4
@@ -39,7 +44,7 @@ jobs:
             exit 1
           fi
 
-      - name: Consultar ApiBiblia y preparar versículos temporalmente
+      - name: Validar ApiBiblia y preparar estructura sin texto fuente
         env:
           APIBIBLIA_API_KEY: ${{ secrets.APIBIBLIA_API_KEY }}
         run: |
@@ -50,17 +55,41 @@ jobs:
             --output build/extraction-report.json \
             --candidates-output build/question-candidates.json
 
+      - name: Generar preguntas reales desde versículos en memoria
+        env:
+          APIBIBLIA_API_KEY: ${{ secrets.APIBIBLIA_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          python tools/bible_extractor/generator.py \
+            --book "${{ inputs.book }}" \
+            --chapter "${{ inputs.chapter }}" \
+            --version RVR1960 \
+            --model "${{ inputs.generator_model }}" \
+            --output build/generated-questions.json
+
       - name: Mostrar reporte técnico
         run: cat build/extraction-report.json
 
-      - name: Mostrar candidatos sin texto bíblico
-        run: cat build/question-candidates.json
+      - name: Validar banco generado sin imprimir contenido
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data = json.loads(Path('build/generated-questions.json').read_text(encoding='utf-8'))
+          print('schema_version:', data.get('schema_version'))
+          print('book:', data.get('book'))
+          print('chapter:', data.get('chapter'))
+          print('generated_count:', data.get('generated_count'))
+          print('requires_human_review:', data.get('requires_human_review'))
+          print('verse_text_field_present:', any('verse_text' in x for x in data.get('items', [])))
+          PY
 
-      - name: Publicar reporte y estructura de candidatos
+      - name: Publicar banco derivado y reportes
         uses: actions/upload-artifact@v4
         with:
-          name: estructura-rvr1960-${{ inputs.book }}-${{ inputs.chapter }}
+          name: banco-generado-rvr1960-${{ inputs.book }}-${{ inputs.chapter }}
           path: |
             build/extraction-report.json
             build/question-candidates.json
+            build/generated-questions.json
           retention-days: 1
