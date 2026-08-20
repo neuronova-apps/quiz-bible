@@ -1,0 +1,60 @@
+name: Extraer RVR1960 por capítulo
+
+on:
+  workflow_dispatch:
+    inputs:
+      book:
+        description: "Libro o referencia, por ejemplo Genesis, Juan o Salmos"
+        required: true
+        default: "Genesis"
+        type: string
+      chapter:
+        description: "Número de capítulo"
+        required: true
+        default: "1"
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  extract:
+    name: Validar capítulo temporal
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Obtener repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validar entrada
+        shell: bash
+        run: |
+          if ! [[ "${{ inputs.chapter }}" =~ ^[1-9][0-9]*$ ]]; then
+            echo "El capítulo debe ser un entero positivo."
+            exit 1
+          fi
+
+      - name: Consultar ApiBiblia sin persistir texto bíblico
+        env:
+          APIBIBLIA_API_KEY: ${{ secrets.APIBIBLIA_API_KEY }}
+        run: |
+          python tools/bible_extractor/extractor.py \
+            --book "${{ inputs.book }}" \
+            --chapter "${{ inputs.chapter }}" \
+            --version RVR1960 \
+            --output build/extraction-report.json
+
+      - name: Mostrar reporte técnico
+        run: cat build/extraction-report.json
+
+      - name: Publicar solo reporte de validación
+        uses: actions/upload-artifact@v4
+        with:
+          name: reporte-rvr1960-${{ inputs.book }}-${{ inputs.chapter }}
+          path: build/extraction-report.json
+          retention-days: 1
