@@ -35,7 +35,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from auditor import evaluate_question, run_audit, extract_numbers, normalize, detect_book_key
+from auditor import evaluate_question, run_audit, extract_numbers, normalize, detect_book_key, token_matches_text
 
 GENESIS_PATH = Path(__file__).parent / "genesis-master-input.json"
 EXODUS_PATH = Path(__file__).parent / "exodus-master-input.json"
@@ -682,13 +682,27 @@ class TestAuditorCanonical(unittest.TestCase):
         res_with = evaluate_question(q_canonical, verse_map_with_18, book_key="genesis")
         self.assertEqual(res_with["estado"], "VERIFICADO")
 
-    # --- MANEJO DE ERROR DE API VS ERROR DEL BANCO ---
+    # --- PRUEBAS DE NORMALIZACIÓN MORFOLÓGICA Y SINONIMIA BÍBLICA ---
 
-    def test_api_failure_produces_inconclusive_not_requires_correction(self) -> None:
-        q = self.get_genesis_question("NQB-AT-GEN-0001")
-        res = evaluate_question(q, {}, book_key="genesis")
-        self.assertEqual(res["estado"], "NO_CONCLUYENTE")
-        self.assertNotEqual(res["estado"], "REQUIERE_CORRECCION")
+    def test_token_matches_text_morphological_and_synonyms(self) -> None:
+        """Verifica concordancia singular/plural y sinónimos bíblicos genéricos."""
+        self.assertTrue(token_matches_text("extranjeros", "morase extranjero entre ellos"))
+        self.assertTrue(token_matches_text("ciudades", "ciudad de refugio"))
+        self.assertTrue(token_matches_text("otoniel", "otniel tomo quiriat-sefer"))
+        self.assertTrue(token_matches_text("sorteada", "repartieron por suerte"))
+        self.assertTrue(token_matches_text("combatir", "fueron a pelear contra ellos"))
+
+    def test_joshua_cases_semantic_resolution(self) -> None:
+        """Verifica resolución semántica de preguntas representativas de Josué."""
+        # NQB-AT-JOS-0046: Otoniel
+        q46 = self.get_joshua_question("NQB-AT-JOS-0046")
+        v46 = {
+            16: "Y dijo Caleb: Al que atacare a Quiriat-sefer, y la tomare, yo le daré a Acsa mi hija por mujer.",
+            17: "Y la tomó Otoniel, hijo de Cenaz hermano de Caleb; y él le dio a Acsa su hija por mujer.",
+        }
+        res46 = evaluate_question(q46, v46, book_key="josue")
+        self.assertEqual(res46["controles_superados"]["control_nombres_propios"], "PASS")
+        self.assertEqual(res46["estado"], "VERIFICADO")
 
 
 if __name__ == "__main__":

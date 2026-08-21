@@ -299,6 +299,46 @@ SYNONYMS = {
     "sehon": "sihon",
     "combatientes": "pelearon",
     "pelearon": "combatientes",
+    "otoniel": "otniel",
+    "otniel": "otoniel",
+    "suerte": "sorteo",
+    "suertes": "sorteo",
+    "sorteo": "suerte",
+    "sorteada": "suerte",
+    "sorteadas": "suerte",
+    "morase": "vivian",
+    "moraban": "vivian",
+    "morar": "vivir",
+    "habitaban": "vivian",
+    "habitar": "vivir",
+    "posesion": "heredad",
+    "heredad": "posesion",
+    "alianza": "pacto",
+    "pacto": "alianza",
+    "batalla": "guerra",
+    "guerra": "batalla",
+    "combatir": "pelear",
+    "pelear": "combatir",
+    "israelitas": "israel",
+    "extranjeros": "extranjero",
+    "forasteros": "extranjero",
+    "forastero": "extranjero",
+    "sepulcro": "sepultado",
+    "sepultura": "sepultado",
+    "enterrado": "sepultado",
+    "enterraron": "sepultaron",
+    "sepultaron": "enterraron",
+    "testimonio": "testigo",
+    "testigo": "testimonio",
+    "piedras": "piedra",
+    "piedra": "piedras",
+    "carros": "carro",
+    "carro": "carros",
+    "bosque": "boscosa",
+    "boscosa": "bosque",
+    "monte": "montana",
+    "montana": "monte",
+    "montanosa": "monte",
 }
 
 # Componentes de números cardinales en español
@@ -354,6 +394,27 @@ def normalize(value: str) -> str:
 def significant_tokens(value: str) -> list[str]:
     """Extrae palabras clave significativas omitiendo stopwords."""
     return [t for t in normalize(value).split() if len(t) >= 3 and t not in STOPWORDS]
+
+
+def token_matches_text(token: str, text_norm: str) -> bool:
+    """Comprueba si un token coincide con el texto normalizado por coincidencia exacta, plural/singular o sinonimia bíblica."""
+    if not token or not text_norm:
+        return False
+    if token in text_norm:
+        return True
+    if token in SYNONYMS and SYNONYMS[token] in text_norm:
+        return True
+    # Plural -> Singular (español)
+    if len(token) > 4 and token.endswith("es") and token[:-2] in text_norm:
+        return True
+    if len(token) > 3 and token.endswith("s") and token[:-1] in text_norm:
+        return True
+    # Singular -> Plural (español)
+    if len(token) > 3 and (token + "s") in text_norm:
+        return True
+    if len(token) > 3 and (token + "es") in text_norm:
+        return True
+    return False
 
 
 def detect_book_key(spec: dict[str, Any] | list[dict[str, Any]]) -> str:
@@ -694,7 +755,7 @@ def evaluate_question(
     if not q_toks:
         controls["control_soporte_pregunta"] = "UNKNOWN"
     else:
-        matching_q_toks = [t for t in q_toks if t in passage_norm or (t in SYNONYMS and SYNONYMS[t] in passage_norm)]
+        matching_q_toks = [t for t in q_toks if token_matches_text(t, passage_norm)]
         coverage_q = len(matching_q_toks) / len(q_toks)
         if coverage_q >= 0.15 or len(matching_q_toks) >= 1:
             controls["control_soporte_pregunta"] = "PASS"
@@ -712,14 +773,14 @@ def evaluate_question(
         if part_nums:
             nums_matched = all(n in passage_nums for n in part_nums)
             non_num_toks = [t for t in part_toks if not t.isdigit()]
-            text_matched = True if not non_num_toks else any(t in passage_norm or (t in SYNONYMS and SYNONYMS[t] in passage_norm) for t in non_num_toks)
+            text_matched = True if not non_num_toks else any(token_matches_text(t, passage_norm) for t in non_num_toks)
             if nums_matched and text_matched:
                 continue
             missing_parts.append(part)
         else:
             if part_norm and (
                 part_norm in passage_norm
-                or any(t in passage_norm or (t in SYNONYMS and SYNONYMS[t] in passage_norm) for t in part_toks)
+                or any(token_matches_text(t, passage_norm) for t in part_toks)
             ):
                 continue
             missing_parts.append(part)
@@ -779,7 +840,7 @@ def evaluate_question(
     if not exp_toks:
         controls["control_explicacion_compatible"] = "UNKNOWN"
     else:
-        matching_exp_toks = [t for t in exp_toks if t in passage_norm or (t in SYNONYMS and SYNONYMS[t] in passage_norm)]
+        matching_exp_toks = [t for t in exp_toks if token_matches_text(t, passage_norm)]
         exp_coverage = len(matching_exp_toks) / len(exp_toks)
         exp_nums = extract_numbers(exp_cleaned, is_quantitative_context=has_count_context)
         conflicting_nums = [n for n in exp_nums if n not in passage_nums and n > 2]
@@ -806,7 +867,7 @@ def evaluate_question(
     if entities_in_opt_a:
         missing_entities = [
             n for n in entities_in_opt_a
-            if n not in passage_norm and not (n in SYNONYMS and SYNONYMS[n] in passage_norm)
+            if not token_matches_text(n, passage_norm)
         ]
         if not missing_entities:
             controls["control_nombres_propios"] = "PASS"
@@ -816,7 +877,7 @@ def evaluate_question(
     elif entities_in_prompt:
         matching_prompt_ent = [
             n for n in entities_in_prompt
-            if n in passage_norm or (n in SYNONYMS and SYNONYMS[n] in passage_norm)
+            if token_matches_text(n, passage_norm)
         ]
         if matching_prompt_ent:
             controls["control_nombres_propios"] = "PASS"
@@ -825,7 +886,7 @@ def evaluate_question(
     elif characters:
         matching_chars = [
             c for c in characters
-            if normalize(c) in passage_norm or (normalize(c) in SYNONYMS and SYNONYMS[normalize(c)] in passage_norm)
+            if token_matches_text(normalize(c), passage_norm)
         ]
         if matching_chars:
             controls["control_nombres_propios"] = "PASS"
@@ -845,9 +906,7 @@ def evaluate_question(
     else:
         missing_places = []
         for pl in detected_places:
-            if pl in passage_norm:
-                continue
-            if pl in SYNONYMS and SYNONYMS[pl] in passage_norm:
+            if token_matches_text(pl, passage_norm):
                 continue
             if pl == "nilo" and ("rio" in passage_norm or "aguas" in passage_norm):
                 continue
