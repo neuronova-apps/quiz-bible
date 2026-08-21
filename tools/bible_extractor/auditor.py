@@ -400,6 +400,17 @@ SYNONYMS = {
     "ferezeos": "ferezeo",
     "gergeseo": "gergeseos",
     "gergeseos": "gergeseo",
+    # Redención y parentesco bíblico
+    "suegra": "noemi",
+    "noemi": "suegra",
+    "redentor": "pariente",
+    "pariente": "redentor",
+    "redentores": "parientes",
+    "parientes": "redentores",
+    "redencion": "rescate",
+    "rescate": "redencion",
+    "redimir": "rescatar",
+    "rescatar": "redimir",
 }
 
 # Componentes de números cardinales en español
@@ -958,8 +969,32 @@ def evaluate_question(
         if not missing_entities:
             controls["control_nombres_propios"] = "PASS"
         else:
-            controls["control_nombres_propios"] = "FAIL"
-            incidencias.append(f"Personaje bíblico en opción A no respaldado en el pasaje: {missing_entities}")
+            # Resolución anafórica / contextual:
+            # Comprobar si el pasaje contiene marcadores anafóricos o relacionales
+            context_resolved = []
+            if verse_map:
+                full_ch_text = " ".join(verse_map.values())
+                full_ch_norm = normalize(full_ch_text)
+                ANAPHORIC_MARKERS = [
+                    "hombre", "aquel hombre", "este hombre", "el hombre",
+                    "mujer", "aquella mujer", "esta mujer", "la mujer",
+                    "varon", "aquel varon", "el varon",
+                    "suegra", "suegro", "padre", "madre", "marido", "esposo", "esposa",
+                    "hijo", "hija", "hermano", "hermana", "pariente", "tio", "tia",
+                    "redentor", "rescatador"
+                ]
+                has_anaphora = any(m in passage_norm for m in ANAPHORIC_MARKERS)
+                if has_anaphora:
+                    for n in missing_entities:
+                        if n in full_ch_norm and (not characters or any(n == normalize(c) for c in characters)):
+                            context_resolved.append(n)
+
+            unresolved = [n for n in missing_entities if n not in context_resolved]
+            if not unresolved:
+                controls["control_nombres_propios"] = "PASS"
+            else:
+                controls["control_nombres_propios"] = "FAIL"
+                incidencias.append(f"Personaje bíblico en opción A no respaldado en el pasaje ni resuelto contextualmente: {unresolved}")
     elif entities_in_prompt:
         matching_prompt_ent = [
             n for n in entities_in_prompt

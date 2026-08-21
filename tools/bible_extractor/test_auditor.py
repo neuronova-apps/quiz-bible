@@ -815,6 +815,42 @@ class TestAuditorCanonical(unittest.TestCase):
         self.assertNotEqual(res18["estado"], "REQUIERE_CORRECCION")
         self.assertEqual(res18["controles_superados"]["control_numeros_cantidades"], "PASS")
 
+    def test_ruth_anaphoric_resolution_rut_0011_and_0033(self) -> None:
+        """Verifica que referencias anafóricas/relacionales (su suegra -> Noemí, aquel hombre -> Booz) se resuelvan sin FAIL."""
+        # RUT-0011: Booz destaca conducta hacia 'su suegra' (Noemí) en Rut 2:10-12
+        q11 = self.get_ruth_question("NQB-AT-RUT-0011")
+        v11 = {
+            2: "Y Rut la moabita dijo a Noemí: Te ruego que me dejes ir al campo...",
+            10: "Ella bajando su rostro se inclinó a tierra...",
+            11: "Y respondiendo Booz, le dijo: He sabido todo lo que has hecho con tu suegra después de la muerte de tu marido, y que dejando a tu padre y a tu madre y la tierra donde naciste, has venido a un pueblo que no conociste antes.",
+            12: "Jehová recompense tu obra..."
+        }
+        res11 = evaluate_question(q11, v11, book_key="rut")
+        self.assertEqual(res11["estado"], "VERIFICADO")
+        self.assertEqual(res11["controles_superados"]["control_nombres_propios"], "PASS")
+
+        # RUT-0033: 'aquel hombre' (Booz) en Rut 3:18
+        q33 = self.get_ruth_question("NQB-AT-RUT-0033")
+        v33 = {
+            2: "¿No es Booz nuestro pariente...?",
+            18: "Entonces Noemí dijo: Espérate, hija mía, hasta que sepas cómo se resuelve el caso; porque aquel hombre no descansará hasta que concluya el asunto hoy."
+        }
+        res33 = evaluate_question(q33, v33, book_key="rut")
+        self.assertEqual(res33["estado"], "VERIFICADO")
+        self.assertEqual(res33["controles_superados"]["control_nombres_propios"], "PASS")
+
+    def test_anaphoric_character_contradiction_fail(self) -> None:
+        """Verifica que un personaje objetivamente contradictorio sin vínculo anafórico genere FAIL."""
+        q = self.get_ruth_question("NQB-AT-RUT-0033")
+        q["opcion_a"] = "Porque estaba convencida de que Saúl no descansaría hasta resolverlo ese mismo día"
+        q["correct_answer"] = q["opcion_a"]
+        v33 = {
+            18: "Entonces Noemí dijo: Espérate, hija mía, hasta que sepas cómo se resuelve el caso; porque aquel hombre no descansará hasta que concluya el asunto hoy."
+        }
+        res = evaluate_question(q, v33, book_key="rut")
+        self.assertEqual(res["controles_superados"]["control_nombres_propios"], "FAIL")
+        self.assertEqual(res["estado"], "REQUIERE_CORRECCION")
+
 
 if __name__ == "__main__":
     unittest.main()
