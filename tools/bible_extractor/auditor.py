@@ -228,6 +228,25 @@ BOOK_CONFIGS: dict[str, dict[str, Any]] = {
             "arroyo de querit", "ramot de galaad", "ramot", "tirse", "tirsa", "penuel", "guilboa", "gilboa"
         },
     },
+    "2kings": {
+        "canonical_name": "2 Reyes",
+        "api_name": "2 Reyes",
+        "aliases": {"2 reyes", "2reyes", "2 kings", "2kings", "2 rey", "segunda de reyes", "2-reyes", "2_reyes"},
+        "total_chapters": 25,
+        "blocks": [
+            (1, 10, "2kings-01-10.json"),
+            (11, 20, "2kings-11-20.json"),
+            (21, 25, "2kings-21-25.json"),
+        ],
+        "default_output_dir": "build/audit/2kings",
+        "ambient_places": {
+            "samaria", "jerusalen", "jerusalén", "jordan", "jordán", "jerico", "jericó", "bet-el", "gilgal",
+            "sunem", "monte carmel", "carmel", "damasco", "siria", "afec", "dotan", "dothan", "ramot de galaad",
+            "jezreel", "israel", "juda", "moab", "edom", "tiro", "sidon", "sidón", "ninive", "nínive", "asiria",
+            "babilonia", "egipto", "valle de la sal", "sela", "jocteel", "hamat", "arpat", "sefarvaim", "lisis",
+            "laquis", "libna", "gaza", "ribla", "quidron", "cedron", "cedrón", "siloe", "siloé"
+        },
+    },
 }
 
 STOPWORDS = {
@@ -241,7 +260,7 @@ STOPWORDS = {
     "ser", "sido", "estar", "estaba", "estaban", "tener", "tenia", "tenian",
 }
 
-# Entidades y personajes bíblicos (Génesis a 1 Reyes)
+# Entidades y personajes bíblicos (Génesis a 2 Reyes)
 BIBLE_PERSONAJES = {
     # Génesis
     "adan", "eva", "cain", "abel", "set", "enos", "cainan", "mahalaleel",
@@ -285,7 +304,7 @@ BIBLE_PERSONAJES = {
     "natan", "natán", "ahitofel", "husai", "itai", "itaí", "simei", "ziba", "siba", "barzilai",
     "quimam", "seba", "sebá", "benaia", "benaías", "amasa", "arauna", "isbi-benob",
     "saf", "elhanan", "jonadab", "hanun", "hanún", "sobac", "baana", "recab", "talmai", "ahimaas",
-    # 1 Reyes
+    # 1 Reyes y 2 Reyes
     "salomon", "salomón", "roboam", "jeroboam", "abiam", "abías", "abias", "asa",
     "baasa", "ela", "zimri", "omri", "acab", "ocozias", "ocozías", "josafat", "josafath",
     "ben-hadad", "benhadad", "hazael", "jehu", "jehú", "hiel", "segub", "abisag",
@@ -293,6 +312,16 @@ BIBLE_PERSONAJES = {
     "elias", "elías", "eliseo", "ahias", "ahías", "semaias", "semaías", "micaias", "micaías",
     "sedequias", "sedequías", "imla", "quenaana", "hanani", "nabot", "abdias", "abdías",
     "jaquin", "jaquín", "boaz", "saba", "reina de saba",
+    "joram", "joacaz", "joas", "joás", "zacarias", "zacarías", "salum", "manahem",
+    "pekaia", "pekaía", "peka", "oseas", "amasias", "amasías", "azarias", "azarías",
+    "uzias", "uzías", "acaz", "ezequias", "ezequías", "manases", "manasés", "amon", "amón",
+    "josias", "josías", "joacim", "eliaquim", "joaquin", "joaquín", "matanias", "matanías",
+    "giezi", "hilcias", "hilcías", "safan", "safán", "hulda", "joiada", "josaba",
+    "isaias", "isaías", "jonas", "jonás", "amitai", "amoz", "naaman", "naamán", "mesa",
+    "pul", "tiglat-pileser", "tiglatpileser", "salmanasar", "senaquerib", "esardohon",
+    "asarjaddon", "evil-merodac", "rabsaces", "rabsaris", "tartan", "tartán",
+    "gedalias", "gedalías", "netanias", "netanías", "nehustan", "nehustán",
+    "baal-zebub", "baalzebub", "tartac", "nisroc", "adramelec", "anamelec",
     # Otros comunes
     "david", "saul", "samuel", "nabucodonosor", "pablo", "pedro", "juan", "jesus", "mateo", "marcos",
     "lucas", "esteban", "timoteo",
@@ -331,13 +360,14 @@ BIBLE_PLACES = {
     "cison", "cisón", "monte tabor", "tabor", "ofra", "jezreel", "valle de jezreel", "harod", "fuente de harod",
     "more", "collado de more", "tabat", "abel-mehola", "sucot", "peniel", "karkor", "piraton", "timnat", "zora",
     "estaol", "ascalon", "ascalón", "ecron", "ecrón", "asdod", "gibea", "gabaa", "rama", "mizpa", "en-dor", "endor", "meguido", "megido",
-    # 1 Samuel, 2 Samuel y 1 Reyes
+    # 1 Samuel, 2 Samuel, 1 Reyes y 2 Reyes
     "bet-semes", "betsemes", "jabes", "jabes de galaad", "nob", "adulam", "keila", "siclag",
     "bet-san", "bet-sán", "carmel", "en-gadi", "engadi", "guilboa", "gilboa", "monte gilboa",
     "baal-perazim", "baalperazim", "abel-bet-maaca", "tecoa", "mahanaim", "raba", "rabá", "gesur",
     "quidron", "cedron", "cedrón", "helam", "bet-rehob", "zoba", "is-tob", "meteg-ama",
     "gihon", "gihón", "cabul", "ezion-geber", "ezión-geber", "eziongeber", "elot", "ofir",
-    "sarepta", "querit", "arroyo de querit", "ramot de galaad", "tirse", "samaria", "tiro", "sidon", "sidón", "tisbe"
+    "sarepta", "querit", "arroyo de querit", "ramot de galaad", "tirse", "samaria", "tiro", "sidon", "sidón", "tisbe",
+    "sunem", "afec", "sela", "jocteel", "hamat", "arpat", "sefarvaim", "ribla", "ninive", "nínive", "asiria", "valle de la sal", "siloe", "siloé"
 }
 
 # Raíces de parentesco y lemas
@@ -506,6 +536,21 @@ SYNONYMS = {
     "tirios": "tiro",
     "tesbita": "tisbe",
     "tesbitas": "tisbe",
+    "sunamita": "sunem",
+    "sunamitas": "sunem",
+    "sunem": "sunamita",
+    "asirio": "asiria",
+    "asirios": "asiria",
+    "babilonio": "babilonia",
+    "babilonios": "babilonia",
+    "caldeo": "caldea",
+    "caldeos": "caldea",
+    "samaritano": "samaria",
+    "samaritanos": "samaria",
+    "uzias": "azarias",
+    "uzías": "azarias",
+    "azarias": "uzias",
+    "azarías": "uzias",
     # Redención y parentesco bíblico
     "suegra": "noemi",
     "noemi": "suegra",

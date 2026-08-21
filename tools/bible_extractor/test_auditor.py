@@ -48,6 +48,7 @@ RUTH_PATH = Path(__file__).parent / "ruth-master-input.json"
 SAMUEL1_PATH = Path(__file__).parent / "1samuel-master-input.json"
 SAMUEL2_PATH = Path(__file__).parent / "2samuel-master-input.json"
 KINGS1_PATH = Path(__file__).parent / "1kings-master-input.json"
+KINGS2_PATH = Path(__file__).parent / "2kings-master-input.json"
 
 
 class TestAuditorCanonical(unittest.TestCase):
@@ -116,6 +117,12 @@ class TestAuditorCanonical(unittest.TestCase):
         else:
             cls.kings1_questions = {}
 
+        if KINGS2_PATH.exists():
+            raw_2ki = json.loads(KINGS2_PATH.read_text(encoding="utf-8"))
+            cls.kings2_questions = {q["id"]: q for q in (raw_2ki.get("questions", []) if isinstance(raw_2ki, dict) else raw_2ki)}
+        else:
+            cls.kings2_questions = {}
+
     def setUp(self) -> None:
         self.temp_dir = Path(tempfile.mkdtemp())
 
@@ -165,6 +172,10 @@ class TestAuditorCanonical(unittest.TestCase):
     def get_1kings_question(self, qid: str) -> dict:
         self.assertIn(qid, self.kings1_questions, f"ID '{qid}' no encontrado en 1kings-master-input.json")
         return copy.deepcopy(self.kings1_questions[qid])
+
+    def get_2kings_question(self, qid: str) -> dict:
+        self.assertIn(qid, self.kings2_questions, f"ID '{qid}' no encontrado en 2kings-master-input.json")
+        return copy.deepcopy(self.kings2_questions[qid])
 
     # --- TEST GLOBAL DE CONSISTENCIA DE IDs Y REFERENCIAS ---
 
@@ -335,6 +346,22 @@ class TestAuditorCanonical(unittest.TestCase):
                 f"Referencia inconsistente en {qid}: ref='{ref}', esperada terminada en '{expected_suffix}'"
             )
 
+    def test_global_canonical_id_reference_integrity_2kings(self) -> None:
+        """Verifica consistencia de IDs y referencias en 2 Reyes."""
+        if not self.kings2_questions:
+            self.skipTest("2kings-master-input.json aún no presente")
+        self.assertEqual(len(self.kings2_questions), 104)
+        for qid, q in self.kings2_questions.items():
+            ref = q.get("reference", "")
+            ch = q.get("chapter")
+            start = q.get("verse_start")
+            end = q.get("verse_end", start)
+            expected_suffix = f"{ch}:{start}" if start == end else f"{ch}:{start}-{end}"
+            self.assertTrue(
+                expected_suffix in ref or ref.endswith(expected_suffix),
+                f"Referencia inconsistente en {qid}: ref='{ref}', esperada terminada en '{expected_suffix}'"
+            )
+
     def test_numbers_book_detection(self) -> None:
         """Verifica detección de configuración de Números."""
         if not self.numbers_questions:
@@ -393,6 +420,14 @@ class TestAuditorCanonical(unittest.TestCase):
         self.assertEqual(book_key, "1kings")
         self.assertEqual(BOOK_CONFIGS["1kings"]["total_chapters"], 22)
         self.assertIn("1 reyes", BOOK_CONFIGS["1kings"]["aliases"])
+
+    def test_2kings_book_detection(self) -> None:
+        """Verifica detección de configuración de 2 Reyes."""
+        sample_q = [{"id": "NQB-AT-2RE-0001", "book": "2 Reyes", "chapter": 1, "verse_start": 1, "verse_end": 2}]
+        book_key = detect_book_key(sample_q)
+        self.assertEqual(book_key, "2kings")
+        self.assertEqual(BOOK_CONFIGS["2kings"]["total_chapters"], 25)
+        self.assertIn("2 reyes", BOOK_CONFIGS["2kings"]["aliases"])
 
     def test_joshua_0061_with_additional_reference(self) -> None:
         """NQB-AT-JOS-0061: Josué 20:9 con additional_references=['Números 35:15'] se evalúa correctamente."""
@@ -1108,6 +1143,96 @@ class TestAuditorCanonical(unittest.TestCase):
         res100 = evaluate_question(q100, v100, book_key="1kings")
         self.assertNotEqual(res100["estado"], "REQUIERE_CORRECCION")
         self.assertEqual(res100["controles_superados"]["control_numeros_cantidades"], "PASS")
+
+    def test_2kings_regression_and_cases(self) -> None:
+        """Verifica casos canónicos clave de 2 Reyes (rutas, milagros, cantidades y desenlaces dinásticos)."""
+        # 2RE-0005: Gilgal -> Bet-el -> Jericó -> Jordán (2 Reyes 2:1-8)
+        q5 = self.get_2kings_question("NQB-AT-2RE-0005")
+        v5 = {i: "..." for i in range(1, 9)}
+        v5[1] = "Aconteció que cuando quiso Jehová alzar a Elías en un torbellino al cielo, Elías venía con Eliseo de Gilgal."
+        v5[2] = "Y dijo Elías a Eliseo: Quédate aquí ahora, porque Jehová me ha enviado a Bet-el..."
+        v5[4] = "Y Elías le volvió a decir: Eliseo, quédate aquí ahora, porque Jehová me ha enviado a Jericó..."
+        v5[6] = "Y Elías le dijo: Te ruego que te quedes aquí, porque Jehová me ha enviado al Jordán..."
+        v5[8] = "Tomando entonces Elías su manto, lo dobló, y golpeó las aguas, las cuales se apartaron a uno y a otro lado, y pasaron ambos por lo seco."
+        res5 = evaluate_question(q5, v5, book_key="2kings")
+        self.assertNotEqual(res5["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res5["controles_superados"]["control_lugares"], "PASS")
+
+        # 2RE-0007: Carro de fuego y torbellino (2 Reyes 2:11-12)
+        q7 = self.get_2kings_question("NQB-AT-2RE-0007")
+        v7 = {
+            11: "Y aconteció que yendo ellos y hablando, he aquí un carro de fuego con caballos de fuego apartó a los dos; y Elías subió al cielo en un torbellino.",
+            12: "Viéndolo Eliseo, clamaba: ¡Padre mío, padre mío, carro de Israel y su gente de a caballo! Y nunca más le vio; y trabando de sus vestidos, los rompió en dos partes."
+        }
+        res7 = evaluate_question(q7, v7, book_key="2kings")
+        self.assertNotEqual(res7["estado"], "REQUIERE_CORRECCION")
+
+        # 2RE-0016: Siete estornudos del hijo de la sunamita (2 Reyes 4:32-37)
+        q16 = self.get_2kings_question("NQB-AT-2RE-0016")
+        v16 = {i: "..." for i in range(32, 38)}
+        v16[35] = "Volviéndose luego, se paseó por la casa a una y otra parte, y después subió, y se tendió sobre él nuevamente, y el joven estornudó siete veces, y abrió sus ojos."
+        res16 = evaluate_question(q16, v16, book_key="2kings")
+        self.assertNotEqual(res16["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res16["controles_superados"]["control_numeros_cantidades"], "PASS")
+
+        # 2RE-0017: 20 panes y 100 hombres (2 Reyes 4:42-44)
+        q17 = self.get_2kings_question("NQB-AT-2RE-0017")
+        v17 = {
+            42: "Vino entonces un hombre de Baal-salisa, el cual trajo al varón de Dios panes de primicias, veinte panes de cebada, y trigo nuevo en su espiga. Y él dijo: Da a la gente para que coma.",
+            43: "Y respondió su sirviente: ¿Cómo pondré esto delante de cien hombres? Pero él volvió a decir: Da a la gente para que coma, porque así ha dicho Jehová: Comerán, y sobrará.",
+            44: "Entonces lo puso delante de ellos, y comieron, y sobró, conforme a la palabra de Jehová."
+        }
+        res17 = evaluate_question(q17, v17, book_key="2kings")
+        self.assertNotEqual(res17["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res17["controles_superados"]["control_numeros_cantidades"], "PASS")
+
+        # 2RE-0019: Siete veces en el Jordán (2 Reyes 5:8-14)
+        q19 = self.get_2kings_question("NQB-AT-2RE-0019")
+        v19 = {i: "..." for i in range(8, 15)}
+        v19[10] = "Entonces Eliseo le envió un mensajero, diciendo: Ve y lávate siete veces en el Jordán, y tu carne se te restaurará, y serás limpio."
+        v19[14] = "El entonces descendió, y se zambulló siete veces en el Jordán, conforme a la palabra del varón de Dios; y su carne se volvió como la carne de un niño, y quedó limpio."
+        res19 = evaluate_question(q19, v19, book_key="2kings")
+        self.assertNotEqual(res19["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res19["controles_superados"]["control_numeros_cantidades"], "PASS")
+
+        # 2RE-0077: 185000 asirios (2 Reyes 19:32-37)
+        q77 = self.get_2kings_question("NQB-AT-2RE-0077")
+        v77 = {i: "..." for i in range(32, 38)}
+        v77[32] = "Por tanto, así dice Jehová acerca del rey de Asiria: No entrará en esta ciudad, ni echará saeta en ella; ni vendrá delante de ella con escudo, ni levantará contra ella baluarte."
+        v77[35] = "Y aconteció que aquella misma noche salió el ángel de Jehová, y mató en el campamento de los asirios a ciento ochenta y cinco mil; y cuando se levantaron por la mañana, he aquí que todo era cuerpos de muertos."
+        v77[36] = "Entonces Senaquerib rey de Asiria se fue, y volvió a Nínive..."
+        v77[37] = "Y aconteció que mientras adoraba en el templo de Nisroc su dios, Adramelec y Sarezer sus hijos lo hirieron a espada..."
+        res77 = evaluate_question(q77, v77, book_key="2kings")
+        self.assertNotEqual(res77["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res77["controles_superados"]["control_numeros_cantidades"], "PASS")
+
+        # 2RE-0078: Quince años añadidos a Ezequías (2 Reyes 20:1-7)
+        q78 = self.get_2kings_question("NQB-AT-2RE-0078")
+        v78 = {i: "..." for i in range(1, 8)}
+        v78[6] = "Y añadiré a tus días quince años, y te libraré a ti y a esta ciudad de mano del rey de Asiria; y ampararé esta ciudad por amor a mí mismo, y por amor a David mi siervo."
+        res78 = evaluate_question(q78, v78, book_key="2kings")
+        self.assertNotEqual(res78["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res78["controles_superados"]["control_numeros_cantidades"], "PASS")
+
+        # 2RE-0084: Josías tenía ocho años (2 Reyes 22:1-2)
+        q84 = self.get_2kings_question("NQB-AT-2RE-0084")
+        v84 = {
+            1: "Cuando Josías comenzó a reinar era de ocho años, y reinó en Jerusalén treinta y un años. El nombre de su madre fue Jedida hija de Adaía, de Boscat.",
+            2: "E hizo lo recto ante los ojos de Jehová, y anduvo en todo el camino de David su padre, sin apartarse a derecha ni a izquierda."
+        }
+        res84 = evaluate_question(q84, v84, book_key="2kings")
+        self.assertNotEqual(res84["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res84["controles_superados"]["control_numeros_cantidades"], "PASS")
+
+        # 2RE-0102: Hazael asciende tras muerte de Ben-adad (2 Reyes 8:14-15)
+        q102 = self.get_2kings_question("NQB-AT-2RE-0102")
+        v102 = {
+            14: "Y Hazael se fue de delante de Eliseo, y vino a su señor, el cual le dijo: ¿Qué te ha dicho Eliseo? Y él respondió: Me dijo que de cierto vivirás.",
+            15: "El día siguiente, tomó un paño grueso, y lo metió en agua, y lo puso sobre el rostro de Ben-adad, y murió; y reinó Hazael en su lugar."
+        }
+        res102 = evaluate_question(q102, v102, book_key="2kings")
+        self.assertNotEqual(res102["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res102["controles_superados"]["control_nombres_propios"], "PASS")
 
 
 if __name__ == "__main__":
