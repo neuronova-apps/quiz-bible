@@ -547,7 +547,9 @@
       "correct_option": "A",
       "correct_answer": "Moisés",
       "explanation": "Durante la consagración sacerdotal, Moisés utilizó el aceite de la unción sobre la cabeza de Aarón para consagrarlo. La pregunta identifica al personaje que ejecuta esta acción dentro de la ceremonia.",
-      "additional_references": [],
+      "additional_references": [
+        "Levítico 8:10"
+      ],
       "eligible_modes": [
         "AT",
         "AMBOS",
