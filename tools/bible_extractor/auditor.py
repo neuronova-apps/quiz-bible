@@ -15,6 +15,7 @@ import json
 import os
 import re
 import sys
+import time
 import unicodedata
 import urllib.parse
 from collections import defaultdict
@@ -275,8 +276,9 @@ def run_audit(
     print(f"Preguntas a auditar: {len(raw_questions)}")
     print(f"Capítulos detectados ({len(present_chapters)}): {present_chapters[:10]}...{present_chapters[-5:] if len(present_chapters)>10 else ''}")
 
-    for chapter in present_chapters:
+    for idx, chapter in enumerate(present_chapters, start=1):
         ch_questions = questions_by_chapter[chapter]
+        print(f"[{idx}/{len(present_chapters)}] Auditando Génesis {chapter} ({len(ch_questions)} preguntas)...")
         # Consulta de capítulo a ApiBiblia (1 sola petición por capítulo)
         verse_map = fetch_chapter_fn("Génesis", chapter)
 
@@ -403,14 +405,27 @@ def main() -> int:
         # Normalización estricta para HTTP sin tilde ("Genesis")
         api_book_name = "Genesis"
         query = urllib.parse.urlencode({"ref": f"{api_book_name} {chapter}", "version": args.version})
-        status, payload = api_get(f"{PASSAGE_URL}?{query}", api_key)
-        if status != 200:
-            raise RuntimeError(f"ApiBiblia devolvió HTTP {status} para {api_book_name} {chapter}")
-        verses = extract_verses(payload)
-        verse_map = {int(v["verse_number"]): str(v["text"]) for v in verses}
-        del payload
-        del verses
-        return verse_map
+        url = f"{PASSAGE_URL}?{query}"
+        
+        max_retries = 4
+        for attempt in range(1, max_retries + 1):
+            try:
+                time.sleep(0.35)  # Pausa entre peticiones para prevenir rate limit
+                status, payload = api_get(url, api_key)
+                if status == 200:
+                    verses = extract_verses(payload)
+                    verse_map = {int(v["verse_number"]): str(v["text"]) for v in verses}
+                    del payload
+                    del verses
+                    return verse_map
+                print(f"ApiBiblia HTTP {status} para {api_book_name} {chapter} (intento {attempt}/{max_retries})", file=sys.stderr)
+            except Exception as exc:
+                print(f"Aviso consultando {api_book_name} {chapter} (intento {attempt}/{max_retries}): {exc}", file=sys.stderr)
+                if attempt == max_retries:
+                    raise
+                time.sleep(2.0 * attempt)
+
+        raise RuntimeError(f"No se pudo obtener {api_book_name} {chapter}")
 
     run_audit(spec, fetch_apibiblia, output_dir)
     return 0
