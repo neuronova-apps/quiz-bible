@@ -399,7 +399,7 @@ BIBLE_PERSONAJES = {
     "setar-boznai", "setarboznai", "dario", "darío", "artajerjes", "secanias", "secanías",
     "meremot", "jozabad", "noadias", "noadías", "serebias", "serebías", "hasabias", "hasabías",
     "jesaias", "jesaías", "ido", "rehum", "simsai", "asenapar", "asurbanipal", "bislam", "tabeel",
-    "johanan", "eliasib", "josadac", "salatiel", "seraias", "jehiel",
+    "johanan", "eliasib", "josadac", "salatiel", "seraias", "jehiel", "sanbalat", "tobias", "tobías", "gesem",
     # Otros comunes
     "david", "saul", "samuel", "nabucodonosor", "pablo", "pedro", "juan", "jesus", "mateo", "marcos",
     "lucas", "esteban", "timoteo",
@@ -468,6 +468,118 @@ KINSHIP_STEMS = {
     "gemel": ["gemelos", "mellizos"],
     "primo": ["primo", "prima", "primos"],
 }
+
+# Entidades bíblicas con polisemia (persona / tribu / territorio / colectivo)
+POLYSEMOUS_ENTITIES = {
+    "juda", "israel", "efrain", "benjamin", "manases", "dan", "gad",
+    "aser", "neftali", "zabulon", "isacar", "simeon", "moab", "edom", "amon"
+}
+
+LOCATIVE_PREFIX_PATTERN = re.compile(
+    r"\b(?:en|de|a|hacia|por|desde|para|situacion de|ciudades de|reino de|tierra de|provincia de|campos de|montes de|territorio de)\s+(\w+)\b"
+)
+
+LOCATIVE_PAIR_PATTERN = re.compile(
+    r"\b(\w+)\s+y\s+(?:jerusalen|samaria|sion|galilea|belen|hebron|las ciudades|los pueblos)\b"
+)
+
+COLLECTIVE_PREFIX_PATTERN = re.compile(
+    r"\b(?:tribu de|casa de|hijos de|pueblo de|varones de|hombres de)\s+(\w+)\b"
+)
+
+FIRST_PERSON_DISCOURSE_MARKERS = {
+    "yo", "mi", "mis", "mio", "mia", "conmigo", "me",
+    "nosotros", "nosotras", "nos", "nuestro", "nuestra", "nuestros", "nuestras",
+    "diremos", "hemos", "estamos", "hablamos", "somos", "hicimos", "dejamos",
+    "peque", "pequemos", "dije", "clame", "ore", "estoy", "tengo", "veo"
+}
+
+SPEECH_PRAYER_VERBS = {
+    "dijo", "oro", "clamo", "respondio", "hablo", "postro", "confeso", "rogo", "suplico", "exclamo", "levanto"
+}
+
+
+def is_locative_or_collective_entity(token: str, full_text: str, declared_characters: list[str]) -> bool:
+    """Determina si un token polisémico funciona como entidad locativa, geopolítica o colectiva."""
+    norm_token = normalize(token).strip()
+    if norm_token not in POLYSEMOUS_ENTITIES:
+        return False
+
+    norm_chars = {normalize(c).strip() for c in (declared_characters or [])}
+    if norm_token in norm_chars:
+        return False
+
+    text_norm = normalize(full_text)
+
+    # 1. Pareja con otro topónimo conocido (ej: 'Judá y Jerusalén')
+    for m in LOCATIVE_PAIR_PATTERN.finditer(text_norm):
+        if m.group(1) == norm_token:
+            return True
+
+    # 2. Prefijo locativo (ej: 'en Judá', 'de Judá', 'situación de Judá', 'ciudades de Judá')
+    for m in LOCATIVE_PREFIX_PATTERN.finditer(text_norm):
+        if m.group(1) == norm_token:
+            return True
+
+    # 3. Prefijo colectivo / tribal (ej: 'tribu de Judá', 'pueblo de Israel', 'hombres de Judá')
+    for m in COLLECTIVE_PREFIX_PATTERN.finditer(text_norm):
+        if m.group(1) == norm_token:
+            return True
+
+    return False
+
+
+def resolve_implicit_speaker(
+    entity_name: str,
+    passage_norm: str,
+    verse_map: dict[int, str],
+    start_verse: int,
+    characters: list[str],
+    book_key: str = ""
+) -> bool:
+    """Resuelve contextualmente si entity_name es el hablante/orador en primera persona del pasaje."""
+    if not verse_map:
+        return False
+
+    passage_words = set(passage_norm.split())
+    has_1st_person = bool(passage_words & FIRST_PERSON_DISCOURSE_MARKERS) or any(
+        m in passage_norm for m in ["dios nuestro", "dios mio", "nuestro dios"]
+    )
+    if not has_1st_person:
+        return False
+
+    norm_entity = normalize(entity_name).strip()
+
+    # 1. Comprobar versículos anteriores presentes en verse_map (hasta 20 versículos antes en el mismo capítulo)
+    candidate_speakers = set()
+    for v_num in range(max(1, start_verse - 20), start_verse):
+        if v_num not in verse_map:
+            continue
+        v_norm = normalize(verse_map[v_num])
+        v_words = set(v_norm.split())
+
+        for p in BIBLE_PERSONAJES:
+            if p in v_words:
+                if any(verb in v_words for verb in SPEECH_PRAYER_VERBS) or "diciendo" in v_words or "oracion" in v_words:
+                    candidate_speakers.add(p)
+
+    if candidate_speakers == {norm_entity}:
+        return True
+    if len(candidate_speakers) > 1:
+        return False
+
+    # 2. Narración autobiográfica del autor titular del libro (ej. Esdras en el libro de Esdras)
+    # Solo aplicable cuando la entidad coincide con el autor titular del libro y no hay conflicto
+    is_titular_author = (norm_entity == book_key or norm_entity in {"esdras", "nehemias"} and book_key in {"ezra", "nehemiah", "esdras"})
+    if is_titular_author and not candidate_speakers:
+        full_ch_text = " ".join(verse_map.values())
+        full_ch_norm = normalize(full_ch_text)
+        full_ch_words = set(full_ch_norm.split())
+        has_ch_1st_person = bool(full_ch_words & {"yo", "mi", "me", "dije", "nosotros", "nuestro"})
+        if has_ch_1st_person:
+            return True
+
+    return False
 
 # Equivalencias semánticas y de dimensiones
 SYNONYMS = {
@@ -883,8 +995,12 @@ def extract_numbers(text: str, is_quantitative_context: bool = False) -> list[in
     raw_text = str(text)
     # Limpiar citas de capítulos/versículos
     cleaned_digits_text = re.sub(r"\b\d+\s*:\s*\d+(?:-\d+)?\b", " ", raw_text)
-    # Colapsar millares espaciados (ej. '601 730' -> '601730')
-    cleaned_digits_text = re.sub(r"\b(\d{1,3})\s+(\d{3})\b", r"\1\2", cleaned_digits_text)
+    # Colapsar millares con punto, coma o espacio (ej. '42.360', '42,360', '42 360', '601 730', '1.000.000' -> '42360', '601730')
+    cleaned_digits_text = re.sub(
+        r"\b\d{1,3}(?:[.,\s]\d{3})+\b",
+        lambda m: re.sub(r"[.,\s]", "", m.group(0)),
+        cleaned_digits_text
+    )
     cleaned_norm = normalize(cleaned_digits_text)
     numbers: list[int] = []
 
@@ -1228,11 +1344,15 @@ def evaluate_question(
     entities_in_opt_a = set()
     for word in normalize(opcion_a).split():
         if word in BIBLE_PERSONAJES:
+            if is_locative_or_collective_entity(word, opcion_a, characters):
+                continue
             entities_in_opt_a.add(word)
 
     entities_in_prompt = set()
     for word in normalize(prompt).split():
         if word in BIBLE_PERSONAJES:
+            if is_locative_or_collective_entity(word, prompt, characters):
+                continue
             entities_in_prompt.add(word)
 
     if entities_in_opt_a:
@@ -1243,8 +1363,7 @@ def evaluate_question(
         if not missing_entities:
             controls["control_nombres_propios"] = "PASS"
         else:
-            # Resolución anafórica / contextual:
-            # Comprobar si el pasaje contiene marcadores anafóricos o relacionales
+            # Resolución anafórica / contextual / hablante implícito:
             context_resolved = []
             if verse_map:
                 full_ch_text = " ".join(verse_map.values())
@@ -1262,6 +1381,11 @@ def evaluate_question(
                     for n in missing_entities:
                         if n in full_ch_norm and (not characters or any(n == normalize(c) for c in characters)):
                             context_resolved.append(n)
+
+                # Resolución de hablante implícito en 1ª persona
+                for n in missing_entities:
+                    if n not in context_resolved and resolve_implicit_speaker(n, passage_norm, verse_map, start, characters, book_key):
+                        context_resolved.append(n)
 
             unresolved = [n for n in missing_entities if n not in context_resolved]
             if not unresolved:

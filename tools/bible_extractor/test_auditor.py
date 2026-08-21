@@ -35,7 +35,10 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from auditor import evaluate_question, run_audit, extract_numbers, normalize, detect_book_key, token_matches_text, BOOK_CONFIGS
+from auditor import (
+    evaluate_question, run_audit, extract_numbers, normalize, detect_book_key,
+    token_matches_text, BOOK_CONFIGS, is_locative_or_collective_entity, resolve_implicit_speaker
+)
 
 GENESIS_PATH = Path(__file__).parent / "genesis-master-input.json"
 EXODUS_PATH = Path(__file__).parent / "exodus-master-input.json"
@@ -1758,6 +1761,103 @@ class TestAuditorCanonical(unittest.TestCase):
         res48 = evaluate_question(q48, v48, book_key="ezra")
         self.assertNotEqual(res48["estado"], "REQUIERE_CORRECCION")
         self.assertEqual(res48["controles_superados"]["control_numeros_cantidades"], "PASS")
+
+    def test_extract_numbers_thousands_grouping(self) -> None:
+        """Verifica la normalización rigurosa de millares (punto, coma, espacio) sin afectar decimales ni referencias."""
+        # Agrupaciones de miles válidas
+        self.assertEqual(extract_numbers("42.360 personas"), [42360])
+        self.assertEqual(extract_numbers("42,360 personas"), [42360])
+        self.assertEqual(extract_numbers("42 360 personas"), [42360])
+        self.assertEqual(extract_numbers("42360 personas"), [42360])
+        self.assertEqual(extract_numbers("1.000.000 de hombres"), [1000000])
+        self.assertEqual(extract_numbers("601 730 guerreros"), [601730])
+
+        # Decimales: no colapsar '3.14' a 314
+        self.assertNotIn(314, extract_numbers("El número pi es 3.14"))
+
+        # Referencias: no extraer números de 'Esdras 2:64-70' o '7:11-16'
+        self.assertEqual(extract_numbers("Según Esdras 2:64-70 en la congregación"), [])
+        self.assertEqual(extract_numbers("Esdras 7:11-16 relata la comisión"), [])
+
+    def test_polysemous_entity_disambiguation(self) -> None:
+        """Verifica que entidades polisémicas (Judá, Israel, etc.) se desambigüen por contexto locativo/colectivo."""
+        # Judá y Jerusalén (locativo) -> no personaje
+        self.assertTrue(is_locative_or_collective_entity("juda", "Examinar la situación de Judá y Jerusalén", []))
+        self.assertTrue(is_locative_or_collective_entity("juda", "ciudades de Judá y Benjamín", []))
+        self.assertTrue(is_locative_or_collective_entity("juda", "reino de Judá", []))
+        self.assertTrue(is_locative_or_collective_entity("juda", "tribu de Judá", []))
+
+        # Judá como persona cuando el banco lo declara explícitamente
+        self.assertFalse(is_locative_or_collective_entity("juda", "Judá engendró a Fares", ["Judá"]))
+
+    def test_implicit_speaker_resolution(self) -> None:
+        """Verifica la resolución contextual del hablante en discurso en 1ª persona."""
+        v_map_single_speaker = {
+            5: "Y a la hora del sacrificio de la tarde me levanté de mi aflicción, y extendí mis manos a Jehová mi Dios,",
+            6: "y dije: Dios mío, confuso y avergonzado estoy para levantar mi rostro a ti, porque nuestras iniquidades se han multiplicado,",
+            10: "Pero ahora, ¿qué diremos, oh Dios nuestro, después de esto? Porque nosotros hemos dejado tus mandamientos,"
+        }
+        passage = "pero ahora que diremos oh dios nuestro despues de esto porque nosotros hemos dejado tus mandamientos"
+        # Nombre identificado en contexto previo + 1ª persona sostenida -> PASS
+        self.assertTrue(resolve_implicit_speaker("esdras", passage, v_map_single_speaker, 10, ["Esdras"], book_key="ezra"))
+
+        # Conflicto con dos hablantes introducidos -> False
+        v_map_conflict = {
+            5: "Y habló Sanbalat diciendo...",
+            6: "Y respondió Tobías diciendo...",
+            10: "Pero ahora, ¿qué diremos, oh Dios nuestro...?"
+        }
+        self.assertFalse(resolve_implicit_speaker("esdras", passage, v_map_conflict, 10, ["Esdras"], book_key="ezra"))
+
+    def test_ezra_previously_failing_cases_esd0005_esd0030_esd0044(self) -> None:
+        """Verifica que los 3 casos que fallaron en el Run 41 queden completamente resueltos sin REQUIERE_CORRECCION."""
+        if not self.ezra_questions:
+            self.skipTest("ezra-master-input.json no disponible")
+
+        # 1. ESD-0005: 42.360 personas (Esdras 2:64-70)
+        q5 = self.get_ezra_question("NQB-AT-ESD-0005")
+        v5 = {
+            64: "Toda la congregación, unida como un solo hombre, era de cuarenta y dos mil trescientos sesenta,",
+            65: "sin los siervos y siervas de ellos, que eran siete mil trescientos treinta y siete; y tenían doscientos cantores y cantoras.",
+            66: "Sus caballos eran setecientos treinta y seis; sus mulos, doscientos cuarenta y cinco;",
+            67: "sus camellos, cuatrocientos treinta y cinco; asnos, seis mil setecientos veinte.",
+            68: "Y algunos de los cabezas de familias, cuando vinieron a la casa de Jehová que estaba en Jerusalén, hicieron ofrendas voluntarias para la casa de Dios, para reedificarla en su sitio.",
+            69: "Según sus fuerzas dieron al tesorero de la obra sesenta y un mil dracmas de oro, cinco mil libras de plata, y cien túnicas sacerdotales.",
+            70: "Y habitaron los sacerdotes, los levitas, los del pueblo, los cantores, los porteros y los sirvientes del templo en sus ciudades; y todo Israel en sus ciudades."
+        }
+        res5 = evaluate_question(q5, v5, book_key="ezra")
+        self.assertNotEqual(res5["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res5["controles_superados"]["control_numeros_cantidades"], "PASS")
+
+        # 2. ESD-0030: Judá y Jerusalén (Esdras 7:11-16)
+        q30 = self.get_ezra_question("NQB-AT-ESD-0030")
+        v30 = {
+            11: "Esta es la copia de la carta que dio el rey Artajerjes al sacerdote Esdras, escriba versado en los mandamientos de Jehová y en sus estatutos a Israel:",
+            12: "Artajerjes rey de reyes, a Esdras, sacerdote y escriba docto en la ley del Dios del cielo: Paz.",
+            13: "Por mí es dada orden que cualquiera en mi reino, del pueblo de Israel y de sus sacerdotes y levitas, que quiera ir contigo a Jerusalén, vaya.",
+            14: "Porque de parte del rey y de sus siete consejeros eres enviado a visitar a Judá y a Jerusalén, conforme a la ley de tu Dios que está en tu mano;",
+            15: "y a llevar la plata y el oro que el rey y sus consejeros voluntariamente ofrecen al Dios de Israel, cuya morada está en Jerusalén,",
+            16: "y toda la plata y el oro que hallares en toda la provincia de Babilonia, con las ofrendas voluntarias del pueblo y de los sacerdotes, que voluntariamente ofrecieren para la casa de su Dios, la cual está en Jerusalén."
+        }
+        res30 = evaluate_question(q30, v30, book_key="ezra")
+        self.assertNotEqual(res30["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res30["controles_superados"]["control_nombres_propios"], "PASS")
+        self.assertEqual(res30["controles_superados"]["control_lugares"], "PASS")
+
+        # 3. ESD-0044: Oración de Esdras (Esdras 9:10-12)
+        q44 = self.get_ezra_question("NQB-AT-ESD-0044")
+        v44 = {
+            1: "Acabadas estas cosas, los príncipes vinieron a mí, diciendo: El pueblo de Israel y los sacerdotes y los levitas no se han separado de los pueblos de las tierras...",
+            3: "Cuando oí esto, rasgué mi vestido y mi manto, y arranqué pelo de mi cabeza y de mi barba, y me senté angustiado en extremo.",
+            5: "Y a la hora del sacrificio de la tarde me levanté de mi aflicción, y habiendo rasgado mi vestido y mi manto, me postré de rodillas, y extendí mis manos a Jehová mi Dios,",
+            6: "y dije: Dios mío, confuso y avergonzado estoy para levantar, oh Dios mío, mi rostro a ti, porque nuestras iniquidades se han multiplicado sobre nuestra cabeza, y nuestros delitos han crecido hasta el cielo.",
+            10: "Pero ahora, ¿qué diremos, oh Dios nuestro, después de esto? Porque nosotros hemos dejado tus mandamientos,",
+            11: "los cuales prescribiste por medio de tus siervos los profetas, diciendo: La tierra a la cual entráis para poseerla, tierra inmunda es...",
+            12: "Ahora, pues, no daréis vuestras hijas a los hijos de ellos, ni sus hijas tomaréis para vuestros hijos, ni procuraréis jamás su paz ni su prosperidad; para que seáis fuertes y comáis el bien de la tierra, y la dejéis por heredad a vuestros hijos para siempre."
+        }
+        res44 = evaluate_question(q44, v44, book_key="ezra")
+        self.assertNotEqual(res44["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res44["controles_superados"]["control_nombres_propios"], "PASS")
 
 
 if __name__ == "__main__":
