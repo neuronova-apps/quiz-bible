@@ -1,0 +1,2322 @@
+{
+  "source": "Quiz Bible master bank - Leviticus",
+  "version": "RVR1960",
+  "book": "Levítico",
+  "total_questions": 80,
+  "questions": [
+    {
+      "id": "NQB-AT-LEV-0001",
+      "book": "Levítico",
+      "chapter": 1,
+      "verse_start": 3,
+      "verse_end": 3,
+      "reference": "Levítico 1:3",
+      "category": "AT_GENERAL",
+      "subcategory": "Holocausto del ganado",
+      "characters": [
+        "israelitas",
+        "sacerdotes"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué condición debía cumplir el animal ofrecido como holocausto cuando procedía del ganado vacuno?",
+      "opcion_a": "Ser macho y sin defecto",
+      "opcion_b": "Ser hembra y de un año",
+      "opcion_c": "Ser el animal más viejo del rebaño",
+      "opcion_d": "Ser de color blanco",
+      "correct_option": "A",
+      "correct_answer": "Ser macho y sin defecto",
+      "explanation": "Las instrucciones iniciales del holocausto establecen que, si la ofrenda procedía del ganado vacuno, debía presentarse un macho sin defecto. La pregunta se concentra en las condiciones básicas del animal y no en los pasos posteriores del sacrificio.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0002",
+      "book": "Levítico",
+      "chapter": 1,
+      "verse_start": 5,
+      "verse_end": 5,
+      "reference": "Levítico 1:5",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Sacerdotes y sangre del holocausto",
+      "characters": [
+        "Aarón",
+        "hijos de Aarón",
+        "sacerdotes"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Quiénes debían presentar y rociar la sangre alrededor del altar en el holocausto del ganado?",
+      "opcion_a": "Los hijos de Aarón, los sacerdotes",
+      "opcion_b": "Los ancianos de cada tribu",
+      "opcion_c": "Los levitas no sacerdotes",
+      "opcion_d": "El oferente sin intervención sacerdotal",
+      "correct_option": "A",
+      "correct_answer": "Los hijos de Aarón, los sacerdotes",
+      "explanation": "Después de sacrificar el animal, el pasaje asigna a los hijos de Aarón, identificados como sacerdotes, la tarea de manejar la sangre junto al altar. La pregunta distingue la función sacerdotal de las acciones realizadas por quien llevaba la ofrenda.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0003",
+      "book": "Levítico",
+      "chapter": 1,
+      "verse_start": 14,
+      "verse_end": 14,
+      "reference": "Levítico 1:14",
+      "category": "AT_GENERAL",
+      "subcategory": "Aves para el holocausto",
+      "characters": [
+        "israelitas",
+        "sacerdotes"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué aves podían utilizarse cuando el holocausto se presentaba como una ofrenda de aves?",
+      "opcion_a": "Tórtolas o palominos",
+      "opcion_b": "Cuervos o codornices",
+      "opcion_c": "Gorriones o águilas",
+      "opcion_d": "Gallinas o patos",
+      "correct_option": "A",
+      "correct_answer": "Tórtolas o palominos",
+      "explanation": "Para el holocausto de aves, la instrucción limita la ofrenda a tórtolas o palominos. Se trata de un detalle específico sobre las especies aceptadas y permite diferenciar esta modalidad de las ofrendas procedentes del ganado.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0004",
+      "book": "Levítico",
+      "chapter": 2,
+      "verse_start": 1,
+      "verse_end": 1,
+      "reference": "Levítico 2:1",
+      "category": "AT_GENERAL",
+      "subcategory": "Ingredientes de la ofrenda vegetal",
+      "characters": [
+        "israelitas",
+        "sacerdotes"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué combinación básica se indica al presentar una ofrenda vegetal al inicio de las instrucciones?",
+      "opcion_a": "Flor de harina, aceite e incienso",
+      "opcion_b": "Cebada, miel y vino",
+      "opcion_c": "Trigo entero, sal y leche",
+      "opcion_d": "Harina tostada, agua y dátiles",
+      "correct_option": "A",
+      "correct_answer": "Flor de harina, aceite e incienso",
+      "explanation": "La ofrenda vegetal comienza con flor de harina sobre la que se añadían aceite e incienso. La pregunta reúne los tres elementos mencionados al iniciar esta modalidad y evita mezclar ingredientes pertenecientes a otras comidas u ofrendas.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0005",
+      "book": "Levítico",
+      "chapter": 2,
+      "verse_start": 11,
+      "verse_end": 11,
+      "reference": "Levítico 2:11",
+      "category": "AT_GENERAL",
+      "subcategory": "Ingredientes no quemados en la ofrenda",
+      "characters": [
+        "israelitas",
+        "sacerdotes"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué dos ingredientes no debían quemarse como parte de las ofrendas encendidas descritas en esta norma?",
+      "opcion_a": "Levadura y miel",
+      "opcion_b": "Sal y aceite",
+      "opcion_c": "Incienso y harina",
+      "opcion_d": "Agua y vino",
+      "correct_option": "A",
+      "correct_answer": "Levadura y miel",
+      "explanation": "La norma especifica dos productos que no debían quemarse como ofrenda encendida: la levadura y la miel. La dificultad está en recordar esta pareja concreta dentro de una sección con numerosos ingredientes y procedimientos rituales.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0006",
+      "book": "Levítico",
+      "chapter": 2,
+      "verse_start": 13,
+      "verse_end": 13,
+      "reference": "Levítico 2:13",
+      "category": "AT_GENERAL",
+      "subcategory": "Sal en las ofrendas vegetales",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué ingrediente debía acompañar las ofrendas vegetales y no debía faltar en ellas?",
+      "opcion_a": "Sal",
+      "opcion_b": "Miel",
+      "opcion_c": "Levadura",
+      "opcion_d": "Leche",
+      "correct_option": "A",
+      "correct_answer": "Sal",
+      "explanation": "La instrucción exige sazonar las ofrendas vegetales con sal y subraya que no debía faltar. La pregunta se centra en ese ingrediente obligatorio y lo diferencia de elementos cuya utilización estaba restringida en el contexto inmediato.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0007",
+      "book": "Levítico",
+      "chapter": 3,
+      "verse_start": 1,
+      "verse_end": 1,
+      "reference": "Levítico 3:1",
+      "category": "AT_GENERAL",
+      "subcategory": "Animal de la ofrenda de paz",
+      "characters": [
+        "israelitas",
+        "sacerdotes"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "Si la ofrenda de paz procedía del ganado vacuno, ¿qué se permitía respecto del sexo del animal?",
+      "opcion_a": "Podía ser macho o hembra, siempre sin defecto",
+      "opcion_b": "Debía ser únicamente macho",
+      "opcion_c": "Debía ser únicamente hembra",
+      "opcion_d": "Debía ser una cría recién nacida",
+      "correct_option": "A",
+      "correct_answer": "Podía ser macho o hembra, siempre sin defecto",
+      "explanation": "A diferencia de otras modalidades que especifican un sexo concreto, la ofrenda de paz procedente del ganado podía presentarse con un animal macho o hembra. En ambos casos debía cumplir la condición de no tener defecto.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0008",
+      "book": "Levítico",
+      "chapter": 3,
+      "verse_start": 16,
+      "verse_end": 17,
+      "reference": "Levítico 3:16-17",
+      "category": "AT_GENERAL",
+      "subcategory": "Restricción sobre grasa y sangre",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué dos elementos se prohíbe comer al finalizar las instrucciones de esta sección?",
+      "opcion_a": "La grasa y la sangre",
+      "opcion_b": "La harina y el aceite",
+      "opcion_c": "La carne y la sal",
+      "opcion_d": "El pan y el incienso",
+      "correct_option": "A",
+      "correct_answer": "La grasa y la sangre",
+      "explanation": "La conclusión de esta sección establece una prohibición alimentaria sobre la grasa y la sangre. La pregunta identifica los dos elementos señalados juntos y no pretende extender la norma a otros ingredientes mencionados en las ofrendas.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0009",
+      "book": "Levítico",
+      "chapter": 4,
+      "verse_start": 3,
+      "verse_end": 3,
+      "reference": "Levítico 4:3",
+      "category": "AT_GENERAL",
+      "subcategory": "Ofrenda por el pecado del sacerdote ungido",
+      "characters": [
+        "Sacerdote ungido",
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué animal debía presentar el sacerdote ungido como ofrenda por el pecado cuando su falta hacía culpable al pueblo?",
+      "opcion_a": "Un becerro sin defecto",
+      "opcion_b": "Una oveja hembra",
+      "opcion_c": "Dos tórtolas",
+      "opcion_d": "Un carnero y una cabra",
+      "correct_option": "A",
+      "correct_answer": "Un becerro sin defecto",
+      "explanation": "La norma distingue el caso del sacerdote ungido y establece para él un becerro sin defecto como ofrenda por el pecado. La pregunta evalúa la correspondencia entre una situación específica y el animal requerido.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0010",
+      "book": "Levítico",
+      "chapter": 4,
+      "verse_start": 27,
+      "verse_end": 28,
+      "reference": "Levítico 4:27-28",
+      "category": "AT_GENERAL",
+      "subcategory": "Ofrenda por el pecado de una persona del pueblo",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué animal se indica como ofrenda por el pecado para una persona común que reconocía haber pecado involuntariamente?",
+      "opcion_a": "Una cabra hembra sin defecto",
+      "opcion_b": "Un becerro macho",
+      "opcion_c": "Dos carneros",
+      "opcion_d": "Una tórtola y un palomino",
+      "correct_option": "A",
+      "correct_answer": "Una cabra hembra sin defecto",
+      "explanation": "Para una persona del pueblo que reconocía una falta involuntaria, el pasaje permite presentar una cabra hembra sin defecto. La pregunta exige distinguir este caso de las disposiciones destinadas al sacerdote ungido, a la congregación o a un jefe.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0011",
+      "book": "Levítico",
+      "chapter": 5,
+      "verse_start": 1,
+      "verse_end": 1,
+      "reference": "Levítico 5:1",
+      "category": "AT_GENERAL",
+      "subcategory": "Responsabilidad del testigo",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué omisión hacía responsable a una persona que había sido testigo o conocía un asunto sobre el que se pedía testimonio?",
+      "opcion_a": "No declarar lo que sabía",
+      "opcion_b": "Negarse a ofrecer un animal grande",
+      "opcion_c": "Entrar al campamento después del anochecer",
+      "opcion_d": "Hablar con un extranjero",
+      "correct_option": "A",
+      "correct_answer": "No declarar lo que sabía",
+      "explanation": "La norma contempla el caso de una persona que podía dar testimonio porque había visto o conocía el asunto, pero no declaraba. La responsabilidad surge de guardar silencio cuando se requería su testimonio, no de las otras acciones propuestas.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0012",
+      "book": "Levítico",
+      "chapter": 5,
+      "verse_start": 7,
+      "verse_end": 7,
+      "reference": "Levítico 5:7",
+      "category": "AT_GENERAL",
+      "subcategory": "Alternativa para quien no podía ofrecer un cordero",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué podía presentar una persona que no tenía recursos suficientes para llevar un cordero como ofrenda por su culpa?",
+      "opcion_a": "Dos tórtolas o dos palominos",
+      "opcion_b": "Dos becerros",
+      "opcion_c": "Una medida de aceite y vino",
+      "opcion_d": "Siete corderos",
+      "correct_option": "A",
+      "correct_answer": "Dos tórtolas o dos palominos",
+      "explanation": "La ley contempla una alternativa para quien no podía costear un animal del rebaño: dos tórtolas o dos palominos. Uno se destinaba a la ofrenda por el pecado y el otro al holocausto, adaptando la ofrenda a la capacidad económica del oferente.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0013",
+      "book": "Levítico",
+      "chapter": 5,
+      "verse_start": 15,
+      "verse_end": 15,
+      "reference": "Levítico 5:15",
+      "category": "AT_GENERAL",
+      "subcategory": "Ofrenda por la culpa en cosas santas",
+      "characters": [
+        "israelitas",
+        "sacerdote"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué animal debía llevarse como ofrenda por la culpa ante una falta involuntaria relacionada con las cosas santas?",
+      "opcion_a": "Un carnero sin defecto",
+      "opcion_b": "Una cabra hembra",
+      "opcion_c": "Un becerro recién nacido",
+      "opcion_d": "Dos palominos",
+      "correct_option": "A",
+      "correct_answer": "Un carnero sin defecto",
+      "explanation": "Cuando la falta involuntaria se relacionaba con las cosas santas, la disposición establece un carnero sin defecto como ofrenda por la culpa, además de la valoración correspondiente. La pregunta se centra únicamente en el animal requerido.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0014",
+      "book": "Levítico",
+      "chapter": 6,
+      "verse_start": 12,
+      "verse_end": 13,
+      "reference": "Levítico 6:12-13",
+      "category": "AT_GENERAL",
+      "subcategory": "Fuego continuo del altar",
+      "characters": [
+        "sacerdotes"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué debía ocurrir continuamente con el fuego del altar?",
+      "opcion_a": "Debía mantenerse encendido y no apagarse",
+      "opcion_b": "Debía apagarse cada noche",
+      "opcion_c": "Solo debía encenderse en las fiestas anuales",
+      "opcion_d": "Debía trasladarse fuera del campamento después de cada sacrificio",
+      "correct_option": "A",
+      "correct_answer": "Debía mantenerse encendido y no apagarse",
+      "explanation": "Las instrucciones sacerdotales señalan que el fuego del altar debía mantenerse ardiendo de manera continua. El sacerdote añadía leña y ordenaba las ofrendas, evitando que el fuego se apagara.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0015",
+      "book": "Levítico",
+      "chapter": 6,
+      "verse_start": 20,
+      "verse_end": 20,
+      "reference": "Levítico 6:20",
+      "category": "AT_GENERAL",
+      "subcategory": "Ofrenda vegetal de la consagración",
+      "characters": [
+        "Aarón",
+        "hijos de Aarón"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué cantidad de flor de harina formaba la ofrenda vegetal indicada para el día de la unción de Aarón y sus hijos?",
+      "opcion_a": "La décima parte de un efa",
+      "opcion_b": "Un efa completo",
+      "opcion_c": "Media medida de gomer",
+      "opcion_d": "Dos efas",
+      "correct_option": "A",
+      "correct_answer": "La décima parte de un efa",
+      "explanation": "La ofrenda asociada con la unción sacerdotal se fija en la décima parte de un efa de flor de harina, distribuida en dos momentos del día. Es un dato cuantitativo específico, por lo que corresponde al nivel experto.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0016",
+      "book": "Levítico",
+      "chapter": 7,
+      "verse_start": 8,
+      "verse_end": 8,
+      "reference": "Levítico 7:8",
+      "category": "AT_GENERAL",
+      "subcategory": "Piel del holocausto",
+      "characters": [
+        "sacerdote",
+        "oferente"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿A quién correspondía la piel del animal cuando un sacerdote ofrecía el holocausto de una persona?",
+      "opcion_a": "Al sacerdote que presentaba el holocausto",
+      "opcion_b": "Al jefe de la tribu del oferente",
+      "opcion_c": "A toda la congregación",
+      "opcion_d": "Al artesano encargado del tabernáculo",
+      "correct_option": "A",
+      "correct_answer": "Al sacerdote que presentaba el holocausto",
+      "explanation": "La disposición asigna la piel del animal al sacerdote que realizaba el holocausto por aquella persona. La pregunta evalúa una distribución concreta de los elementos vinculados con el sacrificio.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0017",
+      "book": "Levítico",
+      "chapter": 7,
+      "verse_start": 26,
+      "verse_end": 27,
+      "reference": "Levítico 7:26-27",
+      "category": "AT_GENERAL",
+      "subcategory": "Prohibición de consumir sangre",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Básico",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué estaba prohibido consumir en cualquier lugar donde habitaran los israelitas, tanto de aves como de otros animales?",
+      "opcion_a": "Sangre",
+      "opcion_b": "Leche",
+      "opcion_c": "Aceite",
+      "opcion_d": "Agua",
+      "correct_option": "A",
+      "correct_answer": "Sangre",
+      "explanation": "La norma prohíbe consumir sangre y amplía la referencia tanto a aves como a otros animales. La pregunta se limita a identificar el elemento expresamente prohibido en este pasaje.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0018",
+      "book": "Levítico",
+      "chapter": 8,
+      "verse_start": 3,
+      "verse_end": 4,
+      "reference": "Levítico 8:3-4",
+      "category": "AT_GENERAL",
+      "subcategory": "Reunión para la consagración",
+      "characters": [
+        "Moisés",
+        "Aarón",
+        "hijos de Aarón",
+        "congregación"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Dónde reunió Moisés a la congregación para iniciar la consagración de Aarón y sus hijos?",
+      "opcion_a": "A la entrada del tabernáculo de reunión",
+      "opcion_b": "En la cima del monte Sinaí",
+      "opcion_c": "Fuera del campamento junto a Mara",
+      "opcion_d": "En el centro de la tierra de Gosén",
+      "correct_option": "A",
+      "correct_answer": "A la entrada del tabernáculo de reunión",
+      "explanation": "La ceremonia de consagración se realizó públicamente con la congregación reunida a la entrada del tabernáculo de reunión. La pregunta evalúa el lugar señalado para el inicio del rito y lo diferencia de escenarios anteriores del Éxodo.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0019",
+      "book": "Levítico",
+      "chapter": 8,
+      "verse_start": 12,
+      "verse_end": 12,
+      "reference": "Levítico 8:12",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Unción de Aarón",
+      "characters": [
+        "Moisés",
+        "Aarón"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Quién derramó el aceite de la unción sobre la cabeza de Aarón durante su consagración?",
+      "opcion_a": "Moisés",
+      "opcion_b": "Eleazar",
+      "opcion_c": "Nadab",
+      "opcion_d": "Aholiab",
+      "correct_option": "A",
+      "correct_answer": "Moisés",
+      "explanation": "Durante la consagración sacerdotal, Moisés utilizó el aceite de la unción sobre la cabeza de Aarón para consagrarlo. La pregunta identifica al personaje que ejecuta esta acción dentro de la ceremonia.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0020",
+      "book": "Levítico",
+      "chapter": 8,
+      "verse_start": 23,
+      "verse_end": 24,
+      "reference": "Levítico 8:23-24",
+      "category": "AT_GENERAL",
+      "subcategory": "Aplicación de sangre en la consagración",
+      "characters": [
+        "Moisés",
+        "Aarón",
+        "hijos de Aarón"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿En qué tres partes del lado derecho se aplicó sangre durante la consagración de Aarón y después de sus hijos?",
+      "opcion_a": "En el lóbulo de la oreja, el pulgar de la mano y el dedo gordo del pie",
+      "opcion_b": "En la frente, la palma de la mano y la rodilla",
+      "opcion_c": "En el hombro, el codo y el talón",
+      "opcion_d": "En el pecho, la muñeca y el tobillo",
+      "correct_option": "A",
+      "correct_answer": "En el lóbulo de la oreja, el pulgar de la mano y el dedo gordo del pie",
+      "explanation": "La ceremonia incluye una aplicación precisa de sangre en tres puntos del lado derecho: el lóbulo de la oreja, el pulgar de la mano y el dedo gordo del pie. La misma pauta se aplica primero a Aarón y luego a sus hijos, por lo que se trata de un detalle ritual de nivel experto.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0021",
+      "book": "Levítico",
+      "chapter": 9,
+      "verse_start": 1,
+      "verse_end": 1,
+      "reference": "Levítico 9:1",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Convocatoria del octavo día",
+      "characters": [
+        "Moisés",
+        "Aarón",
+        "hijos de Aarón",
+        "ancianos de Israel"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿A quiénes convocó Moisés al comenzar el octavo día de la consagración sacerdotal?",
+      "opcion_a": "A Aarón, a sus hijos y a los ancianos de Israel",
+      "opcion_b": "Solo a los jefes de las doce tribus",
+      "opcion_c": "A Josué, Caleb y los levitas",
+      "opcion_d": "A toda la congregación sin distinción de funciones",
+      "correct_option": "A",
+      "correct_answer": "A Aarón, a sus hijos y a los ancianos de Israel",
+      "explanation": "El inicio del capítulo sitúa el octavo día como una nueva etapa después de la consagración. Moisés convocó específicamente a Aarón, a sus hijos y a los ancianos de Israel para dar paso a las ofrendas y al servicio sacerdotal que seguiría.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0022",
+      "book": "Levítico",
+      "chapter": 9,
+      "verse_start": 22,
+      "verse_end": 22,
+      "reference": "Levítico 9:22",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Aarón bendice al pueblo",
+      "characters": [
+        "Aarón",
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué hizo Aarón después de presentar las ofrendas por el pecado, el holocausto y la paz?",
+      "opcion_a": "Alzó sus manos hacia el pueblo y lo bendijo",
+      "opcion_b": "Abandonó el tabernáculo y regresó al campamento",
+      "opcion_c": "Entregó sus vestiduras sacerdotales a Moisés",
+      "opcion_d": "Ordenó apagar el fuego del altar",
+      "correct_option": "A",
+      "correct_answer": "Alzó sus manos hacia el pueblo y lo bendijo",
+      "explanation": "Después de completar las ofrendas señaladas, Aarón levantó sus manos hacia el pueblo y lo bendijo. La acción marca el cierre de esa parte del servicio antes de que Moisés y Aarón continuaran con la siguiente etapa de la ceremonia.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0023",
+      "book": "Levítico",
+      "chapter": 9,
+      "verse_start": 23,
+      "verse_end": 24,
+      "reference": "Levítico 9:23-24",
+      "category": "AT_GENERAL",
+      "subcategory": "Fuego consume la ofrenda",
+      "characters": [
+        "Moisés",
+        "Aarón",
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué ocurrió con la ofrenda sobre el altar cuando se manifestó la gloria de Dios ante el pueblo?",
+      "opcion_a": "Salió fuego y consumió el holocausto y la grasa sobre el altar",
+      "opcion_b": "Una nube apagó por completo el altar",
+      "opcion_c": "El altar se abrió y la ofrenda cayó al suelo",
+      "opcion_d": "La ofrenda fue retirada sin ser quemada",
+      "correct_option": "A",
+      "correct_answer": "Salió fuego y consumió el holocausto y la grasa sobre el altar",
+      "explanation": "Al culminar la ceremonia, la manifestación fue acompañada por fuego que consumió lo dispuesto sobre el altar. La reacción del pueblo fue inmediata y el episodio funciona como cierre visible de la inauguración del servicio sacerdotal.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0024",
+      "book": "Levítico",
+      "chapter": 10,
+      "verse_start": 1,
+      "verse_end": 2,
+      "reference": "Levítico 10:1-2",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Nadab y Abiú ofrecen fuego no autorizado",
+      "characters": [
+        "Nadab",
+        "Abiú",
+        "Aarón"
+      ],
+      "difficulty": "Básico",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué dos hijos de Aarón murieron después de presentar un fuego que no les había sido mandado?",
+      "opcion_a": "Nadab y Abiú",
+      "opcion_b": "Eleazar e Itamar",
+      "opcion_c": "Misael y Elzafán",
+      "opcion_d": "Gersón y Eliezer",
+      "correct_option": "A",
+      "correct_answer": "Nadab y Abiú",
+      "explanation": "Nadab y Abiú, hijos de Aarón, presentaron fuego no autorizado y el episodio terminó con su muerte. Eleazar e Itamar eran también hijos de Aarón, pero continuaron ejerciendo funciones sacerdotales después de este acontecimiento.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0025",
+      "book": "Levítico",
+      "chapter": 10,
+      "verse_start": 4,
+      "verse_end": 5,
+      "reference": "Levítico 10:4-5",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Retiro de Nadab y Abiú",
+      "characters": [
+        "Misael",
+        "Elzafán",
+        "Nadab",
+        "Abiú",
+        "Moisés"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Quiénes fueron llamados para sacar fuera del campamento los cuerpos de Nadab y Abiú?",
+      "opcion_a": "Misael y Elzafán",
+      "opcion_b": "Eleazar e Itamar",
+      "opcion_c": "Josué y Caleb",
+      "opcion_d": "Gersón y Coat",
+      "correct_option": "A",
+      "correct_answer": "Misael y Elzafán",
+      "explanation": "Después de la muerte de Nadab y Abiú, Moisés llamó a Misael y Elzafán para retirar sus cuerpos de delante del santuario y llevarlos fuera del campamento. Es un detalle de personajes secundarios que aparece inmediatamente después del juicio.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0026",
+      "book": "Levítico",
+      "chapter": 10,
+      "verse_start": 8,
+      "verse_end": 11,
+      "reference": "Levítico 10:8-11",
+      "category": "AT_GENERAL",
+      "subcategory": "Restricción de vino en el servicio sacerdotal",
+      "characters": [
+        "Aarón",
+        "hijos de Aarón",
+        "sacerdotes"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué bebida debían evitar Aarón y sus hijos al entrar al tabernáculo de reunión para ejercer su servicio?",
+      "opcion_a": "Vino y bebidas embriagantes",
+      "opcion_b": "Agua y leche",
+      "opcion_c": "Aceite y miel",
+      "opcion_d": "Jugo de uva y agua",
+      "correct_option": "A",
+      "correct_answer": "Vino y bebidas embriagantes",
+      "explanation": "La instrucción sacerdotal prohíbe entrar al tabernáculo bajo los efectos de vino u otras bebidas embriagantes. El contexto vincula esta norma con la necesidad de distinguir lo santo de lo profano y enseñar correctamente al pueblo.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0027",
+      "book": "Levítico",
+      "chapter": 11,
+      "verse_start": 3,
+      "verse_end": 3,
+      "reference": "Levítico 11:3",
+      "category": "AT_GENERAL",
+      "subcategory": "Criterios de animales terrestres limpios",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué dos características debía reunir un animal terrestre para poder comerse según esta norma?",
+      "opcion_a": "Tener la pezuña dividida y rumiar",
+      "opcion_b": "Tener cuernos y vivir en rebaño",
+      "opcion_c": "Ser doméstico y alimentarse de hierba",
+      "opcion_d": "Tener cuatro patas y no tener garras",
+      "correct_option": "A",
+      "correct_answer": "Tener la pezuña dividida y rumiar",
+      "explanation": "La clasificación de los animales terrestres permitidos combina dos condiciones: una pezuña dividida y la capacidad de rumiar. La norma exige ambas características, por lo que cumplir solo una no era suficiente.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0028",
+      "book": "Levítico",
+      "chapter": 11,
+      "verse_start": 4,
+      "verse_end": 4,
+      "reference": "Levítico 11:4",
+      "category": "AT_GENERAL",
+      "subcategory": "El camello como animal no permitido",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Por qué el camello no cumplía el criterio establecido para los animales terrestres permitidos?",
+      "opcion_a": "Porque rumiaba, pero no tenía la pezuña dividida",
+      "opcion_b": "Porque tenía la pezuña dividida, pero no rumiaba",
+      "opcion_c": "Porque vivía exclusivamente en el desierto",
+      "opcion_d": "Porque no podía ser domesticado",
+      "correct_option": "A",
+      "correct_answer": "Porque rumiaba, pero no tenía la pezuña dividida",
+      "explanation": "El camello aparece como ejemplo de un animal que cumple solo una parte de la regla: rumia, pero no presenta la pezuña dividida exigida. Por eso no entra en la categoría de animales terrestres permitidos por esta norma.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0029",
+      "book": "Levítico",
+      "chapter": 11,
+      "verse_start": 9,
+      "verse_end": 10,
+      "reference": "Levítico 11:9-10",
+      "category": "AT_GENERAL",
+      "subcategory": "Criterios de animales acuáticos permitidos",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Básico",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué características debían tener los animales de las aguas para poder comerse?",
+      "opcion_a": "Aletas y escamas",
+      "opcion_b": "Caparazón y pinzas",
+      "opcion_c": "Aletas y piel lisa",
+      "opcion_d": "Escamas y patas",
+      "correct_option": "A",
+      "correct_answer": "Aletas y escamas",
+      "explanation": "Para los animales acuáticos, el criterio se expresa mediante dos características claramente identificables: aletas y escamas. Los que carecían de ellas quedaban fuera de la categoría permitida.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0030",
+      "book": "Levítico",
+      "chapter": 11,
+      "verse_start": 21,
+      "verse_end": 22,
+      "reference": "Levítico 11:21-22",
+      "category": "AT_GENERAL",
+      "subcategory": "Insectos alados permitidos",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué característica distinguía a ciertos insectos alados que sí podían comerse dentro de esta clasificación?",
+      "opcion_a": "Tener patas articuladas sobre sus pies para saltar sobre la tierra",
+      "opcion_b": "Vivir únicamente cerca del agua",
+      "opcion_c": "Tener alas transparentes y no caminar",
+      "opcion_d": "Ser más pequeños que una mano",
+      "correct_option": "A",
+      "correct_answer": "Tener patas articuladas sobre sus pies para saltar sobre la tierra",
+      "explanation": "Dentro de los insectos alados que se desplazan sobre cuatro patas, la norma establece una excepción para aquellos que cuentan con extremidades adaptadas para saltar. El detalle permite distinguir este grupo de los insectos rechazados en la misma sección.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0031",
+      "book": "Levítico",
+      "chapter": 12,
+      "verse_start": 3,
+      "verse_end": 3,
+      "reference": "Levítico 12:3",
+      "category": "AT_GENERAL",
+      "subcategory": "Circuncisión al octavo día",
+      "characters": [
+        "israelitas",
+        "niño recién nacido"
+      ],
+      "difficulty": "Básico",
+      "question_type": "Selección múltiple",
+      "question": "¿En qué día debía circuncidarse al niño varón recién nacido según esta instrucción?",
+      "opcion_a": "En el octavo día",
+      "opcion_b": "En el tercer día",
+      "opcion_c": "En el séptimo día",
+      "opcion_d": "En el día catorce",
+      "correct_option": "A",
+      "correct_answer": "En el octavo día",
+      "explanation": "La instrucción fija el octavo día para la circuncisión del niño varón. La pregunta evalúa únicamente el momento señalado para esta práctica y no los demás períodos de purificación descritos en el capítulo.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0032",
+      "book": "Levítico",
+      "chapter": 12,
+      "verse_start": 5,
+      "verse_end": 5,
+      "reference": "Levítico 12:5",
+      "category": "AT_GENERAL",
+      "subcategory": "Periodo inicial tras el nacimiento de una niña",
+      "characters": [
+        "mujer israelita",
+        "niña recién nacida"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Cuánto duraba el periodo inicial de impureza indicado después del nacimiento de una niña?",
+      "opcion_a": "Dos semanas",
+      "opcion_b": "Siete días",
+      "opcion_c": "Treinta días",
+      "opcion_d": "Cuarenta días",
+      "correct_option": "A",
+      "correct_answer": "Dos semanas",
+      "explanation": "El capítulo establece un período inicial distinto según se tratara del nacimiento de un niño o de una niña. Para una niña se indican dos semanas antes de continuar con el período adicional de purificación señalado en el mismo versículo.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0033",
+      "book": "Levítico",
+      "chapter": 13,
+      "verse_start": 2,
+      "verse_end": 3,
+      "reference": "Levítico 13:2-3",
+      "category": "AT_GENERAL",
+      "subcategory": "Examen de una afección en la piel",
+      "characters": [
+        "sacerdote",
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Ante quién debía presentarse una persona cuando aparecía en su piel una señal sospechosa que requería evaluación?",
+      "opcion_a": "Ante Aarón o uno de sus hijos sacerdotes",
+      "opcion_b": "Ante el jefe militar de la tribu",
+      "opcion_c": "Ante los artesanos del tabernáculo",
+      "opcion_d": "Ante el anciano de mayor edad de la familia",
+      "correct_option": "A",
+      "correct_answer": "Ante Aarón o uno de sus hijos sacerdotes",
+      "explanation": "La evaluación de las afecciones descritas en este capítulo correspondía al sacerdote. La persona debía ser presentada a Aarón o a uno de sus hijos sacerdotes para que examinara la señal y determinara su condición según los criterios establecidos.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0034",
+      "book": "Levítico",
+      "chapter": 13,
+      "verse_start": 45,
+      "verse_end": 46,
+      "reference": "Levítico 13:45-46",
+      "category": "AT_GENERAL",
+      "subcategory": "Conducta de la persona declarada impura",
+      "characters": [
+        "persona declarada impura",
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué debía hacer públicamente la persona declarada impura por la afección mientras permaneciera en esa condición?",
+      "opcion_a": "Advertir en voz alta que era impura y vivir apartada fuera del campamento",
+      "opcion_b": "Permanecer en silencio dentro del tabernáculo",
+      "opcion_c": "Viajar entre las tribus para recibir ofrendas",
+      "opcion_d": "Presentarse diariamente ante el altar sin restricción",
+      "correct_option": "A",
+      "correct_answer": "Advertir en voz alta que era impura y vivir apartada fuera del campamento",
+      "explanation": "La norma combina señales públicas y separación temporal: la persona debía advertir su condición y permanecer fuera del campamento mientras continuara la afección. La pregunta resume esas dos obligaciones sin convertirlas en una cita textual.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0035",
+      "book": "Levítico",
+      "chapter": 14,
+      "verse_start": 4,
+      "verse_end": 4,
+      "reference": "Levítico 14:4",
+      "category": "AT_GENERAL",
+      "subcategory": "Elementos para la purificación",
+      "characters": [
+        "sacerdote",
+        "persona sanada"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué conjunto debía prepararse para iniciar el rito de purificación de una persona cuya afección había sanado?",
+      "opcion_a": "Dos aves vivas y limpias, madera de cedro, grana e hisopo",
+      "opcion_b": "Un carnero, aceite, miel y lino",
+      "opcion_c": "Dos cabras, sal, vino y cedro",
+      "opcion_d": "Una paloma, incienso, oro y agua",
+      "correct_option": "A",
+      "correct_answer": "Dos aves vivas y limpias, madera de cedro, grana e hisopo",
+      "explanation": "El rito de purificación comienza con un conjunto muy específico de elementos: dos aves vivas y limpias junto con madera de cedro, grana e hisopo. La combinación distingue este procedimiento de las ofrendas ordinarias descritas en capítulos anteriores.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0036",
+      "book": "Levítico",
+      "chapter": 14,
+      "verse_start": 39,
+      "verse_end": 40,
+      "reference": "Levítico 14:39-40",
+      "category": "AT_GENERAL",
+      "subcategory": "Piedras afectadas de una casa",
+      "characters": [
+        "sacerdote",
+        "propietario de la casa"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué debía hacerse con las piedras de una casa cuando, tras la inspección, la afección se había extendido por sus paredes?",
+      "opcion_a": "Quitarlas y arrojarlas fuera de la ciudad en un lugar impuro",
+      "opcion_b": "Pintarlas y mantenerlas dentro de la casa",
+      "opcion_c": "Cubrirlas con telas sacerdotales",
+      "opcion_d": "Trasladarlas al atrio del tabernáculo",
+      "correct_option": "A",
+      "correct_answer": "Quitarlas y arrojarlas fuera de la ciudad en un lugar impuro",
+      "explanation": "Cuando la inspección confirmaba que la afección se había extendido en la casa, las piedras afectadas debían retirarse y llevarse fuera de la ciudad a un lugar considerado impuro. La medida formaba parte del procedimiento de saneamiento de la vivienda.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0037",
+      "book": "Levítico",
+      "chapter": 15,
+      "verse_start": 5,
+      "verse_end": 5,
+      "reference": "Levítico 15:5",
+      "category": "AT_GENERAL",
+      "subcategory": "Impureza por contacto con el lecho",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Hasta cuándo permanecía impura una persona que tocaba el lecho señalado en esta norma, aun después de lavar sus vestidos y bañarse?",
+      "opcion_a": "Hasta la noche",
+      "opcion_b": "Durante siete días completos",
+      "opcion_c": "Hasta el siguiente mes",
+      "opcion_d": "Hasta presentar un becerro",
+      "correct_option": "A",
+      "correct_answer": "Hasta la noche",
+      "explanation": "La norma exige lavar los vestidos y bañarse con agua, pero aun después de esas acciones la condición se mantiene hasta la noche. La pregunta evalúa la duración temporal concreta asociada con este tipo de contacto.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0038",
+      "book": "Levítico",
+      "chapter": 16,
+      "verse_start": 8,
+      "verse_end": 10,
+      "reference": "Levítico 16:8-10",
+      "category": "AT_GENERAL",
+      "subcategory": "Suertes sobre los dos machos cabríos",
+      "characters": [
+        "Aarón",
+        "israelitas"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué dos destinos se determinaban por suerte para los machos cabríos presentados en el día de expiación?",
+      "opcion_a": "Uno para Dios y otro para Azazel",
+      "opcion_b": "Uno para Moisés y otro para Aarón",
+      "opcion_c": "Uno para el altar y otro para el arca",
+      "opcion_d": "Uno para Judá y otro para Leví",
+      "correct_option": "A",
+      "correct_answer": "Uno para Dios y otro para Azazel",
+      "explanation": "Aarón debía echar suertes sobre los dos machos cabríos. Una suerte correspondía al animal destinado a la ofrenda y la otra al que sería enviado vivo al desierto, identificado en el pasaje con Azazel. La pregunta distingue las funciones asignadas a ambos animales.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0039",
+      "book": "Levítico",
+      "chapter": 16,
+      "verse_start": 21,
+      "verse_end": 22,
+      "reference": "Levítico 16:21-22",
+      "category": "AT_GENERAL",
+      "subcategory": "Macho cabrío enviado al desierto",
+      "characters": [
+        "Aarón",
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué función tenía el macho cabrío que era enviado vivo al desierto después de la confesión de las faltas del pueblo?",
+      "opcion_a": "Llevar simbólicamente las iniquidades del pueblo a una tierra apartada",
+      "opcion_b": "Regresar después al campamento para una segunda ceremonia",
+      "opcion_c": "Servir como animal de carga para los sacerdotes",
+      "opcion_d": "Ser entregado a otra tribu como señal de alianza",
+      "correct_option": "A",
+      "correct_answer": "Llevar simbólicamente las iniquidades del pueblo a una tierra apartada",
+      "explanation": "Aarón colocaba sus manos sobre el macho cabrío vivo y confesaba sobre él las faltas del pueblo. Después, el animal era enviado al desierto, representando el alejamiento de esas iniquidades de la comunidad.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0040",
+      "book": "Levítico",
+      "chapter": 16,
+      "verse_start": 29,
+      "verse_end": 29,
+      "reference": "Levítico 16:29",
+      "category": "AT_GENERAL",
+      "subcategory": "Fecha anual del día de expiación",
+      "characters": [
+        "israelitas",
+        "sacerdotes"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿En qué fecha del calendario se establece la observancia anual descrita al final de las instrucciones del día de expiación?",
+      "opcion_a": "El día diez del séptimo mes",
+      "opcion_b": "El día uno del primer mes",
+      "opcion_c": "El día catorce del primer mes",
+      "opcion_d": "El día quince del séptimo mes",
+      "correct_option": "A",
+      "correct_answer": "El día diez del séptimo mes",
+      "explanation": "La regulación fija una fecha concreta para esta observancia anual: el día diez del séptimo mes. La precisión de día y mes convierte la pregunta en un dato cronológico de nivel experto dentro del calendario ritual.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0041",
+      "book": "Levítico",
+      "chapter": 17,
+      "verse_start": 3,
+      "verse_end": 4,
+      "reference": "Levítico 17:3-4",
+      "category": "AT_GENERAL",
+      "subcategory": "Lugar de presentación de los sacrificios",
+      "characters": [
+        "israelitas",
+        "sacerdotes"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué debía hacerse con un animal destinado al sacrificio para que la ofrenda se presentara de la manera establecida?",
+      "opcion_a": "Llevarlo a la entrada del tabernáculo de reunión para presentarlo allí",
+      "opcion_b": "Sacrificarlo únicamente dentro de la tienda familiar",
+      "opcion_c": "Entregarlo primero al jefe de la tribu",
+      "opcion_d": "Llevarlo fuera del campamento y dejarlo allí",
+      "correct_option": "A",
+      "correct_answer": "Llevarlo a la entrada del tabernáculo de reunión para presentarlo allí",
+      "explanation": "La norma concentra la presentación de los animales destinados al sacrificio en la entrada del tabernáculo de reunión. La pregunta evalúa el lugar establecido para formalizar la ofrenda y evita convertir la disposición en una pregunta meramente terminológica.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0042",
+      "book": "Levítico",
+      "chapter": 17,
+      "verse_start": 10,
+      "verse_end": 12,
+      "reference": "Levítico 17:10-12",
+      "category": "AT_GENERAL",
+      "subcategory": "Razón de la prohibición de sangre",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué razón se relaciona directamente con la prohibición de consumir sangre en esta sección?",
+      "opcion_a": "La vida de la carne está vinculada con la sangre",
+      "opcion_b": "La sangre era utilizada como alimento de los sacerdotes",
+      "opcion_c": "La sangre pertenecía únicamente a los extranjeros",
+      "opcion_d": "La sangre debía almacenarse para los viajes",
+      "correct_option": "A",
+      "correct_answer": "La vida de la carne está vinculada con la sangre",
+      "explanation": "La prohibición no aparece como una regla aislada: el pasaje vincula la sangre con la vida de la carne y con su función ritual. La pregunta se concentra en la razón explícita que sostiene la norma dentro de este capítulo.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0043",
+      "book": "Levítico",
+      "chapter": 17,
+      "verse_start": 13,
+      "verse_end": 13,
+      "reference": "Levítico 17:13",
+      "category": "AT_GENERAL",
+      "subcategory": "Sangre de animales cazados",
+      "characters": [
+        "israelitas",
+        "extranjeros residentes"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué debía hacerse con la sangre de un animal o ave permitidos que hubieran sido obtenidos mediante caza?",
+      "opcion_a": "Derramarla y cubrirla con tierra",
+      "opcion_b": "Guardarla en una vasija para el sacerdote",
+      "opcion_c": "Mezclarla con aceite antes de cocinar",
+      "opcion_d": "Llevarla al río y dejarla correr",
+      "correct_option": "A",
+      "correct_answer": "Derramarla y cubrirla con tierra",
+      "explanation": "En el caso de animales o aves obtenidos mediante caza, la sangre debía derramarse y cubrirse con tierra. Es una disposición concreta que aplica la prohibición de consumir sangre a una situación cotidiana distinta de los sacrificios del santuario.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0044",
+      "book": "Levítico",
+      "chapter": 18,
+      "verse_start": 3,
+      "verse_end": 3,
+      "reference": "Levítico 18:3",
+      "category": "AT_GENERAL",
+      "subcategory": "No imitar costumbres de Egipto y Canaán",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué dos pueblos se presentan como ejemplos cuyas prácticas no debía imitar Israel?",
+      "opcion_a": "Egipto y Canaán",
+      "opcion_b": "Moab y Edom",
+      "opcion_c": "Asiria y Babilonia",
+      "opcion_d": "Filistea y Amón",
+      "correct_option": "A",
+      "correct_answer": "Egipto y Canaán",
+      "explanation": "Israel había salido de Egipto y se dirigía a Canaán. La instrucción utiliza precisamente esos dos contextos culturales como contraste y ordena no adoptar sus prácticas, estableciendo una identidad normativa propia para el pueblo.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0045",
+      "book": "Levítico",
+      "chapter": 18,
+      "verse_start": 5,
+      "verse_end": 5,
+      "reference": "Levítico 18:5",
+      "category": "AT_GENERAL",
+      "subcategory": "Guardar estatutos y ordenanzas",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué resultado se asocia en esta instrucción con poner por obra los estatutos y ordenanzas?",
+      "opcion_a": "Vivir por medio de ellos",
+      "opcion_b": "Recibir una función sacerdotal",
+      "opcion_c": "Quedar exento de ofrecer sacrificios",
+      "opcion_d": "Obtener tierras adicionales",
+      "correct_option": "A",
+      "correct_answer": "Vivir por medio de ellos",
+      "explanation": "El pasaje conecta la obediencia a los estatutos y ordenanzas con la vida. La pregunta evalúa esa relación directa expresada en la norma, sin extenderla a recompensas materiales o funciones que el versículo no menciona.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0046",
+      "book": "Levítico",
+      "chapter": 18,
+      "verse_start": 21,
+      "verse_end": 21,
+      "reference": "Levítico 18:21",
+      "category": "AT_GENERAL",
+      "subcategory": "Prohibición relacionada con Moloc",
+      "characters": [
+        "israelitas",
+        "Moloc"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué práctica estaba prohibida respecto de los hijos en relación con Moloc?",
+      "opcion_a": "Entregarlos como ofrenda a Moloc",
+      "opcion_b": "Enviarlos a vivir entre los sacerdotes",
+      "opcion_c": "Consagrarlos para el servicio del tabernáculo",
+      "opcion_d": "Llevarlos a Canaán antes que al resto de la familia",
+      "correct_option": "A",
+      "correct_answer": "Entregarlos como ofrenda a Moloc",
+      "explanation": "La norma prohíbe de manera directa entregar a los hijos en una práctica ritual vinculada con Moloc. La pregunta identifica la conducta prohibida sin convertirla en una descripción gráfica ni añadir elementos que no pertenecen al pasaje.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0047",
+      "book": "Levítico",
+      "chapter": 19,
+      "verse_start": 9,
+      "verse_end": 10,
+      "reference": "Levítico 19:9-10",
+      "category": "AT_GENERAL",
+      "subcategory": "Espigueo para el pobre y el extranjero",
+      "characters": [
+        "israelitas",
+        "pobres",
+        "extranjeros"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Para quiénes debían dejarse parte de la cosecha y lo que quedaba después de recoger la viña?",
+      "opcion_a": "Para el pobre y el extranjero",
+      "opcion_b": "Solo para los sacerdotes",
+      "opcion_c": "Para los soldados y jueces",
+      "opcion_d": "Únicamente para los propietarios vecinos",
+      "correct_option": "A",
+      "correct_answer": "Para el pobre y el extranjero",
+      "explanation": "La norma ordena no aprovechar hasta el último extremo de la cosecha ni recoger todo lo que queda de la viña. Ese remanente debía quedar disponible para el pobre y el extranjero, vinculando la práctica agrícola con la atención a personas vulnerables.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0048",
+      "book": "Levítico",
+      "chapter": 19,
+      "verse_start": 14,
+      "verse_end": 14,
+      "reference": "Levítico 19:14",
+      "category": "AT_GENERAL",
+      "subcategory": "Trato al sordo y al ciego",
+      "characters": [
+        "israelitas",
+        "personas con discapacidad"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué dos acciones prohíbe esta norma respecto de una persona sorda y una persona ciega?",
+      "opcion_a": "Maldecir al sordo y poner tropiezo delante del ciego",
+      "opcion_b": "Hablar con el sordo y guiar al ciego",
+      "opcion_c": "Dar alimento al sordo y acompañar al ciego",
+      "opcion_d": "Permitir trabajar al sordo y viajar al ciego",
+      "correct_option": "A",
+      "correct_answer": "Maldecir al sordo y poner tropiezo delante del ciego",
+      "explanation": "La norma prohíbe aprovecharse de limitaciones sensoriales: rechaza maldecir a quien no puede oír y colocar un obstáculo ante quien no puede ver. La pregunta conserva el sentido directo de ambas prohibiciones y las presenta como un único par normativo.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0049",
+      "book": "Levítico",
+      "chapter": 19,
+      "verse_start": 18,
+      "verse_end": 18,
+      "reference": "Levítico 19:18",
+      "category": "AT_GENERAL",
+      "subcategory": "Amor al prójimo",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Básico",
+      "question_type": "Selección múltiple",
+      "question": "¿Cómo debía amar una persona a su prójimo según esta instrucción?",
+      "opcion_a": "Como a sí misma",
+      "opcion_b": "Solo cuando perteneciera a su misma familia",
+      "opcion_c": "Únicamente si recibía algo a cambio",
+      "opcion_d": "Menos que a los dirigentes del pueblo",
+      "correct_option": "A",
+      "correct_answer": "Como a sí misma",
+      "explanation": "La instrucción aparece después de prohibir la venganza y el rencor y establece como criterio positivo amar al prójimo como a uno mismo. Es una de las formulaciones más reconocibles del capítulo, por lo que corresponde al nivel básico.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0050",
+      "book": "Levítico",
+      "chapter": 19,
+      "verse_start": 32,
+      "verse_end": 32,
+      "reference": "Levítico 19:32",
+      "category": "AT_GENERAL",
+      "subcategory": "Respeto a las personas mayores",
+      "characters": [
+        "israelitas",
+        "personas mayores"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué conducta se indica como señal de respeto hacia una persona de edad avanzada?",
+      "opcion_a": "Levantarse ante ella y honrarla",
+      "opcion_b": "Guardar silencio cada vez que entrara en una casa",
+      "opcion_c": "Entregarle una ofrenda de animales",
+      "opcion_d": "Cederle siempre la propiedad de la tierra",
+      "correct_option": "A",
+      "correct_answer": "Levantarse ante ella y honrarla",
+      "explanation": "La norma utiliza una conducta visible de respeto: levantarse ante la persona de edad y darle honra. La pregunta se limita a la acción expresada en el pasaje y no agrega obligaciones económicas o rituales inexistentes.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0051",
+      "book": "Levítico",
+      "chapter": 20,
+      "verse_start": 7,
+      "verse_end": 8,
+      "reference": "Levítico 20:7-8",
+      "category": "AT_GENERAL",
+      "subcategory": "Llamado a la santidad",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Básico",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué llamado principal se hace al pueblo en esta instrucción?",
+      "opcion_a": "Santificarse y vivir en santidad",
+      "opcion_b": "Abandonar el campamento durante siete días",
+      "opcion_c": "Construir un nuevo altar en cada tribu",
+      "opcion_d": "Suspender todas las cosechas por un año",
+      "correct_option": "A",
+      "correct_answer": "Santificarse y vivir en santidad",
+      "explanation": "El pasaje llama al pueblo a consagrarse y ser santo, conectando esa identidad con guardar los estatutos. La pregunta recoge el mandato central de la sección sin entrar en una formulación doctrinal más amplia que el propio texto.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0052",
+      "book": "Levítico",
+      "chapter": 20,
+      "verse_start": 26,
+      "verse_end": 26,
+      "reference": "Levítico 20:26",
+      "category": "AT_GENERAL",
+      "subcategory": "Pueblo apartado",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué idea se usa para explicar la santidad que se esperaba de Israel frente a otros pueblos?",
+      "opcion_a": "Que había sido apartado de los demás pueblos",
+      "opcion_b": "Que debía vivir sin contacto con ninguna nación",
+      "opcion_c": "Que debía gobernar políticamente sobre todas las naciones",
+      "opcion_d": "Que debía abandonar para siempre la agricultura",
+      "correct_option": "A",
+      "correct_answer": "Que había sido apartado de los demás pueblos",
+      "explanation": "La sección relaciona la santidad de Israel con haber sido apartado de los demás pueblos para pertenecer de manera especial a Dios. La pregunta evalúa esa explicación identitaria sin confundir separación religiosa con aislamiento absoluto o dominio político.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0053",
+      "book": "Levítico",
+      "chapter": 21,
+      "verse_start": 5,
+      "verse_end": 5,
+      "reference": "Levítico 21:5",
+      "category": "AT_GENERAL",
+      "subcategory": "Restricciones externas de los sacerdotes",
+      "characters": [
+        "sacerdotes"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Cuál de estas prácticas estaba prohibida a los sacerdotes dentro de las normas sobre su apariencia y duelo?",
+      "opcion_a": "Hacerse incisiones en la carne",
+      "opcion_b": "Usar vestiduras sacerdotales",
+      "opcion_c": "Presentar ofrendas sobre el altar",
+      "opcion_d": "Enseñar las normas al pueblo",
+      "correct_option": "A",
+      "correct_answer": "Hacerse incisiones en la carne",
+      "explanation": "Entre las restricciones dirigidas a los sacerdotes se incluyen prácticas externas vinculadas al duelo y a la apariencia, entre ellas hacerse incisiones en la carne. Las otras opciones pertenecen a funciones normales del servicio sacerdotal.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0054",
+      "book": "Levítico",
+      "chapter": 21,
+      "verse_start": 10,
+      "verse_end": 10,
+      "reference": "Levítico 21:10",
+      "category": "AT_GENERAL",
+      "subcategory": "Normas particulares del sumo sacerdote",
+      "characters": [
+        "sumo sacerdote"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué acción se prohibía al sumo sacerdote respecto de sus vestiduras en situaciones de duelo?",
+      "opcion_a": "Rasgarlas",
+      "opcion_b": "Lavarlas",
+      "opcion_c": "Usarlas dentro del santuario",
+      "opcion_d": "Guardarlas después del servicio",
+      "correct_option": "A",
+      "correct_answer": "Rasgarlas",
+      "explanation": "Las normas particulares del sumo sacerdote restringen ciertos signos habituales de duelo. Entre ellas aparece la prohibición de rasgar sus vestiduras, diferenciando su conducta ritual de otras expresiones de aflicción presentes en el entorno bíblico.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0055",
+      "book": "Levítico",
+      "chapter": 22,
+      "verse_start": 3,
+      "verse_end": 3,
+      "reference": "Levítico 22:3",
+      "category": "AT_GENERAL",
+      "subcategory": "Acceso a las cosas santas en estado de impureza",
+      "characters": [
+        "sacerdotes",
+        "descendientes de Aarón"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué debía evitar un descendiente de Aarón mientras se encontrara en estado de impureza?",
+      "opcion_a": "Acercarse a las cosas santas consagradas por Israel",
+      "opcion_b": "Hablar con otros sacerdotes",
+      "opcion_c": "Permanecer dentro del campamento",
+      "opcion_d": "Comer cualquier alimento vegetal",
+      "correct_option": "A",
+      "correct_answer": "Acercarse a las cosas santas consagradas por Israel",
+      "explanation": "La instrucción restringe el acceso a las cosas santas mientras un descendiente de Aarón se encuentre impuro. La pregunta se concentra en la conducta que debía evitarse y no en las distintas causas de impureza enumeradas después.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0056",
+      "book": "Levítico",
+      "chapter": 22,
+      "verse_start": 20,
+      "verse_end": 20,
+      "reference": "Levítico 22:20",
+      "category": "AT_GENERAL",
+      "subcategory": "Animales con defecto",
+      "characters": [
+        "israelitas",
+        "sacerdotes"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué condición hacía inaceptable a un animal presentado como ofrenda en esta norma?",
+      "opcion_a": "Tener algún defecto",
+      "opcion_b": "Ser parte de un rebaño grande",
+      "opcion_c": "Haber nacido en el mismo año",
+      "opcion_d": "Ser propiedad de una familia numerosa",
+      "correct_option": "A",
+      "correct_answer": "Tener algún defecto",
+      "explanation": "La norma establece que un animal con defecto no debía presentarse como ofrenda aceptable. La pregunta evalúa el criterio general de integridad del animal y no los distintos tipos de defectos que el capítulo detalla posteriormente.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0057",
+      "book": "Levítico",
+      "chapter": 23,
+      "verse_start": 5,
+      "verse_end": 5,
+      "reference": "Levítico 23:5",
+      "category": "AT_GENERAL",
+      "subcategory": "Fecha de la Pascua",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿En qué fecha se celebraba la Pascua según el calendario señalado en este capítulo?",
+      "opcion_a": "El día catorce del primer mes, al atardecer",
+      "opcion_b": "El día diez del séptimo mes",
+      "opcion_c": "El primer día del primer mes",
+      "opcion_d": "El día quince del séptimo mes",
+      "correct_option": "A",
+      "correct_answer": "El día catorce del primer mes, al atardecer",
+      "explanation": "El calendario de las fiestas sitúa la Pascua el día catorce del primer mes, al atardecer. La pregunta exige recordar simultáneamente día, mes y momento, por lo que corresponde al nivel experto.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0058",
+      "book": "Levítico",
+      "chapter": 23,
+      "verse_start": 6,
+      "verse_end": 8,
+      "reference": "Levítico 23:6-8",
+      "category": "AT_GENERAL",
+      "subcategory": "Fiesta de los panes sin levadura",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Durante cuántos días debían comerse panes sin levadura en la fiesta que comenzaba el día quince del primer mes?",
+      "opcion_a": "Siete días",
+      "opcion_b": "Tres días",
+      "opcion_c": "Diez días",
+      "opcion_d": "Cuarenta días",
+      "correct_option": "A",
+      "correct_answer": "Siete días",
+      "explanation": "La fiesta de los panes sin levadura comenzaba inmediatamente después de la fecha de la Pascua y se extendía durante siete días. La pregunta distingue la duración de la celebración de otras cifras presentes en el calendario ritual.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0059",
+      "book": "Levítico",
+      "chapter": 23,
+      "verse_start": 15,
+      "verse_end": 16,
+      "reference": "Levítico 23:15-16",
+      "category": "AT_GENERAL",
+      "subcategory": "Conteo hasta la nueva ofrenda vegetal",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Hasta qué cantidad de días debía llegar el conteo antes de presentar la nueva ofrenda vegetal?",
+      "opcion_a": "Cincuenta días",
+      "opcion_b": "Cuarenta días",
+      "opcion_c": "Setenta días",
+      "opcion_d": "Siete días",
+      "correct_option": "A",
+      "correct_answer": "Cincuenta días",
+      "explanation": "La instrucción parte de un conteo de siete semanas completas y culmina al llegar al día cincuenta, cuando debía presentarse una nueva ofrenda vegetal. La pregunta exige precisión numérica dentro del calendario de fiestas y por eso se clasifica como experta.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0060",
+      "book": "Levítico",
+      "chapter": 23,
+      "verse_start": 42,
+      "verse_end": 43,
+      "reference": "Levítico 23:42-43",
+      "category": "AT_GENERAL",
+      "subcategory": "Habitar en tabernáculos durante la fiesta",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué acontecimiento debía recordarse al habitar temporalmente en tabernáculos durante esta fiesta?",
+      "opcion_a": "Que Israel habitó en tabernáculos después de ser sacado de Egipto",
+      "opcion_b": "Que Abraham construyó un altar en Canaán",
+      "opcion_c": "Que Noé permaneció dentro del arca",
+      "opcion_d": "Que Jacob vivió en Egipto durante diecisiete años",
+      "correct_option": "A",
+      "correct_answer": "Que Israel habitó en tabernáculos después de ser sacado de Egipto",
+      "explanation": "La celebración debía transmitir memoria histórica a las generaciones siguientes: habitar en tabernáculos recordaba que los israelitas vivieron de esa manera después de la salida de Egipto. La pregunta conecta el rito con el acontecimiento que debía conservarse en la memoria colectiva.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0061",
+      "book": "Levítico",
+      "chapter": 24,
+      "verse_start": 2,
+      "verse_end": 2,
+      "reference": "Levítico 24:2",
+      "category": "AT_GENERAL",
+      "subcategory": "Aceite para el alumbrado",
+      "characters": [
+        "israelitas",
+        "Aarón"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué tipo de aceite debía llevar el pueblo para mantener continuamente encendidas las lámparas?",
+      "opcion_a": "Aceite puro de olivas machacadas",
+      "opcion_b": "Aceite mezclado con vino",
+      "opcion_c": "Aceite de cedro",
+      "opcion_d": "Aceite de lino con incienso",
+      "correct_option": "A",
+      "correct_answer": "Aceite puro de olivas machacadas",
+      "explanation": "La instrucción para el alumbrado del santuario pide aceite puro obtenido de olivas machacadas. El dato conecta el cuidado continuo de las lámparas con un material específico y permite distinguirlo de otros aceites usados en contextos diferentes.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0062",
+      "book": "Levítico",
+      "chapter": 24,
+      "verse_start": 5,
+      "verse_end": 6,
+      "reference": "Levítico 24:5-6",
+      "category": "AT_GENERAL",
+      "subcategory": "Doce panes sobre la mesa",
+      "characters": [
+        "sacerdotes",
+        "israelitas"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Cuántos panes debían prepararse y colocarse sobre la mesa en dos hileras?",
+      "opcion_a": "Doce panes",
+      "opcion_b": "Siete panes",
+      "opcion_c": "Diez panes",
+      "opcion_d": "Veinticuatro panes",
+      "correct_option": "A",
+      "correct_answer": "Doce panes",
+      "explanation": "La disposición ordena preparar doce panes y colocarlos en dos hileras de seis sobre la mesa. La pregunta exige recordar una cantidad concreta vinculada con el servicio del santuario, por lo que corresponde al nivel experto.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0063",
+      "book": "Levítico",
+      "chapter": 24,
+      "verse_start": 8,
+      "verse_end": 8,
+      "reference": "Levítico 24:8",
+      "category": "AT_GENERAL",
+      "subcategory": "Renovación semanal de los panes",
+      "characters": [
+        "Aarón",
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Con qué frecuencia debían ordenarse nuevamente los panes delante de Dios?",
+      "opcion_a": "Cada día de reposo",
+      "opcion_b": "Cada primer día del mes",
+      "opcion_c": "Una vez al año",
+      "opcion_d": "Cada tercer día",
+      "correct_option": "A",
+      "correct_answer": "Cada día de reposo",
+      "explanation": "Los panes debían disponerse de manera regular cada día de reposo. La pregunta evalúa la frecuencia de esta práctica continua y la diferencia de otras observancias mensuales o anuales.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0064",
+      "book": "Levítico",
+      "chapter": 24,
+      "verse_start": 10,
+      "verse_end": 11,
+      "reference": "Levítico 24:10-11",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Selomit, madre del hombre llevado ante Moisés",
+      "characters": [
+        "Selomit",
+        "Dibri",
+        "Moisés",
+        "israelitas"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Cómo se llamaba la madre israelita del hombre cuyo caso fue llevado ante Moisés después de una disputa en el campamento?",
+      "opcion_a": "Selomit",
+      "opcion_b": "Elisabet",
+      "opcion_c": "Jocabed",
+      "opcion_d": "Miriam",
+      "correct_option": "A",
+      "correct_answer": "Selomit",
+      "explanation": "El relato identifica a la madre del hombre como Selomit, hija de Dibri, de la tribu de Dan. Es un nombre secundario y poco frecuente dentro de Levítico, por lo que la pregunta se reserva para nivel experto.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0065",
+      "book": "Levítico",
+      "chapter": 25,
+      "verse_start": 4,
+      "verse_end": 4,
+      "reference": "Levítico 25:4",
+      "category": "AT_GENERAL",
+      "subcategory": "Año sabático de la tierra",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué debía ocurrir con la tierra durante el séptimo año?",
+      "opcion_a": "Debía tener un año de reposo",
+      "opcion_b": "Debía cultivarse el doble",
+      "opcion_c": "Debía venderse a otra familia",
+      "opcion_d": "Debía dedicarse solo a viñedos",
+      "correct_option": "A",
+      "correct_answer": "Debía tener un año de reposo",
+      "explanation": "Después de seis años de cultivo, el séptimo debía ser un período de reposo para la tierra. La pregunta recoge el principio central del año sabático sin entrar todavía en las normas complementarias del capítulo.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0066",
+      "book": "Levítico",
+      "chapter": 25,
+      "verse_start": 8,
+      "verse_end": 8,
+      "reference": "Levítico 25:8",
+      "category": "AT_GENERAL",
+      "subcategory": "Cómputo previo al jubileo",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Cuántos años resultaban de contar siete ciclos de siete años antes del jubileo?",
+      "opcion_a": "Cuarenta y nueve años",
+      "opcion_b": "Cincuenta años",
+      "opcion_c": "Cuarenta años",
+      "opcion_d": "Setenta años",
+      "correct_option": "A",
+      "correct_answer": "Cuarenta y nueve años",
+      "explanation": "La preparación del jubileo parte de siete ciclos de siete años, que suman cuarenta y nueve años. La precisión aritmética y cronológica de este cómputo justifica su clasificación como pregunta experta.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0067",
+      "book": "Levítico",
+      "chapter": 25,
+      "verse_start": 10,
+      "verse_end": 10,
+      "reference": "Levítico 25:10",
+      "category": "AT_GENERAL",
+      "subcategory": "Año del jubileo",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué debía proclamarse en el año cincuenta durante el jubileo?",
+      "opcion_a": "Libertad y retorno de cada persona a su propiedad y a su familia",
+      "opcion_b": "Un nuevo censo militar",
+      "opcion_c": "La construcción de otro tabernáculo",
+      "opcion_d": "Un impuesto especial sobre las cosechas",
+      "correct_option": "A",
+      "correct_answer": "Libertad y retorno de cada persona a su propiedad y a su familia",
+      "explanation": "El año cincuenta se consagraba como jubileo y se asociaba con la proclamación de libertad, el retorno a la propiedad y el regreso a la familia. La pregunta reúne los elementos centrales que distinguen esta celebración.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0068",
+      "book": "Levítico",
+      "chapter": 25,
+      "verse_start": 15,
+      "verse_end": 16,
+      "reference": "Levítico 25:15-16",
+      "category": "AT_GENERAL",
+      "subcategory": "Valor de las tierras según las cosechas restantes",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué debía influir en el precio de una propiedad cuando se compraba o vendía antes del jubileo?",
+      "opcion_a": "La cantidad de años de cosecha que quedaban hasta el jubileo",
+      "opcion_b": "El número de hijos del comprador",
+      "opcion_c": "La distancia hasta el tabernáculo",
+      "opcion_d": "La edad del propietario anterior",
+      "correct_option": "A",
+      "correct_answer": "La cantidad de años de cosecha que quedaban hasta el jubileo",
+      "explanation": "El valor debía relacionarse con los años de producción que quedaban antes del jubileo. Cuantos más años de cosecha restaban, mayor podía ser el precio; cuantos menos, menor. La pregunta evalúa la lógica económica explícita de la norma.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0069",
+      "book": "Levítico",
+      "chapter": 25,
+      "verse_start": 23,
+      "verse_end": 23,
+      "reference": "Levítico 25:23",
+      "category": "AT_GENERAL",
+      "subcategory": "La tierra no se vende de manera permanente",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Por qué la tierra no debía venderse de manera permanente?",
+      "opcion_a": "Porque la tierra pertenecía a Dios y el pueblo vivía en ella como forasteros y huéspedes",
+      "opcion_b": "Porque todas las tierras pertenecían exclusivamente a los sacerdotes",
+      "opcion_c": "Porque ninguna familia podía cultivar la misma parcela más de un año",
+      "opcion_d": "Porque las propiedades debían trasladarse entre tribus cada mes",
+      "correct_option": "A",
+      "correct_answer": "Porque la tierra pertenecía a Dios y el pueblo vivía en ella como forasteros y huéspedes",
+      "explanation": "La norma fundamenta la limitación de la venta permanente en que la tierra pertenece a Dios y el pueblo ocupa en ella una posición dependiente. Esta idea sostiene las disposiciones posteriores sobre rescate y recuperación de propiedades.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0070",
+      "book": "Levítico",
+      "chapter": 25,
+      "verse_start": 35,
+      "verse_end": 37,
+      "reference": "Levítico 25:35-37",
+      "category": "AT_GENERAL",
+      "subcategory": "Apoyo al hermano empobrecido",
+      "characters": [
+        "israelitas",
+        "pobres"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué se prohibía cobrar a un hermano empobrecido al ayudarlo económicamente?",
+      "opcion_a": "Interés o ganancia",
+      "opcion_b": "El costo original del alimento",
+      "opcion_c": "El valor de una herramienta prestada",
+      "opcion_d": "La devolución de una deuda sin recargo",
+      "correct_option": "A",
+      "correct_answer": "Interés o ganancia",
+      "explanation": "La norma ordena sostener al miembro de la comunidad que se empobrece y prohíbe obtener de él interés o ganancia. La pregunta distingue la ayuda solidaria de un mecanismo destinado a lucrar con su necesidad.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0071",
+      "book": "Levítico",
+      "chapter": 25,
+      "verse_start": 39,
+      "verse_end": 41,
+      "reference": "Levítico 25:39-41",
+      "category": "AT_GENERAL",
+      "subcategory": "Servicio hasta el jubileo",
+      "characters": [
+        "israelitas",
+        "persona empobrecida"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Hasta qué momento podía servir una persona israelita empobrecida que había entrado al servicio de otra?",
+      "opcion_a": "Hasta el año del jubileo",
+      "opcion_b": "Hasta cumplir cuarenta años",
+      "opcion_c": "Durante exactamente siete meses",
+      "opcion_d": "Hasta el siguiente día de reposo",
+      "correct_option": "A",
+      "correct_answer": "Hasta el año del jubileo",
+      "explanation": "La disposición indica que una persona empobrecida no debía ser tratada como esclavo permanente. Su servicio se extendía hasta el jubileo, momento en que podía salir con sus hijos y regresar a su familia y a la propiedad de sus antepasados.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0072",
+      "book": "Levítico",
+      "chapter": 26,
+      "verse_start": 3,
+      "verse_end": 4,
+      "reference": "Levítico 26:3-4",
+      "category": "AT_GENERAL",
+      "subcategory": "Lluvias y cosechas por obediencia",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué beneficio agrícola se menciona al describir las consecuencias de guardar los estatutos y mandamientos?",
+      "opcion_a": "Lluvias a su tiempo y producción de la tierra",
+      "opcion_b": "Eliminación completa de todo trabajo agrícola",
+      "opcion_c": "Cosechas sin necesidad de sembrar",
+      "opcion_d": "Traslado de los campos fuera de Canaán",
+      "correct_option": "A",
+      "correct_answer": "Lluvias a su tiempo y producción de la tierra",
+      "explanation": "Al presentar las bendiciones vinculadas con la obediencia, el pasaje menciona lluvias en su tiempo y una tierra que produce sus frutos. La pregunta se concentra en una consecuencia agrícola concreta y evita convertir el pasaje en una afirmación general.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0073",
+      "book": "Levítico",
+      "chapter": 26,
+      "verse_start": 8,
+      "verse_end": 8,
+      "reference": "Levítico 26:8",
+      "category": "AT_GENERAL",
+      "subcategory": "Proporción en la victoria",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué proporción se menciona para ilustrar la ventaja de Israel frente a sus enemigos?",
+      "opcion_a": "Cinco perseguirían a cien y cien perseguirían a diez mil",
+      "opcion_b": "Diez perseguirían a cien y cien a mil",
+      "opcion_c": "Cinco perseguirían a cincuenta y cien a cinco mil",
+      "opcion_d": "Uno perseguiría a cien y diez a diez mil",
+      "correct_option": "A",
+      "correct_answer": "Cinco perseguirían a cien y cien perseguirían a diez mil",
+      "explanation": "El pasaje utiliza una relación numérica llamativa: cinco perseguirían a cien y cien a diez mil. La pregunta exige recordar ambas cantidades y por eso se clasifica como experta.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0074",
+      "book": "Levítico",
+      "chapter": 26,
+      "verse_start": 11,
+      "verse_end": 12,
+      "reference": "Levítico 26:11-12",
+      "category": "AT_GENERAL",
+      "subcategory": "Presencia de Dios entre el pueblo",
+      "characters": [
+        "Dios",
+        "israelitas"
+      ],
+      "difficulty": "Básico",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué relación se promete al pueblo dentro de las bendiciones de esta sección?",
+      "opcion_a": "Dios estaría en medio de ellos y ellos serían su pueblo",
+      "opcion_b": "Cada tribu tendría un dios diferente",
+      "opcion_c": "Los sacerdotes gobernarían sobre todas las naciones",
+      "opcion_d": "Israel dejaría de necesitar un lugar de reunión",
+      "correct_option": "A",
+      "correct_answer": "Dios estaría en medio de ellos y ellos serían su pueblo",
+      "explanation": "Entre las bendiciones se expresa una relación de presencia y pertenencia: Dios estaría en medio del pueblo y ellos serían su pueblo. La pregunta recoge esa idea central sin entrar en detalles de las demás bendiciones.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0075",
+      "book": "Levítico",
+      "chapter": 27,
+      "verse_start": 3,
+      "verse_end": 3,
+      "reference": "Levítico 27:3",
+      "category": "AT_GENERAL",
+      "subcategory": "Valoración de un varón adulto",
+      "characters": [
+        "israelitas",
+        "sacerdote"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Cuál era la valoración indicada para un varón de veinte a sesenta años dentro de las normas sobre votos?",
+      "opcion_a": "Cincuenta siclos de plata",
+      "opcion_b": "Treinta siclos de plata",
+      "opcion_c": "Veinte siclos de plata",
+      "opcion_d": "Diez siclos de plata",
+      "correct_option": "A",
+      "correct_answer": "Cincuenta siclos de plata",
+      "explanation": "Las reglas de valoración asignan cincuenta siclos de plata al varón comprendido entre veinte y sesenta años, conforme al siclo del santuario. Es una cifra técnica y específica, apropiada para el nivel experto.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0076",
+      "book": "Levítico",
+      "chapter": 27,
+      "verse_start": 8,
+      "verse_end": 8,
+      "reference": "Levítico 27:8",
+      "category": "AT_GENERAL",
+      "subcategory": "Valoración según posibilidades económicas",
+      "characters": [
+        "israelitas",
+        "sacerdote"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué debía ocurrir si una persona que había hecho un voto no podía pagar la valoración establecida?",
+      "opcion_a": "Debía presentarse ante el sacerdote, quien fijaría la valoración según sus posibilidades",
+      "opcion_b": "El voto quedaba automáticamente anulado",
+      "opcion_c": "Debía pagar siempre la cantidad máxima establecida",
+      "opcion_d": "La obligación se transfería a su familia",
+      "correct_option": "A",
+      "correct_answer": "Debía presentarse ante el sacerdote, quien fijaría la valoración según sus posibilidades",
+      "explanation": "La norma contempla el caso de una persona que no podía afrontar la valoración ordinaria vinculada con su voto. Debía ser presentada ante el sacerdote, quien establecía la cantidad conforme a sus posibilidades. Esta pregunta reemplaza una segunda valoración por sexo para ampliar la variedad temática del capítulo 27.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0077",
+      "book": "Levítico",
+      "chapter": 27,
+      "verse_start": 10,
+      "verse_end": 10,
+      "reference": "Levítico 27:10",
+      "category": "AT_GENERAL",
+      "subcategory": "Sustitución de un animal consagrado",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué ocurría si alguien intentaba sustituir por otro un animal que ya había sido consagrado?",
+      "opcion_a": "Tanto el animal original como el sustituto quedaban consagrados",
+      "opcion_b": "Solo el animal sustituto quedaba consagrado",
+      "opcion_c": "La consagración quedaba anulada",
+      "opcion_d": "Ambos animales debían venderse inmediatamente",
+      "correct_option": "A",
+      "correct_answer": "Tanto el animal original como el sustituto quedaban consagrados",
+      "explanation": "La norma impide intercambiar un animal consagrado por otro, sea mejor o peor. Si se realizaba la sustitución, tanto el animal original como el sustituto quedaban consagrados, evitando que el voto se utilizara para cambiar ventajosamente la ofrenda.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0078",
+      "book": "Levítico",
+      "chapter": 27,
+      "verse_start": 26,
+      "verse_end": 26,
+      "reference": "Levítico 27:26",
+      "category": "AT_GENERAL",
+      "subcategory": "Primogénitos de los animales",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Por qué no podía una persona consagrar mediante voto el primogénito de sus animales?",
+      "opcion_a": "Porque el primogénito ya pertenecía a Dios",
+      "opcion_b": "Porque todo primogénito debía venderse",
+      "opcion_c": "Porque solo los extranjeros podían presentarlo",
+      "opcion_d": "Porque los primogénitos no podían acercarse al santuario",
+      "correct_option": "A",
+      "correct_answer": "Porque el primogénito ya pertenecía a Dios",
+      "explanation": "La disposición señala que el primogénito de los animales ya tenía una condición previa de pertenencia a Dios. Por eso no podía presentarse como si fuera una consagración adicional realizada voluntariamente por su propietario.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0079",
+      "book": "Levítico",
+      "chapter": 27,
+      "verse_start": 30,
+      "verse_end": 30,
+      "reference": "Levítico 27:30",
+      "category": "AT_GENERAL",
+      "subcategory": "Diezmo de la tierra",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Básico",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué parte de los productos de la tierra se declara consagrada en esta norma?",
+      "opcion_a": "La décima parte",
+      "opcion_b": "La mitad",
+      "opcion_c": "La quinta parte",
+      "opcion_d": "La tercera parte",
+      "correct_option": "A",
+      "correct_answer": "La décima parte",
+      "explanation": "El capítulo establece que el diezmo de la tierra, tanto de la semilla como del fruto de los árboles, pertenece a Dios. La pregunta evalúa la fracción básica asociada con ese diezmo.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-LEV-0080",
+      "book": "Levítico",
+      "chapter": 27,
+      "verse_start": 32,
+      "verse_end": 32,
+      "reference": "Levítico 27:32",
+      "category": "AT_GENERAL",
+      "subcategory": "Cada décimo animal del rebaño",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué animal quedaba consagrado al contar el ganado que pasaba bajo la vara?",
+      "opcion_a": "Cada décimo animal",
+      "opcion_b": "Cada séptimo animal",
+      "opcion_c": "El primer animal de cada grupo",
+      "opcion_d": "El animal más grande del rebaño",
+      "correct_option": "A",
+      "correct_answer": "Cada décimo animal",
+      "explanation": "Al contar el ganado menor o mayor que pasaba bajo la vara, cada décimo animal quedaba consagrado. La pregunta evalúa el mecanismo concreto de conteo utilizado para aplicar esta disposición.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    }
+  ]
+}
