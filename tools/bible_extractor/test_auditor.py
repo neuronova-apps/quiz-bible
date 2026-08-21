@@ -1589,6 +1589,19 @@ class TestAuditorCanonical(unittest.TestCase):
         self.assertNotEqual(res79["estado"], "REQUIERE_CORRECCION")
         self.assertEqual(res79["controles_superados"]["control_numeros_cantidades"], "PASS")
 
+        # 2CR-0096: Josías 30000 animales y 3000 bueyes (2 Crónicas 35:5-9)
+        q96 = self.get_2chronicles_question("NQB-AT-2CR-0096")
+        v96 = {
+            5: "y estad en el lugar santo según las divisiones de las familias de vuestros hermanos los hijos del pueblo, y según la división de la familia de los levitas.",
+            6: "Santificaos, pues, y santificad a vuestros hermanos, y disponed a vuestros hermanos para que hagan conforme a la palabra de Jehová dada por medio de Moisés.",
+            7: "Y el rey Josías dio a los del pueblo ovejas, corderos y cabritos de los rebaños, en número de treinta mil, y tres mil bueyes, todo para la pascua, para todos los que se hallaban presentes; esto de la hacienda del rey.",
+            8: "También sus príncipes dieron con liberalidad al pueblo, a los sacerdotes y a los levitas. Hilcías, Zacarías y Jehiel, oficiales de la casa de Dios, dieron a los sacerdotes, para celebrar la pascua, dos mil seiscientas ovejas, y trescientos bueyes.",
+            9: "Asimismo Conanías, y Semaías y Natanael sus hermanos, y Hasabías, Jeiel y Jozabad, principales de los levitas, dieron a los levitas para los sacrificios de la pascua cinco mil ovejas, y quinientos bueyes."
+        }
+        res96 = evaluate_question(q96, v96, book_key="2chronicles")
+        self.assertNotEqual(res96["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res96["controles_superados"]["control_numeros_cantidades"], "PASS")
+
         # 2CR-0102: Decreto de Ciro (2 Crónicas 36:22-23)
         q102 = self.get_2chronicles_question("NQB-AT-2CR-0102")
         v102 = {

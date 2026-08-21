@@ -813,6 +813,29 @@ def _eval_number_tokens(tokens: list[str], is_quantitative: bool = False) -> lis
     if not tokens:
         return []
     if "mil" in tokens:
+        mil_indices = [i for i, w in enumerate(tokens) if w == "mil"]
+        if len(mil_indices) > 1:
+            results: list[int] = []
+            last_end = 0
+            for k in range(len(mil_indices)):
+                m_idx = mil_indices[k]
+                if k + 1 < len(mil_indices):
+                    next_m_idx = mil_indices[k + 1]
+                    sub = tokens[m_idx + 1: next_m_idx]
+                    if "y" in sub:
+                        y_pos = m_idx + 1 + sub.index("y")
+                        chunk = tokens[last_end:y_pos]
+                        results.extend(_eval_number_tokens(chunk, is_quantitative=is_quantitative))
+                        last_end = y_pos + 1
+                    else:
+                        chunk = tokens[last_end: m_idx + 1]
+                        results.extend(_eval_number_tokens(chunk, is_quantitative=is_quantitative))
+                        last_end = m_idx + 1
+                else:
+                    chunk = tokens[last_end:]
+                    results.extend(_eval_number_tokens(chunk, is_quantitative=is_quantitative))
+            return results
+
         mil_idx = tokens.index("mil")
         th_tokens = tokens[:mil_idx]
         rem_tokens = tokens[mil_idx + 1:]
