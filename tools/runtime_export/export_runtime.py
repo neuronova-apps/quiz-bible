@@ -60,6 +60,21 @@ OLD_TESTAMENT_BOOKS = {
 }
 
 
+NEW_TESTAMENT_BOOKS = {
+    "mateo", "matthew", "marcos", "mark", "lucas", "luke", "juan", "john",
+    "hechos", "acts", "romanos", "romans", "1 corintios", "1corintios", "1corinthians",
+    "2 corintios", "2corintios", "2corinthians", "gálatas", "galatas", "galatians",
+    "efesios", "ephesians", "filipenses", "philippians", "colosenses", "colossians",
+    "1 tesalonicenses", "1tesalonicenses", "1thessalonians",
+    "2 tesalonicenses", "2tesalonicenses", "2thessalonians",
+    "1 timoteo", "1timoteo", "1timothy", "2 timoteo", "2timoteo", "2timothy",
+    "tito", "titus", "filemón", "filemon", "philemon", "hebreos", "hebrews",
+    "santiago", "james", "1 pedro", "1pedro", "1peter", "2 pedro", "2pedro", "2peter",
+    "1 juan", "1juan", "1john", "2 juan", "2juan", "2john", "3 juan", "3juan", "3john",
+    "judas", "jude", "apocalipsis", "revelation"
+}
+
+
 def normalize_difficulty(diff_str: str) -> str:
     """Normaliza la dificultad canónica a la enumeración técnica de runtime."""
     s = str(diff_str).strip().lower()
@@ -76,31 +91,116 @@ def normalize_difficulty(diff_str: str) -> str:
 
 
 def normalize_question_type(qtype_str: str) -> str:
-    """Normaliza el tipo de pregunta a la enumeración técnica de runtime."""
+    """Normaliza el tipo de pregunta a la enumeración técnica de runtime (Fail-Closed)."""
     s = str(qtype_str).strip().lower()
     s_clean = s.replace("é", "e").replace("ó", "o").replace("ú", "u")
-    if "seleccion" in s_clean or "multiple" in s_clean or s_clean == "mc":
+    if s_clean in {"seleccion multiple", "multiple_choice", "multiple choice", "mc"}:
         return "MULTIPLE_CHOICE"
-    return "MULTIPLE_CHOICE"
+    raise ValueError(f"Tipo de pregunta desconocido o no soportado: '{qtype_str}'. Fail-closed: exportación rechazada.")
 
 
 def determine_testament(q: dict[str, Any]) -> str:
-    """Determina el testamento canónico (OT / NT) a partir del ID o del libro."""
+    """Determina el testamento canónico (OT / NT) a partir del ID o del libro (Fail-Closed)."""
     qid = str(q.get("id", "")).upper()
-    if "-AT-" in qid:
-        return "OT"
-    if "-NT-" in qid:
-        return "NT"
     book_name = str(q.get("book", "")).strip().lower()
-    if book_name in OLD_TESTAMENT_BOOKS:
+
+    if "-AT-" in qid or book_name in OLD_TESTAMENT_BOOKS:
         return "OT"
-    return "OT"
+    if "-NT-" in qid or book_name in NEW_TESTAMENT_BOOKS:
+        return "NT"
+    raise ValueError(
+        f"No se pudo determinar el testamento canónico (OT/NT) para pregunta '{qid}' con libro '{q.get('book')}'. Fail-closed: exportación rechazada."
+    )
+
+
+def normalize_audit_status(status_str: str) -> str:
+    """Normaliza el estado de auditoría a la enumeración técnica de runtime (Fail-Closed)."""
+    if not status_str:
+        raise ValueError("Estado de auditoría vacío o no definido. Fail-closed: exportación rechazada.")
+    st_upper = str(status_str).strip().upper()
+    if st_upper in {"VERIFICADO", "VERIFIED", "PASS"}:
+        return "VERIFIED"
+    if st_upper in {"NO_CONCLUYENTE", "INCONCLUSIVE", "UNKNOWN"}:
+        return "INCONCLUSIVE"
+    if st_upper in {"REQUIERE_CORRECCION", "REQUIRES_CORRECTION", "FAIL"}:
+        return "REQUIRES_CORRECTION"
+    raise ValueError(f"Estado de auditoría inválido o no reconocido: '{status_str}'. Fail-closed: exportación rechazada.")
+
+
+def load_audit_status_map(sources: list[Path | str] | Path | str | None) -> dict[str, str]:
+    """Carga de forma exhaustiva el mapa de estados de auditoría desde archivos o directorios de artefactos."""
+    if not sources:
+        return {}
+    if isinstance(sources, (str, Path)):
+        sources = [sources]
+
+    status_map: dict[str, str] = {}
+
+    def process_file(p: Path) -> None:
+        try:
+            data = json.loads(p.read_text(encoding="utf-8"))
+        except Exception:
+            return
+        if not isinstance(data, dict):
+            return
+
+        # 1. results list (bloques de auditoría)
+        for item in data.get("results", []):
+            if isinstance(item, dict) and "id" in item:
+                try:
+                    status_map[item["id"]] = normalize_audit_status(item.get("estado", ""))
+                except ValueError:
+                    pass
+
+        # 2. evaluaciones dict
+        if "evaluaciones" in data and isinstance(data["evaluaciones"], dict):
+            for qid, ev in data["evaluaciones"].items():
+                st = ev.get("estado") if isinstance(ev, dict) else str(ev)
+                try:
+                    status_map[qid] = normalize_audit_status(st)
+                except ValueError:
+                    pass
+
+        # 3. requires_correction_items
+        for item in data.get("requires_correction_items", []):
+            if isinstance(item, dict) and "id" in item:
+                status_map[item["id"]] = "REQUIRES_CORRECTION"
+
+        # 4. inconclusive_items
+        for item in data.get("inconclusive_items", []):
+            if isinstance(item, dict) and "id" in item:
+                status_map[item["id"]] = "INCONCLUSIVE"
+
+        # 5. revision-manual-pendiente
+        for item in data.get("pendientes", data.get("items", [])):
+            if isinstance(item, dict) and "id" in item:
+                try:
+                    status_map[item["id"]] = normalize_audit_status(item.get("estado", "INCONCLUSIVE"))
+                except ValueError:
+                    status_map[item["id"]] = "INCONCLUSIVE"
+
+        # 6. Mapeo directo {qid: status}
+        for k, v in data.items():
+            if k.startswith("NQB-") and isinstance(v, str):
+                try:
+                    status_map[k] = normalize_audit_status(v)
+                except ValueError:
+                    pass
+
+    for src in sources:
+        sp = Path(src)
+        if sp.is_dir():
+            for f in sorted(sp.rglob("*.json")):
+                process_file(f)
+        elif sp.is_file():
+            process_file(sp)
+
+    return status_map
 
 
 def assert_no_forbidden_keys(obj: Any, path: str = "$") -> None:
     """Valida recursivamente que ningún objeto contenga claves de texto bíblico persistido."""
     if isinstance(obj, dict):
-        # A nivel de pregunta o raíz, 'text' suelto no está permitido (solo permitido dentro de options[])
         if not path.endswith("options") and not re.search(r"options\[\d+\]$", path):
             if "text" in obj:
                 raise ValueError(
@@ -120,10 +220,10 @@ def assert_no_forbidden_keys(obj: Any, path: str = "$") -> None:
 
 def export_question_to_runtime(
     canonical_q: dict[str, Any],
-    audit_status: str = "VERIFIED",
+    audit_status: str,
     human_review_status: str = "PENDING"
 ) -> dict[str, Any]:
-    """Transforma una pregunta canónica al modelo de runtime V1."""
+    """Transforma una pregunta canónica al modelo de runtime V1 aplicando política Fail-Closed."""
     qid = str(canonical_q["id"]).strip()
     book = str(canonical_q["book"]).strip()
     chapter = int(canonical_q["chapter"])
@@ -157,6 +257,8 @@ def export_question_to_runtime(
     explanation = str(canonical_q.get("explanation", "")).strip()
     eligible_modes = [str(m).strip() for m in canonical_q.get("eligible_modes", ["AT", "AMBOS"])]
 
+    validated_audit_status = normalize_audit_status(audit_status)
+
     runtime_obj: dict[str, Any] = {
         "id": qid,
         "testament": determine_testament(canonical_q),
@@ -176,7 +278,7 @@ def export_question_to_runtime(
         "explanation": explanation,
         "eligibleModes": eligible_modes,
         "verificationTranslation": "RVR1960",
-        "auditStatus": audit_status,
+        "auditStatus": validated_audit_status,
         "humanReviewStatus": human_review_status,
     }
 
@@ -213,7 +315,6 @@ def validate_runtime_collection(
         import jsonschema
         jsonschema.validate(instance=data, schema=schema_json)
     except ImportError:
-        # Validación estricta fallback integrada
         if data.get("schemaVersion") != "quizbible-runtime-v1":
             raise ValueError("schemaVersion inválido")
         if not isinstance(data.get("questions"), list):
@@ -226,31 +327,43 @@ def validate_runtime_collection(
             if q.get("correctOptionId") != "A":
                 raise ValueError(f"correctOptionId canónico debe ser 'A' en {q.get('id')}")
 
-    # Comprobación de no persistencia de fuentes
     assert_no_forbidden_keys(data, path="RuntimeCollection")
     return True
 
 
 def export_canonical_data(
     canonical_questions: list[dict[str, Any]],
-    filter_ids: set[str] | None = None,
+    filter_ids: set[str] | list[str] | None = None,
     audit_status_map: dict[str, str] | None = None,
+    audit_sources: list[Path | str] | Path | str | None = None,
     human_review_status_map: dict[str, str] | None = None,
     generated_at: str = "2026-08-21T00:00:00Z"
 ) -> dict[str, Any]:
-    """Transforma una lista de preguntas canónicas a una colección runtime oficial."""
+    """Transforma una lista de preguntas canónicas a una colección runtime oficial (Fail-Closed)."""
+    final_status_map: dict[str, str] = {}
+    if audit_sources:
+        final_status_map.update(load_audit_status_map(audit_sources))
+    if audit_status_map:
+        final_status_map.update({k: normalize_audit_status(v) for k, v in audit_status_map.items()})
+
     runtime_questions: list[dict[str, Any]] = []
+    filter_set = set(filter_ids) if filter_ids is not None else None
 
     for q in canonical_questions:
         qid = q.get("id")
-        if filter_ids is not None and qid not in filter_ids:
+        if filter_set is not None and qid not in filter_set:
             continue
-        audit_st = audit_status_map.get(qid, "VERIFIED") if audit_status_map else "VERIFIED"
+
+        if qid not in final_status_map:
+            raise ValueError(
+                f"Pregunta '{qid}' no posee estado de auditoría registrado en las fuentes oficiales provistas. Fail-closed: exportación rechazada."
+            )
+
+        audit_st = final_status_map[qid]
         human_st = human_review_status_map.get(qid, "PENDING") if human_review_status_map else "PENDING"
         rt_q = export_question_to_runtime(q, audit_status=audit_st, human_review_status=human_st)
         runtime_questions.append(rt_q)
 
-    # Si se especificó una lista de IDs filtrados, preservar el orden de esa lista si existe
     if filter_ids is not None and isinstance(filter_ids, list):
         id_order = {qid: i for i, qid in enumerate(filter_ids)}
         runtime_questions.sort(key=lambda x: id_order.get(x["id"], 999999))
@@ -264,6 +377,8 @@ def export_files_to_runtime(
     input_paths: list[Path],
     output_path: Path,
     filter_ids: set[str] | list[str] | None = None,
+    audit_sources: list[Path | str] | Path | str | None = None,
+    audit_status_map: dict[str, str] | None = None,
     generated_at: str = "2026-08-21T00:00:00Z"
 ) -> tuple[dict[str, Any], str]:
     """Lee archivos canónicos, los transforma, valida y escribe el runtime JSON determinista."""
@@ -284,6 +399,8 @@ def export_files_to_runtime(
     collection = export_canonical_data(
         all_canonical_qs,
         filter_ids=filter_ids,
+        audit_sources=audit_sources,
+        audit_status_map=audit_status_map,
         generated_at=generated_at
     )
 
@@ -299,6 +416,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Exportador de preguntas canónicas a Runtime JSON v1 para Quiz Bible.")
     parser.add_argument("--inputs", nargs="+", help="Rutas de archivos *-master-input.json", required=True)
     parser.add_argument("--output", help="Ruta del archivo JSON runtime de salida", required=True)
+    parser.add_argument("--audit-sources", "--audit-dir", nargs="*", help="Rutas de carpetas o archivos de informes de auditoría", default=None)
     parser.add_argument("--filter-ids", nargs="*", help="Lista opcional de IDs de preguntas a incluir", default=None)
     parser.add_argument("--generated-at", help="Marca de tiempo determinista ISO", default="2026-08-21T00:00:00Z")
 
@@ -306,15 +424,17 @@ def main() -> None:
     input_paths = [Path(p) for p in args.inputs]
     output_path = Path(args.output)
     filter_ids = args.filter_ids if args.filter_ids else None
+    audit_sources = args.audit_sources if args.audit_sources else None
 
     collection, sha = export_files_to_runtime(
         input_paths,
         output_path,
         filter_ids=filter_ids,
+        audit_sources=audit_sources,
         generated_at=args.generated_at
     )
 
-    print(f"Exportación runtime exitosa:")
+    print(f"Exportación runtime exitosa (Fail-Closed):")
     print(f"  Preguntas exportadas: {collection['totalQuestions']}")
     print(f"  Archivo de salida: {output_path}")
     print(f"  SHA-256: {sha}")

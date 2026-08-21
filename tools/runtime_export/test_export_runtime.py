@@ -76,6 +76,8 @@ class TestRuntimeExport(unittest.TestCase):
         cls.sample_canonical = [
             cls.all_canonical_questions[qid] for qid in SAMPLE_FIXTURE_IDS if qid in cls.all_canonical_questions
         ]
+        # Mapa de estado oficial para las 20 preguntas de la muestra
+        cls.sample_audit_status_map = {qid: "VERIFIED" for qid in SAMPLE_FIXTURE_IDS}
 
     def test_fixture_ids_all_exist_in_canonical_banks(self) -> None:
         """Verifica que los 20 IDs de la muestra existan en los bancos canónicos."""
@@ -100,21 +102,62 @@ class TestRuntimeExport(unittest.TestCase):
         with self.assertRaises(ValueError):
             normalize_difficulty("NivelInvalido")
 
-    def test_question_type_normalization(self) -> None:
-        """Verifica la normalización del tipo de pregunta."""
+    def test_question_type_fail_closed(self) -> None:
+        """Verifica que tipos desconocidos produzcan error y no se conviertan silenciosamente."""
         self.assertEqual(normalize_question_type("Selección múltiple"), "MULTIPLE_CHOICE")
         self.assertEqual(normalize_question_type("multiple_choice"), "MULTIPLE_CHOICE")
+        self.assertEqual(normalize_question_type("MC"), "MULTIPLE_CHOICE")
 
-    def test_testament_detection(self) -> None:
-        """Verifica la asignación de testamento (OT/NT)."""
+        with self.assertRaises(ValueError):
+            normalize_question_type("TIPO_DESCONOCIDO_FUTURO")
+        with self.assertRaises(ValueError):
+            normalize_question_type("")
+
+    def test_testament_fail_closed(self) -> None:
+        """Verifica la asignación de testamento (OT/NT) y error en casos desconocidos."""
         q_ot = {"id": "NQB-AT-GEN-0001", "book": "Génesis"}
         self.assertEqual(determine_testament(q_ot), "OT")
         q_nt = {"id": "NQB-NT-MAT-0001", "book": "Mateo"}
         self.assertEqual(determine_testament(q_nt), "NT")
 
+        # Caso desconocido: libro apócrifo o no bíblico sin prefijo canónico
+        q_unknown = {"id": "NQB-XX-EVANGELIO_TOMAS-0001", "book": "Evangelio de Tomas"}
+        with self.assertRaises(ValueError):
+            determine_testament(q_unknown)
+
+    def test_audit_status_is_not_defaulted_to_verified(self) -> None:
+        """Verifica que una pregunta sin estado de auditoría oficial no se convierta por defecto en VERIFIED."""
+        # Sin mapa ni fuente de auditoría debe fallar (Fail-Closed)
+        with self.assertRaises(ValueError):
+            export_canonical_data(self.sample_canonical, audit_status_map=None, audit_sources=None)
+
+        # Con mapa incompleto (falta un ID) debe fallar (Fail-Closed)
+        incomplete_map = {qid: "VERIFIED" for qid in SAMPLE_FIXTURE_IDS[1:]}  # falta NQB-AT-GEN-0001
+        with self.assertRaises(ValueError):
+            export_canonical_data(self.sample_canonical, audit_status_map=incomplete_map)
+
+    def test_2chronicles_runtime_preserves_official_audit_distribution(self) -> None:
+        """Verifica que 2 Crónicas en runtime preserve exactamente 76 VERIFIED y 26 INCONCLUSIVE."""
+        c2_path = self.extractor_dir / "2chronicles-master-input.json"
+        audit_dir = self.repo_root / "build" / "audit" / "2chronicles"
+        if not c2_path.exists() or not audit_dir.exists():
+            self.skipTest("Artefactos de 2 Crónicas no disponibles localmente")
+
+        raw_c2 = json.loads(c2_path.read_text(encoding="utf-8"))
+        questions_c2 = raw_c2.get("questions", raw_c2)
+
+        collection = export_canonical_data(questions_c2, audit_sources=audit_dir)
+        self.assertEqual(collection["totalQuestions"], 102)
+
+        from collections import Counter
+        counts = Counter(q["auditStatus"] for q in collection["questions"])
+        self.assertEqual(counts["VERIFIED"], 76, f"Se esperaban 76 VERIFIED, obtenidos: {counts.get('VERIFIED')}")
+        self.assertEqual(counts["INCONCLUSIVE"], 26, f"Se esperaban 26 INCONCLUSIVE, obtenidos: {counts.get('INCONCLUSIVE')}")
+        self.assertEqual(counts.get("REQUIRES_CORRECTION", 0), 0)
+
     def test_export_preserves_all_structural_fields(self) -> None:
         """Verifica que la transformación canónica a runtime conserve todos los campos."""
-        collection = export_canonical_data(self.sample_canonical)
+        collection = export_canonical_data(self.sample_canonical, audit_status_map=self.sample_audit_status_map)
         self.assertEqual(collection["schemaVersion"], "quizbible-runtime-v1")
         self.assertEqual(collection["totalQuestions"], 20)
         self.assertEqual(len(collection["questions"]), 20)
@@ -144,7 +187,7 @@ class TestRuntimeExport(unittest.TestCase):
 
     def test_no_scripture_text_persisted_recursive(self) -> None:
         """Verifica recursivamente que ninguna clave de texto bíblico se persista."""
-        collection = export_canonical_data(self.sample_canonical)
+        collection = export_canonical_data(self.sample_canonical, audit_status_map=self.sample_audit_status_map)
         assert_no_forbidden_keys(collection)
 
         # Si se inyecta una clave prohibida, debe fallar de inmediato
@@ -163,12 +206,14 @@ class TestRuntimeExport(unittest.TestCase):
                 self.canonical_files,
                 temp_out1,
                 filter_ids=SAMPLE_FIXTURE_IDS,
+                audit_status_map=self.sample_audit_status_map,
                 generated_at="2026-08-21T00:00:00Z"
             )
             _, sha2 = export_files_to_runtime(
                 self.canonical_files,
                 temp_out2,
                 filter_ids=SAMPLE_FIXTURE_IDS,
+                audit_status_map=self.sample_audit_status_map,
                 generated_at="2026-08-21T00:00:00Z"
             )
             self.assertEqual(sha1, sha2)
@@ -179,7 +224,7 @@ class TestRuntimeExport(unittest.TestCase):
 
     def test_schema_validation_passes(self) -> None:
         """Valida que la colección de 20 preguntas cumpla el schema JSON oficial."""
-        collection = export_canonical_data(self.sample_canonical)
+        collection = export_canonical_data(self.sample_canonical, audit_status_map=self.sample_audit_status_map)
         is_valid = validate_runtime_collection(collection, schema_path=DEFAULT_SCHEMA_PATH)
         self.assertTrue(is_valid)
 
@@ -190,7 +235,7 @@ class TestRuntimeExport(unittest.TestCase):
         y confirma que el id 'A' identifica consistentemente la respuesta correcta
         incluso cuando cambia su posición visual en pantalla (0, 1, 2, 3).
         """
-        collection = export_canonical_data(self.sample_canonical)
+        collection = export_canonical_data(self.sample_canonical, audit_status_map=self.sample_audit_status_map)
         q = collection["questions"][0]  # Génesis 1:1
         original_correct_text = q["options"][0]["text"]
         original_correct_id = q["correctOptionId"]
@@ -216,7 +261,7 @@ class TestRuntimeExport(unittest.TestCase):
 
     def test_game_mode_filtering(self) -> None:
         """Verifica la capacidad de filtrado por modos de juego (AT, PERSONAJES_AT, AMBOS)."""
-        collection = export_canonical_data(self.sample_canonical)
+        collection = export_canonical_data(self.sample_canonical, audit_status_map=self.sample_audit_status_map)
         questions = collection["questions"]
 
         # Filtro AT
@@ -235,7 +280,7 @@ class TestRuntimeExport(unittest.TestCase):
 
     def test_difficulty_filtering(self) -> None:
         """Verifica la capacidad de filtrado por dificultad."""
-        collection = export_canonical_data(self.sample_canonical)
+        collection = export_canonical_data(self.sample_canonical, audit_status_map=self.sample_audit_status_map)
         questions = collection["questions"]
 
         basics = [q for q in questions if q["difficulty"] == "BASIC"]
@@ -251,7 +296,7 @@ class TestRuntimeExport(unittest.TestCase):
 
     def test_audit_and_human_review_status_coexistence(self) -> None:
         """Demuestra que auditStatus y humanReviewStatus coexisten y modelan el ciclo productivo."""
-        collection = export_canonical_data(self.sample_canonical)
+        collection = export_canonical_data(self.sample_canonical, audit_status_map=self.sample_audit_status_map)
         for q in collection["questions"]:
             self.assertIn(q["auditStatus"], {"VERIFIED", "INCONCLUSIVE"})
             self.assertEqual(q["humanReviewStatus"], "PENDING")
@@ -271,3 +316,4 @@ class TestRuntimeExport(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
