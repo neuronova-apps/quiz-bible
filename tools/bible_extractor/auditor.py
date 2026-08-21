@@ -93,7 +93,7 @@ STOPWORDS = {
     "a", "al", "de", "del", "el", "la", "las", "los", "que", "su", "sus",
     "un", "una", "unos", "unas", "y", "o", "en", "por", "para", "con",
     "segun", "como", "fue", "era", "es", "se", "lo", "le", "les", "ha",
-    "habia", "habian", "sus", "hizo", "dijo", "dios", "senor", "jehova",
+    "habia", "habian", "sus", "hizo", "dijo",
     "cual", "quien", "quienes", "cuando", "donde", "por", "que", "hacia",
     "sobre", "tras", "entre", "hasta", "desde", "ante", "bajo", "cabe",
     "pero", "mas", "este", "esta", "estos", "estas", "aquel", "aquella",
@@ -183,9 +183,10 @@ SYNONYMS = {
     "ganado": "vacas",
     "ovejas": "rebanos",
     "vacas": "ganados",
+    "dios": "jehova",
+    "jehova": "dios",
     "sacerdote": "sacerdotes",
     "sumo sacerdote": "sacerdote",
-    "lefa": "efod",
 }
 
 # Componentes de números cardinales en español
@@ -209,6 +210,9 @@ SPANISH_TENS = {
 SPANISH_UNITS = {
     "cero": 0, "uno": 1, "una": 1, "dos": 2, "tres": 3, "cuatro": 4,
     "cinco": 5, "seis": 6, "siete": 7, "ocho": 8, "nueve": 9,
+    "primero": 1, "primer": 1, "segundo": 2, "tercero": 3, "tercer": 3,
+    "cuarto": 4, "quinto": 5, "sexto": 6, "septimo": 7, "octavo": 8,
+    "noveno": 9, "decimo": 10,
 }
 
 
@@ -240,7 +244,7 @@ def detect_book_key(spec: dict[str, Any] | list[dict[str, Any]]) -> str:
 
 
 def extract_numbers(text: str, is_quantitative_context: bool = False) -> list[int]:
-    """Extrae números enteros respetando la gramática numérica en español."""
+    """Extrae números enteros respetando la gramática numérica en español y construcciones descriptivas."""
     raw_text = str(text)
     # Limpiar citas de capítulos/versículos
     cleaned_digits_text = re.sub(r"\b\d+\s*:\s*\d+(?:-\d+)?\b", " ", raw_text)
@@ -255,16 +259,22 @@ def extract_numbers(text: str, is_quantitative_context: bool = False) -> list[in
             pass
 
     # 2. 'un' / 'una' con unidades contables explícitas
-    if re.search(r"\b(?:un|una)\b", cleaned_norm):
-        countable_units_pattern = r"\b(?:un|una)\s+(?:vez|ano|anos|mes|meses|dia|dias|codo|codos|pareja|parejas|talento|siclo|pieza|piezas|hora|horas|parte|partes|cordero|corderos|carnero|carneros|becerro|becerros|toro|toros|palomino|palominos|tortola|tortolas|efa|efas|hin|hines|gomer|gomeres)\b"
-        if is_quantitative_context or re.search(countable_units_pattern, cleaned_norm):
-            numbers.append(1)
+    is_qualitative_period = bool(re.search(r"\b(?:un|una)\s+(?:ano|dia|tiempo|periodo|semana)\s+de\s+(?:reposo|jubileo|gracia|luto|fiesta|holocausto|expiacion)", cleaned_norm))
+
+    if not is_qualitative_period:
+        if re.search(r"\b(?:un|una)\b", cleaned_norm):
+            countable_units_pattern = r"\b(?:un|una)\s+(?:vez|ano|anos|mes|meses|dia|dias|codo|codos|pareja|parejas|talento|siclo|pieza|piezas|hora|horas|parte|partes|suerte|suertes|cordero|corderos|carnero|carneros|becerro|becerros|toro|toros|palomino|palominos|tortola|tortolas|efa|efas|hin|hines|gomer|gomeres)\b"
+            if is_quantitative_context or re.search(countable_units_pattern, cleaned_norm):
+                numbers.append(1)
 
     # 3. Palabras numéricas compuestas respetando la formación en español
     words = cleaned_norm.split()
     i = 0
     while i < len(words):
         w = words[i]
+        if is_qualitative_period and w in {"un", "una"}:
+            i += 1
+            continue
         if w in SPANISH_HUNDREDS:
             val = SPANISH_HUNDREDS[w]
             i += 1
@@ -274,7 +284,7 @@ def extract_numbers(text: str, is_quantitative_context: bool = False) -> list[in
                 if i + 1 < len(words) and words[i] == "y" and words[i + 1] in SPANISH_UNITS:
                     val += SPANISH_UNITS[words[i + 1]]
                     i += 2
-            elif i < len(words) and words[i] in SPANISH_UNITS and words[i] != "una":
+            elif i < len(words) and words[i] in SPANISH_UNITS and words[i] not in {"un", "una"}:
                 val += SPANISH_UNITS[words[i]]
                 i += 1
             numbers.append(val)
@@ -637,7 +647,7 @@ def evaluate_question(
             controls["control_lugares"] = "UNKNOWN"
 
     # 14. Control Números y Cantidades
-    has_count_context = bool(re.search(r"¿?\s*cuant[oa]s?\b", normalize(prompt)))
+    has_count_context = bool(re.search(r"¿?\s*cuant[oa]s?\b|\bcuant[oa]s?\b|\bnumero\b|\bcantidad\b", normalize(prompt)))
     opt_a_nums = extract_numbers(opcion_a, is_quantitative_context=has_count_context)
     prompt_nums = extract_numbers(prompt, is_quantitative_context=has_count_context)
     target_nums = set(opt_a_nums) | set(prompt_nums)
