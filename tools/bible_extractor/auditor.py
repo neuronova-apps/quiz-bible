@@ -24,9 +24,9 @@ from typing import Any, Callable
 
 # Importación defensiva de extractor para permitir ejecución directa o como módulo
 try:
-    from tools.bible_extractor.extractor import PASSAGE_URL, api_get, extract_verses
+    from tools.bible_extractor.extractor import PASSAGE_URL, api_get, extract_verses, _verse_number_from_node
 except ImportError:
-    from extractor import PASSAGE_URL, api_get, extract_verses
+    from extractor import PASSAGE_URL, api_get, extract_verses, _verse_number_from_node
 
 STOPWORDS = {
     "a", "al", "de", "del", "el", "la", "las", "los", "que", "su", "sus",
@@ -69,6 +69,40 @@ def parse_additional_ref(ref_str: str, default_chapter: int) -> tuple[int, list[
     start_v = int(m.group(2))
     end_v = int(m.group(3)) if m.group(3) else start_v
     return ch, list(range(start_v, end_v + 1))
+
+
+def extract_verses_robust(payload: Any) -> dict[int, str]:
+    """Extrae versículos indexados por número entero de forma determinista."""
+    verse_map: dict[int, str] = {}
+    if not isinstance(payload, dict):
+        return verse_map
+
+    # 1. Si existe un array 'verses' en payload o en payload['data']
+    verses_list = payload.get("verses")
+    if not verses_list and isinstance(payload.get("data"), dict):
+        verses_list = payload["data"].get("verses")
+
+    if isinstance(verses_list, list) and len(verses_list) > 0:
+        for idx, item in enumerate(verses_list, start=1):
+            if isinstance(item, dict):
+                v_num = _verse_number_from_node(item) or idx
+                text = item.get("text") or item.get("verse") or ""
+                if isinstance(text, str) and text.strip():
+                    verse_map[v_num] = text.strip()
+        if verse_map:
+            return verse_map
+
+    # 2. Fallback con walk recursivo de extractor
+    verses = extract_verses(payload)
+    for v in verses:
+        try:
+            num = int(v.get("verse_number", 0))
+            txt = str(v.get("text", "")).strip()
+            if num > 0 and txt:
+                verse_map[num] = txt
+        except (ValueError, TypeError):
+            continue
+    return verse_map
 
 
 def evaluate_question(
@@ -140,27 +174,30 @@ def evaluate_question(
             all_required_verses.extend(add_v_list)
 
     all_required_verses_unique = sorted(set(all_required_verses))
-    controls["control_referencia_existencia"] = all(v in verse_map for v in all_required_verses_unique)
+    controls["control_referencia_existencia"] = bool(verse_map) and all(v in verse_map for v in all_required_verses_unique)
     if not controls["control_referencia_existencia"]:
-        missing_v = [v for v in all_required_verses_unique if v not in verse_map]
-        incidencias.append(f"Versículos faltantes en el capítulo: {missing_v}")
+        if not verse_map:
+            incidencias.append(f"No se dispuso de versículos para el capítulo {chapter}")
+        else:
+            missing_v = [v for v in all_required_verses_unique if v not in verse_map]
+            incidencias.append(f"Versículos faltantes en el capítulo: {missing_v}")
 
     # Construir pasaje integral en memoria (rango principal + referencias adicionales)
-    passage = " ".join(verse_map.get(v, "") for v in all_required_verses_unique)
+    passage = " ".join(verse_map.get(v, "") for v in all_required_verses_unique) if verse_map else ""
     passage_norm = normalize(passage)
     passage_hash = hashlib.sha256(passage.encode("utf-8")).hexdigest() if controls["control_referencia_existencia"] else None
 
     # 7. Control Soporte de Pregunta
     q_tokens = significant_tokens(prompt)
     q_supported = bool(q_tokens and any(t in passage_norm for t in q_tokens))
-    controls["control_soporte_pregunta"] = q_supported
+    controls["control_soporte_pregunta"] = q_supported if controls["control_referencia_existencia"] else False
     if not q_supported and controls["control_referencia_existencia"]:
         incidencias.append("La pregunta no contiene términos clave respaldados en el pasaje")
 
     # 8. Control Opción A Correcta
     ans_tokens = significant_tokens(opcion_a)
     opcion_a_supported = bool(ans_tokens and any(t in passage_norm for t in ans_tokens)) or (normalize(opcion_a) in passage_norm)
-    controls["control_opcion_a_correcta"] = opcion_a_supported
+    controls["control_opcion_a_correcta"] = opcion_a_supported if controls["control_referencia_existencia"] else False
     if not opcion_a_supported and controls["control_referencia_existencia"]:
         incidencias.append(f"Opción A ('{opcion_a}') no tiene respaldo textual directo en el pasaje")
 
@@ -223,7 +260,7 @@ def evaluate_question(
         or not controls["control_capitulo"]
         or not controls["control_versiculo_inicio"]
         or not controls["control_versiculo_fin"]
-        or not controls["control_referencia_existencia"]
+        or not controls["control_referencia_formato"]
         or not controls["control_respuesta_coincide_a"]
         or not unique_options
     )
@@ -273,12 +310,12 @@ def run_audit(
     correcciones_totales: list[dict[str, Any]] = []
     revision_manual: list[dict[str, Any]] = []
 
-    print(f"Preguntas a auditar: {len(raw_questions)}")
-    print(f"Capítulos detectados ({len(present_chapters)}): {present_chapters[:10]}...{present_chapters[-5:] if len(present_chapters)>10 else ''}")
+    print(f"Preguntas a auditar: {len(raw_questions)}", flush=True)
+    print(f"Capítulos detectados ({len(present_chapters)}): {present_chapters[:10]}...{present_chapters[-5:] if len(present_chapters)>10 else ''}", flush=True)
 
     for idx, chapter in enumerate(present_chapters, start=1):
         ch_questions = questions_by_chapter[chapter]
-        print(f"[{idx}/{len(present_chapters)}] Auditando Génesis {chapter} ({len(ch_questions)} preguntas)...")
+        print(f"[{idx}/{len(present_chapters)}] Auditando Génesis {chapter} ({len(ch_questions)} preguntas)...", flush=True)
         # Consulta de capítulo a ApiBiblia (1 sola petición por capítulo)
         verse_map = fetch_chapter_fn("Génesis", chapter)
 
@@ -297,7 +334,8 @@ def run_audit(
                 })
 
         # Liberación inmediata de texto bíblico en memoria
-        verse_map.clear()
+        if isinstance(verse_map, dict):
+            verse_map.clear()
         del verse_map
 
     # Generar bloques de salida por rangos de capítulos
@@ -364,71 +402,76 @@ def run_audit(
     }
     (output_dir / "resumen-general.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
-    print("\nAuditoría finalizada:")
-    print(f"- Total preguntas: {total_q}")
-    print(f"- VERIFICADO: {verif_c}")
-    print(f"- REQUIERE_CORRECCION: {req_corr_c}")
-    print(f"- NO_CONCLUYENTE: {inconc_c}")
-    print(f"- Cobertura Caps 1-50: {summary['chapter_coverage_complete_1_50']}")
-    print(f"- Texto bíblico persistido: False")
+    print("\nAuditoría finalizada:", flush=True)
+    print(f"- Total preguntas: {total_q}", flush=True)
+    print(f"- VERIFICADO: {verif_c}", flush=True)
+    print(f"- REQUIERE_CORRECCION: {req_corr_c}", flush=True)
+    print(f"- NO_CONCLUYENTE: {inconc_c}", flush=True)
+    print(f"- Cobertura Caps 1-50: {summary['chapter_coverage_complete_1_50']}", flush=True)
+    print(f"- Texto bíblico persistido: False", flush=True)
     return summary
 
 
 def main() -> int:
-    args = parse_args()
-    input_path = Path(args.input)
+    try:
+        args = parse_args()
+        input_path = Path(args.input)
 
-    if not input_path.exists():
-        print(f"Error: No se encontró el archivo de entrada '{input_path}'.", file=sys.stderr)
-        return 1
+        if not input_path.exists():
+            print(f"Error: No se encontró el archivo de entrada '{input_path}'.", file=sys.stderr)
+            return 1
 
-    spec = json.loads(input_path.read_text(encoding="utf-8"))
-    output_dir = Path(args.output_dir)
+        spec = json.loads(input_path.read_text(encoding="utf-8"))
+        output_dir = Path(args.output_dir)
 
-    # Modo offline con fixtures simulados si se especifica
-    if args.offline_fixture:
-        fixture_data = json.loads(Path(args.offline_fixture).read_text(encoding="utf-8"))
+        # Modo offline con fixtures simulados si se especifica
+        if args.offline_fixture:
+            fixture_data = json.loads(Path(args.offline_fixture).read_text(encoding="utf-8"))
 
-        def fetch_mock(book: str, chapter: int) -> dict[int, str]:
-            return {int(k): str(v) for k, v in fixture_data.get(str(chapter), {}).items()}
+            def fetch_mock(book: str, chapter: int) -> dict[int, str]:
+                return {int(k): str(v) for k, v in fixture_data.get(str(chapter), {}).items()}
 
-        run_audit(spec, fetch_mock, output_dir)
+            run_audit(spec, fetch_mock, output_dir)
+            return 0
+
+        # Modo real con ApiBiblia
+        api_key = os.environ.get("APIBIBLIA_API_KEY", "").strip()
+        if not api_key:
+            print("Falta APIBIBLIA_API_KEY en las variables de entorno. Para pruebas locales use --offline-fixture.", file=sys.stderr)
+            return 2
+
+        def fetch_apibiblia(book: str, chapter: int) -> dict[int, str]:
+            # Normalización estricta para HTTP sin tilde ("Genesis")
+            api_book_name = "Genesis"
+            query = urllib.parse.urlencode({"ref": f"{api_book_name} {chapter}", "version": args.version})
+            url = f"{PASSAGE_URL}?{query}"
+
+            max_retries = 4
+            for attempt in range(1, max_retries + 1):
+                try:
+                    time.sleep(0.4)  # Pausa entre peticiones para prevenir rate limit
+                    status, payload = api_get(url, api_key)
+                    if status == 200:
+                        verse_map = extract_verses_robust(payload)
+                        del payload
+                        return verse_map
+                    print(f"ApiBiblia HTTP {status} para {api_book_name} {chapter} (intento {attempt}/{max_retries})", file=sys.stderr, flush=True)
+                except Exception as exc:
+                    print(f"Aviso consultando {api_book_name} {chapter} (intento {attempt}/{max_retries}): {exc}", file=sys.stderr, flush=True)
+                    if attempt == max_retries:
+                        print(f"Error definitivo obteniendo {api_book_name} {chapter}. Se continuará.", file=sys.stderr, flush=True)
+                        return {}
+                    time.sleep(2.0 * attempt)
+
+            return {}
+
+        run_audit(spec, fetch_apibiblia, output_dir)
         return 0
 
-    # Modo real con ApiBiblia
-    api_key = os.environ.get("APIBIBLIA_API_KEY", "").strip()
-    if not api_key:
-        print("Falta APIBIBLIA_API_KEY en las variables de entorno. Para pruebas locales use --offline-fixture.", file=sys.stderr)
-        return 2
-
-    def fetch_apibiblia(book: str, chapter: int) -> dict[int, str]:
-        # Normalización estricta para HTTP sin tilde ("Genesis")
-        api_book_name = "Genesis"
-        query = urllib.parse.urlencode({"ref": f"{api_book_name} {chapter}", "version": args.version})
-        url = f"{PASSAGE_URL}?{query}"
-        
-        max_retries = 4
-        for attempt in range(1, max_retries + 1):
-            try:
-                time.sleep(0.35)  # Pausa entre peticiones para prevenir rate limit
-                status, payload = api_get(url, api_key)
-                if status == 200:
-                    verses = extract_verses(payload)
-                    verse_map = {int(v["verse_number"]): str(v["text"]) for v in verses}
-                    del payload
-                    del verses
-                    return verse_map
-                print(f"ApiBiblia HTTP {status} para {api_book_name} {chapter} (intento {attempt}/{max_retries})", file=sys.stderr)
-            except Exception as exc:
-                print(f"Aviso consultando {api_book_name} {chapter} (intento {attempt}/{max_retries}): {exc}", file=sys.stderr)
-                if attempt == max_retries:
-                    raise
-                time.sleep(2.0 * attempt)
-
-        raise RuntimeError(f"No se pudo obtener {api_book_name} {chapter}")
-
-    run_audit(spec, fetch_apibiblia, output_dir)
-    return 0
+    except Exception as exc:
+        import traceback
+        traceback.print_exc()
+        return 1
 
 
 if __name__ == "__main__":

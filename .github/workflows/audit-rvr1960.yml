@@ -62,6 +62,7 @@ jobs:
       - name: Auditar preguntas con ApiBiblia RVR1960
         env:
           APIBIBLIA_API_KEY: ${{ secrets.APIBIBLIA_API_KEY }}
+          PYTHONUNBUFFERED: "1"
         run: |
           python tools/bible_extractor/auditor.py \
             --input "${{ steps.select_input.outputs.selected_file }}" \
