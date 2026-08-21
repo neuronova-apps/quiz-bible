@@ -17,3 +17,8 @@ artifacts/
 Thumbs.db
 .idea/
 .vscode/
+
+# Android / Gradle local
+.gradle/
+local.properties
+
