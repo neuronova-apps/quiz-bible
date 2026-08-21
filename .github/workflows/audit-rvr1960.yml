@@ -1,17 +1,27 @@
-name: Auditar banco existente contra RVR1960
+name: Auditar banco maestro contra RVR1960
 
 on:
   push:
-    branches: [rvr1960-audit]
+    branches: [rvr1960-audit, main, audit-genesis-full-rvr1960]
     paths:
+      - "tools/bible_extractor/genesis-master-input.json"
       - "tools/bible_extractor/audit-input.json"
+      - "tools/bible_extractor/auditor.py"
+      - ".github/workflows/audit-rvr1960.yml"
   pull_request:
     branches: [main]
     paths:
+      - "tools/bible_extractor/genesis-master-input.json"
       - "tools/bible_extractor/audit-input.json"
       - "tools/bible_extractor/auditor.py"
       - ".github/workflows/audit-rvr1960.yml"
   workflow_dispatch:
+    inputs:
+      input_file:
+        description: "Ruta del archivo de entrada de preguntas"
+        required: true
+        default: "tools/bible_extractor/genesis-master-input.json"
+        type: string
 
 permissions:
   contents: read
@@ -20,7 +30,7 @@ jobs:
   audit:
     name: Auditoría textual derivada
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -30,35 +40,73 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Auditar preguntas existentes con ApiBiblia
+      - name: Ejecutar pruebas unitarias de auditoría
+        run: |
+          python tools/bible_extractor/test_auditor.py
+
+      - name: Determinar archivo de entrada
+        id: select_input
+        run: |
+          INPUT_FILE="${{ inputs.input_file || 'tools/bible_extractor/genesis-master-input.json' }}"
+          if [ ! -f "$INPUT_FILE" ]; then
+            if [ -f "tools/bible_extractor/audit-input.json" ]; then
+              INPUT_FILE="tools/bible_extractor/audit-input.json"
+            else
+              echo "No se encontró archivo de entrada de auditoría."
+              exit 1
+            fi
+          fi
+          echo "selected_file=$INPUT_FILE" >> $GITHUB_OUTPUT
+          echo "Archivo seleccionado: $INPUT_FILE"
+
+      - name: Auditar preguntas con ApiBiblia RVR1960
         env:
           APIBIBLIA_API_KEY: ${{ secrets.APIBIBLIA_API_KEY }}
         run: |
           python tools/bible_extractor/auditor.py \
-            --input tools/bible_extractor/audit-input.json \
-            --output build/audit-result.json
+            --input "${{ steps.select_input.outputs.selected_file }}" \
+            --output-dir build/audit/genesis
 
       - name: Validar que no se persiste texto bíblico
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
-          data = json.loads(Path('build/audit-result.json').read_text(encoding='utf-8'))
-          print('source:', data.get('source'))
-          print('version:', data.get('version'))
-          print('book:', data.get('book'))
-          print('chapter:', data.get('chapter'))
-          print('questions_audited:', data.get('questions_audited'))
-          print('verified_count:', data.get('verified_count'))
-          print('review_required_count:', data.get('review_required_count'))
-          print('source_text_persisted:', data.get('source_text_persisted'))
-          assert data.get('source_text_persisted') is False
-          assert all('text' not in item and 'verse_text' not in item for item in data.get('results', []))
+          
+          out_dir = Path('build/audit/genesis')
+          json_files = list(out_dir.glob('*.json'))
+          assert len(json_files) > 0, "No se generaron archivos derivados de auditoría."
+          
+          for jf in json_files:
+              data = json.loads(jf.read_text(encoding='utf-8'))
+              print(f"Validando {jf.name}...")
+              assert data.get('source_text_persisted') is False, f"source_text_persisted no es False en {jf.name}"
+              
+              # Validar recursivamente que no existan campos 'text' ni 'verse_text' con contenido bíblico
+              def assert_no_scripture(node):
+                  if isinstance(node, dict):
+                      assert 'text' not in node and 'verse_text' not in node, f"Campo de texto bíblico encontrado en {jf.name}"
+                      for v in node.values():
+                          assert_no_scripture(v)
+                  elif isinstance(node, list):
+                      for item in node:
+                          assert_no_scripture(item)
+              
+              assert_no_scripture(data)
+          
+          summary = json.loads((out_dir / 'resumen-general.json').read_text(encoding='utf-8'))
+          print('--- Resumen General ---')
+          print('Total preguntas:', summary.get('total_questions'))
+          print('Capítulos cubiertos:', summary.get('chapters_covered'))
+          print('VERIFICADO:', summary.get('verified_count'))
+          print('REQUIERE_CORRECCION:', summary.get('requires_correction_count'))
+          print('NO_CONCLUYENTE:', summary.get('inconclusive_count'))
+          print('source_text_persisted:', summary.get('source_text_persisted'))
           PY
 
-      - name: Publicar resultado derivado
+      - name: Publicar resultados derivados
         uses: actions/upload-artifact@v4
         with:
-          name: auditoria-rvr1960-${{ github.run_number }}
-          path: build/audit-result.json
-          retention-days: 1
+          name: auditoria-genesis-rvr1960-${{ github.run_number }}
+          path: build/audit/genesis/
+          retention-days: 7
