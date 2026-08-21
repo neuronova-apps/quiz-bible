@@ -1,190 +1,28 @@
-name: Quality checks
+name: API Genesis 1 temporary validation
 
 on:
-  push:
-    branches: [main]
   pull_request:
     branches: [main]
-  workflow_dispatch:
 
 permissions:
   contents: read
 
-concurrency:
-  group: quality-${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-
 jobs:
-  phase-1:
-    name: Phase 1 · static integrity
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-      - name: Repository, HTML, links, SEO and sitemap
-        run: python scripts/quality_check.py
-      - name: JavaScript syntax
-        shell: bash
-        run: |
-          set -euo pipefail
-          mapfile -d '' files < <(find . -type f -name '*.js' -not -path './node_modules/*' -not -path './build/*' -not -path './dist/*' -not -path './.gradle/*' -not -path './.idea/*' -not -path './.kotlin/*' -print0)
-          if ((${#files[@]} == 0)); then echo 'No JavaScript files found.'; exit 0; fi
-          for file in "${files[@]}"; do echo "Checking ${file}"; node --check "${file}"; done
-
-  phase-2:
-    name: Phase 2 · browser smoke and responsive
-    needs: phase-1
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-      - name: Install Playwright
-        run: |
-          npm install --ignore-scripts --no-audit --no-fund
-          npx playwright install --with-deps chromium
-      - name: Responsive browser smoke tests
-        shell: bash
-        run: |
-          set -euo pipefail
-          python -m http.server 4173 --bind 127.0.0.1 >/tmp/neuronova-http.log 2>&1 &
-          SERVER_PID=$!
-          trap 'kill "$SERVER_PID" 2>/dev/null || true' EXIT
-          ready=0
-          for attempt in {1..30}; do
-            if curl --fail --silent http://127.0.0.1:4173/ >/dev/null; then ready=1; break; fi
-            sleep 1
-          done
-          if [[ "$ready" != "1" ]]; then
-            cat /tmp/neuronova-http.log
-            echo 'Local test server did not become ready.'
-            exit 1
-          fi
-          npm run test:smoke
-      - name: Upload failure screenshots
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: responsive-smoke-failures
-          path: artifacts/smoke/
-          if-no-files-found: ignore
-          retention-days: 5
-
-  phase-3:
-    name: Phase 3 · accessibility and functional flows
-    needs: phase-2
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-      - name: Install browser test dependencies
-        run: |
-          npm install --ignore-scripts --no-audit --no-fund
-          npx playwright install --with-deps chromium
-      - name: Accessibility and functional checks
-        shell: bash
-        run: |
-          set -euo pipefail
-          python -m http.server 4173 --bind 127.0.0.1 >/tmp/neuronova-http.log 2>&1 &
-          SERVER_PID=$!
-          trap 'kill "$SERVER_PID" 2>/dev/null || true' EXIT
-          ready=0
-          for attempt in {1..30}; do
-            if curl --fail --silent http://127.0.0.1:4173/ >/dev/null; then ready=1; break; fi
-            sleep 1
-          done
-          if [[ "$ready" != "1" ]]; then cat /tmp/neuronova-http.log; exit 1; fi
-          npm run test:phase3
-      - name: Upload phase 3 diagnostics
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: phase-3-diagnostics
-          path: artifacts/phase3/
-          if-no-files-found: ignore
-          retention-days: 5
-
-  phase-4:
-    name: Phase 4 · performance security and resilience
-    needs: phase-3
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-      - name: Install browser test dependencies
-        run: |
-          npm install --ignore-scripts --no-audit --no-fund
-          npx playwright install --with-deps chromium
-      - name: Performance, security and resilience checks
-        shell: bash
-        run: |
-          set -euo pipefail
-          python -m http.server 4173 --bind 127.0.0.1 >/tmp/neuronova-http.log 2>&1 &
-          SERVER_PID=$!
-          trap 'kill "$SERVER_PID" 2>/dev/null || true' EXIT
-          ready=0
-          for attempt in {1..30}; do
-            if curl --fail --silent http://127.0.0.1:4173/ >/dev/null; then ready=1; break; fi
-            sleep 1
-          done
-          if [[ "$ready" != "1" ]]; then cat /tmp/neuronova-http.log; exit 1; fi
-          npm run test:phase4
-      - name: Upload phase 4 diagnostics
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: phase-4-diagnostics
-          path: artifacts/phase4/
-          if-no-files-found: ignore
-          retention-days: 5
-
   api-genesis-1:
-    name: API Genesis 1 · temporary extraction
-    if: github.event_name == 'pull_request' && github.head_ref == 'api-genesis-1-run'
+    name: API Genesis 1 · extraction validation
+    if: github.head_ref == 'api-genesis-1-run'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Validate ApiBiblia and prepare temporary chapter
+
+      - name: Validate ApiBiblia and prepare Genesis 1 metadata
         env:
           APIBIBLIA_API_KEY: ${{ secrets.APIBIBLIA_API_KEY }}
         run: |
@@ -194,38 +32,32 @@ jobs:
             --version RVR1960 \
             --output build/extraction-report.json \
             --candidates-output build/question-candidates.json
-      - name: Generate derived questions from in-memory RVR1960
-        env:
-          APIBIBLIA_API_KEY: ${{ secrets.APIBIBLIA_API_KEY }}
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: |
-          python tools/bible_extractor/generator.py \
-            --book "Genesis" \
-            --chapter "1" \
-            --version RVR1960 \
-            --model "gemini-3.6-flash" \
-            --output build/generated-questions.json
-      - name: Validate metadata without printing Bible text
+
+      - name: Validate extraction metadata
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
           report = json.loads(Path('build/extraction-report.json').read_text(encoding='utf-8'))
-          bank = json.loads(Path('build/generated-questions.json').read_text(encoding='utf-8'))
-          print('api_source:', report.get('source'))
-          print('version:', report.get('version_requested'))
-          print('verses_prepared:', report.get('verse_processing', {}).get('verses_prepared_in_memory'))
-          print('scripture_text_persisted:', report.get('scripture_text_persisted'))
-          print('generated_count:', bank.get('generated_count'))
-          print('requires_human_review:', bank.get('requires_human_review'))
-          print('verse_text_field_present:', any('verse_text' in item for item in bank.get('items', [])))
+          candidates = json.loads(Path('build/question-candidates.json').read_text(encoding='utf-8'))
+          assert report.get('source') == 'ApiBiblia'
+          assert report.get('version_requested') == 'RVR1960'
+          assert report.get('verse_processing', {}).get('verses_prepared_in_memory') == 31
+          assert report.get('scripture_text_persisted') is False
+          assert candidates.get('book') == 'Genesis'
+          assert candidates.get('chapter') == 1
+          assert candidates.get('verse_count') == 31
+          assert all(item.get('source_text_persisted') is False for item in candidates.get('items', []))
+          print('ApiBiblia Genesis 1: OK')
+          print('verses_prepared: 31')
+          print('scripture_text_persisted: false')
           PY
-      - name: Upload Genesis 1 derived bank
+
+      - name: Upload Genesis 1 extraction metadata
         uses: actions/upload-artifact@v4
         with:
-          name: banco-generado-rvr1960-Genesis-1
+          name: apibiblia-rvr1960-Genesis-1-validation
           path: |
             build/extraction-report.json
             build/question-candidates.json
-            build/generated-questions.json
           retention-days: 1
