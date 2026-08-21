@@ -1,0 +1,2988 @@
+{
+  "source": "Quiz Bible master bank - Exodus",
+  "version": "RVR1960",
+  "book": "Éxodo",
+  "total_questions": 100,
+  "questions": [
+    {
+      "id": "NQB-AT-EXO-0001",
+      "book": "Éxodo",
+      "chapter": 1,
+      "verse_start": 8,
+      "verse_end": 10,
+      "reference": "Éxodo 1:8-10",
+      "category": "AT_GENERAL",
+      "subcategory": "Temor del faraón ante Israel",
+      "characters": [
+        "faraón",
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué temor llevó al nuevo faraón a buscar medidas contra los israelitas?",
+      "opcion_a": "Que aumentaran en número y, en una guerra, se unieran a los enemigos de Egipto",
+      "opcion_b": "Que abandonaran Egipto y dejaran sin alimentos al país",
+      "opcion_c": "Que tomaran el control del sacerdocio egipcio",
+      "opcion_d": "Que se negaran a cultivar las tierras del faraón",
+      "correct_option": "A",
+      "correct_answer": "Que aumentaran en número y, en una guerra, se unieran a los enemigos de Egipto",
+      "explanation": "El nuevo rey observó que los israelitas se habían vuelto numerosos y fuertes. Su preocupación no era solo el crecimiento de la población, sino la posibilidad de que, en caso de guerra, se aliaran con los enemigos de Egipto y escaparan del país. Ese temor explica el inicio de las medidas de opresión contra ellos.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0002",
+      "book": "Éxodo",
+      "chapter": 1,
+      "verse_start": 15,
+      "verse_end": 17,
+      "reference": "Éxodo 1:15-17",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Parteras hebreas",
+      "characters": [
+        "Sifra",
+        "Fúa",
+        "faraón"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Cómo se llamaban las dos parteras hebreas a quienes el faraón ordenó matar a los niños varones al nacer?",
+      "opcion_a": "Sifra y Fúa",
+      "opcion_b": "Bilha y Zilpa",
+      "opcion_c": "Miriam y Séfora",
+      "opcion_d": "Lea y Raquel",
+      "correct_option": "A",
+      "correct_answer": "Sifra y Fúa",
+      "explanation": "Éxodo identifica por nombre a Sifra y Fúa como las parteras hebreas que recibieron la orden del faraón. Ellas temieron a Dios y no cumplieron la instrucción de matar a los niños varones. La pregunta exige recordar dos nombres secundarios concretos, por lo que se clasifica como avanzada.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0003",
+      "book": "Éxodo",
+      "chapter": 1,
+      "verse_start": 22,
+      "verse_end": 22,
+      "reference": "Éxodo 1:22",
+      "category": "AT_GENERAL",
+      "subcategory": "Orden contra los hijos hebreos",
+      "characters": [
+        "faraón",
+        "hebreos"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué orden general dio el faraón respecto de los hijos varones nacidos entre los hebreos?",
+      "opcion_a": "Que fueran arrojados al río Nilo",
+      "opcion_b": "Que fueran llevados al palacio para servir",
+      "opcion_c": "Que fueran enviados al desierto con sus familias",
+      "opcion_d": "Que fueran registrados, pero permanecieran en sus casas",
+      "correct_option": "A",
+      "correct_answer": "Que fueran arrojados al río Nilo",
+      "explanation": "Después de que las parteras no cumplieron la orden anterior, el faraón extendió la medida a todo su pueblo y ordenó que los hijos varones hebreos fueran arrojados al río. Las niñas podían permanecer con vida. Este mandato crea el contexto inmediato para el nacimiento y la preservación de Moisés en el capítulo siguiente.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0004",
+      "book": "Éxodo",
+      "chapter": 2,
+      "verse_start": 2,
+      "verse_end": 3,
+      "reference": "Éxodo 2:2-3",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Moisés ocultado al nacer",
+      "characters": [
+        "Moisés",
+        "madre de Moisés"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Durante cuánto tiempo logró la madre de Moisés ocultarlo antes de colocarlo en una arquilla junto al río?",
+      "opcion_a": "Tres meses",
+      "opcion_b": "Siete días",
+      "opcion_c": "Cuarenta días",
+      "opcion_d": "Un año",
+      "correct_option": "A",
+      "correct_answer": "Tres meses",
+      "explanation": "La madre del niño logró mantenerlo oculto durante tres meses. Cuando ya no pudo esconderlo por más tiempo, preparó una arquilla y la colocó entre los juncos a la orilla del río. La dificultad está en recordar la duración concreta del período de ocultamiento antes de esa decisión.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0005",
+      "book": "Éxodo",
+      "chapter": 2,
+      "verse_start": 5,
+      "verse_end": 6,
+      "reference": "Éxodo 2:5-6",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Hallazgo del niño Moisés",
+      "characters": [
+        "hija del faraón",
+        "Moisés"
+      ],
+      "difficulty": "Básico",
+      "question_type": "Selección múltiple",
+      "question": "¿Quién encontró al niño que más tarde sería llamado Moisés dentro de la arquilla junto al río?",
+      "opcion_a": "La hija del faraón",
+      "opcion_b": "Miriam",
+      "opcion_c": "La partera Sifra",
+      "opcion_d": "Séfora",
+      "correct_option": "A",
+      "correct_answer": "La hija del faraón",
+      "explanation": "La hija del faraón descendió al río y vio la arquilla entre los juncos. Al abrirla encontró al niño y se compadeció de él. Miriam observaba a distancia y participó después en conseguir una mujer hebrea que lo amamantara, pero quien encontró y recibió al niño fue la hija del faraón.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0006",
+      "book": "Éxodo",
+      "chapter": 2,
+      "verse_start": 11,
+      "verse_end": 15,
+      "reference": "Éxodo 2:11-15",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Huida de Moisés a Madián",
+      "characters": [
+        "Moisés",
+        "faraón"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Por qué huyó Moisés de Egipto hacia Madián?",
+      "opcion_a": "Porque el faraón procuraba matarlo al enterarse de que había matado a un egipcio",
+      "opcion_b": "Porque una hambruna lo obligó a buscar alimento fuera de Egipto",
+      "opcion_c": "Porque su familia lo envió a buscar esposa",
+      "opcion_d": "Porque Aarón lo expulsó de la comunidad hebrea",
+      "correct_option": "A",
+      "correct_answer": "Porque el faraón procuraba matarlo al enterarse de que había matado a un egipcio",
+      "explanation": "Moisés intervino al ver a un egipcio golpeando a un hebreo y terminó matando al egipcio. Cuando el hecho se hizo conocido, el faraón buscó matar a Moisés. Esa amenaza lo llevó a huir de Egipto y establecerse temporalmente en la tierra de Madián.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0007",
+      "book": "Éxodo",
+      "chapter": 2,
+      "verse_start": 21,
+      "verse_end": 21,
+      "reference": "Éxodo 2:21",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Matrimonio de Moisés",
+      "characters": [
+        "Moisés",
+        "Séfora"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Con quién se casó Moisés durante su estancia en Madián?",
+      "opcion_a": "Séfora",
+      "opcion_b": "Miriam",
+      "opcion_c": "Jocabed",
+      "opcion_d": "Fúa",
+      "correct_option": "A",
+      "correct_answer": "Séfora",
+      "explanation": "Después de ayudar a las hijas del sacerdote de Madián y permanecer con aquella familia, Moisés recibió por esposa a Séfora. Miriam era su hermana, Jocabed su madre y Fúa una de las parteras hebreas mencionadas al inicio del libro. La pregunta distingue relaciones familiares de distintas etapas de la vida de Moisés.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0008",
+      "book": "Éxodo",
+      "chapter": 3,
+      "verse_start": 1,
+      "verse_end": 1,
+      "reference": "Éxodo 3:1",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Moisés llega a Horeb",
+      "characters": [
+        "Moisés",
+        "Jetro"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Cómo llama Éxodo al monte al que llegó Moisés mientras pastoreaba el rebaño de Jetro?",
+      "opcion_a": "Horeb",
+      "opcion_b": "Ararat",
+      "opcion_c": "Moria",
+      "opcion_d": "Carmelo",
+      "correct_option": "A",
+      "correct_answer": "Horeb",
+      "explanation": "Mientras cuidaba el rebaño de Jetro, Moisés condujo los animales más allá del desierto y llegó a Horeb, presentado en el pasaje como monte de Dios. Ararat, Moria y Carmelo pertenecen a otros episodios bíblicos. La pregunta se refiere al nombre utilizado por Éxodo en esta escena concreta.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0009",
+      "book": "Éxodo",
+      "chapter": 3,
+      "verse_start": 2,
+      "verse_end": 4,
+      "reference": "Éxodo 3:2-4",
+      "category": "AT_GENERAL",
+      "subcategory": "La zarza ardiente",
+      "characters": [
+        "Moisés",
+        "Dios"
+      ],
+      "difficulty": "Básico",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué tenía de extraordinario la zarza que llamó la atención de Moisés?",
+      "opcion_a": "Ardía en fuego, pero no se consumía",
+      "opcion_b": "Crecía de manera visible mientras Moisés la observaba",
+      "opcion_c": "Se movía de un lugar a otro sin viento",
+      "opcion_d": "Estaba cubierta de agua en medio del desierto",
+      "correct_option": "A",
+      "correct_answer": "Ardía en fuego, pero no se consumía",
+      "explanation": "Moisés observó una zarza envuelta en fuego que, a pesar de arder, no se consumía. Esa característica lo llevó a acercarse para comprender lo que estaba viendo y dio paso al llamado de Dios. Las otras alternativas no forman parte de la señal descrita en el episodio.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0010",
+      "book": "Éxodo",
+      "chapter": 3,
+      "verse_start": 18,
+      "verse_end": 18,
+      "reference": "Éxodo 3:18",
+      "category": "AT_GENERAL",
+      "subcategory": "Petición de viaje al desierto",
+      "characters": [
+        "Moisés",
+        "ancianos de Israel",
+        "faraón"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Cuántos días de camino debían pedir al faraón para internarse en el desierto y ofrecer sacrificios?",
+      "opcion_a": "Tres días",
+      "opcion_b": "Un día",
+      "opcion_c": "Siete días",
+      "opcion_d": "Cuarenta días",
+      "correct_option": "A",
+      "correct_answer": "Tres días",
+      "explanation": "En las instrucciones dadas a Moisés se establece que, junto con los ancianos de Israel, debía presentarse ante el rey de Egipto y solicitar permiso para realizar un viaje de tres días al desierto con el propósito de ofrecer sacrificios. La pregunta exige recordar la distancia temporal específica indicada para esa petición.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0011",
+      "book": "Éxodo",
+      "chapter": 4,
+      "verse_start": 2,
+      "verse_end": 4,
+      "reference": "Éxodo 4:2-4",
+      "category": "AT_GENERAL",
+      "subcategory": "Señal de la vara",
+      "characters": [
+        "Moisés",
+        "Dios"
+      ],
+      "difficulty": "Básico",
+      "question_type": "Selección múltiple",
+      "question": "¿En qué se convirtió la vara de Moisés cuando la arrojó al suelo como señal?",
+      "opcion_a": "En una serpiente",
+      "opcion_b": "En una vara florecida",
+      "opcion_c": "En una corriente de agua",
+      "opcion_d": "En una llama de fuego",
+      "correct_option": "A",
+      "correct_answer": "En una serpiente",
+      "explanation": "Cuando Moisés expresó dudas sobre cómo sería recibido, Dios le dio señales que podía mostrar. En la primera, la vara que tenía en la mano fue arrojada al suelo y se convirtió en una serpiente. Luego, al tomarla nuevamente, volvió a ser vara. La pregunta evalúa el cambio inicial de esa señal.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0012",
+      "book": "Éxodo",
+      "chapter": 4,
+      "verse_start": 10,
+      "verse_end": 16,
+      "reference": "Éxodo 4:10-16",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Aarón como portavoz",
+      "characters": [
+        "Moisés",
+        "Aarón",
+        "Dios"
+      ],
+      "difficulty": "Básico",
+      "question_type": "Selección múltiple",
+      "question": "¿A quién señaló Dios para ayudar a Moisés como portavoz ante el pueblo?",
+      "opcion_a": "A Aarón",
+      "opcion_b": "A Josué",
+      "opcion_c": "A Jetro",
+      "opcion_d": "A Caleb",
+      "correct_option": "A",
+      "correct_answer": "A Aarón",
+      "explanation": "Moisés expresó preocupación por su capacidad para hablar. En respuesta, Dios señaló a Aarón, su hermano, como alguien que podía hablar bien y servir como portavoz. Josué y Caleb aparecen más adelante en la historia de Israel, mientras que Jetro era el suegro de Moisés y no recibió esa función.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0013",
+      "book": "Éxodo",
+      "chapter": 5,
+      "verse_start": 6,
+      "verse_end": 9,
+      "reference": "Éxodo 5:6-9",
+      "category": "AT_GENERAL",
+      "subcategory": "Trabajo de los ladrillos",
+      "characters": [
+        "faraón",
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Cómo endurecieron los egipcios la fabricación de ladrillos después de la primera petición de Moisés y Aarón?",
+      "opcion_a": "Dejaron de proporcionar paja, pero exigieron la misma cantidad de ladrillos",
+      "opcion_b": "Aumentaron la paja disponible, pero redujeron el número de trabajadores",
+      "opcion_c": "Prohibieron usar barro y exigieron construir solo con piedra",
+      "opcion_d": "Ordenaron fabricar ladrillos únicamente durante la noche",
+      "correct_option": "A",
+      "correct_answer": "Dejaron de proporcionar paja, pero exigieron la misma cantidad de ladrillos",
+      "explanation": "Tras la petición de dejar salir al pueblo, el faraón aumentó la presión laboral. Los israelitas debían buscar por sí mismos la paja necesaria para fabricar los ladrillos, pero no se redujo la cuota exigida. La medida buscaba mantenerlos ocupados y hacer más pesada su carga sin disminuir la producción.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0014",
+      "book": "Éxodo",
+      "chapter": 5,
+      "verse_start": 20,
+      "verse_end": 21,
+      "reference": "Éxodo 5:20-21",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Reproche a Moisés y Aarón",
+      "characters": [
+        "Moisés",
+        "Aarón",
+        "capataces israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿A quiénes reprocharon los capataces israelitas que su situación hubiera empeorado ante el faraón?",
+      "opcion_a": "A Moisés y Aarón",
+      "opcion_b": "A Jetro y Séfora",
+      "opcion_c": "A Miriam y Aarón",
+      "opcion_d": "A Amram y Jocabed",
+      "correct_option": "A",
+      "correct_answer": "A Moisés y Aarón",
+      "explanation": "Después de recibir una respuesta desfavorable del faraón y una carga laboral más dura, los responsables israelitas se encontraron con Moisés y Aarón. Les reprocharon que su intervención hubiera empeorado la posición del pueblo ante el rey y sus servidores. La escena refleja el conflicto inicial entre la misión de liberación y el aumento inmediato de la opresión.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0015",
+      "book": "Éxodo",
+      "chapter": 6,
+      "verse_start": 20,
+      "verse_end": 20,
+      "reference": "Éxodo 6:20",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Padres de Moisés y Aarón",
+      "characters": [
+        "Amram",
+        "Jocabed",
+        "Moisés",
+        "Aarón"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Quiénes fueron los padres de Aarón y Moisés según la genealogía de Éxodo?",
+      "opcion_a": "Amram y Jocabed",
+      "opcion_b": "Jacob y Lea",
+      "opcion_c": "Aarón y Eliseba",
+      "opcion_d": "Jetro y Séfora",
+      "correct_option": "A",
+      "correct_answer": "Amram y Jocabed",
+      "explanation": "La genealogía levítica identifica a Amram y Jocabed como los padres de Aarón y Moisés. Aarón y Eliseba forman otra pareja mencionada en el mismo capítulo, mientras que Jacob y Lea pertenecen a una generación mucho anterior y Jetro y Séfora se relacionan con la etapa de Moisés en Madián.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0016",
+      "book": "Éxodo",
+      "chapter": 7,
+      "verse_start": 10,
+      "verse_end": 12,
+      "reference": "Éxodo 7:10-12",
+      "category": "AT_GENERAL",
+      "subcategory": "Vara de Aarón ante el faraón",
+      "characters": [
+        "Aarón",
+        "Moisés",
+        "faraón",
+        "hechiceros de Egipto"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué ocurrió con la vara de Aarón después de que los sabios y hechiceros egipcios imitaran la señal de las varas convertidas en serpientes?",
+      "opcion_a": "La vara de Aarón devoró las varas de ellos",
+      "opcion_b": "Todas las varas volvieron a ser madera al mismo tiempo",
+      "opcion_c": "Las varas de los egipcios destruyeron la de Aarón",
+      "opcion_d": "La vara de Aarón quedó inmóvil mientras las demás huyeron",
+      "correct_option": "A",
+      "correct_answer": "La vara de Aarón devoró las varas de ellos",
+      "explanation": "Ante el faraón, Aarón arrojó su vara y esta se convirtió en serpiente. Los sabios y hechiceros egipcios realizaron una imitación mediante sus artes, pero el relato añade un detalle decisivo: la vara de Aarón devoró las varas de ellos. La pregunta evalúa ese desenlace específico y no solo la transformación inicial.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0017",
+      "book": "Éxodo",
+      "chapter": 7,
+      "verse_start": 20,
+      "verse_end": 21,
+      "reference": "Éxodo 7:20-21",
+      "category": "AT_GENERAL",
+      "subcategory": "Primera plaga",
+      "characters": [
+        "Moisés",
+        "Aarón",
+        "faraón"
+      ],
+      "difficulty": "Básico",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué sucedió con las aguas del Nilo cuando comenzó la primera plaga contra Egipto?",
+      "opcion_a": "Se convirtieron en sangre",
+      "opcion_b": "Se secaron por completo",
+      "opcion_c": "Se desbordaron sobre las ciudades",
+      "opcion_d": "Se congelaron durante la noche",
+      "correct_option": "A",
+      "correct_answer": "Se convirtieron en sangre",
+      "explanation": "Al iniciarse la primera plaga, Aarón golpeó las aguas conforme a la instrucción recibida y estas se convirtieron en sangre. El efecto alcanzó al río y otras reservas de agua, provocando la muerte de los peces y haciendo imposible beber del Nilo. Las otras opciones no describen esta primera señal de juicio.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0018",
+      "book": "Éxodo",
+      "chapter": 8,
+      "verse_start": 5,
+      "verse_end": 6,
+      "reference": "Éxodo 8:5-6",
+      "category": "AT_GENERAL",
+      "subcategory": "Plaga de ranas",
+      "characters": [
+        "Moisés",
+        "Aarón",
+        "faraón"
+      ],
+      "difficulty": "Básico",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué animales invadieron Egipto en la plaga que siguió a la del agua convertida en sangre?",
+      "opcion_a": "Ranas",
+      "opcion_b": "Moscas",
+      "opcion_c": "Langostas",
+      "opcion_d": "Piojos",
+      "correct_option": "A",
+      "correct_answer": "Ranas",
+      "explanation": "Después de la plaga sobre las aguas, el siguiente juicio narrado hizo que las ranas subieran en gran cantidad y cubrieran la tierra de Egipto. Las moscas y los piojos aparecen después, mientras que las langostas pertenecen a una plaga posterior. La pregunta evalúa la secuencia básica de los primeros acontecimientos.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0019",
+      "book": "Éxodo",
+      "chapter": 8,
+      "verse_start": 16,
+      "verse_end": 19,
+      "reference": "Éxodo 8:16-19",
+      "category": "AT_GENERAL",
+      "subcategory": "Plaga de piojos",
+      "characters": [
+        "Moisés",
+        "Aarón",
+        "hechiceros de Egipto"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Después de qué plaga reconocieron los hechiceros de Egipto que estaban ante una acción que no podían reproducir?",
+      "opcion_a": "La plaga de piojos",
+      "opcion_b": "La plaga de ranas",
+      "opcion_c": "La plaga de moscas",
+      "opcion_d": "La plaga de langostas",
+      "correct_option": "A",
+      "correct_answer": "La plaga de piojos",
+      "explanation": "Los hechiceros egipcios habían conseguido imitar algunas señales anteriores, pero cuando intentaron producir piojos no pudieron hacerlo. Ante esa limitación reconocieron que el acontecimiento superaba sus capacidades. La pregunta se centra en identificar cuál de las primeras plagas marca ese cambio dentro del enfrentamiento con los magos de Egipto.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0020",
+      "book": "Éxodo",
+      "chapter": 8,
+      "verse_start": 20,
+      "verse_end": 24,
+      "reference": "Éxodo 8:20-24",
+      "category": "AT_GENERAL",
+      "subcategory": "Gosén protegido de las moscas",
+      "characters": [
+        "Moisés",
+        "faraón",
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué región donde habitaban los israelitas fue apartada de la plaga de moscas?",
+      "opcion_a": "La tierra de Gosén",
+      "opcion_b": "La tierra de Madián",
+      "opcion_c": "La tierra de Canaán",
+      "opcion_d": "La tierra de Sinar",
+      "correct_option": "A",
+      "correct_answer": "La tierra de Gosén",
+      "explanation": "Durante la plaga de moscas se establece una distinción territorial entre Egipto y el lugar donde habitaba el pueblo de Israel. La tierra de Gosén fue apartada de aquella plaga, de modo que el contraste funcionara como señal de que el juicio no afectaba indiscriminadamente a todos los habitantes del territorio.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0021",
+      "book": "Éxodo",
+      "chapter": 9,
+      "verse_start": 3,
+      "verse_end": 6,
+      "reference": "Éxodo 9:3-6",
+      "category": "AT_GENERAL",
+      "subcategory": "Plaga sobre el ganado",
+      "characters": [
+        "Moisés",
+        "faraón",
+        "egipcios",
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué ocurrió con el ganado de los egipcios durante la plaga anunciada sobre sus animales?",
+      "opcion_a": "Una mortandad afectó al ganado de los egipcios, mientras el de Israel fue preservado",
+      "opcion_b": "Todo el ganado de Egipto y de Israel murió por igual",
+      "opcion_c": "El ganado fue trasladado al desierto antes de la plaga",
+      "opcion_d": "Los animales egipcios fueron entregados a los israelitas",
+      "correct_option": "A",
+      "correct_answer": "Una mortandad afectó al ganado de los egipcios, mientras el de Israel fue preservado",
+      "explanation": "La plaga sobre el ganado marcó una nueva distinción entre los egipcios y los israelitas. El relato describe una mortandad severa entre los animales de Egipto, mientras señala que el ganado perteneciente a Israel fue preservado. La pregunta evalúa precisamente ese contraste dentro de la secuencia de las plagas.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0022",
+      "book": "Éxodo",
+      "chapter": 9,
+      "verse_start": 8,
+      "verse_end": 10,
+      "reference": "Éxodo 9:8-10",
+      "category": "AT_GENERAL",
+      "subcategory": "Plaga de úlceras",
+      "characters": [
+        "Moisés",
+        "Aarón",
+        "egipcios"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué material tomaron Moisés y Aarón antes de que aparecieran úlceras sobre personas y animales?",
+      "opcion_a": "Ceniza de un horno",
+      "opcion_b": "Polvo del camino",
+      "opcion_c": "Arena del desierto",
+      "opcion_d": "Barro del Nilo",
+      "correct_option": "A",
+      "correct_answer": "Ceniza de un horno",
+      "explanation": "Antes de la aparición de las úlceras, Moisés y Aarón recibieron la instrucción de tomar ceniza de un horno. Moisés la esparció hacia el cielo y el episodio continuó con la aparición de lesiones sobre personas y animales. La dificultad radica en recordar el material concreto usado en esta señal.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0023",
+      "book": "Éxodo",
+      "chapter": 9,
+      "verse_start": 20,
+      "verse_end": 21,
+      "reference": "Éxodo 9:20-21",
+      "category": "AT_GENERAL",
+      "subcategory": "Advertencia antes del granizo",
+      "characters": [
+        "servidores del faraón",
+        "egipcios"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué hicieron los servidores del faraón que tomaron en serio la advertencia antes de la plaga de granizo?",
+      "opcion_a": "Pusieron a salvo bajo techo a sus siervos y su ganado",
+      "opcion_b": "Abandonaron Egipto antes de que comenzara la tormenta",
+      "opcion_c": "Entregaron su ganado a los israelitas",
+      "opcion_d": "Llevaron los animales a las orillas del Nilo",
+      "correct_option": "A",
+      "correct_answer": "Pusieron a salvo bajo techo a sus siervos y su ganado",
+      "explanation": "Antes del granizo, algunos servidores del faraón tomaron en serio la advertencia y pusieron a resguardo a sus siervos y a su ganado; quienes no hicieron caso los dejaron en el campo. Este hecho aporta un conocimiento distinto del capítulo 9 y evita repetir la identificación de Gosén como zona protegida en diferentes plagas.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0024",
+      "book": "Éxodo",
+      "chapter": 9,
+      "verse_start": 31,
+      "verse_end": 32,
+      "reference": "Éxodo 9:31-32",
+      "category": "AT_GENERAL",
+      "subcategory": "Cultivos después del granizo",
+      "characters": [
+        "egipcios"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué dos cultivos no fueron destruidos por el granizo porque aún no habían crecido lo suficiente?",
+      "opcion_a": "El trigo y el centeno",
+      "opcion_b": "La cebada y el lino",
+      "opcion_c": "El trigo y la cebada",
+      "opcion_d": "El lino y el centeno",
+      "correct_option": "A",
+      "correct_answer": "El trigo y el centeno",
+      "explanation": "El relato distingue entre cultivos que ya estaban desarrollados y fueron dañados por el granizo y otros que todavía no habían crecido lo suficiente. El trigo y el centeno quedaron fuera de esa destrucción inmediata. Es una pregunta experta porque exige precisión sobre un detalle agrícola muy específico dentro de la narración.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0025",
+      "book": "Éxodo",
+      "chapter": 10,
+      "verse_start": 3,
+      "verse_end": 6,
+      "reference": "Éxodo 10:3-6",
+      "category": "AT_GENERAL",
+      "subcategory": "Plaga de langostas",
+      "characters": [
+        "Moisés",
+        "Aarón",
+        "faraón"
+      ],
+      "difficulty": "Básico",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué plaga fue anunciada para cubrir la tierra y consumir lo que había quedado después del granizo?",
+      "opcion_a": "Langostas",
+      "opcion_b": "Ranas",
+      "opcion_c": "Moscas",
+      "opcion_d": "Piojos",
+      "correct_option": "A",
+      "correct_answer": "Langostas",
+      "explanation": "Después del granizo, se anunció una invasión de langostas que cubriría la tierra y consumiría la vegetación que hubiera sobrevivido. La pregunta se centra en reconocer la plaga siguiente dentro de la secuencia narrativa, uno de los episodios más conocidos de la confrontación con el faraón.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0026",
+      "book": "Éxodo",
+      "chapter": 10,
+      "verse_start": 21,
+      "verse_end": 23,
+      "reference": "Éxodo 10:21-23",
+      "category": "AT_GENERAL",
+      "subcategory": "Plaga de tinieblas",
+      "characters": [
+        "Moisés",
+        "egipcios",
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Durante cuánto tiempo hubo densas tinieblas sobre Egipto mientras los israelitas tenían luz donde habitaban?",
+      "opcion_a": "Tres días",
+      "opcion_b": "Siete días",
+      "opcion_c": "Una noche",
+      "opcion_d": "Cuarenta días",
+      "correct_option": "A",
+      "correct_answer": "Tres días",
+      "explanation": "La plaga de tinieblas cubrió Egipto durante tres días y fue tan intensa que el relato describe una paralización de la actividad normal. Al mismo tiempo, se señala que los israelitas tenían luz en sus lugares de habitación. La pregunta exige recordar la duración concreta de este episodio.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0027",
+      "book": "Éxodo",
+      "chapter": 10,
+      "verse_start": 24,
+      "verse_end": 26,
+      "reference": "Éxodo 10:24-26",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Moisés rechaza dejar el ganado",
+      "characters": [
+        "Moisés",
+        "faraón"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué condición del faraón rechazó Moisés antes de la salida del pueblo?",
+      "opcion_a": "Que sus rebaños y ganados permanecieran en Egipto",
+      "opcion_b": "Que solo salieran los ancianos",
+      "opcion_c": "Que Aarón se quedara en el palacio",
+      "opcion_d": "Que abandonaran sus pertenencias de plata y oro",
+      "correct_option": "A",
+      "correct_answer": "Que sus rebaños y ganados permanecieran en Egipto",
+      "explanation": "El faraón llegó a permitir que el pueblo saliera, pero quiso retener sus ovejas y vacas. Moisés rechazó esa condición porque los animales serían necesarios para los sacrificios y porque todavía no sabían qué tendrían que ofrecer. El detalle muestra que la salida debía incluir también los bienes ganaderos del pueblo.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0028",
+      "book": "Éxodo",
+      "chapter": 11,
+      "verse_start": 2,
+      "verse_end": 3,
+      "reference": "Éxodo 11:2-3",
+      "category": "AT_GENERAL",
+      "subcategory": "Objetos pedidos a los egipcios",
+      "characters": [
+        "israelitas",
+        "egipcios"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué objetos debían pedir los israelitas a sus vecinos egipcios antes de la salida?",
+      "opcion_a": "Objetos de plata y de oro",
+      "opcion_b": "Armas y carros",
+      "opcion_c": "Ganado y tierras",
+      "opcion_d": "Trigo y aceite",
+      "correct_option": "A",
+      "correct_answer": "Objetos de plata y de oro",
+      "explanation": "Antes de la última plaga y de la salida, los israelitas recibieron la instrucción de pedir a sus vecinos objetos de plata y de oro. El pasaje presenta además que el pueblo había recibido favor ante los egipcios. La pregunta se centra en la naturaleza concreta de los bienes solicitados.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0029",
+      "book": "Éxodo",
+      "chapter": 11,
+      "verse_start": 3,
+      "verse_end": 3,
+      "reference": "Éxodo 11:3",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Prestigio de Moisés en Egipto",
+      "characters": [
+        "Moisés",
+        "servidores del faraón",
+        "egipcios"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Cómo era considerado Moisés en Egipto por los servidores del faraón y por el pueblo poco antes de la última plaga?",
+      "opcion_a": "Era tenido en gran estima",
+      "opcion_b": "Era prácticamente desconocido fuera de Israel",
+      "opcion_c": "Era considerado un prisionero del faraón",
+      "opcion_d": "Era visto solamente como un pastor de Madián",
+      "correct_option": "A",
+      "correct_answer": "Era tenido en gran estima",
+      "explanation": "El relato presenta a Moisés como una figura muy respetada en Egipto, tanto entre los servidores del faraón como ante el pueblo. Este dato muestra el cambio de su posición pública respecto de etapas anteriores y evita mantener dos preguntas cuya respuesta central era la muerte de los primogénitos, una como anuncio y otra como cumplimiento.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0030",
+      "book": "Éxodo",
+      "chapter": 12,
+      "verse_start": 3,
+      "verse_end": 6,
+      "reference": "Éxodo 12:3-6",
+      "category": "AT_GENERAL",
+      "subcategory": "Preparación del cordero pascual",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué día del mes debía apartarse el animal para la Pascua antes de sacrificarlo el día catorce?",
+      "opcion_a": "El día diez",
+      "opcion_b": "El día siete",
+      "opcion_c": "El día doce",
+      "opcion_d": "El día primero",
+      "correct_option": "A",
+      "correct_answer": "El día diez",
+      "explanation": "Las instrucciones de la primera Pascua incluyen una secuencia temporal precisa: el animal debía apartarse el día diez del mes y conservarse hasta el día catorce, cuando sería sacrificado. La pregunta se clasifica como experta porque exige recordar un detalle cronológico específico del ritual.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0031",
+      "book": "Éxodo",
+      "chapter": 12,
+      "verse_start": 7,
+      "verse_end": 7,
+      "reference": "Éxodo 12:7",
+      "category": "AT_GENERAL",
+      "subcategory": "Sangre en las puertas",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Básico",
+      "question_type": "Selección múltiple",
+      "question": "¿Dónde debían colocar la sangre del animal pascual en las casas donde comerían?",
+      "opcion_a": "En los dos postes y en el dintel de la puerta",
+      "opcion_b": "En el techo y en las ventanas",
+      "opcion_c": "En el suelo frente a la casa",
+      "opcion_d": "En las paredes interiores",
+      "correct_option": "A",
+      "correct_answer": "En los dos postes y en el dintel de la puerta",
+      "explanation": "La sangre del animal pascual debía colocarse en partes visibles de la entrada de la casa: los dos postes laterales y el dintel superior. Esa señal formaba parte de las instrucciones dadas a las familias israelitas antes de la noche de la salida.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0032",
+      "book": "Éxodo",
+      "chapter": 12,
+      "verse_start": 8,
+      "verse_end": 8,
+      "reference": "Éxodo 12:8",
+      "category": "AT_GENERAL",
+      "subcategory": "Alimentos de la Pascua",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Con qué dos acompañamientos debían comer la carne del animal pascual?",
+      "opcion_a": "Con panes sin levadura y hierbas amargas",
+      "opcion_b": "Con pan con levadura y miel",
+      "opcion_c": "Con trigo tostado y uvas",
+      "opcion_d": "Con aceite y dátiles",
+      "correct_option": "A",
+      "correct_answer": "Con panes sin levadura y hierbas amargas",
+      "explanation": "Las instrucciones de la Pascua especifican que la carne debía comerse acompañada de panes sin levadura y hierbas amargas. Estos elementos forman parte de la preparación de la comida pascual y ayudan a distinguirla de una comida cotidiana o de otros rituales posteriores.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0033",
+      "book": "Éxodo",
+      "chapter": 12,
+      "verse_start": 11,
+      "verse_end": 11,
+      "reference": "Éxodo 12:11",
+      "category": "AT_GENERAL",
+      "subcategory": "Forma de comer la Pascua",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Cómo debían estar preparados los israelitas mientras comían la Pascua aquella noche?",
+      "opcion_a": "Listos para partir, con cinturón, calzado y bastón",
+      "opcion_b": "Sentados sin calzado y con las puertas abiertas",
+      "opcion_c": "Vestidos de luto y sin llevar equipaje",
+      "opcion_d": "Acostados y esperando hasta el amanecer",
+      "correct_option": "A",
+      "correct_answer": "Listos para partir, con cinturón, calzado y bastón",
+      "explanation": "La primera Pascua debía comerse con una actitud de salida inmediata. Las instrucciones describen a los israelitas preparados para el viaje, con la ropa ajustada, el calzado puesto y el bastón en la mano. Esa disposición subraya la urgencia con la que comenzaría la salida de Egipto.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0034",
+      "book": "Éxodo",
+      "chapter": 12,
+      "verse_start": 29,
+      "verse_end": 30,
+      "reference": "Éxodo 12:29-30",
+      "category": "AT_GENERAL",
+      "subcategory": "Muerte de los primogénitos",
+      "characters": [
+        "faraón",
+        "egipcios"
+      ],
+      "difficulty": "Básico",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué ocurrió en Egipto durante la noche que llevó al faraón a permitir finalmente la salida de Israel?",
+      "opcion_a": "Murieron los primogénitos de Egipto",
+      "opcion_b": "El Nilo se secó completamente",
+      "opcion_c": "Una invasión extranjera entró en el país",
+      "opcion_d": "Todos los animales de Egipto desaparecieron",
+      "correct_option": "A",
+      "correct_answer": "Murieron los primogénitos de Egipto",
+      "explanation": "La noche de la Pascua culminó con la muerte de los primogénitos en Egipto. El impacto fue tan generalizado que hubo un clamor en el país, y ese acontecimiento llevó al faraón a llamar a Moisés y Aarón y ordenar la salida del pueblo.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0035",
+      "book": "Éxodo",
+      "chapter": 12,
+      "verse_start": 35,
+      "verse_end": 36,
+      "reference": "Éxodo 12:35-36",
+      "category": "AT_GENERAL",
+      "subcategory": "Bienes recibidos antes de salir",
+      "characters": [
+        "israelitas",
+        "egipcios"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué recibieron los israelitas de los egipcios antes de salir, además de objetos de plata y oro?",
+      "opcion_a": "Vestidos",
+      "opcion_b": "Armas",
+      "opcion_c": "Tierras",
+      "opcion_d": "Caballos",
+      "correct_option": "A",
+      "correct_answer": "Vestidos",
+      "explanation": "Antes de la salida, los israelitas pidieron a los egipcios objetos de plata, objetos de oro y también vestidos. El relato señala que los egipcios accedieron a entregar esos bienes. La pregunta diferencia este detalle de otros recursos que aparecen en etapas posteriores del viaje.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0036",
+      "book": "Éxodo",
+      "chapter": 13,
+      "verse_start": 17,
+      "verse_end": 18,
+      "reference": "Éxodo 13:17-18",
+      "category": "AT_GENERAL",
+      "subcategory": "Ruta de salida",
+      "characters": [
+        "Dios",
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Por qué no fue guiado Israel por el camino más directo hacia la tierra de los filisteos?",
+      "opcion_a": "Para evitar que el pueblo enfrentara guerra y quisiera regresar a Egipto",
+      "opcion_b": "Porque el camino estaba completamente inundado",
+      "opcion_c": "Porque Moisés desconocía esa ruta",
+      "opcion_d": "Porque los filisteos habían firmado un pacto con Egipto",
+      "correct_option": "A",
+      "correct_answer": "Para evitar que el pueblo enfrentara guerra y quisiera regresar a Egipto",
+      "explanation": "Aunque la ruta por la tierra de los filisteos era más corta, el relato explica que el pueblo no fue conducido por allí para evitar que, al encontrarse con guerra, se desanimara y decidiera regresar a Egipto. Por eso fue llevado por una ruta alternativa hacia el desierto.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0037",
+      "book": "Éxodo",
+      "chapter": 13,
+      "verse_start": 19,
+      "verse_end": 19,
+      "reference": "Éxodo 13:19",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Huesos de José",
+      "characters": [
+        "Moisés",
+        "José",
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué llevó Moisés consigo al salir de Egipto en cumplimiento de un juramento hecho generaciones antes?",
+      "opcion_a": "Los huesos de José",
+      "opcion_b": "La túnica de José",
+      "opcion_c": "El bastón de Jacob",
+      "opcion_d": "Los restos de Abraham",
+      "correct_option": "A",
+      "correct_answer": "Los huesos de José",
+      "explanation": "José había pedido antes de morir que sus huesos fueran llevados cuando Dios sacara a los descendientes de Israel de Egipto. Éxodo muestra el cumplimiento de esa petición al señalar que Moisés tomó los huesos de José durante la salida. La pregunta conecta directamente el final de Génesis con la narración del éxodo.",
+      "additional_references": [
+        "Génesis 50:25-26"
+      ],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0038",
+      "book": "Éxodo",
+      "chapter": 13,
+      "verse_start": 21,
+      "verse_end": 22,
+      "reference": "Éxodo 13:21-22",
+      "category": "AT_GENERAL",
+      "subcategory": "Columnas de nube y fuego",
+      "characters": [
+        "Dios",
+        "israelitas"
+      ],
+      "difficulty": "Básico",
+      "question_type": "Selección múltiple",
+      "question": "¿Cómo era guiado el pueblo durante el día y durante la noche en su salida de Egipto?",
+      "opcion_a": "Con una columna de nube de día y una columna de fuego de noche",
+      "opcion_b": "Con una estrella de día y una nube de noche",
+      "opcion_c": "Con un ángel visible de día y una antorcha de noche",
+      "opcion_d": "Con humo de día y relámpagos de noche",
+      "correct_option": "A",
+      "correct_answer": "Con una columna de nube de día y una columna de fuego de noche",
+      "explanation": "Durante la marcha, el pueblo recibió una guía visible adaptada al día y a la noche. La columna de nube señalaba el camino durante el día, mientras la columna de fuego proporcionaba orientación nocturna. Ambas imágenes se convierten en elementos característicos del viaje por el desierto.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0039",
+      "book": "Éxodo",
+      "chapter": 14,
+      "verse_start": 21,
+      "verse_end": 22,
+      "reference": "Éxodo 14:21-22",
+      "category": "AT_GENERAL",
+      "subcategory": "Cruce del mar",
+      "characters": [
+        "Moisés",
+        "israelitas"
+      ],
+      "difficulty": "Básico",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué ocurrió con el mar cuando Moisés extendió su mano durante la huida de Egipto?",
+      "opcion_a": "Las aguas se dividieron y el pueblo cruzó por tierra seca",
+      "opcion_b": "El mar bajó de nivel, pero el pueblo tuvo que cruzar todavía entre aguas profundas",
+      "opcion_c": "El pueblo rodeó el mar por el desierto antes de que llegaran los egipcios",
+      "opcion_d": "Los egipcios detuvieron la persecución y dejaron un paso libre por la costa",
+      "correct_option": "A",
+      "correct_answer": "Las aguas se dividieron y el pueblo cruzó por tierra seca",
+      "explanation": "Ante el mar y con el ejército egipcio acercándose, Moisés extendió su mano y las aguas fueron apartadas, permitiendo que los israelitas avanzaran por terreno seco. El episodio constituye uno de los acontecimientos centrales de la salida de Egipto y precede a la derrota del ejército perseguidor.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0040",
+      "book": "Éxodo",
+      "chapter": 15,
+      "verse_start": 22,
+      "verse_end": 25,
+      "reference": "Éxodo 15:22-25",
+      "category": "AT_GENERAL",
+      "subcategory": "Aguas de Mara",
+      "characters": [
+        "Moisés",
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Por qué no podía beber el pueblo el agua que encontró en Mara?",
+      "opcion_a": "Porque era amarga",
+      "opcion_b": "Porque estaba congelada",
+      "opcion_c": "Porque estaba contaminada con sangre",
+      "opcion_d": "Porque pertenecía al faraón",
+      "correct_option": "A",
+      "correct_answer": "Porque era amarga",
+      "explanation": "Después de avanzar por el desierto sin encontrar agua, los israelitas llegaron a Mara, pero allí no pudieron beber porque las aguas eran amargas. Moisés clamó y el episodio continúa con la transformación del agua para que pudiera ser utilizada. La pregunta evalúa la razón del nombre y del problema inicial en aquel lugar.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0041",
+      "book": "Éxodo",
+      "chapter": 15,
+      "verse_start": 27,
+      "verse_end": 27,
+      "reference": "Éxodo 15:27",
+      "category": "AT_GENERAL",
+      "subcategory": "Elim: fuentes y palmeras",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Cuántas fuentes de agua y cuántas palmeras encontró el pueblo al llegar a Elim?",
+      "opcion_a": "Doce fuentes de agua y setenta palmeras",
+      "opcion_b": "Siete fuentes de agua y cuarenta palmeras",
+      "opcion_c": "Doce fuentes de agua y doce palmeras",
+      "opcion_d": "Setenta fuentes de agua y doce palmeras",
+      "correct_option": "A",
+      "correct_answer": "Doce fuentes de agua y setenta palmeras",
+      "explanation": "Después del episodio de las aguas amargas de Mara, el pueblo llegó a Elim. Allí encontró un lugar con abundantes recursos: doce fuentes de agua y setenta palmeras. La pregunta se clasifica como experta porque exige recordar simultáneamente dos cantidades concretas de una breve referencia geográfica del viaje.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0042",
+      "book": "Éxodo",
+      "chapter": 16,
+      "verse_start": 4,
+      "verse_end": 4,
+      "reference": "Éxodo 16:4",
+      "category": "AT_GENERAL",
+      "subcategory": "Pan del cielo",
+      "characters": [
+        "Dios",
+        "israelitas"
+      ],
+      "difficulty": "Básico",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué alimento anunció Dios que haría llover del cielo para el pueblo en el desierto?",
+      "opcion_a": "Pan",
+      "opcion_b": "Carne",
+      "opcion_c": "Fruta",
+      "opcion_d": "Leche",
+      "correct_option": "A",
+      "correct_answer": "Pan",
+      "explanation": "Ante las quejas por la falta de alimento, Dios anunció que haría llover pan del cielo y que el pueblo recogería diariamente la porción necesaria. Este anuncio introduce el episodio del alimento que posteriormente será llamado maná y marca una nueva provisión durante la marcha por el desierto.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0043",
+      "book": "Éxodo",
+      "chapter": 16,
+      "verse_start": 22,
+      "verse_end": 23,
+      "reference": "Éxodo 16:22-23",
+      "category": "AT_GENERAL",
+      "subcategory": "Doble porción antes del reposo",
+      "characters": [
+        "israelitas",
+        "Moisés"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué cantidad de alimento recogió el pueblo el sexto día en comparación con los días anteriores?",
+      "opcion_a": "El doble de la porción habitual",
+      "opcion_b": "La mitad de la porción habitual",
+      "opcion_c": "La misma cantidad que cualquier otro día",
+      "opcion_d": "Alimento suficiente para siete días",
+      "correct_option": "A",
+      "correct_answer": "El doble de la porción habitual",
+      "explanation": "El sexto día el pueblo recogió una porción doble. Moisés explicó que el día siguiente sería de reposo, por lo que podían preparar con anticipación lo necesario. La pregunta evalúa la diferencia concreta entre la recolección habitual y la realizada antes del día de descanso.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0044",
+      "book": "Éxodo",
+      "chapter": 16,
+      "verse_start": 32,
+      "verse_end": 34,
+      "reference": "Éxodo 16:32-34",
+      "category": "AT_GENERAL",
+      "subcategory": "Maná conservado como testimonio",
+      "characters": [
+        "Moisés",
+        "Aarón",
+        "israelitas"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué cantidad de maná debía conservarse para que las generaciones futuras pudieran conocer el alimento recibido en el desierto?",
+      "opcion_a": "Un gomer",
+      "opcion_b": "Dos gomeres",
+      "opcion_c": "Diez gomeres",
+      "opcion_d": "Medio gomer",
+      "correct_option": "A",
+      "correct_answer": "Un gomer",
+      "explanation": "Moisés indicó que se preservara una medida concreta del alimento como testimonio para las generaciones futuras. La cantidad señalada fue un gomer, que debía guardarse para recordar la provisión recibida en el desierto. Es un detalle cuantitativo poco frecuente y por eso se ubica en nivel experto.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0045",
+      "book": "Éxodo",
+      "chapter": 17,
+      "verse_start": 5,
+      "verse_end": 6,
+      "reference": "Éxodo 17:5-6",
+      "category": "AT_GENERAL",
+      "subcategory": "Agua de la roca",
+      "characters": [
+        "Moisés",
+        "Dios",
+        "israelitas"
+      ],
+      "difficulty": "Básico",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué ocurrió cuando Moisés golpeó la roca conforme a la instrucción recibida?",
+      "opcion_a": "Salió agua para que el pueblo bebiera",
+      "opcion_b": "La roca quedó seca y el pueblo siguió sin agua",
+      "opcion_c": "Apareció maná alrededor de la roca",
+      "opcion_d": "La vara se rompió al golpear la roca",
+      "correct_option": "A",
+      "correct_answer": "Salió agua para que el pueblo bebiera",
+      "explanation": "Ante la falta de agua, Moisés recibió la instrucción de golpear una roca en Horeb con la vara. Al hacerlo, salió agua y el pueblo pudo beber. El episodio responde a una necesidad concreta durante el viaje y se convirtió en uno de los acontecimientos más recordados de la etapa del desierto.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0046",
+      "book": "Éxodo",
+      "chapter": 17,
+      "verse_start": 10,
+      "verse_end": 11,
+      "reference": "Éxodo 17:10-11",
+      "category": "AT_GENERAL",
+      "subcategory": "Batalla contra Amalec",
+      "characters": [
+        "Moisés",
+        "Josué",
+        "Amalec",
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué ocurría en la batalla contra Amalec mientras Moisés mantenía levantada su mano?",
+      "opcion_a": "Israel prevalecía",
+      "opcion_b": "Amalec prevalecía",
+      "opcion_c": "La batalla se detenía",
+      "opcion_d": "Josué regresaba al campamento",
+      "correct_option": "A",
+      "correct_answer": "Israel prevalecía",
+      "explanation": "Durante el enfrentamiento con Amalec, Josué dirigía a los combatientes mientras Moisés permanecía en una posición elevada. El relato vincula la mano levantada de Moisés con el avance de Israel y su descenso con la ventaja de Amalec. La pregunta evalúa esa relación narrativa específica.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0047",
+      "book": "Éxodo",
+      "chapter": 17,
+      "verse_start": 12,
+      "verse_end": 12,
+      "reference": "Éxodo 17:12",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Aarón y Hur sostienen las manos de Moisés",
+      "characters": [
+        "Moisés",
+        "Aarón",
+        "Hur"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Quiénes sostuvieron las manos de Moisés cuando se cansó durante la batalla contra Amalec?",
+      "opcion_a": "Aarón y Hur",
+      "opcion_b": "Josué y Caleb",
+      "opcion_c": "Jetro y Aarón",
+      "opcion_d": "Nadab y Abiú",
+      "correct_option": "A",
+      "correct_answer": "Aarón y Hur",
+      "explanation": "Cuando las manos de Moisés se cansaron, Aarón y Hur se colocaron a sus lados y las sostuvieron para mantenerlas firmes. La escena complementa el combate dirigido por Josué y destaca la participación de personajes que apoyaron a Moisés durante el enfrentamiento con Amalec.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0048",
+      "book": "Éxodo",
+      "chapter": 18,
+      "verse_start": 3,
+      "verse_end": 4,
+      "reference": "Éxodo 18:3-4",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Hijos de Moisés",
+      "characters": [
+        "Moisés",
+        "Gersón",
+        "Eliezer"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Cómo se llamaban los dos hijos de Moisés mencionados cuando su familia regresó a encontrarse con él?",
+      "opcion_a": "Gersón y Eliezer",
+      "opcion_b": "Nadab y Abiú",
+      "opcion_c": "Efraín y Manasés",
+      "opcion_d": "Josué y Caleb",
+      "correct_option": "A",
+      "correct_answer": "Gersón y Eliezer",
+      "explanation": "Éxodo identifica a los dos hijos de Moisés como Gersón y Eliezer y relaciona sus nombres con experiencias de Moisés fuera de Egipto y con la ayuda recibida. La pregunta exige reconocer nombres familiares menos frecuentes dentro del relato, por lo que corresponde al nivel avanzado.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0049",
+      "book": "Éxodo",
+      "chapter": 18,
+      "verse_start": 17,
+      "verse_end": 23,
+      "reference": "Éxodo 18:17-23",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Consejo de Jetro sobre los jueces",
+      "characters": [
+        "Moisés",
+        "Jetro",
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué solución propuso Jetro para que Moisés no tuviera que resolver personalmente todos los asuntos del pueblo?",
+      "opcion_a": "Designar hombres capaces para atender los asuntos menores y reservar los difíciles para Moisés",
+      "opcion_b": "Suspender todos los juicios hasta llegar a Canaán",
+      "opcion_c": "Entregar todas las decisiones únicamente a Aarón",
+      "opcion_d": "Dividir al pueblo y enviarlo de regreso a Egipto",
+      "correct_option": "A",
+      "correct_answer": "Designar hombres capaces para atender los asuntos menores y reservar los difíciles para Moisés",
+      "explanation": "Jetro observó que Moisés estaba intentando atender por sí solo las consultas de todo el pueblo. Le recomendó establecer una estructura de responsables capaces que resolvieran los asuntos ordinarios y llevaran a Moisés solo los casos difíciles. El consejo buscaba distribuir la carga y hacer sostenible la administración de justicia.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0050",
+      "book": "Éxodo",
+      "chapter": 19,
+      "verse_start": 1,
+      "verse_end": 2,
+      "reference": "Éxodo 19:1-2",
+      "category": "AT_GENERAL",
+      "subcategory": "Llegada al Sinaí",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿En qué mes después de la salida de Egipto llegó Israel al desierto de Sinaí?",
+      "opcion_a": "En el tercer mes",
+      "opcion_b": "En el primer mes",
+      "opcion_c": "En el sexto mes",
+      "opcion_d": "En el duodécimo mes",
+      "correct_option": "A",
+      "correct_answer": "En el tercer mes",
+      "explanation": "El relato sitúa la llegada de los israelitas al desierto de Sinaí en el tercer mes después de su salida de Egipto. Allí acamparon frente al monte y comenzó una etapa decisiva vinculada con el pacto y la entrega de instrucciones. La pregunta exige recordar un dato cronológico concreto.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0051",
+      "book": "Éxodo",
+      "chapter": 19,
+      "verse_start": 12,
+      "verse_end": 13,
+      "reference": "Éxodo 19:12-13",
+      "category": "AT_GENERAL",
+      "subcategory": "Límites alrededor del monte",
+      "characters": [
+        "Moisés",
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué debía establecer Moisés alrededor del monte antes del encuentro del pueblo con Dios?",
+      "opcion_a": "Límites para impedir que el pueblo subiera o tocara el monte",
+      "opcion_b": "Tiendas para que todos durmieran en la cima",
+      "opcion_c": "Una muralla para defenderse de Amalec",
+      "opcion_d": "Altares individuales para cada familia",
+      "correct_option": "A",
+      "correct_answer": "Límites para impedir que el pueblo subiera o tocara el monte",
+      "explanation": "Antes de la manifestación en el monte, Moisés debía señalar límites claros para el pueblo. La instrucción impedía subir o tocar el monte y formaba parte de la preparación para el acontecimiento. La pregunta evalúa una medida concreta de separación establecida previamente.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0052",
+      "book": "Éxodo",
+      "chapter": 20,
+      "verse_start": 3,
+      "verse_end": 3,
+      "reference": "Éxodo 20:3",
+      "category": "AT_GENERAL",
+      "subcategory": "Mandamiento sobre otros dioses",
+      "characters": [
+        "Dios",
+        "israelitas"
+      ],
+      "difficulty": "Básico",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué establece el primer mandamiento respecto de otros dioses?",
+      "opcion_a": "Que no se deben tener otros dioses delante de Dios",
+      "opcion_b": "Que pueden adorarse otros dioses fuera de Israel",
+      "opcion_c": "Que cada tribu puede escoger un dios protector",
+      "opcion_d": "Que otros dioses pueden invocarse únicamente en tiempo de guerra",
+      "correct_option": "A",
+      "correct_answer": "Que no se deben tener otros dioses delante de Dios",
+      "explanation": "El primer mandamiento establece de forma directa que Israel no debía tener otros dioses delante de Dios. Los distractores se formularon como alternativas relacionadas con la adoración, pero ninguna corresponde al mandato dado en el pasaje.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0053",
+      "book": "Éxodo",
+      "chapter": 20,
+      "verse_start": 8,
+      "verse_end": 11,
+      "reference": "Éxodo 20:8-11",
+      "category": "AT_GENERAL",
+      "subcategory": "Día de reposo",
+      "characters": [
+        "Dios",
+        "israelitas"
+      ],
+      "difficulty": "Básico",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué día debía apartarse como día de reposo dentro del ciclo semanal?",
+      "opcion_a": "El séptimo día",
+      "opcion_b": "El primer día",
+      "opcion_c": "El tercer día",
+      "opcion_d": "El sexto día",
+      "correct_option": "A",
+      "correct_answer": "El séptimo día",
+      "explanation": "El mandamiento sobre el reposo establece un ciclo de seis días de trabajo y un séptimo día apartado. El pasaje relaciona este patrón con la creación y presenta el séptimo día como un tiempo dedicado al descanso. La respuesta depende de identificar la posición concreta del día dentro de la semana.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0054",
+      "book": "Éxodo",
+      "chapter": 20,
+      "verse_start": 12,
+      "verse_end": 12,
+      "reference": "Éxodo 20:12",
+      "category": "AT_GENERAL",
+      "subcategory": "Honrar a los padres",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Básico",
+      "question_type": "Selección múltiple",
+      "question": "¿A quiénes ordena honrar este mandamiento relacionado con la familia?",
+      "opcion_a": "Al padre y a la madre",
+      "opcion_b": "A los hermanos mayores",
+      "opcion_c": "A los ancianos de cada tribu",
+      "opcion_d": "A los jueces y sacerdotes",
+      "correct_option": "A",
+      "correct_answer": "Al padre y a la madre",
+      "explanation": "Dentro de los mandamientos, se establece de manera directa el deber de honrar al padre y a la madre. La instrucción se dirige a la relación familiar y se distingue de otras normas sobre autoridad, culto o convivencia comunitaria.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0055",
+      "book": "Éxodo",
+      "chapter": 21,
+      "verse_start": 2,
+      "verse_end": 2,
+      "reference": "Éxodo 21:2",
+      "category": "AT_GENERAL",
+      "subcategory": "Servicio del siervo hebreo",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Cuántos años debía servir un siervo hebreo antes de salir libre en el año siguiente?",
+      "opcion_a": "Seis años",
+      "opcion_b": "Tres años",
+      "opcion_c": "Siete años",
+      "opcion_d": "Doce años",
+      "correct_option": "A",
+      "correct_answer": "Seis años",
+      "explanation": "La norma establece un período de seis años de servicio para un siervo hebreo y señala la salida libre en el séptimo. La pregunta se concentra en la duración del servicio antes de esa liberación y exige distinguir entre el número de años trabajados y el año en que se produce la salida.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0056",
+      "book": "Éxodo",
+      "chapter": 22,
+      "verse_start": 21,
+      "verse_end": 21,
+      "reference": "Éxodo 22:21",
+      "category": "AT_GENERAL",
+      "subcategory": "Trato al extranjero",
+      "characters": [
+        "israelitas",
+        "extranjeros"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué trato prohibía la ley hacia el extranjero que viviera entre el pueblo?",
+      "opcion_a": "Maltratarlo u oprimirlo",
+      "opcion_b": "Permitirle trabajar",
+      "opcion_c": "Compartir alimento con él",
+      "opcion_d": "Dejarlo viajar por el territorio",
+      "correct_option": "A",
+      "correct_answer": "Maltratarlo u oprimirlo",
+      "explanation": "La instrucción prohíbe tratar injustamente al extranjero y fundamenta esa exigencia recordando que los propios israelitas habían vivido como extranjeros en Egipto. La pregunta evalúa el comportamiento expresamente rechazado por la norma, sin extenderla a situaciones que el versículo no menciona.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0057",
+      "book": "Éxodo",
+      "chapter": 23,
+      "verse_start": 10,
+      "verse_end": 11,
+      "reference": "Éxodo 23:10-11",
+      "category": "AT_GENERAL",
+      "subcategory": "Descanso de la tierra",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué debía hacerse con la tierra después de sembrarla y recoger sus frutos durante seis años?",
+      "opcion_a": "Dejarla descansar durante el séptimo año",
+      "opcion_b": "Venderla al terminar el sexto año",
+      "opcion_c": "Sembrarla dos veces durante el séptimo año",
+      "opcion_d": "Entregarla permanentemente a otra tribu",
+      "correct_option": "A",
+      "correct_answer": "Dejarla descansar durante el séptimo año",
+      "explanation": "La norma agrícola establece seis años de siembra y recolección, seguidos por un séptimo año en el que la tierra debía descansar. La disposición introduce un ritmo de descanso aplicado al uso del campo y permite distinguirlo del ciclo semanal del día de reposo.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0058",
+      "book": "Éxodo",
+      "chapter": 24,
+      "verse_start": 4,
+      "verse_end": 4,
+      "reference": "Éxodo 24:4",
+      "category": "AT_GENERAL",
+      "subcategory": "Doce columnas del pacto",
+      "characters": [
+        "Moisés",
+        "tribus de Israel"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Cuántas columnas levantó Moisés conforme al número de las tribus de Israel?",
+      "opcion_a": "Doce",
+      "opcion_b": "Siete",
+      "opcion_c": "Diez",
+      "opcion_d": "Setenta",
+      "correct_option": "A",
+      "correct_answer": "Doce",
+      "explanation": "Al preparar la ceremonia del pacto, Moisés levantó un altar y doce columnas, una cantidad correspondiente a las doce tribus de Israel. La pregunta exige asociar el número de columnas con la estructura tribal del pueblo y no con otros números relevantes del mismo libro.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0059",
+      "book": "Éxodo",
+      "chapter": 24,
+      "verse_start": 9,
+      "verse_end": 9,
+      "reference": "Éxodo 24:9",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Ancianos que subieron con Moisés",
+      "characters": [
+        "Moisés",
+        "Aarón",
+        "Nadab",
+        "Abiú",
+        "ancianos de Israel"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Cuántos ancianos de Israel subieron junto con Moisés, Aarón, Nadab y Abiú?",
+      "opcion_a": "Setenta",
+      "opcion_b": "Doce",
+      "opcion_c": "Cuarenta",
+      "opcion_d": "Setenta y dos",
+      "correct_option": "A",
+      "correct_answer": "Setenta",
+      "explanation": "Después de la ratificación del pacto, el relato menciona a Moisés, Aarón, Nadab y Abiú junto con setenta ancianos de Israel. La pregunta exige recordar una cantidad concreta asociada a un grupo representativo del pueblo, por lo que se clasifica como experta.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0060",
+      "book": "Éxodo",
+      "chapter": 24,
+      "verse_start": 12,
+      "verse_end": 12,
+      "reference": "Éxodo 24:12",
+      "category": "AT_GENERAL",
+      "subcategory": "Tablas de piedra",
+      "characters": [
+        "Moisés",
+        "Dios"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué dijo Dios que entregaría a Moisés cuando lo llamó a subir al monte?",
+      "opcion_a": "Tablas de piedra con la ley y los mandamientos",
+      "opcion_b": "Una corona para gobernar a Israel",
+      "opcion_c": "Un mapa de la tierra de Canaán",
+      "opcion_d": "Las llaves del tabernáculo",
+      "correct_option": "A",
+      "correct_answer": "Tablas de piedra con la ley y los mandamientos",
+      "explanation": "Dios llamó a Moisés a subir al monte y señaló que allí le entregaría tablas de piedra relacionadas con la ley y los mandamientos para instruir al pueblo. La pregunta evalúa el objeto y propósito inmediato de esa convocatoria dentro del relato del pacto.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0061",
+      "book": "Éxodo",
+      "chapter": 25,
+      "verse_start": 10,
+      "verse_end": 11,
+      "reference": "Éxodo 25:10-11",
+      "category": "AT_GENERAL",
+      "subcategory": "Construcción del arca",
+      "characters": [
+        "Moisés",
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿De qué material debía construirse el arca y con qué debía recubrirse?",
+      "opcion_a": "De madera de acacia recubierta de oro puro",
+      "opcion_b": "De cedro recubierto de plata",
+      "opcion_c": "De bronce macizo",
+      "opcion_d": "De piedra recubierta de madera",
+      "correct_option": "A",
+      "correct_answer": "De madera de acacia recubierta de oro puro",
+      "explanation": "Las instrucciones para el arca especifican una estructura de madera de acacia revestida de oro puro tanto por dentro como por fuera. La pregunta evalúa dos características materiales que aparecen juntas en la descripción y que distinguen el arca de otros objetos del santuario.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0062",
+      "book": "Éxodo",
+      "chapter": 25,
+      "verse_start": 18,
+      "verse_end": 20,
+      "reference": "Éxodo 25:18-20",
+      "category": "AT_GENERAL",
+      "subcategory": "Querubines del propiciatorio",
+      "characters": [
+        "Moisés",
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué figuras debían colocarse en los dos extremos del propiciatorio?",
+      "opcion_a": "Dos querubines",
+      "opcion_b": "Dos leones",
+      "opcion_c": "Dos candelabros",
+      "opcion_d": "Dos palmeras",
+      "correct_option": "A",
+      "correct_answer": "Dos querubines",
+      "explanation": "El propiciatorio debía llevar dos querubines, uno en cada extremo, formando parte de la misma pieza de oro. La pregunta se concentra en identificar las figuras vinculadas directamente con la cubierta del arca y evita mezclar elementos de otras partes del tabernáculo.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0063",
+      "book": "Éxodo",
+      "chapter": 25,
+      "verse_start": 23,
+      "verse_end": 30,
+      "reference": "Éxodo 25:23-30",
+      "category": "AT_GENERAL",
+      "subcategory": "Mesa y pan de la proposición",
+      "characters": [
+        "Moisés",
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué debía mantenerse continuamente sobre la mesa del santuario?",
+      "opcion_a": "El pan de la proposición",
+      "opcion_b": "Las tablas de piedra",
+      "opcion_c": "El incienso del altar",
+      "opcion_d": "Las vestiduras de Aarón",
+      "correct_option": "A",
+      "correct_answer": "El pan de la proposición",
+      "explanation": "La descripción de la mesa concluye indicando que sobre ella debía colocarse continuamente el pan de la proposición. Este elemento pertenece a la mesa y no al arca, al altar del incienso ni a las vestiduras sacerdotales, por lo que la referencia permite una respuesta única.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0064",
+      "book": "Éxodo",
+      "chapter": 25,
+      "verse_start": 31,
+      "verse_end": 32,
+      "reference": "Éxodo 25:31-32",
+      "category": "AT_GENERAL",
+      "subcategory": "Brazos del candelero",
+      "characters": [
+        "Moisés",
+        "israelitas"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Cuántos brazos laterales debían salir del candelero, distribuidos a ambos lados?",
+      "opcion_a": "Seis",
+      "opcion_b": "Cuatro",
+      "opcion_c": "Siete",
+      "opcion_d": "Doce",
+      "correct_option": "A",
+      "correct_answer": "Seis",
+      "explanation": "La descripción indica tres brazos que salían de un lado del candelero y tres del otro, sumando seis brazos laterales además de la estructura central. La pregunta exige precisión numérica sobre el diseño del objeto y por eso se clasifica como experta.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0065",
+      "book": "Éxodo",
+      "chapter": 26,
+      "verse_start": 1,
+      "verse_end": 1,
+      "reference": "Éxodo 26:1",
+      "category": "AT_GENERAL",
+      "subcategory": "Cortinas del tabernáculo",
+      "characters": [
+        "Moisés",
+        "israelitas"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Cuántas cortinas formaban la primera cubierta del tabernáculo descrita en las instrucciones?",
+      "opcion_a": "Diez",
+      "opcion_b": "Doce",
+      "opcion_c": "Siete",
+      "opcion_d": "Veinte",
+      "correct_option": "A",
+      "correct_answer": "Diez",
+      "explanation": "La primera descripción de la cubierta del tabernáculo establece un conjunto de diez cortinas confeccionadas con materiales y colores específicos. La cantidad es un detalle técnico del diseño y no un número general del relato, por lo que corresponde al nivel experto.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0066",
+      "book": "Éxodo",
+      "chapter": 26,
+      "verse_start": 33,
+      "verse_end": 33,
+      "reference": "Éxodo 26:33",
+      "category": "AT_GENERAL",
+      "subcategory": "Velo interior del tabernáculo",
+      "characters": [
+        "Moisés",
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué dos espacios debía separar el velo colocado dentro del tabernáculo?",
+      "opcion_a": "El Lugar Santo y el Lugar Santísimo",
+      "opcion_b": "El atrio y el campamento",
+      "opcion_c": "La entrada y el altar exterior",
+      "opcion_d": "La mesa y el candelero",
+      "correct_option": "A",
+      "correct_answer": "El Lugar Santo y el Lugar Santísimo",
+      "explanation": "El velo interior tenía una función espacial precisa: separar el Lugar Santo del Lugar Santísimo. La pregunta evalúa la organización interna del tabernáculo y distingue ese velo de las cortinas exteriores o de otros elementos del santuario.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0067",
+      "book": "Éxodo",
+      "chapter": 27,
+      "verse_start": 1,
+      "verse_end": 1,
+      "reference": "Éxodo 27:1",
+      "category": "AT_GENERAL",
+      "subcategory": "Medidas del altar del holocausto",
+      "characters": [
+        "Moisés",
+        "israelitas"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué medidas debía tener el altar del holocausto según la instrucción dada?",
+      "opcion_a": "Cinco codos de largo, cinco de ancho y tres de alto",
+      "opcion_b": "Diez codos de largo, cinco de ancho y cinco de alto",
+      "opcion_c": "Tres codos de largo, tres de ancho y cinco de alto",
+      "opcion_d": "Siete codos de largo, siete de ancho y dos de alto",
+      "correct_option": "A",
+      "correct_answer": "Cinco codos de largo, cinco de ancho y tres de alto",
+      "explanation": "El altar del holocausto debía ser cuadrado, con cinco codos tanto de largo como de ancho y tres codos de altura. La pregunta combina tres medidas técnicas del diseño, lo que exige una precisión mayor que el reconocimiento general del objeto.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0068",
+      "book": "Éxodo",
+      "chapter": 27,
+      "verse_start": 20,
+      "verse_end": 21,
+      "reference": "Éxodo 27:20-21",
+      "category": "AT_GENERAL",
+      "subcategory": "Aceite para las lámparas",
+      "characters": [
+        "Moisés",
+        "israelitas",
+        "Aarón"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué tipo de aceite debía llevar el pueblo para mantener encendidas las lámparas?",
+      "opcion_a": "Aceite puro de olivas machacadas",
+      "opcion_b": "Aceite de cedro mezclado con vino",
+      "opcion_c": "Aceite de lino con incienso",
+      "opcion_d": "Aceite de palma con sal",
+      "correct_option": "A",
+      "correct_answer": "Aceite puro de olivas machacadas",
+      "explanation": "Las instrucciones señalan un aceite de oliva puro, obtenido de olivas machacadas, destinado a mantener las lámparas encendidas. La pregunta se centra en la materia prima y en la calidad especificada para este uso dentro del santuario.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0069",
+      "book": "Éxodo",
+      "chapter": 28,
+      "verse_start": 1,
+      "verse_end": 1,
+      "reference": "Éxodo 28:1",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Aarón apartado para el sacerdocio",
+      "characters": [
+        "Aarón",
+        "Moisés",
+        "hijos de Aarón"
+      ],
+      "difficulty": "Básico",
+      "question_type": "Selección múltiple",
+      "question": "¿Quién fue apartado junto con sus hijos para ejercer el sacerdocio?",
+      "opcion_a": "Aarón",
+      "opcion_b": "Josué",
+      "opcion_c": "Jetro",
+      "opcion_d": "Caleb",
+      "correct_option": "A",
+      "correct_answer": "Aarón",
+      "explanation": "Las instrucciones sacerdotales comienzan señalando a Aarón y a sus hijos para ejercer el sacerdocio. Aarón ocupa el lugar central en esta designación, mientras Josué, Jetro y Caleb cumplen funciones diferentes dentro de otros episodios del Pentateuco.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0070",
+      "book": "Éxodo",
+      "chapter": 28,
+      "verse_start": 9,
+      "verse_end": 12,
+      "reference": "Éxodo 28:9-12",
+      "category": "AT_GENERAL",
+      "subcategory": "Piedras del efod",
+      "characters": [
+        "Aarón",
+        "hijos de Israel"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿En qué tipo de piedras debían grabarse los nombres de los hijos de Israel para colocarlas sobre las hombreras del efod?",
+      "opcion_a": "En dos piedras de ónice",
+      "opcion_b": "En dos piedras de jaspe",
+      "opcion_c": "En dos piedras de zafiro",
+      "opcion_d": "En dos piedras de mármol",
+      "correct_option": "A",
+      "correct_answer": "En dos piedras de ónice",
+      "explanation": "El efod debía llevar dos piedras de ónice grabadas con los nombres de los hijos de Israel y colocadas sobre sus hombreras. La pregunta exige identificar el material preciso de esas piedras dentro de una descripción detallada de las vestiduras sacerdotales.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0071",
+      "book": "Éxodo",
+      "chapter": 28,
+      "verse_start": 21,
+      "verse_end": 21,
+      "reference": "Éxodo 28:21",
+      "category": "AT_GENERAL",
+      "subcategory": "Piedras del pectoral",
+      "characters": [
+        "Aarón",
+        "tribus de Israel"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Cuántas piedras debía llevar el pectoral, una por cada nombre de las tribus de Israel?",
+      "opcion_a": "Doce",
+      "opcion_b": "Seis",
+      "opcion_c": "Diez",
+      "opcion_d": "Setenta",
+      "correct_option": "A",
+      "correct_answer": "Doce",
+      "explanation": "El pectoral debía contener doce piedras, cada una vinculada con el nombre de una de las tribus de Israel. La cantidad refleja la estructura tribal del pueblo y forma parte de la simbología y diseño de la vestidura sacerdotal.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0072",
+      "book": "Éxodo",
+      "chapter": 28,
+      "verse_start": 33,
+      "verse_end": 35,
+      "reference": "Éxodo 28:33-35",
+      "category": "AT_GENERAL",
+      "subcategory": "Borde del manto sacerdotal",
+      "characters": [
+        "Aarón"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué dos elementos debían alternarse alrededor del borde inferior del manto sacerdotal?",
+      "opcion_a": "Granadas y campanillas de oro",
+      "opcion_b": "Estrellas y cadenas de plata",
+      "opcion_c": "Palmeras y piedras de ónice",
+      "opcion_d": "Lámparas y anillos de bronce",
+      "correct_option": "A",
+      "correct_answer": "Granadas y campanillas de oro",
+      "explanation": "El borde inferior del manto de Aarón debía llevar granadas decorativas y campanillas de oro dispuestas de manera alternada. El detalle pertenece específicamente a esa vestidura y no a los objetos del tabernáculo, por lo que la combinación correcta es inequívoca.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0073",
+      "book": "Éxodo",
+      "chapter": 29,
+      "verse_start": 1,
+      "verse_end": 1,
+      "reference": "Éxodo 29:1",
+      "category": "AT_GENERAL",
+      "subcategory": "Animales para la consagración sacerdotal",
+      "characters": [
+        "Aarón",
+        "hijos de Aarón"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué animales debían tomarse para iniciar la ceremonia de consagración de Aarón y sus hijos?",
+      "opcion_a": "Un becerro y dos carneros sin defecto",
+      "opcion_b": "Dos becerros y una cabra",
+      "opcion_c": "Un cordero y dos machos cabríos",
+      "opcion_d": "Tres palomas y un carnero",
+      "correct_option": "A",
+      "correct_answer": "Un becerro y dos carneros sin defecto",
+      "explanation": "La ceremonia de consagración sacerdotal comienza con una combinación concreta de animales: un becerro y dos carneros sin defecto. La pregunta exige recordar simultáneamente especie y cantidad dentro de un conjunto ritual detallado, por lo que corresponde al nivel experto.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0074",
+      "book": "Éxodo",
+      "chapter": 29,
+      "verse_start": 38,
+      "verse_end": 39,
+      "reference": "Éxodo 29:38-39",
+      "category": "AT_GENERAL",
+      "subcategory": "Ofrenda diaria de corderos",
+      "characters": [
+        "Aarón",
+        "sacerdotes",
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Cuántos corderos debían ofrecerse cada día de manera continua?",
+      "opcion_a": "Dos, uno por la mañana y otro al caer la tarde",
+      "opcion_b": "Uno, únicamente por la mañana",
+      "opcion_c": "Tres, uno en cada momento principal del día",
+      "opcion_d": "Siete, uno por cada día de la semana",
+      "correct_option": "A",
+      "correct_answer": "Dos, uno por la mañana y otro al caer la tarde",
+      "explanation": "La instrucción establece una ofrenda continua de dos corderos diarios: uno por la mañana y otro más tarde. La pregunta evalúa tanto la cantidad cotidiana como la distribución temporal básica de esa práctica.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0075",
+      "book": "Éxodo",
+      "chapter": 30,
+      "verse_start": 1,
+      "verse_end": 1,
+      "reference": "Éxodo 30:1",
+      "category": "AT_GENERAL",
+      "subcategory": "Altar del incienso",
+      "characters": [
+        "Moisés",
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿De qué material debía hacerse la estructura del altar destinado a quemar incienso?",
+      "opcion_a": "De madera de acacia",
+      "opcion_b": "De piedra",
+      "opcion_c": "De hierro",
+      "opcion_d": "De cedro",
+      "correct_option": "A",
+      "correct_answer": "De madera de acacia",
+      "explanation": "El altar destinado al incienso debía construirse con madera de acacia y después recibir su recubrimiento correspondiente. La pregunta se limita al material estructural básico y lo diferencia de otros materiales presentes en el santuario.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0076",
+      "book": "Éxodo",
+      "chapter": 30,
+      "verse_start": 17,
+      "verse_end": 21,
+      "reference": "Éxodo 30:17-21",
+      "category": "AT_GENERAL",
+      "subcategory": "Fuente de bronce para lavarse",
+      "characters": [
+        "Aarón",
+        "hijos de Aarón"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Para qué debían usar Aarón y sus hijos la fuente colocada entre el tabernáculo y el altar?",
+      "opcion_a": "Para lavarse las manos y los pies antes del servicio",
+      "opcion_b": "Para lavar las vestiduras del pueblo",
+      "opcion_c": "Para almacenar aceite de las lámparas",
+      "opcion_d": "Para preparar el incienso",
+      "correct_option": "A",
+      "correct_answer": "Para lavarse las manos y los pies antes del servicio",
+      "explanation": "La fuente de bronce se ubicaba entre el tabernáculo y el altar y debía utilizarse para el lavado de manos y pies de Aarón y sus hijos antes de determinadas acciones del servicio. Su función era ritual y no de almacenamiento o preparación de otros elementos.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0077",
+      "book": "Éxodo",
+      "chapter": 30,
+      "verse_start": 31,
+      "verse_end": 33,
+      "reference": "Éxodo 30:31-33",
+      "category": "AT_GENERAL",
+      "subcategory": "Restricción del aceite santo",
+      "characters": [
+        "Moisés",
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué estaba prohibido hacer con la fórmula del aceite santo de la unción?",
+      "opcion_a": "Preparar otra mezcla igual para uso común",
+      "opcion_b": "Guardarla dentro del tabernáculo",
+      "opcion_c": "Utilizar aceite de oliva en su preparación",
+      "opcion_d": "Aplicarla a los objetos consagrados",
+      "correct_option": "A",
+      "correct_answer": "Preparar otra mezcla igual para uso común",
+      "explanation": "El aceite santo tenía un uso reservado y no debía reproducirse con la misma composición para un uso ordinario. La pregunta evalúa una restricción explícita vinculada con el carácter especial de esa mezcla y evita confundirla con sus usos autorizados dentro del santuario.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0078",
+      "book": "Éxodo",
+      "chapter": 31,
+      "verse_start": 1,
+      "verse_end": 5,
+      "reference": "Éxodo 31:1-5",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Bezaleel escogido para la obra",
+      "characters": [
+        "Bezaleel",
+        "Moisés",
+        "Dios"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿A quién escogió Dios y capacitó con habilidad, inteligencia y conocimiento para realizar trabajos artísticos del santuario?",
+      "opcion_a": "A Bezaleel",
+      "opcion_b": "A Josué",
+      "opcion_c": "A Nadab",
+      "opcion_d": "A Gersón",
+      "correct_option": "A",
+      "correct_answer": "A Bezaleel",
+      "explanation": "Bezaleel es identificado de manera específica como el artesano llamado y capacitado para diseñar y ejecutar trabajos vinculados con el santuario. La pregunta distingue su función especializada de la de líderes, sacerdotes o familiares de Moisés mencionados en otras secciones.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0079",
+      "book": "Éxodo",
+      "chapter": 31,
+      "verse_start": 6,
+      "verse_end": 6,
+      "reference": "Éxodo 31:6",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Aholiab colabora con Bezaleel",
+      "characters": [
+        "Aholiab",
+        "Bezaleel",
+        "Moisés"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Quién fue designado para trabajar junto a Bezaleel en las labores del santuario?",
+      "opcion_a": "Aholiab, hijo de Ahisamac, de la tribu de Dan",
+      "opcion_b": "Eleazar, hijo de Aarón, de la tribu de Leví",
+      "opcion_c": "Hur, hijo de Caleb, de la tribu de Judá",
+      "opcion_d": "Josué, hijo de Nun, de la tribu de Efraín",
+      "correct_option": "A",
+      "correct_answer": "Aholiab, hijo de Ahisamac, de la tribu de Dan",
+      "explanation": "Aholiab fue señalado como colaborador de Bezaleel y el relato especifica además su filiación y su pertenencia a la tribu de Dan. La pregunta exige recordar un personaje secundario asociado directamente con la ejecución artesanal del santuario.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0080",
+      "book": "Éxodo",
+      "chapter": 32,
+      "verse_start": 1,
+      "verse_end": 4,
+      "reference": "Éxodo 32:1-4",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Becerro de oro",
+      "characters": [
+        "Aarón",
+        "israelitas",
+        "Moisés"
+      ],
+      "difficulty": "Básico",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué figura fabricó Aarón con el oro entregado por el pueblo mientras Moisés permanecía en el monte?",
+      "opcion_a": "Un becerro de oro",
+      "opcion_b": "Una serpiente de bronce",
+      "opcion_c": "Un arca de oro",
+      "opcion_d": "Un león de plata",
+      "correct_option": "A",
+      "correct_answer": "Un becerro de oro",
+      "explanation": "Mientras Moisés tardaba en descender del monte, el pueblo pidió a Aarón una representación visible. Aarón reunió objetos de oro y con ese material fabricó un becerro. Este episodio abre la crisis del capítulo 32 y contrasta con las instrucciones recibidas para el culto y el santuario.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0081",
+      "book": "Éxodo",
+      "chapter": 32,
+      "verse_start": 15,
+      "verse_end": 16,
+      "reference": "Éxodo 32:15-16",
+      "category": "AT_GENERAL",
+      "subcategory": "Escritura en las tablas",
+      "characters": [
+        "Moisés",
+        "Dios"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿En qué partes de las dos tablas estaba escrita la inscripción que llevaba Moisés al bajar del monte?",
+      "opcion_a": "En ambos lados de cada tabla",
+      "opcion_b": "Solo en la parte frontal",
+      "opcion_c": "Solo en una de las dos tablas",
+      "opcion_d": "Únicamente en los bordes",
+      "correct_option": "A",
+      "correct_answer": "En ambos lados de cada tabla",
+      "explanation": "El relato describe las tablas que llevaba Moisés como escritas por ambos lados. Es un detalle técnico poco recordado dentro del episodio del becerro de oro y exige distinguir la forma concreta en que se presenta la escritura de las tablas.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0082",
+      "book": "Éxodo",
+      "chapter": 32,
+      "verse_start": 19,
+      "verse_end": 19,
+      "reference": "Éxodo 32:19",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Moisés rompe las tablas",
+      "characters": [
+        "Moisés",
+        "israelitas"
+      ],
+      "difficulty": "Básico",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué hizo Moisés con las tablas al ver el becerro y las celebraciones del pueblo?",
+      "opcion_a": "Las arrojó y las quebró al pie del monte",
+      "opcion_b": "Las entregó a Aarón para que las guardara",
+      "opcion_c": "Las escondió dentro de su tienda",
+      "opcion_d": "Las devolvió intactas a la cima del monte",
+      "correct_option": "A",
+      "correct_answer": "Las arrojó y las quebró al pie del monte",
+      "explanation": "Al acercarse al campamento y contemplar el becerro y la celebración, Moisés reaccionó arrojando las tablas y quebrándolas al pie del monte. La acción forma parte de la respuesta inmediata de Moisés ante la infidelidad del pueblo.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0083",
+      "book": "Éxodo",
+      "chapter": 32,
+      "verse_start": 20,
+      "verse_end": 20,
+      "reference": "Éxodo 32:20",
+      "category": "AT_GENERAL",
+      "subcategory": "Destrucción del becerro",
+      "characters": [
+        "Moisés",
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué hizo Moisés con el becerro después de regresar al campamento?",
+      "opcion_a": "Lo quemó, lo molió, esparció el polvo sobre el agua e hizo beber de ella al pueblo",
+      "opcion_b": "Lo enterró intacto fuera del campamento",
+      "opcion_c": "Lo entregó a los levitas para conservarlo",
+      "opcion_d": "Lo fundió para fabricar nuevas tablas",
+      "correct_option": "A",
+      "correct_answer": "Lo quemó, lo molió, esparció el polvo sobre el agua e hizo beber de ella al pueblo",
+      "explanation": "Moisés destruyó completamente la figura fabricada por el pueblo: la quemó, la redujo a polvo, dispersó ese material sobre el agua y la dio a beber a los israelitas. La pregunta evalúa la secuencia concreta de acciones realizada contra el becerro.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0084",
+      "book": "Éxodo",
+      "chapter": 32,
+      "verse_start": 26,
+      "verse_end": 26,
+      "reference": "Éxodo 32:26",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Los levitas se reúnen con Moisés",
+      "characters": [
+        "Moisés",
+        "hijos de Leví"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué grupo se reunió con Moisés cuando pidió que se acercaran quienes estaban de parte de Dios?",
+      "opcion_a": "Los hijos de Leví",
+      "opcion_b": "Los hijos de Judá",
+      "opcion_c": "Los hijos de Efraín",
+      "opcion_d": "Los hijos de Benjamín",
+      "correct_option": "A",
+      "correct_answer": "Los hijos de Leví",
+      "explanation": "En medio de la crisis provocada por el becerro, Moisés hizo un llamado para que se reunieran con él quienes se mantuvieran del lado de Dios. El relato identifica a los hijos de Leví como el grupo que respondió y se congregó con Moisés.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0085",
+      "book": "Éxodo",
+      "chapter": 32,
+      "verse_start": 28,
+      "verse_end": 28,
+      "reference": "Éxodo 32:28",
+      "category": "AT_GENERAL",
+      "subcategory": "Muertos tras el episodio del becerro",
+      "characters": [
+        "levitas",
+        "israelitas"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Aproximadamente cuántos hombres del pueblo murieron aquel día durante la intervención de los levitas?",
+      "opcion_a": "Unos tres mil",
+      "opcion_b": "Unos setecientos",
+      "opcion_c": "Unos doce mil",
+      "opcion_d": "Unos cuarenta mil",
+      "correct_option": "A",
+      "correct_answer": "Unos tres mil",
+      "explanation": "El relato ofrece una cifra aproximada para las muertes ocurridas aquel día y la sitúa alrededor de tres mil hombres. Es un detalle numérico específico dentro de un episodio complejo, por lo que se reserva para el nivel experto.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0086",
+      "book": "Éxodo",
+      "chapter": 33,
+      "verse_start": 7,
+      "verse_end": 7,
+      "reference": "Éxodo 33:7",
+      "category": "AT_GENERAL",
+      "subcategory": "Tienda de reunión fuera del campamento",
+      "characters": [
+        "Moisés",
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Dónde instaló Moisés la tienda a la que acudían quienes buscaban consultar a Dios?",
+      "opcion_a": "Fuera del campamento, a cierta distancia",
+      "opcion_b": "En el centro del campamento junto al altar",
+      "opcion_c": "En la cima del monte Sinaí",
+      "opcion_d": "Dentro de la tienda de Aarón",
+      "correct_option": "A",
+      "correct_answer": "Fuera del campamento, a cierta distancia",
+      "explanation": "Moisés tomó una tienda y la levantó fuera del campamento, separada de este. Quienes buscaban consultar a Dios salían hacia ese lugar. La pregunta distingue esta ubicación temporal de la posterior disposición formal del tabernáculo.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0087",
+      "book": "Éxodo",
+      "chapter": 33,
+      "verse_start": 11,
+      "verse_end": 11,
+      "reference": "Éxodo 33:11",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Josué permanece en la tienda",
+      "characters": [
+        "Moisés",
+        "Josué"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Quién permanecía en la tienda cuando Moisés regresaba al campamento?",
+      "opcion_a": "Josué hijo de Nun",
+      "opcion_b": "Aarón",
+      "opcion_c": "Hur",
+      "opcion_d": "Caleb",
+      "correct_option": "A",
+      "correct_answer": "Josué hijo de Nun",
+      "explanation": "Después de describir la comunicación de Moisés con Dios en la tienda, el relato añade que Josué hijo de Nun no se apartaba de ella cuando Moisés volvía al campamento. Es un detalle secundario que requiere recordar el papel temprano de Josué.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0088",
+      "book": "Éxodo",
+      "chapter": 33,
+      "verse_start": 18,
+      "verse_end": 18,
+      "reference": "Éxodo 33:18",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Petición de Moisés",
+      "characters": [
+        "Moisés",
+        "Dios"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué pidió Moisés que Dios le mostrara durante su conversación?",
+      "opcion_a": "Su gloria",
+      "opcion_b": "El futuro rey de Israel",
+      "opcion_c": "La ubicación del arca",
+      "opcion_d": "El camino de regreso a Egipto",
+      "correct_option": "A",
+      "correct_answer": "Su gloria",
+      "explanation": "En este diálogo, Moisés formuló una petición directa relacionada con conocer de manera más profunda la presencia de Dios: pidió que le mostrara su gloria. La respuesta posterior establece límites y describe cómo sería protegido durante esa manifestación.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0089",
+      "book": "Éxodo",
+      "chapter": 34,
+      "verse_start": 4,
+      "verse_end": 4,
+      "reference": "Éxodo 34:4",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Nuevas tablas de piedra",
+      "characters": [
+        "Moisés"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Quién preparó las dos nuevas tablas de piedra semejantes a las primeras?",
+      "opcion_a": "Moisés",
+      "opcion_b": "Aarón",
+      "opcion_c": "Josué",
+      "opcion_d": "Bezaleel",
+      "correct_option": "A",
+      "correct_answer": "Moisés",
+      "explanation": "Después de haberse quebrado las primeras tablas, Moisés preparó dos nuevas tablas de piedra semejantes a aquellas y subió nuevamente al monte. La pregunta diferencia esta preparación de la escritura y del contenido asociados posteriormente con las tablas.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0090",
+      "book": "Éxodo",
+      "chapter": 34,
+      "verse_start": 28,
+      "verse_end": 28,
+      "reference": "Éxodo 34:28",
+      "category": "AT_GENERAL",
+      "subcategory": "Duración de Moisés en el monte",
+      "characters": [
+        "Moisés",
+        "Dios"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Cuánto tiempo permaneció Moisés allí sin comer pan ni beber agua antes de descender con las tablas?",
+      "opcion_a": "Cuarenta días y cuarenta noches",
+      "opcion_b": "Siete días y siete noches",
+      "opcion_c": "Treinta días y treinta noches",
+      "opcion_d": "Setenta días y setenta noches",
+      "correct_option": "A",
+      "correct_answer": "Cuarenta días y cuarenta noches",
+      "explanation": "El relato especifica un período de cuarenta días y cuarenta noches durante el cual Moisés permaneció en el monte sin comer pan ni beber agua. La pregunta evalúa la duración exacta de esa permanencia vinculada con la renovación del pacto.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0091",
+      "book": "Éxodo",
+      "chapter": 34,
+      "verse_start": 29,
+      "verse_end": 30,
+      "reference": "Éxodo 34:29-30",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Rostro resplandeciente de Moisés",
+      "characters": [
+        "Moisés",
+        "Aarón",
+        "israelitas"
+      ],
+      "difficulty": "Básico",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué cambio visible presentaba el rostro de Moisés cuando descendió del monte?",
+      "opcion_a": "La piel de su rostro resplandecía",
+      "opcion_b": "Su rostro estaba cubierto de polvo",
+      "opcion_c": "Había perdido la visión",
+      "opcion_d": "Su cabello se había vuelto blanco",
+      "correct_option": "A",
+      "correct_answer": "La piel de su rostro resplandecía",
+      "explanation": "Después de hablar con Dios y descender con las tablas, Moisés no advirtió inicialmente que la apariencia de su rostro había cambiado. Aarón y los israelitas observaron que la piel de su rostro resplandecía y sintieron temor al acercarse.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0092",
+      "book": "Éxodo",
+      "chapter": 35,
+      "verse_start": 3,
+      "verse_end": 3,
+      "reference": "Éxodo 35:3",
+      "category": "AT_GENERAL",
+      "subcategory": "Prohibición de encender fuego en reposo",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué actividad específica se prohibió realizar en las viviendas durante el día de reposo?",
+      "opcion_a": "Encender fuego",
+      "opcion_b": "Preparar agua para beber",
+      "opcion_c": "Dormir dentro de la casa",
+      "opcion_d": "Cerrar las puertas",
+      "correct_option": "A",
+      "correct_answer": "Encender fuego",
+      "explanation": "Además de reiterar el reposo, el capítulo incluye una prohibición concreta relacionada con las viviendas: no debía encenderse fuego en ellas durante ese día. La pregunta evalúa ese detalle específico sin confundirlo con la norma general del descanso.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0093",
+      "book": "Éxodo",
+      "chapter": 36,
+      "verse_start": 5,
+      "verse_end": 7,
+      "reference": "Éxodo 36:5-7",
+      "category": "AT_GENERAL",
+      "subcategory": "Ofrendas suficientes para la obra",
+      "characters": [
+        "Moisés",
+        "artesanos",
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Por qué ordenó Moisés que el pueblo dejara de traer materiales para la construcción del santuario?",
+      "opcion_a": "Porque ya había más material del necesario para realizar la obra",
+      "opcion_b": "Porque el faraón reclamó los materiales",
+      "opcion_c": "Porque los artesanos abandonaron el trabajo",
+      "opcion_d": "Porque se decidió construir el santuario en Canaán",
+      "correct_option": "A",
+      "correct_answer": "Porque ya había más material del necesario para realizar la obra",
+      "explanation": "Los encargados de la construcción informaron a Moisés que el pueblo estaba aportando más de lo necesario. Por ello se difundió la orden de no seguir trayendo materiales. El episodio muestra que las contribuciones disponibles ya superaban la necesidad de la obra.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0094",
+      "book": "Éxodo",
+      "chapter": 37,
+      "verse_start": 23,
+      "verse_end": 23,
+      "reference": "Éxodo 37:23",
+      "category": "AT_GENERAL",
+      "subcategory": "Lámparas del candelero",
+      "characters": [
+        "Bezaleel"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Cuántas lámparas fueron hechas para el candelero?",
+      "opcion_a": "Siete",
+      "opcion_b": "Seis",
+      "opcion_c": "Doce",
+      "opcion_d": "Diez",
+      "correct_option": "A",
+      "correct_answer": "Siete",
+      "explanation": "En la ejecución de los objetos del santuario se especifica que para el candelero se hicieron siete lámparas. El dato debe distinguirse de los seis brazos laterales descritos en el diseño, por lo que exige precisión numérica y se clasifica como experto.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0095",
+      "book": "Éxodo",
+      "chapter": 38,
+      "verse_start": 8,
+      "verse_end": 8,
+      "reference": "Éxodo 38:8",
+      "category": "AT_GENERAL",
+      "subcategory": "Fuente de bronce y espejos",
+      "characters": [
+        "Bezaleel",
+        "mujeres que servían"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Con qué objetos de las mujeres que servían a la entrada se fabricaron la fuente y su base de bronce?",
+      "opcion_a": "Con sus espejos",
+      "opcion_b": "Con sus brazaletes",
+      "opcion_c": "Con sus lámparas",
+      "opcion_d": "Con sus vasijas",
+      "correct_option": "A",
+      "correct_answer": "Con sus espejos",
+      "explanation": "La fuente de bronce y su base se hicieron utilizando los espejos de las mujeres que servían a la entrada de la tienda de reunión. Es un detalle material poco frecuente dentro de la ejecución del santuario, apropiado para nivel experto.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0096",
+      "book": "Éxodo",
+      "chapter": 39,
+      "verse_start": 30,
+      "verse_end": 30,
+      "reference": "Éxodo 39:30",
+      "category": "AT_GENERAL",
+      "subcategory": "Lámina de la diadema sacerdotal",
+      "characters": [
+        "Aarón",
+        "artesanos"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿De qué material se hizo la lámina colocada en la diadema sacerdotal?",
+      "opcion_a": "De oro puro",
+      "opcion_b": "De plata",
+      "opcion_c": "De bronce",
+      "opcion_d": "De piedra de ónice",
+      "correct_option": "A",
+      "correct_answer": "De oro puro",
+      "explanation": "Dentro de la confección de las vestiduras sacerdotales, la lámina asociada a la diadema se hizo de oro puro. La pregunta se concentra en el material de esa pieza concreta y la distingue de piedras, metales y textiles utilizados en otras partes de las vestiduras.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0097",
+      "book": "Éxodo",
+      "chapter": 39,
+      "verse_start": 43,
+      "verse_end": 43,
+      "reference": "Éxodo 39:43",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Moisés inspecciona la obra",
+      "characters": [
+        "Moisés",
+        "israelitas",
+        "artesanos"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué hizo Moisés después de comprobar que toda la obra había sido realizada conforme a lo ordenado?",
+      "opcion_a": "Bendijo a quienes habían realizado la obra",
+      "opcion_b": "Ordenó desmontarla de inmediato",
+      "opcion_c": "La devolvió a los artesanos para rehacerla",
+      "opcion_d": "La trasladó fuera del campamento",
+      "correct_option": "A",
+      "correct_answer": "Bendijo a quienes habían realizado la obra",
+      "explanation": "Moisés inspeccionó el trabajo terminado y comprobó que había sido ejecutado conforme a las instrucciones recibidas. Después de esa revisión, bendijo a quienes habían realizado la obra. La pregunta evalúa la acción con la que se cierra esa inspección.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0098",
+      "book": "Éxodo",
+      "chapter": 40,
+      "verse_start": 17,
+      "verse_end": 17,
+      "reference": "Éxodo 40:17",
+      "category": "AT_GENERAL",
+      "subcategory": "Fecha de levantamiento del tabernáculo",
+      "characters": [
+        "Moisés",
+        "israelitas"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Cuándo fue levantado el tabernáculo según la fecha indicada en el relato?",
+      "opcion_a": "El primer día del primer mes del segundo año",
+      "opcion_b": "El décimo día del primer mes del primer año",
+      "opcion_c": "El primer día del séptimo mes del segundo año",
+      "opcion_d": "El día catorce del segundo mes del primer año",
+      "correct_option": "A",
+      "correct_answer": "El primer día del primer mes del segundo año",
+      "explanation": "Éxodo ofrece una fecha precisa para el levantamiento del tabernáculo: el primer día del primer mes del segundo año. La combinación de día, mes y año convierte este registro en una pregunta cronológica de nivel experto.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0099",
+      "book": "Éxodo",
+      "chapter": 40,
+      "verse_start": 34,
+      "verse_end": 35,
+      "reference": "Éxodo 40:34-35",
+      "category": "AT_GENERAL",
+      "subcategory": "La nube y la gloria llenan el tabernáculo",
+      "characters": [
+        "Moisés",
+        "Dios"
+      ],
+      "difficulty": "Básico",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué cubrió la tienda de reunión cuando la gloria de Dios llenó el tabernáculo?",
+      "opcion_a": "Una nube",
+      "opcion_b": "Una columna de fuego",
+      "opcion_c": "Una densa humareda procedente del altar",
+      "opcion_d": "El velo interior del santuario",
+      "correct_option": "A",
+      "correct_answer": "Una nube",
+      "explanation": "Al concluir el levantamiento del tabernáculo, una nube cubrió la tienda de reunión y la gloria de Dios llenó el lugar. El acontecimiento marca la culminación del libro y muestra que el santuario recién establecido quedó asociado con una manifestación visible de la presencia divina.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-EXO-0100",
+      "book": "Éxodo",
+      "chapter": 40,
+      "verse_start": 36,
+      "verse_end": 37,
+      "reference": "Éxodo 40:36-37",
+      "category": "AT_GENERAL",
+      "subcategory": "La nube determina la marcha",
+      "characters": [
+        "israelitas",
+        "Dios"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué señal indicaba a los israelitas que debían continuar su marcha?",
+      "opcion_a": "Que la nube se levantara de sobre el tabernáculo",
+      "opcion_b": "Que Aarón tocara una campanilla",
+      "opcion_c": "Que apareciera agua junto al campamento",
+      "opcion_d": "Que Moisés encendiera el altar exterior",
+      "correct_option": "A",
+      "correct_answer": "Que la nube se levantara de sobre el tabernáculo",
+      "explanation": "Durante las etapas posteriores del viaje, el movimiento de la nube funcionaba como señal para la marcha. Cuando la nube se levantaba, los israelitas partían; si permanecía sobre el tabernáculo, el pueblo se quedaba en el lugar hasta que volviera a levantarse.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    }
+  ]
+}
