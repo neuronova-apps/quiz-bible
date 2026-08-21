@@ -171,3 +171,61 @@ jobs:
           path: artifacts/phase4/
           if-no-files-found: ignore
           retention-days: 5
+
+  api-genesis-1:
+    name: API Genesis 1 · temporary extraction
+    if: github.event_name == 'pull_request' && github.head_ref == 'api-genesis-1-run'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate ApiBiblia and prepare temporary chapter
+        env:
+          APIBIBLIA_API_KEY: ${{ secrets.APIBIBLIA_API_KEY }}
+        run: |
+          python tools/bible_extractor/extractor.py \
+            --book "Genesis" \
+            --chapter "1" \
+            --version RVR1960 \
+            --output build/extraction-report.json \
+            --candidates-output build/question-candidates.json
+      - name: Generate derived questions from in-memory RVR1960
+        env:
+          APIBIBLIA_API_KEY: ${{ secrets.APIBIBLIA_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          python tools/bible_extractor/generator.py \
+            --book "Genesis" \
+            --chapter "1" \
+            --version RVR1960 \
+            --model "gemini-3.6-flash" \
+            --output build/generated-questions.json
+      - name: Validate metadata without printing Bible text
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path('build/extraction-report.json').read_text(encoding='utf-8'))
+          bank = json.loads(Path('build/generated-questions.json').read_text(encoding='utf-8'))
+          print('api_source:', report.get('source'))
+          print('version:', report.get('version_requested'))
+          print('verses_prepared:', report.get('verse_processing', {}).get('verses_prepared_in_memory'))
+          print('scripture_text_persisted:', report.get('scripture_text_persisted'))
+          print('generated_count:', bank.get('generated_count'))
+          print('requires_human_review:', bank.get('requires_human_review'))
+          print('verse_text_field_present:', any('verse_text' in item for item in bank.get('items', [])))
+          PY
+      - name: Upload Genesis 1 derived bank
+        uses: actions/upload-artifact@v4
+        with:
+          name: banco-generado-rvr1960-Genesis-1
+          path: |
+            build/extraction-report.json
+            build/question-candidates.json
+            build/generated-questions.json
+          retention-days: 1
