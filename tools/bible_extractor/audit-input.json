@@ -1,0 +1,38 @@
+{
+  "source": "Quiz Bible master bank",
+  "version": "RVR1960",
+  "book": "Genesis",
+  "chapter": 1,
+  "questions": [
+    {
+      "id": "NQB-AT-GEN-0001",
+      "verse_start": 1,
+      "verse_end": 1,
+      "question": "¿Quién es presentado como creador de los cielos y la tierra al comienzo del relato bíblico?",
+      "correct_answer": "Dios",
+      "distractors": ["Adán", "Noé", "Abraham"],
+      "support_terms": ["Dios"],
+      "explanation_terms": ["Dios", "cielos", "tierra"]
+    },
+    {
+      "id": "NQB-AT-GEN-0002",
+      "verse_start": 3,
+      "verse_end": 5,
+      "question": "¿Qué fue lo primero que Dios llamó a existir mediante una orden en el relato de la creación?",
+      "correct_answer": "La luz",
+      "distractors": ["El mar", "Los animales", "El ser humano"],
+      "support_terms": ["luz"],
+      "explanation_terms": ["luz", "tinieblas", "día", "noche"]
+    },
+    {
+      "id": "NQB-AT-GEN-0071",
+      "verse_start": 27,
+      "verse_end": 27,
+      "question": "¿Según qué modelo creó Dios al ser humano?",
+      "correct_answer": "A su imagen",
+      "distractors": ["Según la forma de los ángeles", "Según los animales de la tierra", "Según las estrellas del cielo"],
+      "support_terms": ["imagen", "Dios"],
+      "explanation_terms": ["imagen", "Dios"]
+    }
+  ]
+}

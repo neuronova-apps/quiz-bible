@@ -1,0 +1,64 @@
+name: Auditar banco existente contra RVR1960
+
+on:
+  push:
+    branches: [rvr1960-audit]
+    paths:
+      - "tools/bible_extractor/audit-input.json"
+  pull_request:
+    branches: [main]
+    paths:
+      - "tools/bible_extractor/audit-input.json"
+      - "tools/bible_extractor/auditor.py"
+      - ".github/workflows/audit-rvr1960.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    name: Auditoría textual derivada
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Auditar preguntas existentes con ApiBiblia
+        env:
+          APIBIBLIA_API_KEY: ${{ secrets.APIBIBLIA_API_KEY }}
+        run: |
+          python tools/bible_extractor/auditor.py \
+            --input tools/bible_extractor/audit-input.json \
+            --output build/audit-result.json
+
+      - name: Validar que no se persiste texto bíblico
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data = json.loads(Path('build/audit-result.json').read_text(encoding='utf-8'))
+          print('source:', data.get('source'))
+          print('version:', data.get('version'))
+          print('book:', data.get('book'))
+          print('chapter:', data.get('chapter'))
+          print('questions_audited:', data.get('questions_audited'))
+          print('verified_count:', data.get('verified_count'))
+          print('review_required_count:', data.get('review_required_count'))
+          print('source_text_persisted:', data.get('source_text_persisted'))
+          assert data.get('source_text_persisted') is False
+          assert all('text' not in item and 'verse_text' not in item for item in data.get('results', []))
+          PY
+
+      - name: Publicar resultado derivado
+        uses: actions/upload-artifact@v4
+        with:
+          name: auditoria-rvr1960-${{ github.run_number }}
+          path: build/audit-result.json
+          retention-days: 1
