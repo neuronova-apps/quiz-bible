@@ -43,6 +43,7 @@ LEVITICUS_PATH = Path(__file__).parent / "leviticus-master-input.json"
 NUMBERS_PATH = Path(__file__).parent / "numbers-master-input.json"
 DEUTERONOMY_PATH = Path(__file__).parent / "deuteronomy-master-input.json"
 JOSHUA_PATH = Path(__file__).parent / "joshua-master-input.json"
+JUDGES_PATH = Path(__file__).parent / "judges-master-input.json"
 
 
 class TestAuditorCanonical(unittest.TestCase):
@@ -81,6 +82,12 @@ class TestAuditorCanonical(unittest.TestCase):
         else:
             cls.joshua_questions = {}
 
+        if JUDGES_PATH.exists():
+            raw_jue = json.loads(JUDGES_PATH.read_text(encoding="utf-8"))
+            cls.judges_questions = {q["id"]: q for q in (raw_jue.get("questions", []) if isinstance(raw_jue, dict) else raw_jue)}
+        else:
+            cls.judges_questions = {}
+
     def setUp(self) -> None:
         self.temp_dir = Path(tempfile.mkdtemp())
 
@@ -110,6 +117,10 @@ class TestAuditorCanonical(unittest.TestCase):
     def get_joshua_question(self, qid: str) -> dict:
         self.assertIn(qid, self.joshua_questions, f"ID '{qid}' no encontrado en joshua-master-input.json")
         return copy.deepcopy(self.joshua_questions[qid])
+
+    def get_judges_question(self, qid: str) -> dict:
+        self.assertIn(qid, self.judges_questions, f"ID '{qid}' no encontrado en judges-master-input.json")
+        return copy.deepcopy(self.judges_questions[qid])
 
     # --- TEST GLOBAL DE CONSISTENCIA DE IDs Y REFERENCIAS ---
 
@@ -201,6 +212,21 @@ class TestAuditorCanonical(unittest.TestCase):
                 f"Referencia inconsistente en {qid}: ref='{ref}', esperada terminada en '{expected_suffix}'"
             )
 
+    def test_global_canonical_id_reference_integrity_judges(self) -> None:
+        """Verifica consistencia de IDs y referencias en Jueces si el archivo está presente."""
+        if not self.judges_questions:
+            self.skipTest("judges-master-input.json aún no presente")
+        for qid, q in self.judges_questions.items():
+            ref = q.get("reference", "")
+            ch = q.get("chapter")
+            start = q.get("verse_start")
+            end = q.get("verse_end", start)
+            expected_suffix = f"{ch}:{start}" if start == end else f"{ch}:{start}-{end}"
+            self.assertTrue(
+                expected_suffix in ref or ref.endswith(expected_suffix),
+                f"Referencia inconsistente en {qid}: ref='{ref}', esperada terminada en '{expected_suffix}'"
+            )
+
     def test_numbers_book_detection(self) -> None:
         """Verifica detección de configuración de Números."""
         if not self.numbers_questions:
@@ -221,6 +247,12 @@ class TestAuditorCanonical(unittest.TestCase):
             self.skipTest("joshua-master-input.json no disponible")
         book_key = detect_book_key(list(self.joshua_questions.values()))
         self.assertEqual(book_key, "josue")
+
+    def test_judges_book_detection(self) -> None:
+        """Verifica detección de configuración de Jueces."""
+        sample_q = [{"id": "NQB-AT-JUE-0001", "book": "Jueces", "chapter": 1, "verse_start": 1, "verse_end": 2}]
+        book_key = detect_book_key(sample_q)
+        self.assertEqual(book_key, "jueces")
 
     def test_joshua_0061_with_additional_reference(self) -> None:
         """NQB-AT-JOS-0061: Josué 20:9 con additional_references=['Números 35:15'] se evalúa correctamente."""
