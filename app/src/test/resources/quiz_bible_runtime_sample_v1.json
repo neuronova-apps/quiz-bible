@@ -1,0 +1,937 @@
+{
+  "schemaVersion": "quizbible-runtime-v1",
+  "generatedAt": "2026-08-21T00:00:00Z",
+  "totalQuestions": 20,
+  "questions": [
+    {
+      "id": "NQB-AT-GEN-0001",
+      "testament": "OT",
+      "book": "Génesis",
+      "chapter": 1,
+      "verseStart": 1,
+      "verseEnd": 1,
+      "referenceDisplay": "Génesis 1:1",
+      "category": "AT_GENERAL",
+      "subcategory": "Creación",
+      "characters": [
+        "Dios"
+      ],
+      "difficulty": "BASIC",
+      "questionType": "MULTIPLE_CHOICE",
+      "prompt": "¿Quién es presentado como creador de los cielos y la tierra al comienzo del relato bíblico?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Dios"
+        },
+        {
+          "id": "B",
+          "text": "Adán"
+        },
+        {
+          "id": "C",
+          "text": "Noé"
+        },
+        {
+          "id": "D",
+          "text": "Abraham"
+        }
+      ],
+      "correctOptionId": "A",
+      "explanation": "El relato de Génesis comienza atribuyendo directamente a Dios la creación de los cielos y la tierra. La respuesta no depende de una interpretación posterior ni de identificar a un personaje humano: el propio inicio del libro establece quién realiza la acción creadora. Por eso, entre las alternativas propuestas, únicamente Dios corresponde al sujeto del acontecimiento.",
+      "eligibleModes": [
+        "AT",
+        "AMBOS"
+      ],
+      "verificationTranslation": "RVR1960",
+      "auditStatus": "VERIFIED",
+      "humanReviewStatus": "PENDING"
+    },
+    {
+      "id": "NQB-AT-GEN-0036",
+      "testament": "OT",
+      "book": "Génesis",
+      "chapter": 10,
+      "verseStart": 8,
+      "verseEnd": 10,
+      "referenceDisplay": "Génesis 10:8-10",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Nimrod",
+      "characters": [
+        "Nimrod"
+      ],
+      "difficulty": "ADVANCED",
+      "questionType": "MULTIPLE_CHOICE",
+      "prompt": "¿Qué personaje es presentado como poderoso en la tierra y tuvo a Babel entre los primeros centros de su reino?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Nimrod"
+        },
+        {
+          "id": "B",
+          "text": "Peleg"
+        },
+        {
+          "id": "C",
+          "text": "Jafet"
+        },
+        {
+          "id": "D",
+          "text": "Canaán"
+        }
+      ],
+      "correctOptionId": "A",
+      "explanation": "La tabla de las naciones presenta a Nimrod como un personaje que comenzó a ser poderoso en la tierra y lo relaciona con varios centros de su reino en la tierra de Sinar, entre ellos Babel. Peleg, Jafet y Canaán aparecen también en las genealogías de Génesis, pero no reciben esta descripción ni son vinculados de esa manera con el comienzo de aquel reino.",
+      "eligibleModes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ],
+      "verificationTranslation": "RVR1960",
+      "auditStatus": "VERIFIED",
+      "humanReviewStatus": "PENDING"
+    },
+    {
+      "id": "NQB-AT-EXO-0002",
+      "testament": "OT",
+      "book": "Éxodo",
+      "chapter": 1,
+      "verseStart": 15,
+      "verseEnd": 17,
+      "referenceDisplay": "Éxodo 1:15-17",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Parteras hebreas",
+      "characters": [
+        "Sifra",
+        "Fúa",
+        "faraón"
+      ],
+      "difficulty": "ADVANCED",
+      "questionType": "MULTIPLE_CHOICE",
+      "prompt": "¿Cómo se llamaban las dos parteras hebreas a quienes el faraón ordenó matar a los niños varones al nacer?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Sifra y Fúa"
+        },
+        {
+          "id": "B",
+          "text": "Bilha y Zilpa"
+        },
+        {
+          "id": "C",
+          "text": "Miriam y Séfora"
+        },
+        {
+          "id": "D",
+          "text": "Lea y Raquel"
+        }
+      ],
+      "correctOptionId": "A",
+      "explanation": "Éxodo identifica por nombre a Sifra y Fúa como las parteras hebreas que recibieron la orden del faraón. Ellas temieron a Dios y no cumplieron la instrucción de matar a los niños varones. La pregunta exige recordar dos nombres secundarios concretos, por lo que se clasifica como avanzada.",
+      "eligibleModes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ],
+      "verificationTranslation": "RVR1960",
+      "auditStatus": "VERIFIED",
+      "humanReviewStatus": "PENDING"
+    },
+    {
+      "id": "NQB-AT-EXO-0021",
+      "testament": "OT",
+      "book": "Éxodo",
+      "chapter": 9,
+      "verseStart": 3,
+      "verseEnd": 6,
+      "referenceDisplay": "Éxodo 9:3-6",
+      "category": "AT_GENERAL",
+      "subcategory": "Plaga sobre el ganado",
+      "characters": [
+        "Moisés",
+        "faraón",
+        "egipcios",
+        "israelitas"
+      ],
+      "difficulty": "INTERMEDIATE",
+      "questionType": "MULTIPLE_CHOICE",
+      "prompt": "¿Qué ocurrió con el ganado de los egipcios durante la plaga anunciada sobre sus animales?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Una mortandad afectó al ganado de los egipcios, mientras el de Israel fue preservado"
+        },
+        {
+          "id": "B",
+          "text": "Todo el ganado de Egipto y de Israel murió por igual"
+        },
+        {
+          "id": "C",
+          "text": "El ganado fue trasladado al desierto antes de la plaga"
+        },
+        {
+          "id": "D",
+          "text": "Los animales egipcios fueron entregados a los israelitas"
+        }
+      ],
+      "correctOptionId": "A",
+      "explanation": "La plaga sobre el ganado marcó una nueva distinción entre los egipcios y los israelitas. El relato describe una mortandad severa entre los animales de Egipto, mientras señala que el ganado perteneciente a Israel fue preservado. La pregunta evalúa precisamente ese contraste dentro de la secuencia de las plagas.",
+      "eligibleModes": [
+        "AT",
+        "AMBOS"
+      ],
+      "verificationTranslation": "RVR1960",
+      "auditStatus": "VERIFIED",
+      "humanReviewStatus": "PENDING"
+    },
+    {
+      "id": "NQB-AT-LEV-0017",
+      "testament": "OT",
+      "book": "Levítico",
+      "chapter": 7,
+      "verseStart": 26,
+      "verseEnd": 27,
+      "referenceDisplay": "Levítico 7:26-27",
+      "category": "AT_GENERAL",
+      "subcategory": "Prohibición de consumir sangre",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "BASIC",
+      "questionType": "MULTIPLE_CHOICE",
+      "prompt": "¿Qué estaba prohibido consumir en cualquier lugar donde habitaran los israelitas, tanto de aves como de otros animales?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Sangre"
+        },
+        {
+          "id": "B",
+          "text": "Leche"
+        },
+        {
+          "id": "C",
+          "text": "Aceite"
+        },
+        {
+          "id": "D",
+          "text": "Agua"
+        }
+      ],
+      "correctOptionId": "A",
+      "explanation": "La norma prohíbe consumir sangre y amplía la referencia tanto a aves como a otros animales. La pregunta se limita a identificar el elemento expresamente prohibido en este pasaje.",
+      "eligibleModes": [
+        "AT",
+        "AMBOS"
+      ],
+      "verificationTranslation": "RVR1960",
+      "auditStatus": "VERIFIED",
+      "humanReviewStatus": "PENDING"
+    },
+    {
+      "id": "NQB-AT-LEV-0045",
+      "testament": "OT",
+      "book": "Levítico",
+      "chapter": 18,
+      "verseStart": 5,
+      "verseEnd": 5,
+      "referenceDisplay": "Levítico 18:5",
+      "category": "AT_GENERAL",
+      "subcategory": "Guardar estatutos y ordenanzas",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "ADVANCED",
+      "questionType": "MULTIPLE_CHOICE",
+      "prompt": "¿Qué resultado se asocia en esta instrucción con poner por obra los estatutos y ordenanzas?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Vivir por medio de ellos"
+        },
+        {
+          "id": "B",
+          "text": "Recibir una función sacerdotal"
+        },
+        {
+          "id": "C",
+          "text": "Quedar exento de ofrecer sacrificios"
+        },
+        {
+          "id": "D",
+          "text": "Obtener tierras adicionales"
+        }
+      ],
+      "correctOptionId": "A",
+      "explanation": "El pasaje conecta la obediencia a los estatutos y ordenanzas con la vida. La pregunta evalúa esa relación directa expresada en la norma, sin extenderla a recompensas materiales o funciones que el versículo no menciona.",
+      "eligibleModes": [
+        "AT",
+        "AMBOS"
+      ],
+      "verificationTranslation": "RVR1960",
+      "auditStatus": "VERIFIED",
+      "humanReviewStatus": "PENDING"
+    },
+    {
+      "id": "NQB-AT-NUM-0001",
+      "testament": "OT",
+      "book": "Números",
+      "chapter": 1,
+      "verseStart": 2,
+      "verseEnd": 3,
+      "referenceDisplay": "Números 1:2-3",
+      "category": "AT_GENERAL",
+      "subcategory": "Censo militar de Israel",
+      "characters": [
+        "Moisés",
+        "Aarón",
+        "israelitas"
+      ],
+      "difficulty": "INTERMEDIATE",
+      "questionType": "MULTIPLE_CHOICE",
+      "prompt": "¿A partir de qué edad debían contarse para el ejército los varones de Israel en el censo del desierto?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Veinte años"
+        },
+        {
+          "id": "B",
+          "text": "Veinticinco años"
+        },
+        {
+          "id": "C",
+          "text": "Treinta años"
+        },
+        {
+          "id": "D",
+          "text": "Cuarenta años"
+        }
+      ],
+      "correctOptionId": "A",
+      "explanation": "El censo militar incluía a los varones de veinte años en adelante que estuvieran en condiciones de salir a la guerra. La pregunta evalúa el umbral de edad establecido para esta cuenta, no el total resultante de cada tribu.",
+      "eligibleModes": [
+        "AT",
+        "AMBOS"
+      ],
+      "verificationTranslation": "RVR1960",
+      "auditStatus": "VERIFIED",
+      "humanReviewStatus": "PENDING"
+    },
+    {
+      "id": "NQB-AT-NUM-0062",
+      "testament": "OT",
+      "book": "Números",
+      "chapter": 26,
+      "verseStart": 51,
+      "verseEnd": 51,
+      "referenceDisplay": "Números 26:51",
+      "category": "AT_GENERAL",
+      "subcategory": "Total del segundo censo",
+      "characters": [
+        "israelitas",
+        "Moisés",
+        "Eleazar"
+      ],
+      "difficulty": "EXPERT",
+      "questionType": "MULTIPLE_CHOICE",
+      "prompt": "¿Cuál fue el total de varones de Israel registrados en el segundo censo descrito en Números?",
+      "options": [
+        {
+          "id": "A",
+          "text": "601 730"
+        },
+        {
+          "id": "B",
+          "text": "603 550"
+        },
+        {
+          "id": "C",
+          "text": "600 000"
+        },
+        {
+          "id": "D",
+          "text": "605 730"
+        }
+      ],
+      "correctOptionId": "A",
+      "explanation": "El segundo censo concluye con un total de 601 730 registrados. La cifra es cercana, pero no idéntica, a la del primer censo del libro, por lo que exige precisión y permite distinguir dos momentos demográficos diferentes de la generación del desierto.",
+      "eligibleModes": [
+        "AT",
+        "AMBOS"
+      ],
+      "verificationTranslation": "RVR1960",
+      "auditStatus": "VERIFIED",
+      "humanReviewStatus": "PENDING"
+    },
+    {
+      "id": "NQB-AT-DEU-0013",
+      "testament": "OT",
+      "book": "Deuteronomio",
+      "chapter": 6,
+      "verseStart": 4,
+      "verseEnd": 4,
+      "referenceDisplay": "Deuteronomio 6:4",
+      "category": "AT_GENERAL",
+      "subcategory": "Confesión central sobre Dios",
+      "characters": [
+        "israelitas",
+        "Moisés"
+      ],
+      "difficulty": "BASIC",
+      "questionType": "MULTIPLE_CHOICE",
+      "prompt": "¿Qué afirmación fundamental acerca de Dios encabeza la exhortación dirigida a Israel en este pasaje?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Que Dios es uno"
+        },
+        {
+          "id": "B",
+          "text": "Que cada tribu tiene un dios distinto"
+        },
+        {
+          "id": "C",
+          "text": "Que solo los sacerdotes pueden conocer a Dios"
+        },
+        {
+          "id": "D",
+          "text": "Que Dios habita únicamente fuera de Canaán"
+        }
+      ],
+      "correctOptionId": "A",
+      "explanation": "El pasaje introduce una de las confesiones más conocidas de Deuteronomio al afirmar la unidad de Dios antes de llamar al pueblo a amarlo con todo su ser. La pregunta identifica la afirmación central sin convertirla en una cita textual completa.",
+      "eligibleModes": [
+        "AT",
+        "AMBOS"
+      ],
+      "verificationTranslation": "RVR1960",
+      "auditStatus": "VERIFIED",
+      "humanReviewStatus": "PENDING"
+    },
+    {
+      "id": "NQB-AT-DEU-0078",
+      "testament": "OT",
+      "book": "Deuteronomio",
+      "chapter": 28,
+      "verseStart": 13,
+      "verseEnd": 14,
+      "referenceDisplay": "Deuteronomio 28:13-14",
+      "category": "AT_GENERAL",
+      "subcategory": "Posición asociada con la obediencia",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "INTERMEDIATE",
+      "questionType": "MULTIPLE_CHOICE",
+      "prompt": "¿Qué imagen de posición favorable se usa para describir el resultado de permanecer obedientes sin apartarse tras otros dioses?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Ser cabeza y no cola, estar arriba y no abajo"
+        },
+        {
+          "id": "B",
+          "text": "Vivir siempre fuera de las ciudades"
+        },
+        {
+          "id": "C",
+          "text": "Ser la tribu más pequeña y permanecer aislada"
+        },
+        {
+          "id": "D",
+          "text": "Depender de Egipto para cada cosecha"
+        }
+      ],
+      "correctOptionId": "A",
+      "explanation": "El discurso utiliza una imagen de posición social y política favorable para expresar las consecuencias de la obediencia. La comparación contrasta estar en una posición de liderazgo y estabilidad con una condición subordinada.",
+      "eligibleModes": [
+        "AT",
+        "AMBOS"
+      ],
+      "verificationTranslation": "RVR1960",
+      "auditStatus": "VERIFIED",
+      "humanReviewStatus": "PENDING"
+    },
+    {
+      "id": "NQB-AT-JOS-0001",
+      "testament": "OT",
+      "book": "Josué",
+      "chapter": 1,
+      "verseStart": 1,
+      "verseEnd": 2,
+      "referenceDisplay": "Josué 1:1-2",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Encargo inicial a Josué",
+      "characters": [
+        "Josué",
+        "Moisés",
+        "israelitas"
+      ],
+      "difficulty": "BASIC",
+      "questionType": "MULTIPLE_CHOICE",
+      "prompt": "¿Qué río debía disponerse a cruzar Josué con todo el pueblo para entrar en la tierra?",
+      "options": [
+        {
+          "id": "A",
+          "text": "El Jordán"
+        },
+        {
+          "id": "B",
+          "text": "El Nilo"
+        },
+        {
+          "id": "C",
+          "text": "El Éufrates"
+        },
+        {
+          "id": "D",
+          "text": "El Arnón"
+        }
+      ],
+      "correctOptionId": "A",
+      "explanation": "Tras la muerte de Moisés, Josué recibió la orden de ponerse al frente del pueblo y avanzar hacia la tierra prometida. El paso inmediato señalado era cruzar el Jordán con Israel, marcando el inicio de una nueva etapa narrativa.",
+      "eligibleModes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ],
+      "verificationTranslation": "RVR1960",
+      "auditStatus": "VERIFIED",
+      "humanReviewStatus": "PENDING"
+    },
+    {
+      "id": "NQB-AT-JOS-0005",
+      "testament": "OT",
+      "book": "Josué",
+      "chapter": 2,
+      "verseStart": 1,
+      "verseEnd": 1,
+      "referenceDisplay": "Josué 2:1",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Envío secreto de dos espías",
+      "characters": [
+        "Josué",
+        "espías",
+        "Rahab"
+      ],
+      "difficulty": "EXPERT",
+      "questionType": "MULTIPLE_CHOICE",
+      "prompt": "¿Desde qué lugar envió Josué secretamente a dos hombres para reconocer Jericó y sus alrededores?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Desde Sitim"
+        },
+        {
+          "id": "B",
+          "text": "Desde Gilgal"
+        },
+        {
+          "id": "C",
+          "text": "Desde Hebrón"
+        },
+        {
+          "id": "D",
+          "text": "Desde Betel"
+        }
+      ],
+      "correctOptionId": "A",
+      "explanation": "Antes del cruce del Jordán, Josué envió en secreto a dos exploradores desde Sitim. Su misión se concentró en reconocer la tierra y especialmente Jericó, lo que introduce el encuentro posterior con Rahab.",
+      "eligibleModes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ],
+      "verificationTranslation": "RVR1960",
+      "auditStatus": "VERIFIED",
+      "humanReviewStatus": "PENDING"
+    },
+    {
+      "id": "NQB-AT-JUE-0048",
+      "testament": "OT",
+      "book": "Jueces",
+      "chapter": 13,
+      "verseStart": 19,
+      "verseEnd": 20,
+      "referenceDisplay": "Jueces 13:19-20",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Ascenso del mensajero en la llama",
+      "characters": [
+        "Manoa",
+        "esposa de Manoa",
+        "ángel de Dios"
+      ],
+      "difficulty": "ADVANCED",
+      "questionType": "MULTIPLE_CHOICE",
+      "prompt": "¿Qué hecho extraordinario ocurrió mientras Manoa y su esposa observaban el sacrificio ofrecido?",
+      "options": [
+        {
+          "id": "A",
+          "text": "El mensajero ascendió en la llama que subía del altar"
+        },
+        {
+          "id": "B",
+          "text": "El altar fue transportado hasta Silo"
+        },
+        {
+          "id": "C",
+          "text": "Una nube cubrió por completo la ciudad de Zora"
+        },
+        {
+          "id": "D",
+          "text": "El sacrificio se transformó en agua"
+        }
+      ],
+      "correctOptionId": "A",
+      "explanation": "Durante la ofrenda, Manoa y su esposa presenciaron una señal que confirmó el carácter extraordinario del visitante: ascendió en la llama del altar. La reacción posterior de ambos muestra que comprendieron el encuentro como algo mucho más significativo que una visita humana común.",
+      "eligibleModes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ],
+      "verificationTranslation": "RVR1960",
+      "auditStatus": "VERIFIED",
+      "humanReviewStatus": "PENDING"
+    },
+    {
+      "id": "NQB-AT-RUT-0004",
+      "testament": "OT",
+      "book": "Rut",
+      "chapter": 1,
+      "verseStart": 14,
+      "verseEnd": 14,
+      "referenceDisplay": "Rut 1:14",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Decisiones distintas de Orfa y Rut",
+      "characters": [
+        "Rut",
+        "Orfa",
+        "Noemí"
+      ],
+      "difficulty": "BASIC",
+      "questionType": "MULTIPLE_CHOICE",
+      "prompt": "¿Qué diferencia hubo entre las decisiones de Orfa y Rut cuando Noemí insistió en que regresaran?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Orfa se despidió, mientras Rut permaneció unida a Noemí"
+        },
+        {
+          "id": "B",
+          "text": "Rut regresó a Moab y Orfa acompañó a Noemí"
+        },
+        {
+          "id": "C",
+          "text": "Ambas regresaron juntas a sus familias"
+        },
+        {
+          "id": "D",
+          "text": "Ambas continuaron hasta Belén y luego volvieron a Moab"
+        }
+      ],
+      "correctOptionId": "A",
+      "explanation": "Las dos nueras reaccionaron con afecto ante Noemí, pero finalmente tomaron caminos distintos. Orfa se despidió y regresó, mientras Rut decidió permanecer con su suegra y continuar el viaje con ella.",
+      "eligibleModes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ],
+      "verificationTranslation": "RVR1960",
+      "auditStatus": "VERIFIED",
+      "humanReviewStatus": "PENDING"
+    },
+    {
+      "id": "NQB-AT-1SA-0043",
+      "testament": "OT",
+      "book": "1 Samuel",
+      "chapter": 13,
+      "verseStart": 19,
+      "verseEnd": 22,
+      "referenceDisplay": "1 Samuel 13:19-22",
+      "category": "AT_GENERAL",
+      "subcategory": "Escasez de armas de hierro en Israel",
+      "characters": [
+        "Saúl",
+        "Jonatán",
+        "israelitas",
+        "filisteos"
+      ],
+      "difficulty": "EXPERT",
+      "questionType": "MULTIPLE_CHOICE",
+      "prompt": "¿Qué situación excepcional se menciona sobre las armas israelitas el día de la batalla contra los filisteos?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Solo Saúl y Jonatán disponían de espada o lanza"
+        },
+        {
+          "id": "B",
+          "text": "Solo Jonatán y su escudero disponían de ellas"
+        },
+        {
+          "id": "C",
+          "text": "Solo Saúl y Abner disponían de ellas"
+        },
+        {
+          "id": "D",
+          "text": "Las tenían únicamente los jefes de cada tribu"
+        }
+      ],
+      "correctOptionId": "A",
+      "explanation": "El dominio filisteo incluía una fuerte limitación sobre la fabricación de armas en Israel. El relato explica que no había herreros disponibles entre los israelitas y señala que, al llegar el día del combate, las armas principales de este tipo estaban únicamente en manos de Saúl y Jonatán.",
+      "eligibleModes": [
+        "AT",
+        "AMBOS"
+      ],
+      "verificationTranslation": "RVR1960",
+      "auditStatus": "VERIFIED",
+      "humanReviewStatus": "PENDING"
+    },
+    {
+      "id": "NQB-AT-2SA-0028",
+      "testament": "OT",
+      "book": "2 Samuel",
+      "chapter": 9,
+      "verseStart": 1,
+      "verseEnd": 1,
+      "referenceDisplay": "2 Samuel 9:1",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "David busca mostrar bondad por Jonatán",
+      "characters": [
+        "David",
+        "Jonatán",
+        "casa de Saúl"
+      ],
+      "difficulty": "INTERMEDIATE",
+      "questionType": "MULTIPLE_CHOICE",
+      "prompt": "¿Por qué quiso David encontrar a alguien que quedara de la casa de Saúl?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Para mostrarle bondad por amor a Jonatán"
+        },
+        {
+          "id": "B",
+          "text": "Para obligarlo a renunciar públicamente al linaje de Saúl"
+        },
+        {
+          "id": "C",
+          "text": "Para incorporarlo al ejército de Joab"
+        },
+        {
+          "id": "D",
+          "text": "Para enviarlo como representante ante los filisteos"
+        }
+      ],
+      "correctOptionId": "A",
+      "explanation": "David preguntó si aún quedaba alguien de la casa de Saúl con una finalidad explícita: mostrar bondad por causa de Jonatán. La acción se vincula con la relación previa entre David y Jonatán y conduce al encuentro con Mefi-boset.",
+      "eligibleModes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ],
+      "verificationTranslation": "RVR1960",
+      "auditStatus": "VERIFIED",
+      "humanReviewStatus": "PENDING"
+    },
+    {
+      "id": "NQB-AT-1RE-0011",
+      "testament": "OT",
+      "book": "1 Reyes",
+      "chapter": 2,
+      "verseStart": 28,
+      "verseEnd": 35,
+      "referenceDisplay": "1 Reyes 2:28-35",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Benaía ejecuta la orden contra Joab",
+      "characters": [
+        "Salomón",
+        "Joab",
+        "Benaía",
+        "Sadoc",
+        "Abiatar"
+      ],
+      "difficulty": "INTERMEDIATE",
+      "questionType": "MULTIPLE_CHOICE",
+      "prompt": "¿Quién ejecutó la orden de Salomón contra Joab y después quedó al frente del ejército?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Benaía hijo de Joiada"
+        },
+        {
+          "id": "B",
+          "text": "Sadoc"
+        },
+        {
+          "id": "C",
+          "text": "Natán"
+        },
+        {
+          "id": "D",
+          "text": "Simei hijo de Gera"
+        }
+      ],
+      "correctOptionId": "A",
+      "explanation": "Joab buscó refugio junto al altar después de conocer lo ocurrido con Adonías. Salomón envió a Benaía para ejecutar la sentencia; posteriormente Benaía fue colocado al frente del ejército, mientras Sadoc ocupó el lugar sacerdotal de Abiatar.",
+      "eligibleModes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ],
+      "verificationTranslation": "RVR1960",
+      "auditStatus": "VERIFIED",
+      "humanReviewStatus": "PENDING"
+    },
+    {
+      "id": "NQB-AT-2RE-0006",
+      "testament": "OT",
+      "book": "2 Reyes",
+      "chapter": 2,
+      "verseStart": 9,
+      "verseEnd": 10,
+      "referenceDisplay": "2 Reyes 2:9-10",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Petición de Eliseo antes de la partida de Elías",
+      "characters": [
+        "Elías",
+        "Eliseo"
+      ],
+      "difficulty": "BASIC",
+      "questionType": "MULTIPLE_CHOICE",
+      "prompt": "¿Qué pidió Eliseo a Elías antes de que este fuera quitado de su lado?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Una doble porción de su espíritu"
+        },
+        {
+          "id": "B",
+          "text": "El gobierno de Israel"
+        },
+        {
+          "id": "C",
+          "text": "La riqueza de la casa real"
+        },
+        {
+          "id": "D",
+          "text": "El sacerdocio de Jerusalén"
+        }
+      ],
+      "correctOptionId": "A",
+      "explanation": "Cuando Elías permitió a Eliseo formular una petición antes de su partida, Eliseo pidió una doble porción de su espíritu. Elías señaló que era una petición difícil y vinculó su cumplimiento con que Eliseo presenciara el momento en que él fuera quitado.",
+      "eligibleModes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ],
+      "verificationTranslation": "RVR1960",
+      "auditStatus": "VERIFIED",
+      "humanReviewStatus": "PENDING"
+    },
+    {
+      "id": "NQB-AT-1CR-0066",
+      "testament": "OT",
+      "book": "1 Crónicas",
+      "chapter": 25,
+      "verseStart": 7,
+      "verseEnd": 8,
+      "referenceDisplay": "1 Crónicas 25:7-8",
+      "category": "AT_GENERAL",
+      "subcategory": "Asignación de turnos entre los músicos instruidos",
+      "characters": [
+        "músicos y cantores del templo"
+      ],
+      "difficulty": "ADVANCED",
+      "questionType": "MULTIPLE_CHOICE",
+      "prompt": "¿Cómo se organizaron para servir los doscientos ochenta y ocho músicos instruidos y aptos para el canto?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Echaron suertes para los turnos sin distinguir entre pequeño y grande, maestro y discípulo"
+        },
+        {
+          "id": "B",
+          "text": "Los mayores sirvieron primero y los discípulos solo después de completar diez años de práctica"
+        },
+        {
+          "id": "C",
+          "text": "David eligió personalmente a cada músico según su tribu y riqueza"
+        },
+        {
+          "id": "D",
+          "text": "Solo los hijos de Asaf participaron en los turnos, mientras los demás quedaron como suplentes"
+        }
+      ],
+      "correctOptionId": "A",
+      "explanation": "El capítulo contabiliza doscientos ochenta y ocho músicos instruidos y aptos. La asignación se realizó mediante suertes y aplicó el mismo principio a mayores y menores, maestros y discípulos. De este modo, el orden del servicio no dependía simplemente de edad o prestigio dentro del grupo.",
+      "eligibleModes": [
+        "AT",
+        "AMBOS"
+      ],
+      "verificationTranslation": "RVR1960",
+      "auditStatus": "VERIFIED",
+      "humanReviewStatus": "PENDING"
+    },
+    {
+      "id": "NQB-AT-2CR-0102",
+      "testament": "OT",
+      "book": "2 Crónicas",
+      "chapter": 36,
+      "verseStart": 22,
+      "verseEnd": 23,
+      "referenceDisplay": "2 Crónicas 36:22-23",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Decreto de Ciro y apertura hacia el retorno",
+      "characters": [
+        "Ciro",
+        "persas",
+        "pueblo de Dios"
+      ],
+      "difficulty": "INTERMEDIATE",
+      "questionType": "MULTIPLE_CHOICE",
+      "prompt": "¿Con qué decisión de Ciro concluye Crónicas y abre el camino hacia la etapa del retorno?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Proclamó que el Dios de los cielos le había encargado edificar una casa en Jerusalén e invitó a los miembros del pueblo de Dios a subir"
+        },
+        {
+          "id": "B",
+          "text": "Ordenó destruir definitivamente Jerusalén e impidió cualquier regreso desde Persia"
+        },
+        {
+          "id": "C",
+          "text": "Prohibió reconstruir el templo y trasladó todos los cautivos a Egipto"
+        },
+        {
+          "id": "D",
+          "text": "Declaró que solamente los babilonios podían habitar Judá y cerró el acceso a Jerusalén"
+        }
+      ],
+      "correctOptionId": "A",
+      "explanation": "El libro termina cambiando el horizonte narrativo del exilio al retorno. En el primer año de Ciro, el decreto atribuye al rey persa el encargo de reconstruir la casa de Dios en Jerusalén y permite que quienes pertenecen al pueblo emprendan el ascenso. El mismo punto servirá de puente hacia Esdras, por lo que allí no deberá repetirse como pregunta idéntica.",
+      "eligibleModes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ],
+      "verificationTranslation": "RVR1960",
+      "auditStatus": "VERIFIED",
+      "humanReviewStatus": "PENDING"
+    }
+  ]
+}
