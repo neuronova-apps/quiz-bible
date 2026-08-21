@@ -5,6 +5,9 @@ Carga preguntas reales directamente desde genesis-master-input.json,
 exodus-master-input.json y leviticus-master-input.json (si existe), realizando
 mutaciones controladas sobre copias profundas (deepcopy) para verificar:
 - Soporte multilibro (Génesis, Éxodo, Levítico);
+- NQB-AT-LEV-0080: 'Cada décimo animal' vs concepto de diezmo/vara en Levítico 27:32;
+- NQB-AT-LEV-0080 negativo: 'Cada séptimo animal' produce FAIL;
+- No generación automática de 10 ante apariciones no cuantitativas de 'diezmo';
 - NQB-AT-LEV-0019: rango aislado 8:12 insuficiente vs contexto 8:10 con Moisés;
 - NQB-AT-LEV-0038: suertes sobre machos cabríos no produce falso FAIL;
 - NQB-AT-LEV-0065: período descriptivo 'un año de reposo' no produce falso FAIL contra 7;
@@ -113,6 +116,40 @@ class TestAuditorCanonical(unittest.TestCase):
                 f"Referencia inconsistente en {qid}: ref='{ref}', esperada terminada en '{expected_suffix}'"
             )
 
+    # --- CASO NQB-AT-LEV-0080: CADA DÉCIMO ANIMAL Y DIEZMO EN LEVÍTICO 27:32 ---
+
+    def test_positive_lev_0080_decimo_animal_tithe(self) -> None:
+        """NQB-AT-LEV-0080: 'Cada décimo animal' respalda el diezmo del ganado bajo la vara."""
+        q = self.get_leviticus_question("NQB-AT-LEV-0080")
+        self.assertEqual(q["reference"], "Levítico 27:32")
+        self.assertEqual(q["opcion_a"], "Cada décimo animal")
+        verse_map = {
+            32: "Y todo diezmo de vacas o de ovejas, de todo lo que pasa bajo la vara, el diezmo será consagrado a Jehová."
+        }
+        res = evaluate_question(q, verse_map, book_key="levitico")
+        self.assertEqual(res["controles_superados"]["control_numeros_cantidades"], "PASS")
+        self.assertEqual(res["controles_superados"]["control_opcion_a_correcta"], "PASS")
+        self.assertEqual(res["controles_superados"]["control_rango_suficiente"], "PASS")
+        self.assertEqual(res["estado"], "VERIFICADO")
+
+    def test_negative_lev_0080_contradictory_number(self) -> None:
+        """Mutación negativa sobre NQB-AT-LEV-0080: 'Cada séptimo animal' produce FAIL."""
+        q = self.get_leviticus_question("NQB-AT-LEV-0080")
+        q["opcion_a"] = "Cada séptimo animal"
+        q["correct_answer"] = "Cada séptimo animal"
+        verse_map = {
+            32: "Y todo diezmo de vacas o de ovejas, de todo lo que pasa bajo la vara, el diezmo será consagrado a Jehová."
+        }
+        res = evaluate_question(q, verse_map, book_key="levitico")
+        self.assertEqual(res["controles_superados"]["control_numeros_cantidades"], "FAIL")
+        self.assertEqual(res["estado"], "REQUIERE_CORRECCION")
+
+    def test_non_quantitative_diezmo_does_not_extract_10_blindly(self) -> None:
+        """Mención no cuantitativa de 'diezmo' sin conteo/vara no produce número 10."""
+        text_non_quant = "Y el diezmo de la tierra, así de la simiente como del fruto, de Jehová es."
+        nums = extract_numbers(text_non_quant, is_quantitative_context=False)
+        self.assertNotIn(10, nums)
+
     # --- CASO NQB-AT-LEV-0019: LEVÍTICO 8:12 Y REFERENCIA ADICIONAL LEVÍTICO 8:10 ---
 
     def test_lev_0019_without_and_with_additional_reference(self) -> None:
@@ -123,22 +160,22 @@ class TestAuditorCanonical(unittest.TestCase):
 
         # 1. Rango aislado 8:12 -> Falta el sujeto Moisés (FAIL)
         v12_only = {12: "Y derramó del aceite de la unción sobre la cabeza de Aarón, y lo ungió para santificarlo."}
-        res_without = evaluate_question(q, v12_only, book_key="levitico")
+        q_isolated = copy.deepcopy(q)
+        q_isolated["additional_references"] = []
+        res_without = evaluate_question(q_isolated, v12_only, book_key="levitico")
         self.assertEqual(res_without["estado"], "REQUIERE_CORRECCION")
         self.assertEqual(res_without["controles_superados"]["control_nombres_propios"], "FAIL")
         self.assertEqual(res_without["controles_superados"]["control_rango_suficiente"], "FAIL")
 
         # 2. Con additional_references=["Levítico 8:10"] -> Moisés presente en v10 (PASS)
-        q_with = copy.deepcopy(q)
-        q_with["additional_references"] = ["Levítico 8:10"]
         v_with_10 = {
             10: "Y tomó Moisés el aceite de la unción y ungió el tabernáculo, y todas las cosas que estaban en él, y las santificó.",
             12: "Y derramó del aceite de la unción sobre la cabeza de Aarón, y lo ungió para santificarlo.",
         }
-        res_with = evaluate_question(q_with, v_with_10, book_key="levitico")
+        res_with = evaluate_question(q, v_with_10, book_key="levitico")
         self.assertEqual(res_with["controles_superados"]["control_nombres_propios"], "PASS")
         self.assertEqual(res_with["controles_superados"]["control_rango_suficiente"], "PASS")
-        self.assertNotEqual(res_with["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res_with["estado"], "VERIFICADO")
 
     # --- CASO NQB-AT-LEV-0038: CONSTRUCCIÓN DISTRIBUTIVA EN LEVÍTICO 16:8-10 ---
 

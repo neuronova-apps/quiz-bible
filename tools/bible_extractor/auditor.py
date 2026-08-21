@@ -187,6 +187,12 @@ SYNONYMS = {
     "jehova": "dios",
     "sacerdote": "sacerdotes",
     "sumo sacerdote": "sacerdote",
+    "decimo": "diezmo",
+    "diezmo": "decimo",
+    "decima": "diezmo",
+    "diezmos": "decimo",
+    "animal": "ganado",
+    "ganado": "animal",
 }
 
 # Componentes de números cardinales en español
@@ -212,7 +218,7 @@ SPANISH_UNITS = {
     "cinco": 5, "seis": 6, "siete": 7, "ocho": 8, "nueve": 9,
     "primero": 1, "primer": 1, "segundo": 2, "tercero": 3, "tercer": 3,
     "cuarto": 4, "quinto": 5, "sexto": 6, "septimo": 7, "octavo": 8,
-    "noveno": 9, "decimo": 10,
+    "noveno": 9, "decimo": 10, "decima": 10,
 }
 
 
@@ -267,7 +273,12 @@ def extract_numbers(text: str, is_quantitative_context: bool = False) -> list[in
             if is_quantitative_context or re.search(countable_units_pattern, cleaned_norm):
                 numbers.append(1)
 
-    # 3. Palabras numéricas compuestas respetando la formación en español
+    # 3. Diezmo en contexto de conteo, proporción o vara
+    if re.search(r"\b(?:diezmo|diezmos)\b", cleaned_norm):
+        if is_quantitative_context or re.search(r"\b(?:cada|contar|vara|pasa|animal|porcion|parte|uno de cada|decim[oa])\b", cleaned_norm):
+            numbers.append(10)
+
+    # 4. Palabras numéricas compuestas respetando la formación en español
     words = cleaned_norm.split()
     i = 0
     while i < len(words):
@@ -449,10 +460,13 @@ def evaluate_question(
             missing_v = [v for v in all_required_verses_unique if v not in verse_map]
             incidencias.append(f"Versículos faltantes en el capítulo: {missing_v}")
 
+    # Contexto cuantitativo de la pregunta
+    has_count_context = bool(re.search(r"¿?\s*cuant[oa]s?\b|\bcuant[oa]s?\b|\bnumero\b|\bcantidad\b|\bcontar\b|\bvara\b|\bdecim[oa]\b|\bdiezmo\b", normalize(prompt)))
+
     # Construir pasaje integral en memoria
     passage = " ".join(verse_map.get(v, "") for v in all_required_verses_unique) if verse_map else ""
     passage_norm = normalize(passage)
-    passage_nums = set(extract_numbers(passage))
+    passage_nums = set(extract_numbers(passage, is_quantitative_context=has_count_context))
     passage_hash = hashlib.sha256(passage.encode("utf-8")).hexdigest() if controls["control_referencia_existencia"] == "PASS" else None
 
     # Si no hay pasaje disponible por fallo de API, todos los controles de texto son UNKNOWN
@@ -496,7 +510,7 @@ def evaluate_question(
     for part in parts_a:
         part_toks = significant_tokens(part)
         part_norm = normalize(part)
-        part_nums = extract_numbers(part)
+        part_nums = extract_numbers(part, is_quantitative_context=has_count_context)
 
         if part_nums:
             nums_matched = all(n in passage_nums for n in part_nums)
@@ -516,7 +530,7 @@ def evaluate_question(
     if not missing_parts:
         controls["control_opcion_a_correcta"] = "PASS"
     else:
-        opt_a_nums = extract_numbers(opcion_a)
+        opt_a_nums = extract_numbers(opcion_a, is_quantitative_context=has_count_context)
         conflicting_num = any(n not in passage_nums for n in opt_a_nums if opt_a_nums and passage_nums)
         if conflicting_num:
             controls["control_opcion_a_correcta"] = "FAIL"
@@ -535,8 +549,8 @@ def evaluate_question(
             distractor_conflicts.append(f"Distractor idéntico a opción A: '{d_text}'")
             continue
 
-        d_nums = extract_numbers(d_text)
-        opt_a_nums = extract_numbers(opcion_a)
+        d_nums = extract_numbers(d_text, is_quantitative_context=has_count_context)
+        opt_a_nums = extract_numbers(opcion_a, is_quantitative_context=has_count_context)
         if d_nums and opt_a_nums and set(d_nums) == passage_nums and set(opt_a_nums) != passage_nums:
             distractor_conflicts.append(f"Distractor con datos correctos frente a Opción A incorrecta: '{d_text}'")
 
@@ -570,7 +584,7 @@ def evaluate_question(
     else:
         matching_exp_toks = [t for t in exp_toks if t in passage_norm or (t in SYNONYMS and SYNONYMS[t] in passage_norm)]
         exp_coverage = len(matching_exp_toks) / len(exp_toks)
-        exp_nums = extract_numbers(exp_cleaned)
+        exp_nums = extract_numbers(exp_cleaned, is_quantitative_context=has_count_context)
         conflicting_nums = [n for n in exp_nums if n not in passage_nums and n > 2]
 
         if conflicting_nums and controls["control_opcion_a_correcta"] == "FAIL":
@@ -647,7 +661,6 @@ def evaluate_question(
             controls["control_lugares"] = "UNKNOWN"
 
     # 14. Control Números y Cantidades
-    has_count_context = bool(re.search(r"¿?\s*cuant[oa]s?\b|\bcuant[oa]s?\b|\bnumero\b|\bcantidad\b", normalize(prompt)))
     opt_a_nums = extract_numbers(opcion_a, is_quantitative_context=has_count_context)
     prompt_nums = extract_numbers(prompt, is_quantitative_context=has_count_context)
     target_nums = set(opt_a_nums) | set(prompt_nums)
