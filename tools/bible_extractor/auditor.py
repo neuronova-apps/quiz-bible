@@ -5,6 +5,7 @@ Soporta auditoría modular para:
 - Génesis (50 capítulos, 5 bloques)
 - Éxodo (40 capítulos, 4 bloques)
 - Levítico (27 capítulos, 3 bloques)
+- Números (36 capítulos, 4 bloques)
 y libros bíblicos adicionales.
 
 Evalúa deterministamente los 17 controles de calidad editorial:
@@ -87,6 +88,20 @@ BOOK_CONFIGS: dict[str, dict[str, Any]] = {
         "default_output_dir": "build/audit/leviticus",
         "ambient_places": {"sinai", "monte sinai", "desierto", "tabernaculo", "egipto", "canaan"},
     },
+    "numeros": {
+        "canonical_name": "Números",
+        "api_name": "Numeros",
+        "aliases": {"numeros", "números", "numbers"},
+        "total_chapters": 36,
+        "blocks": [
+            (1, 10, "numbers-01-10.json"),
+            (11, 20, "numbers-11-20.json"),
+            (21, 30, "numbers-21-30.json"),
+            (31, 36, "numbers-31-36.json"),
+        ],
+        "default_output_dir": "build/audit/numbers",
+        "ambient_places": {"sinai", "monte sinai", "desierto", "moab", "cades", "paran", "jordan", "canaan", "edom", "madian", "tabernaculo", "hor", "escol", "zin"},
+    },
 }
 
 STOPWORDS = {
@@ -100,7 +115,7 @@ STOPWORDS = {
     "ser", "sido", "estar", "estaba", "estaban", "tener", "tenia", "tenian",
 }
 
-# Entidades y personajes bíblicos (Génesis, Éxodo, Levítico y nombres comunes)
+# Entidades y personajes bíblicos (Génesis, Éxodo, Levítico, Números y nombres comunes)
 BIBLE_PERSONAJES = {
     # Génesis
     "adan", "eva", "cain", "abel", "set", "enos", "cainan", "mahalaleel",
@@ -113,20 +128,23 @@ BIBLE_PERSONAJES = {
     "cetura", "zilpa", "bilha", "potifera", "zafenat-panea", "zafenatpanea",
     "eber", "peleg", "milca", "isca", "er", "onan", "sela", "fares", "zara",
     "hezron", "hamul", "siquem", "hamor", "nemrod", "mizraim", "cuz",
-    # Éxodo
+    # Éxodo y Levítico
     "moises", "aaron", "miriam", "maria", "sefora", "jetro", "reuel", "gersom",
     "sipra", "fua", "jocabed", "amram", "hur", "josue", "bezaleel", "aholiab",
     "nadab", "abiu", "eleazar", "itamar", "core", "datan", "abiram",
-    "balac", "balaam", "finees", "caleb",
-    # Levítico
     "misael", "elzafan", "elsafan", "uziel", "selomit", "dibri",
+    # Números
+    "balaam", "balac", "finees", "caleb", "hobab", "eldad", "medad",
+    "zelofehad", "mahla", "noa", "hogla", "milca", "tirsa", "cozbi", "zuri", "zur",
+    "og", "sehon", "sihon", "on", "eliasaf", "pagiel", "ahiezer", "ahira", "ocran",
+    "enam", "helon", "amiasadai", "pedasur", "gamaliel", "zuriel", "eliseba",
     # Otros comunes
     "david", "salomon", "saul", "samuel", "elias", "eliseo", "jonatan",
     "nabucodonosor", "pablo", "pedro", "juan", "jesus", "mateo", "marcos",
     "lucas", "esteban", "timoteo",
 }
 
-# Lugares, regiones y accidentes geográficos bíblicos (Génesis, Éxodo, Levítico)
+# Lugares, regiones y accidentes geográficos bíblicos (Génesis, Éxodo, Levítico, Números)
 BIBLE_PLACES = {
     # Génesis
     "eden", "ararat", "babel", "babilonia", "ur", "haran", "betel", "bet-el", "hebron", "siquem",
@@ -142,6 +160,13 @@ BIBLE_PLACES = {
     "madian", "sinai", "monte sinai", "mar rojo", "mara", "elim", "sin", "refidim",
     "masa", "meriba", "etam", "pi-hahirot", "pihahirot", "baal-zefon",
     "baalzefon", "migdol", "sur", "piton", "tabernaculo", "desierto",
+    # Números
+    "cades", "cades-barnea", "cadesbarnea", "paran", "zin", "moab", "campos de moab",
+    "llanuras de moab", "jerico", "jericó", "arava", "aravá", "edom", "hor", "monte hor",
+    "hesbon", "hesbón", "arnon", "arnón", "bamot", "pisga", "monte pisga", "peor",
+    "monte peor", "tabera", "taberah", "hazelot", "hazerot", "kibrot-hataava", "horma",
+    "zalmona", "punon", "obot", "abarim", "monte abarim", "nebo", "monte nebo",
+    "almon-diblataim", "arba", "escol", "valle de escol", "petor",
 }
 
 # Raíces de parentesco y lemas
@@ -236,6 +261,7 @@ def normalize(value: str) -> str:
     value = unicodedata.normalize("NFD", str(value).casefold())
     value = "".join(ch for ch in value if unicodedata.category(ch) != "Mn")
     value = value.replace("bet-el", "betel").replace("beer-seba", "beerseba").replace("padan-aram", "padanaram")
+    value = value.replace("cades-barnea", "cadesbarnea").replace("kibrot-hataava", "kibrothataava")
     value = re.sub(r"[^a-z0-9ñ]+", " ", value)
     return re.sub(r"\s+", " ", value).strip()
 

@@ -2,9 +2,9 @@
 """Pruebas unitarias y de regresión para el auditor bíblico semántico RVR1960.
 
 Carga preguntas reales directamente desde genesis-master-input.json,
-exodus-master-input.json y leviticus-master-input.json (si existe), realizando
-mutaciones controladas sobre copias profundas (deepcopy) para verificar:
-- Soporte multilibro (Génesis, Éxodo, Levítico);
+exodus-master-input.json, leviticus-master-input.json y numbers-master-input.json,
+realizando mutaciones controladas sobre copias profundas (deepcopy) para verificar:
+- Soporte multilibro (Génesis, Éxodo, Levítico, Números);
 - NQB-AT-LEV-0079: 'La décima parte' vs diezmo de la tierra en Levítico 27:30;
 - NQB-AT-LEV-0079 negativo: 'La quinta parte' produce FAIL;
 - NQB-AT-LEV-0080: 'Cada décimo animal' vs concepto de diezmo/vara en Levítico 27:32;
@@ -35,6 +35,7 @@ from auditor import evaluate_question, run_audit, extract_numbers, normalize, de
 GENESIS_PATH = Path(__file__).parent / "genesis-master-input.json"
 EXODUS_PATH = Path(__file__).parent / "exodus-master-input.json"
 LEVITICUS_PATH = Path(__file__).parent / "leviticus-master-input.json"
+NUMBERS_PATH = Path(__file__).parent / "numbers-master-input.json"
 
 
 class TestAuditorCanonical(unittest.TestCase):
@@ -55,6 +56,12 @@ class TestAuditorCanonical(unittest.TestCase):
         else:
             cls.leviticus_questions = {}
 
+        if NUMBERS_PATH.exists():
+            raw_num = json.loads(NUMBERS_PATH.read_text(encoding="utf-8"))
+            cls.numbers_questions = {q["id"]: q for q in (raw_num.get("questions", []) if isinstance(raw_num, dict) else raw_num)}
+        else:
+            cls.numbers_questions = {}
+
     def setUp(self) -> None:
         self.temp_dir = Path(tempfile.mkdtemp())
 
@@ -72,6 +79,10 @@ class TestAuditorCanonical(unittest.TestCase):
     def get_leviticus_question(self, qid: str) -> dict:
         self.assertIn(qid, self.leviticus_questions, f"ID '{qid}' no encontrado en leviticus-master-input.json")
         return copy.deepcopy(self.leviticus_questions[qid])
+
+    def get_numbers_question(self, qid: str) -> dict:
+        self.assertIn(qid, self.numbers_questions, f"ID '{qid}' no encontrado en numbers-master-input.json")
+        return copy.deepcopy(self.numbers_questions[qid])
 
     # --- TEST GLOBAL DE CONSISTENCIA DE IDs Y REFERENCIAS ---
 
@@ -117,6 +128,28 @@ class TestAuditorCanonical(unittest.TestCase):
                 expected_suffix in ref or ref.endswith(expected_suffix),
                 f"Referencia inconsistente en {qid}: ref='{ref}', esperada terminada en '{expected_suffix}'"
             )
+
+    def test_global_canonical_id_reference_integrity_numbers(self) -> None:
+        """Verifica consistencia de IDs y referencias en Números."""
+        if not self.numbers_questions:
+            self.skipTest("numbers-master-input.json no disponible")
+        for qid, q in self.numbers_questions.items():
+            ref = q.get("reference", "")
+            ch = q.get("chapter")
+            start = q.get("verse_start")
+            end = q.get("verse_end", start)
+            expected_suffix = f"{ch}:{start}" if start == end else f"{ch}:{start}-{end}"
+            self.assertTrue(
+                expected_suffix in ref or ref.endswith(expected_suffix),
+                f"Referencia inconsistente en {qid}: ref='{ref}', esperada terminada en '{expected_suffix}'"
+            )
+
+    def test_numbers_book_detection(self) -> None:
+        """Verifica detección de configuración de Números."""
+        if not self.numbers_questions:
+            self.skipTest("numbers-master-input.json no disponible")
+        book_key = detect_book_key(list(self.numbers_questions.values()))
+        self.assertEqual(book_key, "numeros")
 
     # --- CASO NQB-AT-LEV-0079: LA DÉCIMA PARTE Y DIEZMO DE LA TIERRA EN LEVÍTICO 27:30 ---
 
