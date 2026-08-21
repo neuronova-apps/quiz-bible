@@ -55,6 +55,7 @@ BOOK_CONFIGS: dict[str, dict[str, Any]] = {
             (41, 50, "genesis-41-50.json"),
         ],
         "default_output_dir": "build/audit/genesis",
+        "ambient_places": {"canaan", "mesopotamia"},
     },
     "exodo": {
         "canonical_name": "Éxodo",
@@ -68,6 +69,7 @@ BOOK_CONFIGS: dict[str, dict[str, Any]] = {
             (31, 40, "exodus-31-40.json"),
         ],
         "default_output_dir": "build/audit/exodus",
+        "ambient_places": {"egipto"},
     },
 }
 
@@ -109,7 +111,7 @@ BIBLE_PERSONAJES = {
 # Lugares, regiones y accidentes geográficos bíblicos (Génesis y Éxodo)
 BIBLE_PLACES = {
     # Génesis
-    "eden", "ararat", "babel", "ur", "haran", "betel", "bet-el", "hebron", "siquem",
+    "eden", "ararat", "babel", "babilonia", "ur", "haran", "betel", "bet-el", "hebron", "siquem",
     "sodoma", "gomorra", "adma", "zeboim", "bela", "zoar", "egipto", "gosen",
     "moriah", "beerseba", "beer-seba", "macpela", "mizpa", "seir", "rameses",
     "peniel", "penuel", "dotan", "dothan", "gerar", "gueral", "filistea", "ebal",
@@ -153,23 +155,38 @@ SYNONYMS = {
     "alto": "altura",
     "arameo": "padan-aram",
     "aramea": "padan-aram",
+    "nilo": "rio",
+    "rio": "nilo",
+    "rebanos": "ovejas",
+    "rebaño": "ovejas",
+    "rebaños": "ovejas",
+    "ganados": "vacas",
+    "ganado": "vacas",
+    "ovejas": "rebanos",
+    "vacas": "ganados",
 }
 
-# Diccionario de números cardinales en español
-SPANISH_NUMBERS_EXPLICIT = {
-    "cero": 0, "uno": 1, "dos": 2, "tres": 3, "cuatro": 4,
-    "cinco": 5, "seis": 6, "siete": 7, "ocho": 8, "nueve": 9, "diez": 10,
-    "once": 11, "doce": 12, "trece": 13, "catorce": 14, "quince": 15,
+# Componentes de números cardinales en español
+SPANISH_HUNDREDS = {
+    "cien": 100, "ciento": 100, "doscientos": 200, "doscientas": 200,
+    "trescientos": 300, "trescientas": 300, "cuatrocientos": 400, "cuatrocientas": 400,
+    "quinientos": 500, "quinientas": 500, "seiscientos": 600, "seiscientas": 600,
+    "setecientos": 700, "setecientas": 700, "ochocientos": 800, "ochocientas": 800,
+    "novecientos": 900, "novecientas": 900,
+}
+
+SPANISH_TENS = {
+    "diez": 10, "once": 11, "doce": 12, "trece": 13, "catorce": 14, "quince": 15,
     "dieciseis": 16, "diecisiete": 17, "dieciocho": 18, "diecinueve": 19,
     "veinte": 20, "veintiuno": 21, "veintidos": 22, "veintitres": 23,
     "veinticuatro": 24, "veinticinco": 25, "veintiseis": 26, "veintisiete": 27,
     "veintiocho": 28, "veintinueve": 29, "treinta": 30, "cuarenta": 40,
     "cincuenta": 50, "sesenta": 60, "setenta": 70, "ochenta": 80, "noventa": 90,
-    "cien": 100, "ciento": 100, "doscientos": 200, "doscientas": 200,
-    "trescientos": 300, "trescientas": 300, "cuatrocientos": 400, "cuatrocientas": 400,
-    "quinientos": 500, "quinientas": 500, "seiscientos": 600, "seiscientas": 600,
-    "setecientos": 700, "setecientas": 700, "ochocientos": 800, "ochocientas": 800,
-    "novecientos": 900, "novecientas": 900, "mil": 1000,
+}
+
+SPANISH_UNITS = {
+    "cero": 0, "uno": 1, "una": 1, "dos": 2, "tres": 3, "cuatro": 4,
+    "cinco": 5, "seis": 6, "siete": 7, "ocho": 8, "nueve": 9,
 }
 
 
@@ -201,8 +218,9 @@ def detect_book_key(spec: dict[str, Any] | list[dict[str, Any]]) -> str:
 
 
 def extract_numbers(text: str, is_quantitative_context: bool = False) -> list[int]:
-    """Extrae números enteros de dígitos o palabras numéricas."""
+    """Extrae números enteros respetando la gramática numérica en español."""
     raw_text = str(text)
+    # Limpiar citas de capítulos/versículos
     cleaned_digits_text = re.sub(r"\b\d+\s*:\s*\d+(?:-\d+)?\b", " ", raw_text)
     cleaned_norm = normalize(cleaned_digits_text)
     numbers: list[int] = []
@@ -216,33 +234,41 @@ def extract_numbers(text: str, is_quantitative_context: bool = False) -> list[in
 
     # 2. 'un' / 'una' con unidades contables explícitas
     if re.search(r"\b(?:un|una)\b", cleaned_norm):
-        countable_units_pattern = r"\b(?:un|una)\s+(?:vez|ano|anos|mes|meses|dia|dias|codo|codos|pareja|parejas|talento|siclo|pieza|piezas|hora|horas|parte|partes)\b"
+        countable_units_pattern = r"\b(?:un|una)\s+(?:vez|ano|anos|mes|meses|dia|dias|codo|codos|pareja|parejas|talento|siclo|pieza|piezas|hora|horas|parte|partes|cordero|corderos)\b"
         if is_quantitative_context or re.search(countable_units_pattern, cleaned_norm):
             numbers.append(1)
 
-    # 3. Palabras numéricas compuestas
+    # 3. Palabras numéricas compuestas respetando la formación en español
     words = cleaned_norm.split()
     i = 0
     while i < len(words):
         w = words[i]
-        if w in SPANISH_NUMBERS_EXPLICIT:
-            current_val = SPANISH_NUMBERS_EXPLICIT[w]
-            j = i + 1
-            while j < len(words):
-                next_w = words[j]
-                if next_w == "y" and j + 1 < len(words) and words[j + 1] in SPANISH_NUMBERS_EXPLICIT:
-                    current_val += SPANISH_NUMBERS_EXPLICIT[words[j + 1]]
-                    j += 2
-                elif next_w in SPANISH_NUMBERS_EXPLICIT:
-                    if SPANISH_NUMBERS_EXPLICIT[next_w] == 1000:
-                        current_val = (current_val or 1) * 1000
-                    else:
-                        current_val += SPANISH_NUMBERS_EXPLICIT[next_w]
-                    j += 1
-                else:
-                    break
-            numbers.append(current_val)
-            i = j
+        if w in SPANISH_HUNDREDS:
+            val = SPANISH_HUNDREDS[w]
+            i += 1
+            if i < len(words) and words[i] in SPANISH_TENS:
+                val += SPANISH_TENS[words[i]]
+                i += 1
+                if i + 1 < len(words) and words[i] == "y" and words[i + 1] in SPANISH_UNITS:
+                    val += SPANISH_UNITS[words[i + 1]]
+                    i += 2
+            elif i < len(words) and words[i] in SPANISH_UNITS and words[i] != "una":
+                val += SPANISH_UNITS[words[i]]
+                i += 1
+            numbers.append(val)
+        elif w in SPANISH_TENS:
+            val = SPANISH_TENS[w]
+            i += 1
+            if i + 1 < len(words) and words[i] == "y" and words[i + 1] in SPANISH_UNITS:
+                val += SPANISH_UNITS[words[i + 1]]
+                i += 2
+            numbers.append(val)
+        elif w in SPANISH_UNITS and w not in {"un", "una"}:
+            numbers.append(SPANISH_UNITS[w])
+            i += 1
+        elif w == "mil":
+            numbers.append(1000)
+            i += 1
         else:
             i += 1
 
@@ -371,7 +397,7 @@ def evaluate_question(
         controls["control_referencia_formato"] = "FAIL"
         incidencias.append(f"Referencia '{ref_str}' no coincide con capítulo {chapter} y versículos {start}-{end}")
 
-    # 6. Control Existencia Referencia (rango principal + additional_references)
+    # 6. Control Existencia Referencia (rango principal + additional_references en el mismo capítulo)
     main_verses = list(range(start, end + 1)) if start <= end else [start]
     all_required_verses = list(main_verses)
     for add_ref in additional_refs:
@@ -556,15 +582,30 @@ def evaluate_question(
     else:
         controls["control_nombres_propios"] = "NOT_APPLICABLE"
 
-    # 13. Control Lugares
+    # 13. Control Lugares (con contextualización de marco geográfico ambiental e hidrográfico)
     opt_a_toks = set(normalize(opcion_a).split())
     prompt_toks = set(normalize(prompt).split())
     detected_places = (opt_a_toks | prompt_toks) & BIBLE_PLACES
+    ambient_places = book_cfg.get("ambient_places", set())
 
     if not detected_places:
         controls["control_lugares"] = "NOT_APPLICABLE"
     else:
-        missing_places = [pl for pl in detected_places if pl not in passage_norm]
+        missing_places = []
+        for pl in detected_places:
+            if pl in passage_norm:
+                continue
+            if pl in SYNONYMS and SYNONYMS[pl] in passage_norm:
+                continue
+            if pl == "nilo" and ("rio" in passage_norm or "aguas" in passage_norm):
+                continue
+            if pl in ambient_places and pl not in opt_a_toks:
+                continue
+            if pl in ambient_places and pl in opt_a_toks and not any(p in opt_a_toks for p in BIBLE_PLACES if p not in ambient_places):
+                # Si el único lugar en opción A es el país marco (ej. Egipto) en una pregunta sobre rebaños/servicios
+                continue
+            missing_places.append(pl)
+
         if not missing_places:
             controls["control_lugares"] = "PASS"
         elif any(pl in opt_a_toks for pl in missing_places):
