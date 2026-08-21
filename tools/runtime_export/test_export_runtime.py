@@ -1,0 +1,273 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+tools/runtime_export/test_export_runtime.py
+
+Suite integral de pruebas unitarias para el exportador de Runtime JSON v1 y
+la validación del contrato arquitectónico con Android Quiz Bible.
+"""
+
+from __future__ import annotations
+
+import copy
+import hashlib
+import json
+import random
+import sys
+import unittest
+from pathlib import Path
+from typing import Any
+
+REPO_ROOT = Path(__file__).resolve().parent.parent.parent
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+from tools.runtime_export.export_runtime import (
+    DEFAULT_SCHEMA_PATH,
+    assert_no_forbidden_keys,
+    build_runtime_collection,
+    determine_testament,
+    export_canonical_data,
+    export_files_to_runtime,
+    export_question_to_runtime,
+    normalize_difficulty,
+    normalize_question_type,
+    validate_runtime_collection,
+)
+
+SAMPLE_FIXTURE_IDS = [
+    "NQB-AT-GEN-0001",
+    "NQB-AT-GEN-0036",
+    "NQB-AT-EXO-0002",
+    "NQB-AT-EXO-0021",
+    "NQB-AT-LEV-0017",
+    "NQB-AT-LEV-0045",
+    "NQB-AT-NUM-0001",
+    "NQB-AT-NUM-0062",
+    "NQB-AT-DEU-0013",
+    "NQB-AT-DEU-0078",
+    "NQB-AT-JOS-0001",
+    "NQB-AT-JOS-0005",
+    "NQB-AT-JUE-0048",
+    "NQB-AT-RUT-0004",
+    "NQB-AT-1SA-0043",
+    "NQB-AT-2SA-0028",
+    "NQB-AT-1RE-0011",
+    "NQB-AT-2RE-0006",
+    "NQB-AT-1CR-0066",
+    "NQB-AT-2CR-0102",
+]
+
+
+class TestRuntimeExport(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.repo_root = Path(__file__).resolve().parent.parent.parent
+        cls.extractor_dir = cls.repo_root / "tools" / "bible_extractor"
+        cls.canonical_files = sorted(list(cls.extractor_dir.glob("*-master-input.json")))
+
+        cls.all_canonical_questions: dict[str, dict[str, Any]] = {}
+        for p in cls.canonical_files:
+            raw = json.loads(p.read_text(encoding="utf-8"))
+            qs = raw.get("questions", raw) if isinstance(raw, dict) else raw
+            for q in qs:
+                cls.all_canonical_questions[q["id"]] = q
+
+        cls.sample_canonical = [
+            cls.all_canonical_questions[qid] for qid in SAMPLE_FIXTURE_IDS if qid in cls.all_canonical_questions
+        ]
+
+    def test_fixture_ids_all_exist_in_canonical_banks(self) -> None:
+        """Verifica que los 20 IDs de la muestra existan en los bancos canónicos."""
+        self.assertEqual(
+            len(self.sample_canonical),
+            20,
+            f"Se esperaban 20 preguntas en la muestra, se encontraron {len(self.sample_canonical)}"
+        )
+
+    def test_difficulty_normalization(self) -> None:
+        """Verifica la correcta normalización de dificultades."""
+        self.assertEqual(normalize_difficulty("Básico"), "BASIC")
+        self.assertEqual(normalize_difficulty("Basico"), "BASIC")
+        self.assertEqual(normalize_difficulty("beginner"), "BASIC")
+        self.assertEqual(normalize_difficulty("Intermedio"), "INTERMEDIATE")
+        self.assertEqual(normalize_difficulty("intermediate"), "INTERMEDIATE")
+        self.assertEqual(normalize_difficulty("Avanzado"), "ADVANCED")
+        self.assertEqual(normalize_difficulty("advanced"), "ADVANCED")
+        self.assertEqual(normalize_difficulty("Experto"), "EXPERT")
+        self.assertEqual(normalize_difficulty("expert"), "EXPERT")
+
+        with self.assertRaises(ValueError):
+            normalize_difficulty("NivelInvalido")
+
+    def test_question_type_normalization(self) -> None:
+        """Verifica la normalización del tipo de pregunta."""
+        self.assertEqual(normalize_question_type("Selección múltiple"), "MULTIPLE_CHOICE")
+        self.assertEqual(normalize_question_type("multiple_choice"), "MULTIPLE_CHOICE")
+
+    def test_testament_detection(self) -> None:
+        """Verifica la asignación de testamento (OT/NT)."""
+        q_ot = {"id": "NQB-AT-GEN-0001", "book": "Génesis"}
+        self.assertEqual(determine_testament(q_ot), "OT")
+        q_nt = {"id": "NQB-NT-MAT-0001", "book": "Mateo"}
+        self.assertEqual(determine_testament(q_nt), "NT")
+
+    def test_export_preserves_all_structural_fields(self) -> None:
+        """Verifica que la transformación canónica a runtime conserve todos los campos."""
+        collection = export_canonical_data(self.sample_canonical)
+        self.assertEqual(collection["schemaVersion"], "quizbible-runtime-v1")
+        self.assertEqual(collection["totalQuestions"], 20)
+        self.assertEqual(len(collection["questions"]), 20)
+
+        for idx, (can_q, rt_q) in enumerate(zip(self.sample_canonical, collection["questions"])):
+            self.assertEqual(rt_q["id"], can_q["id"])
+            self.assertEqual(rt_q["book"], can_q["book"])
+            self.assertEqual(rt_q["chapter"], can_q["chapter"])
+            self.assertEqual(rt_q["verseStart"], can_q["verse_start"])
+            self.assertEqual(rt_q["verseEnd"], can_q.get("verse_end"))
+            self.assertEqual(rt_q["referenceDisplay"], can_q["reference"])
+            self.assertEqual(rt_q["category"], can_q["category"])
+            self.assertEqual(rt_q["subcategory"], can_q.get("subcategory"))
+            self.assertEqual(rt_q["characters"], can_q.get("characters", []))
+            self.assertEqual(rt_q["prompt"], can_q["question"])
+            self.assertEqual(rt_q["explanation"], can_q["explanation"])
+            self.assertEqual(rt_q["eligibleModes"], can_q["eligible_modes"])
+            self.assertEqual(rt_q["verificationTranslation"], "RVR1960")
+            self.assertEqual(rt_q["correctOptionId"], "A")
+
+            # Opciones
+            self.assertEqual(len(rt_q["options"]), 4)
+            self.assertEqual(rt_q["options"][0], {"id": "A", "text": can_q["opcion_a"]})
+            self.assertEqual(rt_q["options"][1], {"id": "B", "text": can_q["opcion_b"]})
+            self.assertEqual(rt_q["options"][2], {"id": "C", "text": can_q["opcion_c"]})
+            self.assertEqual(rt_q["options"][3], {"id": "D", "text": can_q["opcion_d"]})
+
+    def test_no_scripture_text_persisted_recursive(self) -> None:
+        """Verifica recursivamente que ninguna clave de texto bíblico se persista."""
+        collection = export_canonical_data(self.sample_canonical)
+        assert_no_forbidden_keys(collection)
+
+        # Si se inyecta una clave prohibida, debe fallar de inmediato
+        bad_collection = copy.deepcopy(collection)
+        bad_collection["questions"][0]["verse_text"] = "En el principio creó Dios los cielos y la tierra."
+        with self.assertRaises(ValueError):
+            assert_no_forbidden_keys(bad_collection)
+
+    def test_deterministic_export_sha256(self) -> None:
+        """Verifica que dos exportaciones sucesivas produzcan idéntico SHA-256."""
+        temp_out1 = self.repo_root / "build" / "runtime" / "_test_temp1.json"
+        temp_out2 = self.repo_root / "build" / "runtime" / "_test_temp2.json"
+
+        try:
+            _, sha1 = export_files_to_runtime(
+                self.canonical_files,
+                temp_out1,
+                filter_ids=SAMPLE_FIXTURE_IDS,
+                generated_at="2026-08-21T00:00:00Z"
+            )
+            _, sha2 = export_files_to_runtime(
+                self.canonical_files,
+                temp_out2,
+                filter_ids=SAMPLE_FIXTURE_IDS,
+                generated_at="2026-08-21T00:00:00Z"
+            )
+            self.assertEqual(sha1, sha2)
+            self.assertEqual(temp_out1.read_bytes(), temp_out2.read_bytes())
+        finally:
+            temp_out1.unlink(missing_ok=True)
+            temp_out2.unlink(missing_ok=True)
+
+    def test_schema_validation_passes(self) -> None:
+        """Valida que la colección de 20 preguntas cumpla el schema JSON oficial."""
+        collection = export_canonical_data(self.sample_canonical)
+        is_valid = validate_runtime_collection(collection, schema_path=DEFAULT_SCHEMA_PATH)
+        self.assertTrue(is_valid)
+
+    def test_android_shuffle_simulation_preserves_correct_answer(self) -> None:
+        """
+        Simula el comportamiento del motor de juego Android:
+        Baraja las opciones de una pregunta con diversas semillas aleatorias
+        y confirma que el id 'A' identifica consistentemente la respuesta correcta
+        incluso cuando cambia su posición visual en pantalla (0, 1, 2, 3).
+        """
+        collection = export_canonical_data(self.sample_canonical)
+        q = collection["questions"][0]  # Génesis 1:1
+        original_correct_text = q["options"][0]["text"]
+        original_correct_id = q["correctOptionId"]
+
+        positions_seen: set[int] = set()
+
+        for seed in range(50):
+            rng = random.Random(seed)
+            shuffled_options = copy.deepcopy(q["options"])
+            rng.shuffle(shuffled_options)
+
+            # Buscar la opción correcta tras el shuffle
+            correct_option_post_shuffle = next(opt for opt in shuffled_options if opt["id"] == original_correct_id)
+            correct_visual_index = shuffled_options.index(correct_option_post_shuffle)
+            positions_seen.add(correct_visual_index)
+
+            # Validar que el texto y el ID permanecen vinculados
+            self.assertEqual(correct_option_post_shuffle["text"], original_correct_text)
+            self.assertEqual(correct_option_post_shuffle["id"], "A")
+
+        # Confirmar que 'A' ocupó las 4 posiciones posibles (0, 1, 2, 3) a lo largo de las tiradas
+        self.assertEqual(positions_seen, {0, 1, 2, 3})
+
+    def test_game_mode_filtering(self) -> None:
+        """Verifica la capacidad de filtrado por modos de juego (AT, PERSONAJES_AT, AMBOS)."""
+        collection = export_canonical_data(self.sample_canonical)
+        questions = collection["questions"]
+
+        # Filtro AT
+        at_questions = [q for q in questions if "AT" in q["eligibleModes"]]
+        self.assertEqual(len(at_questions), 20)
+
+        # Filtro PERSONAJES_AT
+        personajes_at_questions = [q for q in questions if "PERSONAJES_AT" in q["eligibleModes"]]
+        self.assertEqual(len(personajes_at_questions), 10)
+        for q in personajes_at_questions:
+            self.assertEqual(q["category"], "PERSONAJES_BIBLICOS")
+
+        # Filtro AMBOS
+        ambos_questions = [q for q in questions if "AMBOS" in q["eligibleModes"]]
+        self.assertEqual(len(ambos_questions), 20)
+
+    def test_difficulty_filtering(self) -> None:
+        """Verifica la capacidad de filtrado por dificultad."""
+        collection = export_canonical_data(self.sample_canonical)
+        questions = collection["questions"]
+
+        basics = [q for q in questions if q["difficulty"] == "BASIC"]
+        intermediates = [q for q in questions if q["difficulty"] == "INTERMEDIATE"]
+        advanceds = [q for q in questions if q["difficulty"] == "ADVANCED"]
+        experts = [q for q in questions if q["difficulty"] == "EXPERT"]
+
+        self.assertEqual(len(basics) + len(intermediates) + len(advanceds) + len(experts), 20)
+        self.assertEqual(len(basics), 6)
+        self.assertEqual(len(intermediates), 6)
+        self.assertEqual(len(advanceds), 5)
+        self.assertEqual(len(experts), 3)
+
+    def test_audit_and_human_review_status_coexistence(self) -> None:
+        """Demuestra que auditStatus y humanReviewStatus coexisten y modelan el ciclo productivo."""
+        collection = export_canonical_data(self.sample_canonical)
+        for q in collection["questions"]:
+            self.assertIn(q["auditStatus"], {"VERIFIED", "INCONCLUSIVE"})
+            self.assertEqual(q["humanReviewStatus"], "PENDING")
+
+        # Simular aprobación humana de una pregunta
+        q0 = copy.deepcopy(collection["questions"][0])
+        q0["humanReviewStatus"] = "APPROVED"
+
+        is_production_ready = (q0["auditStatus"] != "REQUIRES_CORRECTION") and (q0["humanReviewStatus"] == "APPROVED")
+        self.assertTrue(is_production_ready)
+
+        # Pregunta rechazada por revisión humana
+        q0["humanReviewStatus"] = "REJECTED"
+        is_production_ready_rejected = (q0["auditStatus"] != "REQUIRES_CORRECTION") and (q0["humanReviewStatus"] == "APPROVED")
+        self.assertFalse(is_production_ready_rejected)
+
+
+if __name__ == "__main__":
+    unittest.main()

@@ -1,0 +1,179 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://quizbible.app/schemas/quiz_bible_runtime_v1.schema.json",
+  "title": "QuizBibleRuntimeCollectionV1",
+  "description": "Contrato formal de intercambio para el banco de preguntas en tiempo de ejecución de Quiz Bible (Android/App).",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "totalQuestions",
+    "questions"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "quizbible-runtime-v1"
+    },
+    "generatedAt": {
+      "type": "string"
+    },
+    "totalQuestions": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "questions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/RuntimeQuestion"
+      }
+    }
+  },
+  "$defs": {
+    "Testament": {
+      "type": "string",
+      "enum": ["OT", "NT"]
+    },
+    "Difficulty": {
+      "type": "string",
+      "enum": ["BASIC", "INTERMEDIATE", "ADVANCED", "EXPERT"]
+    },
+    "QuestionType": {
+      "type": "string",
+      "enum": ["MULTIPLE_CHOICE"]
+    },
+    "AuditStatus": {
+      "type": "string",
+      "enum": ["VERIFIED", "INCONCLUSIVE", "REQUIRES_CORRECTION"]
+    },
+    "HumanReviewStatus": {
+      "type": "string",
+      "enum": ["PENDING", "APPROVED", "REJECTED"]
+    },
+    "RuntimeOption": {
+      "type": "object",
+      "required": ["id", "text"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "enum": ["A", "B", "C", "D"]
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "RuntimeQuestion": {
+      "type": "object",
+      "required": [
+        "id",
+        "testament",
+        "book",
+        "chapter",
+        "verseStart",
+        "verseEnd",
+        "referenceDisplay",
+        "category",
+        "subcategory",
+        "characters",
+        "difficulty",
+        "questionType",
+        "prompt",
+        "options",
+        "correctOptionId",
+        "explanation",
+        "eligibleModes",
+        "verificationTranslation",
+        "auditStatus",
+        "humanReviewStatus"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^NQB-[A-Z0-9]+-[A-Z0-9]+-[0-9]{4}$"
+        },
+        "testament": {
+          "$ref": "#/$defs/Testament"
+        },
+        "book": {
+          "type": "string",
+          "minLength": 1
+        },
+        "chapter": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "verseStart": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "verseEnd": {
+          "type": ["integer", "null"],
+          "minimum": 1
+        },
+        "referenceDisplay": {
+          "type": "string",
+          "minLength": 1
+        },
+        "category": {
+          "type": "string",
+          "minLength": 1
+        },
+        "subcategory": {
+          "type": ["string", "null"]
+        },
+        "characters": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "difficulty": {
+          "$ref": "#/$defs/Difficulty"
+        },
+        "questionType": {
+          "$ref": "#/$defs/QuestionType"
+        },
+        "prompt": {
+          "type": "string",
+          "minLength": 1
+        },
+        "options": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": {
+            "$ref": "#/$defs/RuntimeOption"
+          }
+        },
+        "correctOptionId": {
+          "type": "string",
+          "enum": ["A", "B", "C", "D"]
+        },
+        "explanation": {
+          "type": "string",
+          "minLength": 1
+        },
+        "eligibleModes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "verificationTranslation": {
+          "type": ["string", "null"]
+        },
+        "auditStatus": {
+          "$ref": "#/$defs/AuditStatus"
+        },
+        "humanReviewStatus": {
+          "$ref": "#/$defs/HumanReviewStatus"
+        }
+      }
+    }
+  }
+}
