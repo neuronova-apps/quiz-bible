@@ -46,6 +46,7 @@ JOSHUA_PATH = Path(__file__).parent / "joshua-master-input.json"
 JUDGES_PATH = Path(__file__).parent / "judges-master-input.json"
 RUTH_PATH = Path(__file__).parent / "ruth-master-input.json"
 SAMUEL1_PATH = Path(__file__).parent / "1samuel-master-input.json"
+SAMUEL2_PATH = Path(__file__).parent / "2samuel-master-input.json"
 
 
 class TestAuditorCanonical(unittest.TestCase):
@@ -102,6 +103,12 @@ class TestAuditorCanonical(unittest.TestCase):
         else:
             cls.samuel1_questions = {}
 
+        if SAMUEL2_PATH.exists():
+            raw_2sa = json.loads(SAMUEL2_PATH.read_text(encoding="utf-8"))
+            cls.samuel2_questions = {q["id"]: q for q in (raw_2sa.get("questions", []) if isinstance(raw_2sa, dict) else raw_2sa)}
+        else:
+            cls.samuel2_questions = {}
+
     def setUp(self) -> None:
         self.temp_dir = Path(tempfile.mkdtemp())
 
@@ -143,6 +150,10 @@ class TestAuditorCanonical(unittest.TestCase):
     def get_1samuel_question(self, qid: str) -> dict:
         self.assertIn(qid, self.samuel1_questions, f"ID '{qid}' no encontrado en 1samuel-master-input.json")
         return copy.deepcopy(self.samuel1_questions[qid])
+
+    def get_2samuel_question(self, qid: str) -> dict:
+        self.assertIn(qid, self.samuel2_questions, f"ID '{qid}' no encontrado en 2samuel-master-input.json")
+        return copy.deepcopy(self.samuel2_questions[qid])
 
     # --- TEST GLOBAL DE CONSISTENCIA DE IDs Y REFERENCIAS ---
 
@@ -281,6 +292,22 @@ class TestAuditorCanonical(unittest.TestCase):
                 f"Referencia inconsistente en {qid}: ref='{ref}', esperada terminada en '{expected_suffix}'"
             )
 
+    def test_global_canonical_id_reference_integrity_2samuel(self) -> None:
+        """Verifica consistencia de IDs y referencias en 2 Samuel."""
+        if not self.samuel2_questions:
+            self.skipTest("2samuel-master-input.json aún no presente")
+        self.assertEqual(len(self.samuel2_questions), 84)
+        for qid, q in self.samuel2_questions.items():
+            ref = q.get("reference", "")
+            ch = q.get("chapter")
+            start = q.get("verse_start")
+            end = q.get("verse_end", start)
+            expected_suffix = f"{ch}:{start}" if start == end else f"{ch}:{start}-{end}"
+            self.assertTrue(
+                expected_suffix in ref or ref.endswith(expected_suffix),
+                f"Referencia inconsistente en {qid}: ref='{ref}', esperada terminada en '{expected_suffix}'"
+            )
+
     def test_numbers_book_detection(self) -> None:
         """Verifica detección de configuración de Números."""
         if not self.numbers_questions:
@@ -323,6 +350,14 @@ class TestAuditorCanonical(unittest.TestCase):
         self.assertEqual(book_key, "1samuel")
         self.assertEqual(BOOK_CONFIGS["1samuel"]["total_chapters"], 31)
         self.assertIn("1 samuel", BOOK_CONFIGS["1samuel"]["aliases"])
+
+    def test_2samuel_book_detection(self) -> None:
+        """Verifica detección de configuración de 2 Samuel."""
+        sample_q = [{"id": "NQB-AT-2SA-0001", "book": "2 Samuel", "chapter": 1, "verse_start": 1, "verse_end": 2}]
+        book_key = detect_book_key(sample_q)
+        self.assertEqual(book_key, "2samuel")
+        self.assertEqual(BOOK_CONFIGS["2samuel"]["total_chapters"], 24)
+        self.assertIn("2 samuel", BOOK_CONFIGS["2samuel"]["aliases"])
 
     def test_joshua_0061_with_additional_reference(self) -> None:
         """NQB-AT-JOS-0061: Josué 20:9 con additional_references=['Números 35:15'] se evalúa correctamente."""
@@ -925,6 +960,49 @@ class TestAuditorCanonical(unittest.TestCase):
         res98 = evaluate_question(q98, v98, book_key="1samuel")
         self.assertNotEqual(res98["estado"], "REQUIERE_CORRECCION")
         self.assertEqual(res98["controles_superados"]["control_nombres_propios"], "PASS")
+
+    def test_2samuel_regression_and_cases(self) -> None:
+        """Verifica casos canónicos clave de 2 Samuel (amalecita, Is-boset, Mefi-boset, 30.000, 9 meses y 20 días)."""
+        # 2SA-0002: Amalecita (2 Samuel 1:13)
+        q2 = self.get_2samuel_question("NQB-AT-2SA-0002")
+        v2 = {13: "Y dijo David a aquel joven que le había traído las nuevas: ¿De dónde eres tú? Y él respondió: Yo soy hijo de un extranjero, amalecita."}
+        res2 = evaluate_question(q2, v2, book_key="2samuel")
+        self.assertNotEqual(res2["estado"], "REQUIERE_CORRECCION")
+
+        # 2SA-0007: Is-boset hijo de Saúl proclamado rey (2 Samuel 2:8-10)
+        q7 = self.get_2samuel_question("NQB-AT-2SA-0007")
+        v7 = {
+            8: "Pero Abner hijo de Ner, general del ejército de Saúl, tomó a Is-boset hijo de Saúl, y lo llevó a Mahanaim,",
+            9: "y lo hizo rey sobre Galaad...",
+            10: "De cuarenta años era Is-boset hijo de Saúl cuando comenzó a reinar sobre Israel..."
+        }
+        res7 = evaluate_question(q7, v7, book_key="2samuel")
+        self.assertNotEqual(res7["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res7["controles_superados"]["control_nombres_propios"], "PASS")
+
+        # 2SA-0012: Mefi-boset hijo de Jonatán lisiado de los pies (2 Samuel 4:4)
+        q12 = self.get_2samuel_question("NQB-AT-2SA-0012")
+        v12 = {4: "Y Jonatán hijo de Saúl tenía un hijo lisiado de los pies. Tenía cinco años de edad cuando llegaron de Jezreel las noticias de la muerte de Saúl y de Jonatán... y quedó cojo. Su nombre era Mefi-boset."}
+        res12 = evaluate_question(q12, v12, book_key="2samuel")
+        self.assertNotEqual(res12["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res12["controles_superados"]["control_nombres_propios"], "PASS")
+
+        # 2SA-0018: Treinta mil escogidos (2 Samuel 6:1)
+        q18 = self.get_2samuel_question("NQB-AT-2SA-0018")
+        v18 = {1: "David volvió a reunir a todos los escogidos de Israel, treinta mil."}
+        res18 = evaluate_question(q18, v18, book_key="2samuel")
+        self.assertNotEqual(res18["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res18["controles_superados"]["control_numeros_cantidades"], "PASS")
+
+        # 2SA-0078: Nueve meses y veinte días (2 Samuel 24:8-9)
+        q78 = self.get_2samuel_question("NQB-AT-2SA-0078")
+        v78 = {
+            8: "Después que hubieron recorrido toda la tierra, volvieron a Jerusalén al cabo de nueve meses y veinte días.",
+            9: "Y Joab dio el número del censo del pueblo al rey..."
+        }
+        res78 = evaluate_question(q78, v78, book_key="2samuel")
+        self.assertNotEqual(res78["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res78["controles_superados"]["control_numeros_cantidades"], "PASS")
 
 
 if __name__ == "__main__":

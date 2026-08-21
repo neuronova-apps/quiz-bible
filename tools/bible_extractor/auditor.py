@@ -191,6 +191,24 @@ BOOK_CONFIGS: dict[str, dict[str, Any]] = {
             "gibea", "gabaa", "carmel", "en-gadi", "engadi", "guilboa", "gilboa", "monte gilboa"
         },
     },
+    "2samuel": {
+        "canonical_name": "2 Samuel",
+        "api_name": "2 Samuel",
+        "aliases": {"2 samuel", "2samuel", "2 sam", "2sa", "segunda de samuel", "2-samuel"},
+        "total_chapters": 24,
+        "blocks": [
+            (1, 10, "2samuel-01-10.json"),
+            (11, 20, "2samuel-11-20.json"),
+            (21, 24, "2samuel-21-24.json"),
+        ],
+        "default_output_dir": "build/audit/2samuel",
+        "ambient_places": {
+            "siclag", "hebron", "hebrón", "jerusalen", "jerusalén", "sion", "sión", "ciudad de david",
+            "gabaon", "gabaón", "belen", "belén", "jordan", "israel", "juda", "filistea", "filisteos",
+            "rabá", "raba", "gesur", "tecoa", "mahanaim", "abel-bet-maaca", "aram", "siria",
+            "amon", "moab", "edom", "guilboa", "gilboa", "carmel", "en-gadi", "engadi"
+        },
+    },
 }
 
 STOPWORDS = {
@@ -204,7 +222,7 @@ STOPWORDS = {
     "ser", "sido", "estar", "estaba", "estaban", "tener", "tenia", "tenian",
 }
 
-# Entidades y personajes bíblicos (Génesis, Éxodo, Levítico, Números, Deuteronomio, Josué, Jueces, Rut, 1 Samuel)
+# Entidades y personajes bíblicos (Génesis, Éxodo, Levítico, Números, Deuteronomio, Josué, Jueces, Rut, 1 Samuel, 2 Samuel)
 BIBLE_PERSONAJES = {
     # Génesis
     "adan", "eva", "cain", "abel", "set", "enos", "cainan", "mahalaleel",
@@ -242,6 +260,12 @@ BIBLE_PERSONAJES = {
     "elcana", "ana", "penina", "eli", "elí", "ofni", "icabod", "goliat", "abner",
     "ahimelec", "abiatar", "aquis", "nabal", "abigail", "agag", "nahas", "nahás",
     "cis", "mical", "merab", "abinadab", "malquisua", "malquisúa", "joab", "abisai", "doeg",
+    # 2 Samuel
+    "mefi-boset", "mefiboset", "is-boset", "isboset", "asael", "absalon", "absalón",
+    "amnon", "amnón", "adonias", "adonías", "sarvia", "urias", "urías", "betsabe", "betsabé",
+    "natan", "natán", "ahitofel", "husai", "itai", "itaí", "simei", "ziba", "barzilai",
+    "quimam", "seba", "sebá", "benaia", "benaías", "amasa", "arauna", "isbi-benob",
+    "saf", "elhanan", "jonadab", "hanun", "hanún", "sobac", "baana", "recab", "talmai", "ahimaas",
     # Otros comunes
     "david", "salomon", "saul", "samuel", "elias", "eliseo", "jonatan",
     "nabucodonosor", "pablo", "pedro", "juan", "jesus", "mateo", "marcos",
@@ -281,9 +305,11 @@ BIBLE_PLACES = {
     "cison", "cisón", "monte tabor", "tabor", "ofra", "jezreel", "valle de jezreel", "harod", "fuente de harod",
     "more", "collado de more", "tabat", "abel-mehola", "sucot", "peniel", "karkor", "piraton", "timnat", "zora",
     "estaol", "ascalon", "ascalón", "ecron", "ecrón", "asdod", "gibea", "gabaa", "rama", "mizpa", "en-dor", "endor", "meguido", "megido",
-    # 1 Samuel
+    # 1 Samuel y 2 Samuel
     "bet-semes", "betsemes", "jabes", "jabes de galaad", "nob", "adulam", "keila", "siclag",
-    "bet-san", "bet-sán", "carmel", "en-gadi", "engadi", "guilboa", "gilboa", "monte gilboa"
+    "bet-san", "bet-sán", "carmel", "en-gadi", "engadi", "guilboa", "gilboa", "monte gilboa",
+    "baal-perazim", "baalperazim", "abel-bet-maaca", "tecoa", "mahanaim", "raba", "rabá", "gesur",
+    "quidron", "cedron", "cedrón", "helam", "bet-rehob", "zoba", "is-tob", "meteg-ama"
 }
 
 # Raíces de parentesco y lemas
@@ -426,6 +452,19 @@ SYNONYMS = {
     "ferezeos": "ferezeo",
     "gergeseo": "gergeseos",
     "gergeseos": "gergeseo",
+    "geteo": "gat",
+    "geteos": "gat",
+    "gabaonita": "gabaon",
+    "gabaonitas": "gabaon",
+    "arameo": "aram",
+    "arameos": "aram",
+    "sirio": "siria",
+    "sirios": "siria",
+    "amalec": "amalecita",
+    "amalecita": "amalec",
+    "amalecitas": "amalec",
+    "hitita": "heteo",
+    "hititas": "heteos",
     # Redención y parentesco bíblico
     "suegra": "noemi",
     "noemi": "suegra",
