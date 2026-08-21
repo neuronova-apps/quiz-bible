@@ -209,6 +209,25 @@ BOOK_CONFIGS: dict[str, dict[str, Any]] = {
             "amon", "moab", "edom", "guilboa", "gilboa", "carmel", "en-gadi", "engadi"
         },
     },
+    "1kings": {
+        "canonical_name": "1 Reyes",
+        "api_name": "1 Reyes",
+        "aliases": {"1 reyes", "1reyes", "1 kings", "1kings", "1 rey", "primera de reyes", "1-reyes", "1_reyes"},
+        "total_chapters": 22,
+        "blocks": [
+            (1, 10, "1kings-01-10.json"),
+            (11, 20, "1kings-11-20.json"),
+            (21, 22, "1kings-21-22.json"),
+        ],
+        "default_output_dir": "build/audit/1kings",
+        "ambient_places": {
+            "jerusalen", "jerusalén", "sion", "sión", "tiro", "sidon", "sidón", "siquem", "bet-el", "dan",
+            "samaria", "jezreel", "galaad", "quiriat-jearim", "gabaon", "gabaón", "carmel", "monte carmel",
+            "horeb", "monte horeb", "sinaí", "sinai", "damasco", "siria", "aram", "israel", "juda",
+            "cabul", "ezion-geber", "ezión-geber", "eziongeber", "elot", "ofir", "sarepta", "querit",
+            "arroyo de querit", "ramot de galaad", "ramot", "tirse", "tirsa", "penuel", "guilboa", "gilboa"
+        },
+    },
 }
 
 STOPWORDS = {
@@ -222,7 +241,7 @@ STOPWORDS = {
     "ser", "sido", "estar", "estaba", "estaban", "tener", "tenia", "tenian",
 }
 
-# Entidades y personajes bíblicos (Génesis, Éxodo, Levítico, Números, Deuteronomio, Josué, Jueces, Rut, 1 Samuel, 2 Samuel)
+# Entidades y personajes bíblicos (Génesis a 1 Reyes)
 BIBLE_PERSONAJES = {
     # Génesis
     "adan", "eva", "cain", "abel", "set", "enos", "cainan", "mahalaleel",
@@ -266,9 +285,16 @@ BIBLE_PERSONAJES = {
     "natan", "natán", "ahitofel", "husai", "itai", "itaí", "simei", "ziba", "siba", "barzilai",
     "quimam", "seba", "sebá", "benaia", "benaías", "amasa", "arauna", "isbi-benob",
     "saf", "elhanan", "jonadab", "hanun", "hanún", "sobac", "baana", "recab", "talmai", "ahimaas",
+    # 1 Reyes
+    "salomon", "salomón", "roboam", "jeroboam", "abiam", "abías", "abias", "asa",
+    "baasa", "ela", "zimri", "omri", "acab", "ocozias", "ocozías", "josafat", "josafath",
+    "ben-hadad", "benhadad", "hazael", "jehu", "jehú", "hiel", "segub", "abisag",
+    "jezabel", "atalia", "atalía", "sadoc", "zabud", "adoniram", "hiram", "semer",
+    "elias", "elías", "eliseo", "ahias", "ahías", "semaias", "semaías", "micaias", "micaías",
+    "sedequias", "sedequías", "imla", "quenaana", "hanani", "nabot", "abdias", "abdías",
+    "jaquin", "jaquín", "boaz", "saba", "reina de saba",
     # Otros comunes
-    "david", "salomon", "saul", "samuel", "elias", "eliseo", "jonatan",
-    "nabucodonosor", "pablo", "pedro", "juan", "jesus", "mateo", "marcos",
+    "david", "saul", "samuel", "nabucodonosor", "pablo", "pedro", "juan", "jesus", "mateo", "marcos",
     "lucas", "esteban", "timoteo",
 }
 
@@ -305,11 +331,13 @@ BIBLE_PLACES = {
     "cison", "cisón", "monte tabor", "tabor", "ofra", "jezreel", "valle de jezreel", "harod", "fuente de harod",
     "more", "collado de more", "tabat", "abel-mehola", "sucot", "peniel", "karkor", "piraton", "timnat", "zora",
     "estaol", "ascalon", "ascalón", "ecron", "ecrón", "asdod", "gibea", "gabaa", "rama", "mizpa", "en-dor", "endor", "meguido", "megido",
-    # 1 Samuel y 2 Samuel
+    # 1 Samuel, 2 Samuel y 1 Reyes
     "bet-semes", "betsemes", "jabes", "jabes de galaad", "nob", "adulam", "keila", "siclag",
     "bet-san", "bet-sán", "carmel", "en-gadi", "engadi", "guilboa", "gilboa", "monte gilboa",
     "baal-perazim", "baalperazim", "abel-bet-maaca", "tecoa", "mahanaim", "raba", "rabá", "gesur",
-    "quidron", "cedron", "cedrón", "helam", "bet-rehob", "zoba", "is-tob", "meteg-ama"
+    "quidron", "cedron", "cedrón", "helam", "bet-rehob", "zoba", "is-tob", "meteg-ama",
+    "gihon", "gihón", "cabul", "ezion-geber", "ezión-geber", "eziongeber", "elot", "ofir",
+    "sarepta", "querit", "arroyo de querit", "ramot de galaad", "tirse", "samaria", "tiro", "sidon", "sidón", "tisbe"
 }
 
 # Raíces de parentesco y lemas
@@ -467,6 +495,17 @@ SYNONYMS = {
     "hititas": "heteos",
     "ziba": "siba",
     "siba": "ziba",
+    "silonita": "silo",
+    "silonitas": "silo",
+    "silo": "silonita",
+    "sidonio": "sidon",
+    "sidonios": "sidon",
+    "sidonia": "sidon",
+    "sidonias": "sidon",
+    "tirio": "tiro",
+    "tirios": "tiro",
+    "tesbita": "tisbe",
+    "tesbitas": "tisbe",
     # Redención y parentesco bíblico
     "suegra": "noemi",
     "noemi": "suegra",

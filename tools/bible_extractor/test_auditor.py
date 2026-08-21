@@ -47,6 +47,7 @@ JUDGES_PATH = Path(__file__).parent / "judges-master-input.json"
 RUTH_PATH = Path(__file__).parent / "ruth-master-input.json"
 SAMUEL1_PATH = Path(__file__).parent / "1samuel-master-input.json"
 SAMUEL2_PATH = Path(__file__).parent / "2samuel-master-input.json"
+KINGS1_PATH = Path(__file__).parent / "1kings-master-input.json"
 
 
 class TestAuditorCanonical(unittest.TestCase):
@@ -109,6 +110,12 @@ class TestAuditorCanonical(unittest.TestCase):
         else:
             cls.samuel2_questions = {}
 
+        if KINGS1_PATH.exists():
+            raw_1ki = json.loads(KINGS1_PATH.read_text(encoding="utf-8"))
+            cls.kings1_questions = {q["id"]: q for q in (raw_1ki.get("questions", []) if isinstance(raw_1ki, dict) else raw_1ki)}
+        else:
+            cls.kings1_questions = {}
+
     def setUp(self) -> None:
         self.temp_dir = Path(tempfile.mkdtemp())
 
@@ -154,6 +161,10 @@ class TestAuditorCanonical(unittest.TestCase):
     def get_2samuel_question(self, qid: str) -> dict:
         self.assertIn(qid, self.samuel2_questions, f"ID '{qid}' no encontrado en 2samuel-master-input.json")
         return copy.deepcopy(self.samuel2_questions[qid])
+
+    def get_1kings_question(self, qid: str) -> dict:
+        self.assertIn(qid, self.kings1_questions, f"ID '{qid}' no encontrado en 1kings-master-input.json")
+        return copy.deepcopy(self.kings1_questions[qid])
 
     # --- TEST GLOBAL DE CONSISTENCIA DE IDs Y REFERENCIAS ---
 
@@ -308,6 +319,22 @@ class TestAuditorCanonical(unittest.TestCase):
                 f"Referencia inconsistente en {qid}: ref='{ref}', esperada terminada en '{expected_suffix}'"
             )
 
+    def test_global_canonical_id_reference_integrity_1kings(self) -> None:
+        """Verifica consistencia de IDs y referencias en 1 Reyes."""
+        if not self.kings1_questions:
+            self.skipTest("1kings-master-input.json aún no presente")
+        self.assertEqual(len(self.kings1_questions), 100)
+        for qid, q in self.kings1_questions.items():
+            ref = q.get("reference", "")
+            ch = q.get("chapter")
+            start = q.get("verse_start")
+            end = q.get("verse_end", start)
+            expected_suffix = f"{ch}:{start}" if start == end else f"{ch}:{start}-{end}"
+            self.assertTrue(
+                expected_suffix in ref or ref.endswith(expected_suffix),
+                f"Referencia inconsistente en {qid}: ref='{ref}', esperada terminada en '{expected_suffix}'"
+            )
+
     def test_numbers_book_detection(self) -> None:
         """Verifica detección de configuración de Números."""
         if not self.numbers_questions:
@@ -358,6 +385,14 @@ class TestAuditorCanonical(unittest.TestCase):
         self.assertEqual(book_key, "2samuel")
         self.assertEqual(BOOK_CONFIGS["2samuel"]["total_chapters"], 24)
         self.assertIn("2 samuel", BOOK_CONFIGS["2samuel"]["aliases"])
+
+    def test_1kings_book_detection(self) -> None:
+        """Verifica detección de configuración de 1 Reyes."""
+        sample_q = [{"id": "NQB-AT-1RE-0001", "book": "1 Reyes", "chapter": 1, "verse_start": 1, "verse_end": 2}]
+        book_key = detect_book_key(sample_q)
+        self.assertEqual(book_key, "1kings")
+        self.assertEqual(BOOK_CONFIGS["1kings"]["total_chapters"], 22)
+        self.assertIn("1 reyes", BOOK_CONFIGS["1kings"]["aliases"])
 
     def test_joshua_0061_with_additional_reference(self) -> None:
         """NQB-AT-JOS-0061: Josué 20:9 con additional_references=['Números 35:15'] se evalúa correctamente."""
@@ -1015,6 +1050,64 @@ class TestAuditorCanonical(unittest.TestCase):
         res78 = evaluate_question(q78, v78, book_key="2samuel")
         self.assertNotEqual(res78["estado"], "REQUIERE_CORRECCION")
         self.assertEqual(res78["controles_superados"]["control_numeros_cantidades"], "PASS")
+
+    def test_1kings_regression_and_cases(self) -> None:
+        """Verifica casos canónicos clave de 1 Reyes (Hiram rey vs artesano, Jaquín y Boaz, 700/300 mujeres, Hazael/Jehú/Eliseo, 7000)."""
+        # 1RE-0020: Hiram rey de Tiro (1 Reyes 5:1-12)
+        q20 = self.get_1kings_question("NQB-AT-1RE-0020")
+        v20 = {i: "..." for i in range(1, 13)}
+        v20[1] = "Hiram rey de Tiro envió también sus siervos a Salomón, luego que oyó que le habían ungido por rey en lugar de su padre; porque Hiram siempre había amado a David."
+        v20[8] = "Y envió Hiram a decir a Salomón: He oído lo que me mandaste a decir; yo haré todo lo que te agrada acerca de la madera de cedro y la madera de ciprés."
+        v20[12] = "Y Jehová dio sabiduría a Salomón, como le había dicho; y hubo paz entre Hiram y Salomón, e hicieron pacto entre ambos."
+        res20 = evaluate_question(q20, v20, book_key="1kings")
+        self.assertNotEqual(res20["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res20["controles_superados"]["control_nombres_propios"], "PASS")
+
+        # 1RE-0031: Hiram artesano (1 Reyes 7:13-14)
+        q31 = self.get_1kings_question("NQB-AT-1RE-0031")
+        v31 = {
+            13: "Y envió el rey Salomón, e hizo venir de Tiro a Hiram,",
+            14: "hijo de una viuda de la tribu de Neftalí. Su padre, que era de Tiro, trabajaba en bronce; y era lleno de sabiduría, inteligencia y ciencia para toda obra en bronce..."
+        }
+        res31 = evaluate_question(q31, v31, book_key="1kings")
+        self.assertNotEqual(res31["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res31["controles_superados"]["control_nombres_propios"], "PASS")
+
+        # 1RE-0032: Jaquín y Boaz columnas (1 Reyes 7:21)
+        q32 = self.get_1kings_question("NQB-AT-1RE-0032")
+        v32 = {21: "Estas columnas erigió en el pórtico del templo; y cuando hubiese alzado la columna del lado derecho, llamó su nombre Jaquín, y alzando la columna del lado izquierdo, llamó su nombre Boaz."}
+        res32 = evaluate_question(q32, v32, book_key="1kings")
+        self.assertNotEqual(res32["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res32["controles_superados"]["control_nombres_propios"], "PASS")
+
+        # 1RE-0047: Setecientas mujeres reinas y trescientas concubinas (1 Reyes 11:1-4)
+        q47 = self.get_1kings_question("NQB-AT-1RE-0047")
+        v47 = {
+            1: "Pero el rey Salomón amó, además de la hija de Faraón, a muchas mujeres extranjeras...",
+            2: "de las naciones de las cuales Jehová había dicho a los hijos de Israel...",
+            3: "Y tuvo setecientas mujeres reinas y trescientas concubinas; y sus mujeres desviaron su corazón.",
+            4: "Y cuando Salomón era ya viejo, sus mujeres inclinaron su corazón tras dioses ajenos..."
+        }
+        res47 = evaluate_question(q47, v47, book_key="1kings")
+        self.assertNotEqual(res47["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res47["controles_superados"]["control_numeros_cantidades"], "PASS")
+
+        # 1RE-0099: Hazael, Jehú y Eliseo (1 Reyes 19:15-16)
+        q99 = self.get_1kings_question("NQB-AT-1RE-0099")
+        v99 = {
+            15: "Y le dijo Jehová: Ve, vuélvete por tu camino, por el desierto de Damasco; y llegarás, y ungirás a Hazael por rey de Siria.",
+            16: "A Jehú hijo de Nimsi ungirás por rey sobre Israel; y a Eliseo hijo de Safat, de Abel-mehola, ungirás para que sea profeta en tu lugar."
+        }
+        res99 = evaluate_question(q99, v99, book_key="1kings")
+        self.assertNotEqual(res99["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res99["controles_superados"]["control_nombres_propios"], "PASS")
+
+        # 1RE-0100: Siete mil (1 Reyes 19:18)
+        q100 = self.get_1kings_question("NQB-AT-1RE-0100")
+        v100 = {18: "Y yo haré que queden en Israel siete mil, cuyas rodillas no se doblaron ante Baal, y cuyas bocas no lo besaron."}
+        res100 = evaluate_question(q100, v100, book_key="1kings")
+        self.assertNotEqual(res100["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res100["controles_superados"]["control_numeros_cantidades"], "PASS")
 
 
 if __name__ == "__main__":
