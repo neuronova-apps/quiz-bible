@@ -5,6 +5,10 @@ Carga preguntas reales directamente desde genesis-master-input.json,
 exodus-master-input.json, leviticus-master-input.json y numbers-master-input.json,
 realizando mutaciones controladas sobre copias profundas (deepcopy) para verificar:
 - Soporte multilibro (Génesis, Éxodo, Levítico, Números);
+- Preposición 'sin' no detectada como falso topónimo (NUM-0012, NUM-0041, NUM-0073);
+- Equivalencia editorial de nombres propios RVR1960 (Miriam ↔ María en NUM-0026, NUM-0027, NUM-0044; Sihón ↔ Sehón en NUM-0051);
+- Parsing de números compuestos grandes (601 730 en NUM-0062) y mutación negativa;
+- División en dos partes / partir por mitad (NUM-0076) y mutación negativa;
 - NQB-AT-LEV-0079: 'La décima parte' vs diezmo de la tierra en Levítico 27:30;
 - NQB-AT-LEV-0079 negativo: 'La quinta parte' produce FAIL;
 - NQB-AT-LEV-0080: 'Cada décimo animal' vs concepto de diezmo/vara en Levítico 27:32;
@@ -150,6 +154,107 @@ class TestAuditorCanonical(unittest.TestCase):
             self.skipTest("numbers-master-input.json no disponible")
         book_key = detect_book_key(list(self.numbers_questions.values()))
         self.assertEqual(book_key, "numeros")
+
+    # --- REGRESIONES ESPECÍFICAS DE NÚMEROS ---
+
+    def test_num_sin_preposition_not_detected_as_place(self) -> None:
+        """Verifica que la preposición 'sin' no se detecte como topónimo (NUM-0012, NUM-0041, NUM-0073)."""
+        # NUM-0012: sin pasar navaja
+        q12 = self.get_numbers_question("NQB-AT-NUM-0012")
+        v12 = {5: "Todos los días del voto de su nazareato no pasará navaja sobre su cabeza; hasta que sean cumplidos los días... dejará crecer su cabello."}
+        res12 = evaluate_question(q12, v12, book_key="numeros")
+        self.assertNotEqual(res12["controles_superados"]["control_lugares"], "FAIL")
+        self.assertEqual(res12["estado"], "VERIFICADO")
+
+        # NUM-0041: sin defecto
+        q41 = self.get_numbers_question("NQB-AT-NUM-0041")
+        v41 = {2: "Esta es la ordenanza de la ley... una vaca alazana, perfecta, en la cual no haya falta, sobre la cual no se haya puesto yugo;"}
+        res41 = evaluate_question(q41, v41, book_key="numeros")
+        self.assertNotEqual(res41["controles_superados"]["control_lugares"], "FAIL")
+        self.assertNotEqual(res41["estado"], "REQUIERE_CORRECCION")
+
+        # NUM-0073: sin efecto
+        q73 = self.get_numbers_question("NQB-AT-NUM-0073")
+        v73 = {
+            3: "Mas la mujer, cuando hiciere voto a Jehová...",
+            4: "si su padre oyere su voto... todos los votos de ella serán firmes...",
+            5: "Mas si su padre le vedare el día que oyere... no serán firmes;"
+        }
+        res73 = evaluate_question(q73, v73, book_key="numeros")
+        self.assertNotEqual(res73["controles_superados"]["control_lugares"], "FAIL")
+        self.assertEqual(res73["estado"], "VERIFICADO")
+
+    def test_num_miriam_maria_equivalence(self) -> None:
+        """Verifica equivalencia Miriam ↔ María en RVR1960 (NUM-0026, NUM-0027, NUM-0044)."""
+        q26 = self.get_numbers_question("NQB-AT-NUM-0026")
+        v26 = {
+            1: "María y Aarón hablaron contra Moisés a causa de la mujer cusita que había tomado...",
+            2: "Y dijeron: ¿Solamente por Moisés ha hablado Jehová? ¿No ha hablado también por nosotros? Y lo oyó Jehová."
+        }
+        res26 = evaluate_question(q26, v26, book_key="numeros")
+        self.assertEqual(res26["controles_superados"]["control_nombres_propios"], "PASS")
+        self.assertNotEqual(res26["estado"], "REQUIERE_CORRECCION")
+
+        q27 = self.get_numbers_question("NQB-AT-NUM-0027")
+        v27 = {10: "Y la nube se apartó del tabernáculo, y he aquí que María estaba leprosa como la nieve; y miró Aarón a María, y he aquí que estaba leprosa."}
+        res27 = evaluate_question(q27, v27, book_key="numeros")
+        self.assertEqual(res27["controles_superados"]["control_nombres_propios"], "PASS")
+        self.assertNotEqual(res27["estado"], "REQUIERE_CORRECCION")
+
+        q44 = self.get_numbers_question("NQB-AT-NUM-0044")
+        v44 = {1: "Llegaron los hijos de Israel, toda la congregación, al desierto de Zin, en el mes primero, y acampó el pueblo en Cades; y allí murió María, y allí fue sepultada."}
+        res44 = evaluate_question(q44, v44, book_key="numeros")
+        self.assertEqual(res44["controles_superados"]["control_nombres_propios"], "PASS")
+        self.assertEqual(res44["estado"], "VERIFICADO")
+
+    def test_num_sihon_sehon_equivalence(self) -> None:
+        """Verifica equivalencia Sihón ↔ Sehón (NUM-0051)."""
+        q51 = self.get_numbers_question("NQB-AT-NUM-0051")
+        v51 = {
+            21: "Entonces envió Israel embajadores a Sehón rey de los amorreos, diciendo:",
+            22: "Pasaré por tu tierra...",
+            23: "Mas Sehón no dejó pasar a Israel...",
+            24: "E Israel lo hirió a filo de espada, y tomó su tierra..."
+        }
+        res51 = evaluate_question(q51, v51, book_key="numeros")
+        self.assertEqual(res51["controles_superados"]["control_nombres_propios"], "PASS")
+        self.assertEqual(res51["estado"], "VERIFICADO")
+
+    def test_num_compound_number_601730(self) -> None:
+        """Verifica parsing de 601 730 (NUM-0062) y mutación negativa."""
+        q62 = self.get_numbers_question("NQB-AT-NUM-0062")
+        v62 = {51: "Estos son los contados de los hijos de Israel, seiscientos un mil setecientos treinta."}
+        res62 = evaluate_question(q62, v62, book_key="numeros")
+        self.assertEqual(res62["controles_superados"]["control_numeros_cantidades"], "PASS")
+        self.assertNotEqual(res62["estado"], "REQUIERE_CORRECCION")
+
+        # Mutación negativa
+        q62_neg = copy.deepcopy(q62)
+        q62_neg["opcion_a"] = "603 550"
+        q62_neg["correct_answer"] = "603 550"
+        res62_neg = evaluate_question(q62_neg, v62, book_key="numeros")
+        self.assertEqual(res62_neg["controles_superados"]["control_numeros_cantidades"], "FAIL")
+        self.assertEqual(res62_neg["estado"], "REQUIERE_CORRECCION")
+
+    def test_num_division_dos_partes_mitad(self) -> None:
+        """Verifica 'En dos partes' vs 'partir por mitad' (NUM-0076) y mutación negativa."""
+        q76 = self.get_numbers_question("NQB-AT-NUM-0076")
+        v76 = {
+            25: "Y Jehová habló a Moisés, diciendo:",
+            26: "Toma la cuenta del botín que se ha hecho...",
+            27: "Y partirás por mitad el botín entre los que pelearon, los que salieron a la guerra, y toda la congregación."
+        }
+        res76 = evaluate_question(q76, v76, book_key="numeros")
+        self.assertEqual(res76["controles_superados"]["control_numeros_cantidades"], "PASS")
+        self.assertEqual(res76["estado"], "VERIFICADO")
+
+        # Mutación negativa
+        q76_neg = copy.deepcopy(q76)
+        q76_neg["opcion_a"] = "En tres partes iguales"
+        q76_neg["correct_answer"] = "En tres partes iguales"
+        res76_neg = evaluate_question(q76_neg, v76, book_key="numeros")
+        self.assertEqual(res76_neg["controles_superados"]["control_numeros_cantidades"], "FAIL")
+        self.assertEqual(res76_neg["estado"], "REQUIERE_CORRECCION")
 
     # --- CASO NQB-AT-LEV-0079: LA DÉCIMA PARTE Y DIEZMO DE LA TIERRA EN LEVÍTICO 27:30 ---
 

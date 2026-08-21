@@ -145,6 +145,7 @@ BIBLE_PERSONAJES = {
 }
 
 # Lugares, regiones y accidentes geográficos bíblicos (Génesis, Éxodo, Levítico, Números)
+# Nota: La preposición común española 'sin' NO se incluye como topónimo aislado.
 BIBLE_PLACES = {
     # Génesis
     "eden", "ararat", "babel", "babilonia", "ur", "haran", "betel", "bet-el", "hebron", "siquem",
@@ -157,11 +158,11 @@ BIBLE_PLACES = {
     "eufrates", "hidekel", "pison", "gihon", "quedem", "horeb",
     "sion", "negev", "jordan", "atarot", "shiloh", "damasco",
     # Éxodo y Levítico
-    "madian", "sinai", "monte sinai", "mar rojo", "mara", "elim", "sin", "refidim",
+    "madian", "sinai", "monte sinai", "mar rojo", "mara", "elim", "desierto de sin", "refidim",
     "masa", "meriba", "etam", "pi-hahirot", "pihahirot", "baal-zefon",
     "baalzefon", "migdol", "sur", "piton", "tabernaculo", "desierto",
     # Números
-    "cades", "cades-barnea", "cadesbarnea", "paran", "zin", "moab", "campos de moab",
+    "cades", "cades-barnea", "cadesbarnea", "paran", "desierto de paran", "zin", "desierto de zin", "moab", "campos de moab",
     "llanuras de moab", "jerico", "jericó", "arava", "aravá", "edom", "hor", "monte hor",
     "hesbon", "hesbón", "arnon", "arnón", "bamot", "pisga", "monte pisga", "peor",
     "monte peor", "tabera", "taberah", "hazelot", "hazerot", "kibrot-hataava", "horma",
@@ -218,6 +219,12 @@ SYNONYMS = {
     "diezmos": "decimo",
     "animal": "ganado",
     "ganado": "animal",
+    "miriam": "maria",
+    "maria": "miriam",
+    "sihon": "sehon",
+    "sehon": "sihon",
+    "combatientes": "pelearon",
+    "pelearon": "combatientes",
 }
 
 # Componentes de números cardinales en español
@@ -239,8 +246,8 @@ SPANISH_TENS = {
 }
 
 SPANISH_UNITS = {
-    "cero": 0, "uno": 1, "una": 1, "dos": 2, "tres": 3, "cuatro": 4,
-    "cinco": 5, "cinco": 5, "seis": 6, "siete": 7, "ocho": 8, "nueve": 9,
+    "cero": 0, "uno": 1, "una": 1, "un": 1, "dos": 2, "tres": 3, "cuatro": 4,
+    "cinco": 5, "seis": 6, "siete": 7, "ocho": 8, "nueve": 9,
     "primero": 1, "primer": 1, "primera": 1,
     "segundo": 2, "segunda": 2,
     "tercero": 3, "tercer": 3, "tercera": 3, "tercia": 3,
@@ -252,6 +259,8 @@ SPANISH_UNITS = {
     "noveno": 9, "novena": 9,
     "decimo": 10, "decima": 10,
 }
+
+ALL_NUM_WORDS = set(SPANISH_HUNDREDS.keys()) | set(SPANISH_TENS.keys()) | set(SPANISH_UNITS.keys()) | {"y", "mil"}
 
 
 def normalize(value: str) -> str:
@@ -282,11 +291,72 @@ def detect_book_key(spec: dict[str, Any] | list[dict[str, Any]]) -> str:
     return "genesis"
 
 
+def _eval_sub_1000(tokens: list[str]) -> list[int]:
+    """Evalúa un grupo de palabras numéricas menor a 1000 separando adecuadamente secuencias."""
+    results: list[int] = []
+    val = 0
+    i = 0
+    while i < len(tokens):
+        w = tokens[i]
+        if w in SPANISH_HUNDREDS:
+            if val > 0:
+                results.append(val)
+                val = 0
+            val += SPANISH_HUNDREDS[w]
+            i += 1
+        elif w in SPANISH_TENS:
+            if val > 0 and val % 100 != 0:
+                results.append(val)
+                val = 0
+            val += SPANISH_TENS[w]
+            i += 1
+            if i < len(tokens) and tokens[i] == "y" and i + 1 < len(tokens) and tokens[i + 1] in SPANISH_UNITS:
+                val += SPANISH_UNITS[tokens[i + 1]]
+                i += 2
+        elif w in SPANISH_UNITS:
+            if val > 0 and val % 100 != 0:
+                results.append(val)
+                val = 0
+            val += SPANISH_UNITS[w]
+            results.append(val)
+            val = 0
+            i += 1
+        else:
+            i += 1
+    if val > 0:
+        results.append(val)
+    return results
+
+
+def _eval_number_tokens(tokens: list[str]) -> list[int]:
+    """Evalúa una secuencia contigua de palabras numéricas en español."""
+    if not tokens:
+        return []
+    if "mil" in tokens:
+        mil_idx = tokens.index("mil")
+        th_tokens = tokens[:mil_idx]
+        rem_tokens = tokens[mil_idx + 1:]
+        th_vals = _eval_sub_1000(th_tokens) if th_tokens else [1]
+        rem_vals = _eval_sub_1000(rem_tokens) if rem_tokens else [0]
+        th_val = th_vals[-1] if th_vals else 1
+        rem_val = rem_vals[0] if rem_vals else 0
+        compound = th_val * 1000 + rem_val
+        res = [compound]
+        if len(th_vals) > 1:
+            res = th_vals[:-1] + res
+        if len(rem_vals) > 1:
+            res = res + rem_vals[1:]
+        return res
+    return _eval_sub_1000(tokens)
+
+
 def extract_numbers(text: str, is_quantitative_context: bool = False) -> list[int]:
-    """Extrae números enteros respetando la gramática numérica en español y construcciones descriptivas."""
+    """Extrae números enteros respetando la gramática numérica en español y construcciones compuestas."""
     raw_text = str(text)
     # Limpiar citas de capítulos/versículos
     cleaned_digits_text = re.sub(r"\b\d+\s*:\s*\d+(?:-\d+)?\b", " ", raw_text)
+    # Colapsar millares espaciados (ej. '601 730' -> '601730')
+    cleaned_digits_text = re.sub(r"\b(\d{1,3})\s+(\d{3})\b", r"\1\2", cleaned_digits_text)
     cleaned_norm = normalize(cleaned_digits_text)
     numbers: list[int] = []
 
@@ -297,10 +367,11 @@ def extract_numbers(text: str, is_quantitative_context: bool = False) -> list[in
         except ValueError:
             pass
 
-    # 2. 'un' / 'una' con unidades contables explícitas
+    # 2. Contextos distributivos o cualitativos que no son cantidades directas
+    is_distributive = bool(re.search(r"\b(?:un|una)\s+(?:para|por|de)\b.*\b(?:otr[oa])\b", cleaned_norm))
     is_qualitative_period = bool(re.search(r"\b(?:un|una)\s+(?:ano|dia|tiempo|periodo|semana)\s+de\s+(?:reposo|jubileo|gracia|luto|fiesta|holocausto|expiacion)", cleaned_norm))
 
-    if not is_qualitative_period:
+    if not is_qualitative_period and not is_distributive:
         if re.search(r"\b(?:un|una)\b", cleaned_norm):
             countable_units_pattern = r"\b(?:un|una)\s+(?:vez|ano|anos|mes|meses|dia|dias|codo|codos|pareja|parejas|talento|siclo|pieza|piezas|hora|horas|parte|partes|suerte|suertes|cordero|corderos|carnero|carneros|becerro|becerros|toro|toros|palomino|palominos|tortola|tortolas|efa|efas|hin|hines|gomer|gomeres)\b"
             if is_quantitative_context or re.search(countable_units_pattern, cleaned_norm):
@@ -311,42 +382,24 @@ def extract_numbers(text: str, is_quantitative_context: bool = False) -> list[in
         if is_quantitative_context or re.search(r"\b(?:cada|contar|vara|pasa|animal|porcion|parte|uno de cada|decim[oa]|fraccion|proporcion)\b", cleaned_norm):
             numbers.append(10)
 
-    # 4. Palabras numéricas compuestas respetando la formación en español
+    # 4. División por mitad / dos partes
+    if re.search(r"\b(?:por\s+mitad|en\s+mitad|mitades)\b", cleaned_norm):
+        numbers.append(2)
+
+    # 5. Palabras numéricas compuestas (ej. 'seiscientos un mil setecientos treinta' -> 601730)
     words = cleaned_norm.split()
-    i = 0
-    while i < len(words):
-        w = words[i]
-        if is_qualitative_period and w in {"un", "una"}:
-            i += 1
+    current_num_tokens = []
+    for w in words:
+        if (is_qualitative_period or is_distributive) and w in {"un", "una"}:
             continue
-        if w in SPANISH_HUNDREDS:
-            val = SPANISH_HUNDREDS[w]
-            i += 1
-            if i < len(words) and words[i] in SPANISH_TENS:
-                val += SPANISH_TENS[words[i]]
-                i += 1
-                if i + 1 < len(words) and words[i] == "y" and words[i + 1] in SPANISH_UNITS:
-                    val += SPANISH_UNITS[words[i + 1]]
-                    i += 2
-            elif i < len(words) and words[i] in SPANISH_UNITS and words[i] not in {"un", "una"}:
-                val += SPANISH_UNITS[words[i]]
-                i += 1
-            numbers.append(val)
-        elif w in SPANISH_TENS:
-            val = SPANISH_TENS[w]
-            i += 1
-            if i + 1 < len(words) and words[i] == "y" and words[i + 1] in SPANISH_UNITS:
-                val += SPANISH_UNITS[words[i + 1]]
-                i += 2
-            numbers.append(val)
-        elif w in SPANISH_UNITS and w not in {"un", "una"}:
-            numbers.append(SPANISH_UNITS[w])
-            i += 1
-        elif w == "mil":
-            numbers.append(1000)
-            i += 1
+        if w in ALL_NUM_WORDS:
+            current_num_tokens.append(w)
         else:
-            i += 1
+            if current_num_tokens:
+                numbers.extend(_eval_number_tokens(current_num_tokens))
+                current_num_tokens = []
+    if current_num_tokens:
+        numbers.extend(_eval_number_tokens(current_num_tokens))
 
     return sorted(set(numbers))
 
@@ -395,7 +448,9 @@ def extract_verses_robust(payload: Any) -> dict[int, str]:
 
 
 def split_composite_answer(answer_str: str) -> list[str]:
-    """Descompone respuestas compuestas unidas por comas, 'y', 'e'."""
+    """Descompone respuestas compuestas unidas por comas, 'y', 'e', preservando construcciones correlativas."""
+    if re.search(r"\b(?:un|una|uno)\b.*\b(?:y|e)\s+otr[oa]\b", answer_str, re.IGNORECASE):
+        return [answer_str.strip()]
     raw = re.split(r"[,;]|\s+y\s+|\s+e\s+", answer_str)
     parts = [p.strip() for p in raw if p.strip()]
     return parts if len(parts) > 1 else [answer_str.strip()]
@@ -643,20 +698,29 @@ def evaluate_question(
             entities_in_prompt.add(word)
 
     if entities_in_opt_a:
-        missing_entities = [n for n in entities_in_opt_a if n not in passage_norm]
+        missing_entities = [
+            n for n in entities_in_opt_a
+            if n not in passage_norm and not (n in SYNONYMS and SYNONYMS[n] in passage_norm)
+        ]
         if not missing_entities:
             controls["control_nombres_propios"] = "PASS"
         else:
             controls["control_nombres_propios"] = "FAIL"
             incidencias.append(f"Personaje bíblico en opción A no respaldado en el pasaje: {missing_entities}")
     elif entities_in_prompt:
-        matching_prompt_ent = [n for n in entities_in_prompt if n in passage_norm]
+        matching_prompt_ent = [
+            n for n in entities_in_prompt
+            if n in passage_norm or (n in SYNONYMS and SYNONYMS[n] in passage_norm)
+        ]
         if matching_prompt_ent:
             controls["control_nombres_propios"] = "PASS"
         else:
             controls["control_nombres_propios"] = "NOT_APPLICABLE" if not characters else "PASS"
     elif characters:
-        matching_chars = [c for c in characters if normalize(c) in passage_norm]
+        matching_chars = [
+            c for c in characters
+            if normalize(c) in passage_norm or (normalize(c) in SYNONYMS and SYNONYMS[normalize(c)] in passage_norm)
+        ]
         if matching_chars:
             controls["control_nombres_propios"] = "PASS"
         else:
@@ -707,12 +771,13 @@ def evaluate_question(
         composite_count = len(parts_a)
         prompt_nums_clean = [n for n in prompt_nums if n != composite_count]
 
+        missing_opt_nums = [n for n in opt_a_nums if n not in passage_nums]
         missing_nums = [n for n in (set(opt_a_nums) | set(prompt_nums_clean)) if n not in passage_nums]
-        if not missing_nums:
-            controls["control_numeros_cantidades"] = "PASS"
-        elif any(n in opt_a_nums for n in missing_nums):
+        if missing_opt_nums:
             controls["control_numeros_cantidades"] = "FAIL"
             incidencias.append(f"Cantidad numérica en opción A ({opt_a_nums}) no coincide con el pasaje ({sorted(passage_nums)})")
+        elif not missing_nums or all(n in passage_nums for n in opt_a_nums):
+            controls["control_numeros_cantidades"] = "PASS"
         else:
             controls["control_numeros_cantidades"] = "UNKNOWN"
 
