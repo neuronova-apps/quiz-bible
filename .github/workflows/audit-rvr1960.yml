@@ -7,6 +7,8 @@ on:
       - "tools/bible_extractor/genesis-master-input.json"
       - "tools/bible_extractor/audit-input.json"
       - "tools/bible_extractor/auditor.py"
+      - "tools/bible_extractor/report_audit.py"
+      - "tools/bible_extractor/test_auditor.py"
       - ".github/workflows/audit-rvr1960.yml"
   pull_request:
     branches: [main]
@@ -14,6 +16,8 @@ on:
       - "tools/bible_extractor/genesis-master-input.json"
       - "tools/bible_extractor/audit-input.json"
       - "tools/bible_extractor/auditor.py"
+      - "tools/bible_extractor/report_audit.py"
+      - "tools/bible_extractor/test_auditor.py"
       - ".github/workflows/audit-rvr1960.yml"
   workflow_dispatch:
     inputs:
@@ -94,29 +98,13 @@ jobs:
                           assert_no_scripture(item)
               
               assert_no_scripture(data)
-          
-          summary = json.loads((out_dir / 'resumen-general.json').read_text(encoding='utf-8'))
-          print('\n==================== RESUMEN GENERAL AUDITORÍA ====================')
-          print('Total preguntas:', summary.get('total_questions'))
-          print('Capítulos cubiertos:', summary.get('chapters_covered'))
-          print('VERIFICADO:', summary.get('verified_count'))
-          print('REQUIERE_CORRECCION:', summary.get('requires_correction_count'))
-          print('NO_CONCLUYENTE:', summary.get('inconclusive_count'))
-          print('source_text_persisted:', summary.get('source_text_persisted'))
-          
-          print('\n--- Distribución de los 17 Controles ---')
-          ctrl_dist = summary.get('controls_distribution', {})
-          for ctrl_name, counts in ctrl_dist.items():
-              print(f"  {ctrl_name:<32}: PASS={counts.get('PASS', 0):<3} FAIL={counts.get('FAIL', 0):<3} UNKNOWN={counts.get('UNKNOWN', 0):<3} NOT_APPLICABLE={counts.get('NOT_APPLICABLE', 0):<3}")
-          
-          revision_file = out_dir / 'revision-manual-pendiente.json'
-          if revision_file.exists():
-              rev_data = json.loads(revision_file.read_text(encoding='utf-8'))
-              print(f"\n--- Casos Pendientes de Revisión Manual ({rev_data.get('total_pendientes', 0)}) ---")
-              for item in rev_data.get('pendientes', [])[:10]:
-                  print(f"  [{item.get('id')}] {item.get('reference')} -> {item.get('estado')}: {item.get('incidencias')}")
-          print('====================================================================\n')
           PY
+
+      - name: Generar informe oficial de auditoría
+        run: |
+          python tools/bible_extractor/report_audit.py \
+            --output-dir build/audit/genesis \
+            --master-input "${{ steps.select_input.outputs.selected_file }}"
 
       - name: Publicar resultados derivados
         uses: actions/upload-artifact@v4

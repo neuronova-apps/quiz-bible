@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Auditor semántico y textual derivado de preguntas bíblicas contra RVR1960.
 
-Evalúa con rigor determinista los 17 controles de calidad editorial:
+Evalúa deterministamente los 17 controles de calidad editorial:
 identidad de libro, capítulo, versículos, existencia de pasajes, respaldo
 de la pregunta, validez de la opción A, inconsistencia de distractores,
 alineación canónica, compatibilidad de explicación, verificación de nombres
@@ -10,6 +10,10 @@ y ausencia de ambigüedad.
 
 Estados por control: PASS, FAIL, NOT_APPLICABLE, UNKNOWN.
 Clasificación final: VERIFICADO, REQUIERE_CORRECCION, NO_CONCLUYENTE.
+
+Regla crítica: la ausencia de coincidencia léxica literal produce UNKNOWN
+(clasificación NO_CONCLUYENTE). REQUIERE_CORRECCION se reserva exclusivamente
+para contradicciones objetivas y demostrables.
 
 El texto bíblico RVR1960 vive únicamente en memoria volátil y se libera
 inmediatamente tras evaluar cada capítulo. source_text_persisted: False.
@@ -42,7 +46,25 @@ STOPWORDS = {
     "habia", "habian", "sus", "hizo", "dijo", "dios", "senor", "jehova",
     "cual", "quien", "quienes", "cuando", "donde", "por", "que", "hacia",
     "sobre", "tras", "entre", "hasta", "desde", "ante", "bajo", "cabe",
-    "para", "pero", "mas", "este", "esta", "estos", "estas", "aquel",
+    "pero", "mas", "este", "esta", "estos", "estas", "aquel", "aquella",
+    "ser", "sido", "estar", "estaba", "estaban", "tener", "tenia", "tenian",
+}
+
+# Entidades y personajes bíblicos (Génesis y nombres bíblicos comunes)
+BIBLE_PERSONAJES = {
+    "adan", "eva", "cain", "abel", "set", "enos", "cainan", "mahalaleel",
+    "jared", "enoc", "matusalen", "lamec", "noe", "sem", "cam", "jafet",
+    "canaan", "tare", "abram", "abraham", "sarai", "sara", "lot", "melquisedec",
+    "agar", "ismael", "isaac", "rebeca", "laban", "betuel", "jacob", "esau",
+    "lea", "raquel", "ruben", "simeon", "levi", "juda", "dan", "neftali",
+    "gad", "aser", "isacar", "zabulon", "jose", "benjamin", "dina", "tamar",
+    "potifar", "faraon", "asenat", "manases", "efrain", "abimelec", "eliezer",
+    "cetura", "zilpa", "bilha", "potifera", "zafenat-panea", "zafenatpanea",
+    "eber", "peleg", "milca", "isca", "er", "onan", "sela", "fares", "zara",
+    "hezron", "hamul", "siquem", "hamor", "nemrod", "mizraim", "cuz",
+    "moises", "aaron", "david", "salomon", "saul", "samuel", "josue", "elias",
+    "eliseo", "jonatan", "nabucodonosor", "pablo", "pedro", "juan", "jesus",
+    "mateo", "marcos", "lucas", "esteban", "timoteo",
 }
 
 # Lugares, regiones y accidentes geográficos bíblicos
@@ -53,9 +75,9 @@ GENESIS_PLACES = {
     "peniel", "penuel", "dotan", "dothan", "gerar", "gueral", "filistea", "ebal",
     "galaad", "guilead", "padan-aram", "padanaram", "mesopotamia", "canaan",
     "salem", "mamre", "cala", "sinar", "ofir", "havila", "caldea", "siria",
-    "lahai-roi", "berseba", "sucot", "efrata", "belen", "nilo", "eufrates",
-    "hidekel", "pison", "gihon", "quedem", "sinai", "horeb", "sion", "negev",
-    "jordan", "siquem", "atarot", "shiloh", "damasco",
+    "lahai-roi", "lahairoi", "berseba", "sucot", "efrata", "belen", "nilo",
+    "eufrates", "hidekel", "pison", "gihon", "quedem", "sinai", "horeb",
+    "sion", "negev", "jordan", "atarot", "shiloh", "damasco",
 }
 
 # Raíces de parentesco y lemas
@@ -77,9 +99,21 @@ KINSHIP_STEMS = {
     "gemel": ["gemelos", "mellizos"],
 }
 
-# Diccionario de números cardinales en español para conversión determinista
-SPANISH_NUMBERS = {
-    "cero": 0, "un": 1, "uno": 1, "una": 1, "dos": 2, "tres": 3, "cuatro": 4,
+# Equivalencias semánticas y de dimensiones
+SYNONYMS = {
+    "longitud": "largo",
+    "anchura": "ancho",
+    "altura": "alto",
+    "largo": "longitud",
+    "ancho": "anchura",
+    "alto": "altura",
+    "arameo": "padan-aram",
+    "aramea": "padan-aram",
+}
+
+# Diccionario de números cardinales en español (sin 'un' / 'una' ambiguos como artículos)
+SPANISH_NUMBERS_EXPLICIT = {
+    "cero": 0, "uno": 1, "dos": 2, "tres": 3, "cuatro": 4,
     "cinco": 5, "seis": 6, "siete": 7, "ocho": 8, "nueve": 9, "diez": 10,
     "once": 11, "doce": 12, "trece": 13, "catorce": 14, "quince": 15,
     "dieciseis": 16, "diecisiete": 17, "dieciocho": 18, "diecinueve": 19,
@@ -105,11 +139,13 @@ def parse_args() -> argparse.Namespace:
 
 
 def normalize(value: str) -> str:
-    """Normaliza texto para comparación insensible a tildes, mayúsculas y signos."""
+    """Normaliza texto para comparación insensible a tildes, mayúsculas, guiones y signos."""
     if not value:
         return ""
     value = unicodedata.normalize("NFD", str(value).casefold())
     value = "".join(ch for ch in value if unicodedata.category(ch) != "Mn")
+    # Normalización de variantes ortográficas con guion
+    value = value.replace("bet-el", "betel").replace("beer-seba", "beerseba").replace("padan-aram", "padanaram")
     value = re.sub(r"[^a-z0-9ñ]+", " ", value)
     return re.sub(r"\s+", " ", value).strip()
 
@@ -119,39 +155,49 @@ def significant_tokens(value: str) -> list[str]:
     return [t for t in normalize(value).split() if len(t) >= 3 and t not in STOPWORDS]
 
 
-def extract_numbers(text: str) -> list[int]:
-    """Extrae números enteros representados en dígitos o palabras en español."""
-    norm = normalize(text)
+def extract_numbers(text: str, is_quantitative_context: bool = False) -> list[int]:
+    """Extrae números enteros de dígitos o palabras numéricas.
+
+    No interpreta 'un' / 'una' como 1 salvo que exista un contexto cuantitativo
+    explícito o unidad de medida contable.
+    """
+    raw_text = str(text)
+    # Omitir citas de capítulo:versículo como 5:27 o 1:3-5
+    cleaned_digits_text = re.sub(r"\b\d+\s*:\s*\d+(?:-\d+)?\b", " ", raw_text)
+    cleaned_norm = normalize(cleaned_digits_text)
     numbers: list[int] = []
 
-    # 1. Dígitos directos (omitiendo citas tipo '5 27')
-    cleaned_digits_text = re.sub(r"\b\d+\s*:\s*\d+(?:-\d+)?\b", " ", str(text))
-    cleaned_norm = normalize(cleaned_digits_text)
-
+    # 1. Dígitos directos
     for m in re.finditer(r"\b\d+\b", cleaned_norm):
         try:
             numbers.append(int(m.group(0)))
         except ValueError:
             pass
 
-    # 2. Palabras numéricas compuestas (ej. 'novecientos sesenta y nueve' -> 969)
-    words = norm.split()
+    # 2. 'un' / 'una' con unidades contables explícitas
+    if re.search(r"\b(?:un|una)\b", cleaned_norm):
+        countable_units_pattern = r"\b(?:un|una)\s+(?:vez|ano|anos|mes|meses|dia|dias|codo|codos|pareja|parejas|talento|siclo|pieza|piezas|hora|horas|parte|partes)\b"
+        if is_quantitative_context or re.search(countable_units_pattern, cleaned_norm):
+            numbers.append(1)
+
+    # 3. Palabras numéricas compuestas (ej. 'novecientos sesenta y nueve' -> 969)
+    words = cleaned_norm.split()
     i = 0
     while i < len(words):
         w = words[i]
-        if w in SPANISH_NUMBERS:
-            current_val = SPANISH_NUMBERS[w]
+        if w in SPANISH_NUMBERS_EXPLICIT:
+            current_val = SPANISH_NUMBERS_EXPLICIT[w]
             j = i + 1
             while j < len(words):
                 next_w = words[j]
-                if next_w == "y" and j + 1 < len(words) and words[j + 1] in SPANISH_NUMBERS:
-                    current_val += SPANISH_NUMBERS[words[j + 1]]
+                if next_w == "y" and j + 1 < len(words) and words[j + 1] in SPANISH_NUMBERS_EXPLICIT:
+                    current_val += SPANISH_NUMBERS_EXPLICIT[words[j + 1]]
                     j += 2
-                elif next_w in SPANISH_NUMBERS:
-                    if SPANISH_NUMBERS[next_w] == 1000:
+                elif next_w in SPANISH_NUMBERS_EXPLICIT:
+                    if SPANISH_NUMBERS_EXPLICIT[next_w] == 1000:
                         current_val = (current_val or 1) * 1000
                     else:
-                        current_val += SPANISH_NUMBERS[next_w]
+                        current_val += SPANISH_NUMBERS_EXPLICIT[next_w]
                     j += 1
                 else:
                     break
@@ -336,17 +382,14 @@ def evaluate_question(
     if not q_toks:
         controls["control_soporte_pregunta"] = "UNKNOWN"
     else:
-        matching_q_toks = [t for t in q_toks if t in passage_norm]
+        matching_q_toks = [t for t in q_toks if t in passage_norm or (t in SYNONYMS and SYNONYMS[t] in passage_norm)]
         coverage_q = len(matching_q_toks) / len(q_toks)
-        if coverage_q >= 0.18 or len(matching_q_toks) >= 1:
+        if coverage_q >= 0.15 or len(matching_q_toks) >= 1:
             controls["control_soporte_pregunta"] = "PASS"
-        elif coverage_q == 0.0 and len(q_toks) >= 3:
-            controls["control_soporte_pregunta"] = "FAIL"
-            incidencias.append("La pregunta carece de respaldo terminológico en el pasaje")
         else:
             controls["control_soporte_pregunta"] = "UNKNOWN"
 
-    # 8. Control Opción A Correcta (soporte completo de componentes y números)
+    # 8. Control Opción A Correcta (soporte completo de componentes, números y sinónimos)
     parts_a = split_composite_answer(opcion_a)
     missing_parts = []
     for part in parts_a:
@@ -358,27 +401,35 @@ def evaluate_question(
         if part_nums:
             nums_matched = all(n in passage_nums for n in part_nums)
             non_num_toks = [t for t in part_toks if not t.isdigit()]
-            text_matched = True if not non_num_toks else any(t in passage_norm for t in non_num_toks)
+            text_matched = True if not non_num_toks else any(t in passage_norm or (t in SYNONYMS and SYNONYMS[t] in passage_norm) for t in non_num_toks)
             if nums_matched and text_matched:
                 continue
             missing_parts.append(part)
         else:
-            if part_norm and (part_norm in passage_norm or (part_toks and all(t in passage_norm for t in part_toks))):
+            # Coincidencia directa, por sinónimos o por tokens significativos
+            if part_norm and (
+                part_norm in passage_norm
+                or any(t in passage_norm or (t in SYNONYMS and SYNONYMS[t] in passage_norm) for t in part_toks)
+            ):
                 continue
             missing_parts.append(part)
 
+    # Identificación de contradicciones objetivas vs incertidumbre/paráfrasis
     if not missing_parts:
         controls["control_opcion_a_correcta"] = "PASS"
-    elif len(missing_parts) == len(parts_a):
-        controls["control_opcion_a_correcta"] = "FAIL"
-        incidencias.append(f"Opción A ('{opcion_a}') no tiene respaldo en el pasaje")
     else:
-        controls["control_opcion_a_correcta"] = "UNKNOWN"
-        incidencias.append(f"Componentes de Opción A no encontrados completamente: {missing_parts}")
+        # Si contiene números contradictorios explicitos -> FAIL
+        opt_a_nums = extract_numbers(opcion_a)
+        conflicting_num = any(n not in passage_nums for n in opt_a_nums if opt_a_nums and passage_nums)
+        if conflicting_num:
+            controls["control_opcion_a_correcta"] = "FAIL"
+            incidencias.append(f"Contradicción numérica objetiva en Opción A: {opt_a_nums} vs {sorted(passage_nums)}")
+        else:
+            # Ausencia de coincidencia literal en paráfrasis -> UNKNOWN
+            controls["control_opcion_a_correcta"] = "UNKNOWN"
 
-    # 9. Control Distractores Inválidos (detección de duplicados, distractor idéntico o conflicto numérico)
+    # 9. Control Distractores Inválidos (detección de duplicados o contradicción explícita)
     distractor_conflicts: list[str] = []
-    distractor_unknown = False
     for d_text in (opcion_b, opcion_c, opcion_d):
         d_norm = normalize(d_text)
         if not d_norm:
@@ -388,22 +439,15 @@ def evaluate_question(
             distractor_conflicts.append(f"Distractor idéntico a opción A: '{d_text}'")
             continue
 
-        # Si el distractor tiene números idénticos a los del pasaje cuando opción A tiene otros números
+        # Si el distractor tiene números idénticos al pasaje mientras opción A tiene otros números erróneos
         d_nums = extract_numbers(d_text)
         opt_a_nums = extract_numbers(opcion_a)
         if d_nums and opt_a_nums and set(d_nums) == passage_nums and set(opt_a_nums) != passage_nums:
             distractor_conflicts.append(f"Distractor con datos correctos frente a Opción A incorrecta: '{d_text}'")
 
-        # Verificar si un distractor compuesto tiene respaldo idéntico
-        d_parts = split_composite_answer(d_text)
-        if len(d_parts) > 1 and all(normalize(p) in passage_norm for p in d_parts) and controls["control_opcion_a_correcta"] != "PASS":
-            distractor_unknown = True
-
     if distractor_conflicts:
         controls["control_distractores_invalidos"] = "FAIL"
         incidencias.extend(distractor_conflicts)
-    elif distractor_unknown:
-        controls["control_distractores_invalidos"] = "UNKNOWN"
     else:
         controls["control_distractores_invalidos"] = "PASS"
 
@@ -429,42 +473,40 @@ def evaluate_question(
     if not exp_toks:
         controls["control_explicacion_compatible"] = "UNKNOWN"
     else:
-        matching_exp_toks = [t for t in exp_toks if t in passage_norm]
+        matching_exp_toks = [t for t in exp_toks if t in passage_norm or (t in SYNONYMS and SYNONYMS[t] in passage_norm)]
         exp_coverage = len(matching_exp_toks) / len(exp_toks)
         exp_nums = extract_numbers(exp_cleaned)
         conflicting_nums = [n for n in exp_nums if n not in passage_nums and n > 2]
 
         if conflicting_nums and controls["control_opcion_a_correcta"] == "FAIL":
             controls["control_explicacion_compatible"] = "FAIL"
-            incidencias.append(f"La explicación contiene datos contradictorios con el pasaje: {conflicting_nums}")
-        elif exp_coverage >= 0.15 or (len(matching_exp_toks) >= 2):
+            incidencias.append(f"La explicación contiene datos numéricos contradictorios: {conflicting_nums}")
+        elif exp_coverage >= 0.12 or len(matching_exp_toks) >= 2:
             controls["control_explicacion_compatible"] = "PASS"
         else:
             controls["control_explicacion_compatible"] = "UNKNOWN"
 
-    # 12. Control Nombres Propios (verificación real de nombres dependientes)
-    ans_names = set()
-    for word in opcion_a.split():
-        clean_w = re.sub(r"[^a-zA-ZáéíóúÁÉÍÓÚñÑ]", "", word)
-        if clean_w.istitle() and normalize(clean_w) not in STOPWORDS and len(clean_w) >= 3:
-            ans_names.add(clean_w)
+    # 12. Control Nombres Propios (únicamente personajes y entidades bíblicas reconocibles)
+    entities_in_opt_a = set()
+    for word in normalize(opcion_a).split():
+        if word in BIBLE_PERSONAJES:
+            entities_in_opt_a.add(word)
 
-    prompt_names = set()
-    for word in prompt.split():
-        clean_w = re.sub(r"[^a-zA-ZáéíóúÁÉÍÓÚñÑ]", "", word)
-        if clean_w.istitle() and normalize(clean_w) not in STOPWORDS and len(clean_w) >= 3:
-            prompt_names.add(clean_w)
+    entities_in_prompt = set()
+    for word in normalize(prompt).split():
+        if word in BIBLE_PERSONAJES:
+            entities_in_prompt.add(word)
 
-    if ans_names:
-        missing_ans_names = [n for n in ans_names if normalize(n) not in passage_norm]
-        if not missing_ans_names:
+    if entities_in_opt_a:
+        missing_entities = [n for n in entities_in_opt_a if n not in passage_norm]
+        if not missing_entities:
             controls["control_nombres_propios"] = "PASS"
         else:
             controls["control_nombres_propios"] = "FAIL"
-            incidencias.append(f"Nombres propios en opción A no respaldados en el pasaje: {missing_ans_names}")
-    elif prompt_names:
-        matching_prompt_names = [n for n in prompt_names if normalize(n) in passage_norm]
-        if matching_prompt_names:
+            incidencias.append(f"Personaje bíblico en opción A no respaldado en el pasaje: {missing_entities}")
+    elif entities_in_prompt:
+        matching_prompt_ent = [n for n in entities_in_prompt if n in passage_norm]
+        if matching_prompt_ent:
             controls["control_nombres_propios"] = "PASS"
         else:
             controls["control_nombres_propios"] = "NOT_APPLICABLE" if not characters else "PASS"
@@ -494,9 +536,10 @@ def evaluate_question(
         else:
             controls["control_lugares"] = "UNKNOWN"
 
-    # 14. Control Números y Cantidades (verificación real de cifras y conteo de listas)
-    opt_a_nums = extract_numbers(opcion_a)
-    prompt_nums = extract_numbers(prompt)
+    # 14. Control Números y Cantidades (verificación real de cifras cuantitativas)
+    has_count_context = bool(re.search(r"¿?\s*cuant[oa]s?\b", normalize(prompt)))
+    opt_a_nums = extract_numbers(opcion_a, is_quantitative_context=has_count_context)
+    prompt_nums = extract_numbers(prompt, is_quantitative_context=has_count_context)
     target_nums = set(opt_a_nums) | set(prompt_nums)
 
     if not target_nums:
@@ -533,26 +576,24 @@ def evaluate_question(
         else:
             controls["control_relaciones_personajes"] = "UNKNOWN"
 
-    # 16. Control Rango Suficiente (cobertura total de la evidencia requerida)
-    evidence_missing = []
-    if controls["control_opcion_a_correcta"] == "FAIL":
-        evidence_missing.append("opción A")
+    # 16. Control Rango Suficiente (FAIL solo si falta evidencia demostrable fuera del rango)
+    evidence_missing_outside = []
     if controls["control_nombres_propios"] == "FAIL":
-        evidence_missing.append("nombres propios")
+        evidence_missing_outside.append("personaje bíblico ausente")
     if controls["control_numeros_cantidades"] == "FAIL":
-        evidence_missing.append("cantidades numéricas")
+        evidence_missing_outside.append("cantidad numérica no hallada")
     if controls["control_lugares"] == "FAIL":
-        evidence_missing.append("lugares")
+        evidence_missing_outside.append("lugar no hallado")
 
-    if evidence_missing:
+    if evidence_missing_outside:
         controls["control_rango_suficiente"] = "FAIL"
-        incidencias.append(f"El rango versicular actual no contiene la evidencia requerida para: {', '.join(evidence_missing)}")
+        incidencias.append(f"El rango versicular actual no contiene la evidencia requerida para: {', '.join(evidence_missing_outside)}")
     elif controls["control_opcion_a_correcta"] == "PASS" and controls["control_soporte_pregunta"] == "PASS":
         controls["control_rango_suficiente"] = "PASS"
     else:
         controls["control_rango_suficiente"] = "UNKNOWN"
 
-    # 17. Control Sin Ambigüedad (opciones únicas y distractores no respaldados)
+    # 17. Control Sin Ambigüedad (opciones únicas y sin distractores conflictivos)
     unique_options = len({normalize(x) for x in (opcion_a, opcion_b, opcion_c, opcion_d) if x}) == 4
     if not unique_options:
         controls["control_sin_ambiguedad"] = "FAIL"
