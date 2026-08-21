@@ -51,6 +51,7 @@ KINGS1_PATH = Path(__file__).parent / "1kings-master-input.json"
 KINGS2_PATH = Path(__file__).parent / "2kings-master-input.json"
 CHRONICLES1_PATH = Path(__file__).parent / "1chronicles-master-input.json"
 CHRONICLES2_PATH = Path(__file__).parent / "2chronicles-master-input.json"
+EZRA_PATH = Path(__file__).parent / "ezra-master-input.json"
 
 
 class TestAuditorCanonical(unittest.TestCase):
@@ -137,6 +138,12 @@ class TestAuditorCanonical(unittest.TestCase):
         else:
             cls.chronicles2_questions = {}
 
+        if EZRA_PATH.exists():
+            raw_ezr = json.loads(EZRA_PATH.read_text(encoding="utf-8"))
+            cls.ezra_questions = {q["id"]: q for q in (raw_ezr.get("questions", []) if isinstance(raw_ezr, dict) else raw_ezr)}
+        else:
+            cls.ezra_questions = {}
+
     def setUp(self) -> None:
         self.temp_dir = Path(tempfile.mkdtemp())
 
@@ -198,6 +205,10 @@ class TestAuditorCanonical(unittest.TestCase):
     def get_2chronicles_question(self, qid: str) -> dict:
         self.assertIn(qid, self.chronicles2_questions, f"ID '{qid}' no encontrado en 2chronicles-master-input.json")
         return copy.deepcopy(self.chronicles2_questions[qid])
+
+    def get_ezra_question(self, qid: str) -> dict:
+        self.assertIn(qid, self.ezra_questions, f"ID '{qid}' no encontrado en ezra-master-input.json")
+        return copy.deepcopy(self.ezra_questions[qid])
 
     # --- TEST GLOBAL DE CONSISTENCIA DE IDs Y REFERENCIAS ---
 
@@ -1611,6 +1622,142 @@ class TestAuditorCanonical(unittest.TestCase):
         res102 = evaluate_question(q102, v102, book_key="2chronicles")
         self.assertNotEqual(res102["estado"], "REQUIERE_CORRECCION")
         self.assertEqual(res102["controles_superados"]["control_nombres_propios"], "PASS")
+
+    # --- REGRESIONES Y PRUEBAS ESPECÍFICAS DE ESDRAS ---
+
+    def test_detect_book_key_ezra(self) -> None:
+        """Verifica la detección automática del libro Esdras."""
+        spec_ezra = {"questions": [{"id": "NQB-AT-ESD-0001", "book": "Esdras"}]}
+        self.assertEqual(detect_book_key(spec_ezra), "ezra")
+
+        spec_alias = [{"id": "NQB-AT-ESD-0002", "book": "Ezra"}]
+        self.assertEqual(detect_book_key(spec_alias), "ezra")
+
+    def test_ezra_book_config_and_aliases(self) -> None:
+        """Verifica la configuración canónica, aliases y bloques de Esdras."""
+        self.assertIn("ezra", BOOK_CONFIGS)
+        cfg = BOOK_CONFIGS["ezra"]
+        self.assertEqual(cfg["canonical_name"], "Esdras")
+        self.assertEqual(cfg["api_name"], "Esdras")
+        self.assertEqual(cfg["total_chapters"], 10)
+        self.assertTrue({"esdras", "ezra"}.issubset(cfg["aliases"]))
+        self.assertEqual(len(cfg["blocks"]), 2)
+
+    def test_global_canonical_id_reference_integrity_ezra(self) -> None:
+        """Verifica consistencia de IDs y referencias en Esdras."""
+        if not self.ezra_questions:
+            self.skipTest("ezra-master-input.json no disponible")
+        self.assertEqual(len(self.ezra_questions), 52)
+        for qid, q in self.ezra_questions.items():
+            self.assertTrue(qid.startswith("NQB-AT-ESD-"))
+            ref = q.get("reference", "")
+            ch = q.get("chapter")
+            start = q.get("verse_start")
+            end = q.get("verse_end", start)
+            expected_suffix = f"{ch}:{start}" if start == end else f"{ch}:{start}-{end}"
+            self.assertTrue(
+                expected_suffix in ref or ref.endswith(expected_suffix),
+                f"Referencia inconsistente en {qid}: ref='{ref}', esperada terminada en '{expected_suffix}'"
+            )
+
+    def test_ezra_specific_evaluations_and_regressions(self) -> None:
+        """Pruebas de evaluación RVR1960 para casos representativos de Esdras."""
+        if not self.ezra_questions:
+            self.skipTest("ezra-master-input.json no disponible")
+
+        # ESD-0001: Decreto de Ciro y ofrendas voluntarias (Esdras 1:1-6)
+        q1 = self.get_ezra_question("NQB-AT-ESD-0001")
+        v1 = {
+            1: "En el primer año de Ciro rey de Persia, para que se cumpliese la palabra de Jehová por boca de Jeremías, despertó Jehová el espíritu de Ciro rey de Persia...",
+            2: "Así ha dicho Ciro rey de Persia: Jehová el Dios de los cielos me ha dado todos los reinos de la tierra, y me ha mandado que le edifique casa en Jerusalén...",
+            3: "¿Quién hay entre vosotros de su pueblo? Sea Dios con él, y suba a Jerusalén...",
+            4: "Y a todo el que haya quedado, en cualquier lugar donde more, ayúdenle los hombres de su lugar con plata, oro, bienes y ganados, además de ofrendas voluntarias para la casa de Dios, la cual está en Jerusalén.",
+            5: "Entonces se levantaron los cabezas de las casas paternas de Judá y de Benjamín, y los sacerdotes y levitas, todos aquellos cuyo espíritu despertó Dios para subir a edificar la casa de Jehová, la cual está en Jerusalén.",
+            6: "Y todos los que estaban en sus derredores les ayudaron con plata, oro, bienes, ganado y cosas preciosas, además de todo lo que se ofreció voluntariamente."
+        }
+        res1 = evaluate_question(q1, v1, book_key="ezra")
+        self.assertNotEqual(res1["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res1["controles_superados"]["control_opcion_a_correcta"], "PASS")
+
+        # ESD-0002: 5400 utensilios entregados a Sesbasar (Esdras 1:7-11)
+        q2 = self.get_ezra_question("NQB-AT-ESD-0002")
+        v2 = {
+            7: "Y el rey Ciro sacó los utensilios de la casa de Jehová, que Nabucodonosor había traído de Jerusalén, y los había puesto en la casa de sus dioses.",
+            8: "Los sacó, pues, Ciro rey de Persia, por mano de Mitrídates tesorero, el cual los dio por cuenta a Sesbasar príncipe de Judá.",
+            9: "Y esta es la cuenta de ellos: treinta tazones de oro, mil tazones de plata, veintinueve cuchillos,",
+            10: "treinta tazas de oro, otras tazas de plata de segunda clase, cuatrocientas diez, y otros vasos, mil.",
+            11: "Todos los utensilios de oro y de plata eran cinco mil cuatrocientos. Todos los hizo llevar Sesbasar con los que subieron del cautiverio de Babilonia a Jerusalén."
+        }
+        res2 = evaluate_question(q2, v2, book_key="ezra")
+        self.assertNotEqual(res2["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res2["controles_superados"]["control_nombres_propios"], "PASS")
+
+        # ESD-0010: Levitas de 20 años o más para supervisar la obra (Esdras 3:8-9)
+        q10 = self.get_ezra_question("NQB-AT-ESD-0010")
+        v10 = {
+            8: "En el año segundo de su venida a la casa de Dios en Jerusalén, en el mes segundo, comenzaron Zorobabel hijo de Salatiel, Jesúa hijo de Josadac y los otros sus hermanos, los sacerdotes y los levitas, y todos los que habían venido del cautiverio a Jerusalén; y pusieron a los levitas de veinte años arriba para que activasen la obra de la casa de Jehová.",
+            9: "Jesúa también, sus hijos y sus hermanos, Cadmiel y sus hijos, hijos de Judá, se pusieron a una para activar a los que hacían la obra en la casa de Dios, junto con los hijos de Henadad, sus hijos y sus hermanos levitas."
+        }
+        res10 = evaluate_question(q10, v10, book_key="ezra")
+        self.assertNotEqual(res10["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res10["controles_superados"]["control_numeros_cantidades"], "PASS")
+
+        # ESD-0017: Profetas Hageo y Zacarías (Esdras 5:1-2)
+        q17 = self.get_ezra_question("NQB-AT-ESD-0017")
+        v17 = {
+            1: "Profetizaron Hageo y Zacarías hijo de Iddo, ambos profetas, a los judíos que estaban en Judá y en Jerusalén en el nombre del Dios de Israel quien estaba sobre ellos.",
+            2: "Entonces se levantaron Zorobabel hijo de Salatiel y Jesúa hijo de Josadac, y comenzaron a reedificar la casa de Dios que estaba en Jerusalén; y con ellos los profetas de Dios que les ayudaban."
+        }
+        res17 = evaluate_question(q17, v17, book_key="ezra")
+        self.assertNotEqual(res17["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res17["controles_superados"]["control_nombres_propios"], "PASS")
+
+        # ESD-0024: 3 de Adar, año 6 de Darío (Esdras 6:13-15)
+        q24 = self.get_ezra_question("NQB-AT-ESD-0024")
+        v24 = {
+            13: "Entonces Tatnai gobernador del otro lado del río, y Setar-boznai y sus compañeros, hicieron puntualmente según el rey Darío había enviado.",
+            14: "Y los ancianos de los judíos edificaban y prosperaban, conforme a la profecía del profeta Hageo y de Zacarías hijo de Iddo. Edificaron, pues, y terminaron, por orden del Dios de Israel, y por mandato de Ciro, de Darío, y de Artajerjes rey de Persia.",
+            15: "Esta casa fue terminada el tercer día del mes de Adar, que era el sexto año del reinado del rey Darío."
+        }
+        res24 = evaluate_question(q24, v24, book_key="ezra")
+        self.assertNotEqual(res24["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res24["controles_superados"]["control_numeros_cantidades"], "PASS")
+
+        # ESD-0027: Linaje sacerdotal y escriba diligente (Esdras 7:1-6)
+        q27 = self.get_ezra_question("NQB-AT-ESD-0027")
+        v27 = {
+            1: "Pasadas estas cosas, en el reinado de Artajerjes rey de Persia, Esdras hijo de Seraías, hijo de Azarías, hijo de Hilcías,",
+            2: "hijo de Salum, hijo de Sadoc, hijo de Ahitob,",
+            3: "hijo de Amarías, hijo de Azarías, hijo de Meraiot,",
+            4: "hijo de Zeraías, hijo de Uzi, hijo de Buqui,",
+            5: "hijo de Abisúa, hijo de Finees, hijo de Eleazar, hijo de Aarón, primer sacerdote,",
+            6: "este Esdras subió de Babilonia. Era escriba diligente en la ley de Moisés, que Jehová Dios de Israel había dado; y le concedió el rey todo lo que pidió, porque la mano de Jehová su Dios estaba sobre Esdras."
+        }
+        res27 = evaluate_question(q27, v27, book_key="ezra")
+        self.assertNotEqual(res27["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res27["controles_superados"]["control_nombres_propios"], "PASS")
+
+        # ESD-0036: Casifia 18, 20 y 220 sirvientes (Esdras 8:18-20)
+        q36 = self.get_ezra_question("NQB-AT-ESD-0036")
+        v36 = {
+            18: "Y nos trajeron según la buena mano de nuestro Dios sobre nosotros, un varón entendido, de los hijos de Mahli hijo de Leví, hijo de Israel; a Serebías con sus hijos y sus hermanos, dieciocho;",
+            19: "a Hasabías, y con él a Jesaías de los hijos de Merari, a sus hermanos y a sus hijos, veinte;",
+            20: "y de los sirvientes del templo, a quienes David y los príncipes habían puesto para el ministerio de los levitas, doscientos veinte sirvientes del templo, todos los cuales fueron designados por sus nombres."
+        }
+        res36 = evaluate_question(q36, v36, book_key="ezra")
+        self.assertNotEqual(res36["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res36["controles_superados"]["control_numeros_cantidades"], "PASS")
+
+        # ESD-0048: Plazo 3 días, día 20 del mes 9 (Esdras 10:7-9)
+        q48 = self.get_ezra_question("NQB-AT-ESD-0048")
+        v48 = {
+            7: "E hicieron pregonar en Judá y en Jerusalén a todos los hijos del cautiverio, que se reuniesen en Jerusalén;",
+            8: "y que el que no viniera dentro de tres días, conforme al acuerdo de los príncipes y de los ancianos, perdiese toda su hacienda, y el tal fuese excluido de la congregación de los del cautiverio.",
+            9: "Así todos los hombres de Judá y de Benjamín se reunieron en Jerusalén dentro de los tres días, a los veinte días del mes, el cual era el mes noveno; y se sentó todo el pueblo en la plaza de la casa de Dios, temblando con motivo de aquel asunto, y a causa de las grandes lluvias."
+        }
+        res48 = evaluate_question(q48, v48, book_key="ezra")
+        self.assertNotEqual(res48["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res48["controles_superados"]["control_numeros_cantidades"], "PASS")
 
 
 if __name__ == "__main__":
