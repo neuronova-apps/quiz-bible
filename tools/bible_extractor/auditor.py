@@ -246,8 +246,8 @@ SPANISH_TENS = {
 }
 
 SPANISH_UNITS = {
-    "cero": 0, "uno": 1, "una": 1, "un": 1, "dos": 2, "tres": 3, "cuatro": 4,
-    "cinco": 5, "seis": 6, "siete": 7, "ocho": 8, "nueve": 9,
+    "cero": 0, "dos": 2, "tres": 3, "cuatro": 4, "cinco": 5,
+    "seis": 6, "siete": 7, "ocho": 8, "nueve": 9,
     "primero": 1, "primer": 1, "primera": 1,
     "segundo": 2, "segunda": 2,
     "tercero": 3, "tercer": 3, "tercera": 3, "tercia": 3,
@@ -260,7 +260,9 @@ SPANISH_UNITS = {
     "decimo": 10, "decima": 10,
 }
 
-ALL_NUM_WORDS = set(SPANISH_HUNDREDS.keys()) | set(SPANISH_TENS.keys()) | set(SPANISH_UNITS.keys()) | {"y", "mil"}
+SPANISH_ONE_WORDS = {"uno", "un", "una"}
+
+ALL_NUM_WORDS = set(SPANISH_HUNDREDS.keys()) | set(SPANISH_TENS.keys()) | set(SPANISH_UNITS.keys()) | SPANISH_ONE_WORDS | {"y", "mil"}
 
 
 def normalize(value: str) -> str:
@@ -291,7 +293,7 @@ def detect_book_key(spec: dict[str, Any] | list[dict[str, Any]]) -> str:
     return "genesis"
 
 
-def _eval_sub_1000(tokens: list[str]) -> list[int]:
+def _eval_sub_1000(tokens: list[str], is_quantitative: bool = False) -> list[int]:
     """Evalúa un grupo de palabras numéricas menor a 1000 separando adecuadamente secuencias."""
     results: list[int] = []
     val = 0
@@ -310,8 +312,9 @@ def _eval_sub_1000(tokens: list[str]) -> list[int]:
                 val = 0
             val += SPANISH_TENS[w]
             i += 1
-            if i < len(tokens) and tokens[i] == "y" and i + 1 < len(tokens) and tokens[i + 1] in SPANISH_UNITS:
-                val += SPANISH_UNITS[tokens[i + 1]]
+            if i < len(tokens) and tokens[i] == "y" and i + 1 < len(tokens) and (tokens[i + 1] in SPANISH_UNITS or tokens[i + 1] in SPANISH_ONE_WORDS):
+                u_val = SPANISH_UNITS.get(tokens[i + 1], 1)
+                val += u_val
                 i += 2
         elif w in SPANISH_UNITS:
             if val > 0 and val % 100 != 0:
@@ -321,6 +324,25 @@ def _eval_sub_1000(tokens: list[str]) -> list[int]:
             results.append(val)
             val = 0
             i += 1
+        elif w in SPANISH_ONE_WORDS:
+            # Reconocer 'un/una' en números compuestos (ej. 'seiscientos un', 'ciento un')
+            if val > 0 and val % 100 == 0:
+                val += 1
+                i += 1
+            elif w == "uno" and is_quantitative:
+                if val > 0:
+                    results.append(val)
+                    val = 0
+                results.append(1)
+                i += 1
+            elif is_quantitative:
+                if val > 0:
+                    results.append(val)
+                    val = 0
+                results.append(1)
+                i += 1
+            else:
+                i += 1
         else:
             i += 1
     if val > 0:
@@ -328,7 +350,7 @@ def _eval_sub_1000(tokens: list[str]) -> list[int]:
     return results
 
 
-def _eval_number_tokens(tokens: list[str]) -> list[int]:
+def _eval_number_tokens(tokens: list[str], is_quantitative: bool = False) -> list[int]:
     """Evalúa una secuencia contigua de palabras numéricas en español."""
     if not tokens:
         return []
@@ -336,8 +358,8 @@ def _eval_number_tokens(tokens: list[str]) -> list[int]:
         mil_idx = tokens.index("mil")
         th_tokens = tokens[:mil_idx]
         rem_tokens = tokens[mil_idx + 1:]
-        th_vals = _eval_sub_1000(th_tokens) if th_tokens else [1]
-        rem_vals = _eval_sub_1000(rem_tokens) if rem_tokens else [0]
+        th_vals = _eval_sub_1000(th_tokens, is_quantitative=True) if th_tokens else [1]
+        rem_vals = _eval_sub_1000(rem_tokens, is_quantitative=True) if rem_tokens else [0]
         th_val = th_vals[-1] if th_vals else 1
         rem_val = rem_vals[0] if rem_vals else 0
         compound = th_val * 1000 + rem_val
@@ -347,7 +369,7 @@ def _eval_number_tokens(tokens: list[str]) -> list[int]:
         if len(rem_vals) > 1:
             res = res + rem_vals[1:]
         return res
-    return _eval_sub_1000(tokens)
+    return _eval_sub_1000(tokens, is_quantitative=is_quantitative)
 
 
 def extract_numbers(text: str, is_quantitative_context: bool = False) -> list[int]:
@@ -367,15 +389,10 @@ def extract_numbers(text: str, is_quantitative_context: bool = False) -> list[in
         except ValueError:
             pass
 
-    # 2. Contextos distributivos o cualitativos que no son cantidades directas
+    # 2. Contextos especiales de supresión de 'un/una' no cuantitativo
+    is_fraction = bool(re.search(r"\b(?:un|una)\s+(?:mitad|tercia|tercera|tercio|cuarta|cuarto|quinta|quinto|sexta|sexto|septima|septimo|octava|octavo|novena|noveno|decima|decimo)\b", cleaned_norm))
     is_distributive = bool(re.search(r"\b(?:un|una)\s+(?:para|por|de)\b.*\b(?:otr[oa])\b", cleaned_norm))
     is_qualitative_period = bool(re.search(r"\b(?:un|una)\s+(?:ano|dia|tiempo|periodo|semana)\s+de\s+(?:reposo|jubileo|gracia|luto|fiesta|holocausto|expiacion)", cleaned_norm))
-
-    if not is_qualitative_period and not is_distributive:
-        if re.search(r"\b(?:un|una)\b", cleaned_norm):
-            countable_units_pattern = r"\b(?:un|una)\s+(?:vez|ano|anos|mes|meses|dia|dias|codo|codos|pareja|parejas|talento|siclo|pieza|piezas|hora|horas|parte|partes|suerte|suertes|cordero|corderos|carnero|carneros|becerro|becerros|toro|toros|palomino|palominos|tortola|tortolas|efa|efas|hin|hines|gomer|gomeres)\b"
-            if is_quantitative_context or re.search(countable_units_pattern, cleaned_norm):
-                numbers.append(1)
 
     # 3. Diezmo en contexto de proporción, fracción, vara o conteo
     if re.search(r"\b(?:diezmo|diezmos)\b", cleaned_norm):
@@ -389,17 +406,32 @@ def extract_numbers(text: str, is_quantitative_context: bool = False) -> list[in
     # 5. Palabras numéricas compuestas (ej. 'seiscientos un mil setecientos treinta' -> 601730)
     words = cleaned_norm.split()
     current_num_tokens = []
-    for w in words:
-        if (is_qualitative_period or is_distributive) and w in {"un", "una"}:
-            continue
-        if w in ALL_NUM_WORDS:
+    for idx, w in enumerate(words):
+        if w in {"un", "una"}:
+            prev_w = words[idx - 1] if idx > 0 else ""
+            next_w = words[idx + 1] if idx + 1 < len(words) else ""
+            is_part_of_compound = (next_w == "mil") or (prev_w in SPANISH_HUNDREDS) or (prev_w == "y")
+            if is_part_of_compound:
+                current_num_tokens.append(w)
+            elif is_quantitative_context and not (is_qualitative_period or is_distributive or is_fraction):
+                current_num_tokens.append(w)
+            else:
+                if current_num_tokens:
+                    numbers.extend(_eval_number_tokens(current_num_tokens, is_quantitative=is_quantitative_context))
+                    current_num_tokens = []
+        elif w in ALL_NUM_WORDS:
             current_num_tokens.append(w)
         else:
             if current_num_tokens:
-                numbers.extend(_eval_number_tokens(current_num_tokens))
+                numbers.extend(_eval_number_tokens(current_num_tokens, is_quantitative=is_quantitative_context))
                 current_num_tokens = []
     if current_num_tokens:
-        numbers.extend(_eval_number_tokens(current_num_tokens))
+        numbers.extend(_eval_number_tokens(current_num_tokens, is_quantitative=is_quantitative_context))
+
+    # 6. Captura de ordinales y fracciones si están presentes
+    for w in words:
+        if w in SPANISH_UNITS and SPANISH_UNITS[w] > 1:
+            numbers.append(SPANISH_UNITS[w])
 
     return sorted(set(numbers))
 
@@ -550,7 +582,7 @@ def evaluate_question(
 
     # Contexto cuantitativo o de proporción/fracción de la pregunta
     has_count_context = bool(re.search(
-        r"¿?\s*cuant[oa]s?\b|\bcuant[oa]s?\b|\bnumero\b|\bcantidad\b|\bcontar\b|\bvara\b|\bdecim[oa]\b|\bdiezmo\b|\bque\s+parte\b|\bque\s+porcion\b|\bfraccion\b|\bproporcion\b|\bporcentaje\b|\bmitad\b|\btercia\b|\btercera\b|\bcuarta\b|\bquinta\b|\bdecima\s+parte\b",
+        r"¿?\s*cuant[oa]s?\b|\bcuant[oa]s?\b|\bnumero\b|\bcantidad\b|\btotal\b|\bcontar\b|\bvara\b|\bdecim[oa]\b|\bdiezmo\b|\bque\s+parte\b|\bque\s+porcion\b|\bfraccion\b|\bproporcion\b|\bporcentaje\b|\bmitad\b|\btercia\b|\btercera\b|\bcuarta\b|\bquinta\b|\bdecima\s+parte\b|\brestitucion\b|\banadirse\b|\banadira\b",
         normalize(prompt)
     ))
 

@@ -5,6 +5,7 @@ Carga preguntas reales directamente desde genesis-master-input.json,
 exodus-master-input.json, leviticus-master-input.json y numbers-master-input.json,
 realizando mutaciones controladas sobre copias profundas (deepcopy) para verificar:
 - Soporte multilibro (Génesis, Éxodo, Levítico, Números);
+- Tratamiento estricto de artículos indefinidos 'un/una' frente a cantidades reales (NUM-0009, NUM-0095, NUM-0058, NUM-0064, NUM-0088);
 - Preposición 'sin' no detectada como falso topónimo (NUM-0012, NUM-0041, NUM-0073);
 - Equivalencia editorial de nombres propios RVR1960 (Miriam ↔ María en NUM-0026, NUM-0027, NUM-0044; Sihón ↔ Sehón en NUM-0051);
 - Parsing de números compuestos grandes (601 730 en NUM-0062) y mutación negativa;
@@ -155,7 +156,72 @@ class TestAuditorCanonical(unittest.TestCase):
         book_key = detect_book_key(list(self.numbers_questions.values()))
         self.assertEqual(book_key, "numeros")
 
-    # --- REGRESIONES ESPECÍFICAS DE NÚMEROS ---
+    # --- REGRESIONES DE ARTÍCULOS INDEFINIDOS UN / UNA Y FRACCIONES EN NÚMEROS ---
+
+    def test_num_0009_una_quinta_parte_no_spurious_one(self) -> None:
+        """NUM-0009: 'Una quinta parte adicional' reconoce quinta=5 sin número 1 espurio."""
+        q9 = self.get_numbers_question("NQB-AT-NUM-0009")
+        v9 = {7: "confesarán su pecado que cometieron, y compensarán su ofensa enteramente, y añadirán sobre ello la quinta parte, y lo darán a aquel contra quien pecaron."}
+        res9 = evaluate_question(q9, v9, book_key="numeros")
+        self.assertEqual(res9["controles_superados"]["control_numeros_cantidades"], "PASS")
+        self.assertNotEqual(res9["estado"], "REQUIERE_CORRECCION")
+
+        # Mutación negativa
+        q9_neg = copy.deepcopy(q9)
+        q9_neg["opcion_a"] = "Una tercera parte adicional"
+        q9_neg["correct_answer"] = "Una tercera parte adicional"
+        res9_neg = evaluate_question(q9_neg, v9, book_key="numeros")
+        self.assertEqual(res9_neg["controles_superados"]["control_numeros_cantidades"], "FAIL")
+        self.assertEqual(res9_neg["estado"], "REQUIERE_CORRECCION")
+
+    def test_num_indefinite_articles_not_converted_to_numbers(self) -> None:
+        """Verifica que 'un/una' como artículo indefinido no extraiga cantidad 1 (NUM-0095, NUM-0058, NUM-0064, NUM-0088)."""
+        # NUM-0095: Tomó un incensario...
+        q95 = self.get_numbers_question("NQB-AT-NUM-0095")
+        v95 = {
+            46: "Y dijo Moisés a Aarón: Toma el incensario, y pon en él fuego del altar...",
+            47: "Entonces tomó Aarón el incensario, como Moisés dijo, y corrió en medio de la congregación...",
+            48: "Y se puso entre los muertos y los vivos; y cesó la mortandad."
+        }
+        res95 = evaluate_question(q95, v95, book_key="numeros")
+        self.assertEqual(res95["controles_superados"]["control_numeros_cantidades"], "NOT_APPLICABLE")
+        self.assertNotEqual(res95["estado"], "REQUIERE_CORRECCION")
+
+        # NUM-0058: Una estrella
+        q58 = self.get_numbers_question("NQB-AT-NUM-0058")
+        v58 = {17: "Lo veré, mas no ahora; lo miraré, mas no de cerca; saldrá estrella de Jacob, y se levantará cetro de Israel..."}
+        res58 = evaluate_question(q58, v58, book_key="numeros")
+        self.assertEqual(res58["controles_superados"]["control_numeros_cantidades"], "NOT_APPLICABLE")
+        self.assertNotEqual(res58["estado"], "REQUIERE_CORRECCION")
+
+        # NUM-0064: Recibir una propiedad...
+        q64 = self.get_numbers_question("NQB-AT-NUM-0064")
+        v64 = {
+            1: "Vinieron las hijas de Zelofehad hijo de Hefer...",
+            2: "y se presentaron delante de Moisés y delante del sacerdote Eleazar...",
+            3: "Nuestro padre murió en el desierto...",
+            4: "¿Por qué será quitado el nombre de nuestro padre de entre su familia, por no haber tenido hijo? Danos heredad entre los hermanos de nuestro padre."
+        }
+        res64 = evaluate_question(q64, v64, book_key="numeros")
+        self.assertEqual(res64["controles_superados"]["control_numeros_cantidades"], "NOT_APPLICABLE")
+        self.assertNotEqual(res64["estado"], "REQUIERE_CORRECCION")
+
+        # NUM-0088: una muerte sin intención
+        q88 = self.get_numbers_question("NQB-AT-NUM-0088")
+        v88 = {
+            11: "os señalaréis ciudades, ciudades de refugio tendréis, donde huya el homicida que hiriere a alguno de muerte sin intención.",
+            12: "Y os serán aquellas ciudades por refugio del vengador, y no morirá el homicida hasta que entre en juicio delante de la congregación."
+        }
+        res88 = evaluate_question(q88, v88, book_key="numeros")
+        self.assertEqual(res88["controles_superados"]["control_numeros_cantidades"], "NOT_APPLICABLE")
+        self.assertNotEqual(res88["estado"], "REQUIERE_CORRECCION")
+
+    def test_explicit_counting_un_cordero(self) -> None:
+        """En preguntas cuantitativas explícitas, 'Un cordero' sí debe extraer 1."""
+        nums = extract_numbers("Un cordero", is_quantitative_context=True)
+        self.assertIn(1, nums)
+
+    # --- REGRESIONES ESPECÍFICAS DE NÚMEROS (SIN, MIRIAM, SIHÓN, 601730, MITADES) ---
 
     def test_num_sin_preposition_not_detected_as_place(self) -> None:
         """Verifica que la preposición 'sin' no se detecte como topónimo (NUM-0012, NUM-0041, NUM-0073)."""
