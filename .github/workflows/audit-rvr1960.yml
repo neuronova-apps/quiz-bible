@@ -5,6 +5,12 @@ on:
     branches: [rvr1960-audit]
     paths:
       - "tools/bible_extractor/audit-input.json"
+  pull_request:
+    branches: [main]
+    paths:
+      - "tools/bible_extractor/audit-input.json"
+      - "tools/bible_extractor/auditor.py"
+      - ".github/workflows/audit-rvr1960.yml"
   workflow_dispatch:
 
 permissions:
