@@ -35,7 +35,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from auditor import evaluate_question, run_audit, extract_numbers, normalize, detect_book_key, token_matches_text
+from auditor import evaluate_question, run_audit, extract_numbers, normalize, detect_book_key, token_matches_text, BOOK_CONFIGS
 
 GENESIS_PATH = Path(__file__).parent / "genesis-master-input.json"
 EXODUS_PATH = Path(__file__).parent / "exodus-master-input.json"
@@ -44,6 +44,7 @@ NUMBERS_PATH = Path(__file__).parent / "numbers-master-input.json"
 DEUTERONOMY_PATH = Path(__file__).parent / "deuteronomy-master-input.json"
 JOSHUA_PATH = Path(__file__).parent / "joshua-master-input.json"
 JUDGES_PATH = Path(__file__).parent / "judges-master-input.json"
+RUTH_PATH = Path(__file__).parent / "ruth-master-input.json"
 
 
 class TestAuditorCanonical(unittest.TestCase):
@@ -88,6 +89,12 @@ class TestAuditorCanonical(unittest.TestCase):
         else:
             cls.judges_questions = {}
 
+        if RUTH_PATH.exists():
+            raw_rut = json.loads(RUTH_PATH.read_text(encoding="utf-8"))
+            cls.ruth_questions = {q["id"]: q for q in (raw_rut.get("questions", []) if isinstance(raw_rut, dict) else raw_rut)}
+        else:
+            cls.ruth_questions = {}
+
     def setUp(self) -> None:
         self.temp_dir = Path(tempfile.mkdtemp())
 
@@ -121,6 +128,10 @@ class TestAuditorCanonical(unittest.TestCase):
     def get_judges_question(self, qid: str) -> dict:
         self.assertIn(qid, self.judges_questions, f"ID '{qid}' no encontrado en judges-master-input.json")
         return copy.deepcopy(self.judges_questions[qid])
+
+    def get_ruth_question(self, qid: str) -> dict:
+        self.assertIn(qid, self.ruth_questions, f"ID '{qid}' no encontrado en ruth-master-input.json")
+        return copy.deepcopy(self.ruth_questions[qid])
 
     # --- TEST GLOBAL DE CONSISTENCIA DE IDs Y REFERENCIAS ---
 
@@ -227,6 +238,22 @@ class TestAuditorCanonical(unittest.TestCase):
                 f"Referencia inconsistente en {qid}: ref='{ref}', esperada terminada en '{expected_suffix}'"
             )
 
+    def test_global_canonical_id_reference_integrity_ruth(self) -> None:
+        """Verifica consistencia de IDs y referencias en Rut."""
+        if not self.ruth_questions:
+            self.skipTest("ruth-master-input.json aún no presente")
+        self.assertEqual(len(self.ruth_questions), 40)
+        for qid, q in self.ruth_questions.items():
+            ref = q.get("reference", "")
+            ch = q.get("chapter")
+            start = q.get("verse_start")
+            end = q.get("verse_end", start)
+            expected_suffix = f"{ch}:{start}" if start == end else f"{ch}:{start}-{end}"
+            self.assertTrue(
+                expected_suffix in ref or ref.endswith(expected_suffix),
+                f"Referencia inconsistente en {qid}: ref='{ref}', esperada terminada en '{expected_suffix}'"
+            )
+
     def test_numbers_book_detection(self) -> None:
         """Verifica detección de configuración de Números."""
         if not self.numbers_questions:
@@ -253,6 +280,14 @@ class TestAuditorCanonical(unittest.TestCase):
         sample_q = [{"id": "NQB-AT-JUE-0001", "book": "Jueces", "chapter": 1, "verse_start": 1, "verse_end": 2}]
         book_key = detect_book_key(sample_q)
         self.assertEqual(book_key, "jueces")
+
+    def test_ruth_book_detection(self) -> None:
+        """Verifica detección de configuración de Rut."""
+        sample_q = [{"id": "NQB-AT-RUT-0001", "book": "Rut", "chapter": 1, "verse_start": 1, "verse_end": 2}]
+        book_key = detect_book_key(sample_q)
+        self.assertEqual(book_key, "rut")
+        self.assertEqual(BOOK_CONFIGS["rut"]["total_chapters"], 4)
+        self.assertIn("ruth", BOOK_CONFIGS["rut"]["aliases"])
 
     def test_joshua_0061_with_additional_reference(self) -> None:
         """NQB-AT-JOS-0061: Josué 20:9 con additional_references=['Números 35:15'] se evalúa correctamente."""
@@ -760,6 +795,25 @@ class TestAuditorCanonical(unittest.TestCase):
         }
         res94 = evaluate_question(q94, v94, book_key="jueces")
         self.assertNotEqual(res94["estado"], "REQUIERE_CORRECCION")
+
+    def test_ruth_cases_representative(self) -> None:
+        """Verifica evaluación de casos representativos de Rut (efa de cebada, seis medidas, diez ancianos, genealogía)."""
+        # RUT-0012: Un efa de cebada (Rut 2:17)
+        q12 = self.get_ruth_question("NQB-AT-RUT-0012")
+        v12 = {17: "Espigó, pues, en el campo hasta la noche, y desgranó lo que había recogido, y fue como un efa de cebada."}
+        res12 = evaluate_question(q12, v12, book_key="rut")
+        self.assertNotEqual(res12["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res12["controles_superados"]["control_nombres_propios"], "PASS")
+
+        # RUT-0018: Diez ancianos (Rut 4:1-2)
+        q18 = self.get_ruth_question("NQB-AT-RUT-0018")
+        v18 = {
+            1: "Booz subió a la puerta y se sentó allí...",
+            2: "Y él tomó diez varones de los ancianos de la ciudad, y dijo: Sentaos aquí. Y ellos se sentaron."
+        }
+        res18 = evaluate_question(q18, v18, book_key="rut")
+        self.assertNotEqual(res18["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res18["controles_superados"]["control_numeros_cantidades"], "PASS")
 
 
 if __name__ == "__main__":

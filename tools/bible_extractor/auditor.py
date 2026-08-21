@@ -159,6 +159,19 @@ BOOK_CONFIGS: dict[str, dict[str, Any]] = {
             "estaol", "ofra", "en-dor", "endor", "meguido", "megido"
         },
     },
+    "rut": {
+        "canonical_name": "Rut",
+        "api_name": "Rut",
+        "aliases": {"rut", "ruth"},
+        "total_chapters": 4,
+        "blocks": [
+            (1, 4, "ruth-01-04.json"),
+        ],
+        "default_output_dir": "build/audit/ruth",
+        "ambient_places": {
+            "belen", "moab", "campos de moab", "tierra de moab", "juda", "israel", "efrata"
+        },
+    },
 }
 
 STOPWORDS = {
@@ -172,7 +185,7 @@ STOPWORDS = {
     "ser", "sido", "estar", "estaba", "estaban", "tener", "tenia", "tenian",
 }
 
-# Entidades y personajes bíblicos (Génesis, Éxodo, Levítico, Números, Deuteronomio, Josué, Jueces)
+# Entidades y personajes bíblicos (Génesis, Éxodo, Levítico, Números, Deuteronomio, Josué, Jueces, Rut)
 BIBLE_PERSONAJES = {
     # Génesis
     "adan", "eva", "cain", "abel", "set", "enos", "cainan", "mahalaleel",
@@ -203,6 +216,9 @@ BIBLE_PERSONAJES = {
     "joas", "jerobaal", "abimelec", "jotam", "tola", "pua", "jair", "jefte", "jefté",
     "ibzan", "elon", "abdon", "abdón", "hilel", "sanson", "sansón", "manoa",
     "dalila", "micas", "jonatan", "gersom",
+    # Rut
+    "rut", "noemi", "noemí", "booz", "elimelec", "mahlon", "mahlón", "quelion", "quelión",
+    "orfa", "obed", "isai", "isaí", "salmon", "salmón", "aminadab", "ram", "naason",
     # Otros comunes
     "david", "salomon", "saul", "samuel", "elias", "eliseo", "jonatan",
     "nabucodonosor", "pablo", "pedro", "juan", "jesus", "mateo", "marcos",
