@@ -45,6 +45,7 @@ DEUTERONOMY_PATH = Path(__file__).parent / "deuteronomy-master-input.json"
 JOSHUA_PATH = Path(__file__).parent / "joshua-master-input.json"
 JUDGES_PATH = Path(__file__).parent / "judges-master-input.json"
 RUTH_PATH = Path(__file__).parent / "ruth-master-input.json"
+SAMUEL1_PATH = Path(__file__).parent / "1samuel-master-input.json"
 
 
 class TestAuditorCanonical(unittest.TestCase):
@@ -95,6 +96,12 @@ class TestAuditorCanonical(unittest.TestCase):
         else:
             cls.ruth_questions = {}
 
+        if SAMUEL1_PATH.exists():
+            raw_1sa = json.loads(SAMUEL1_PATH.read_text(encoding="utf-8"))
+            cls.samuel1_questions = {q["id"]: q for q in (raw_1sa.get("questions", []) if isinstance(raw_1sa, dict) else raw_1sa)}
+        else:
+            cls.samuel1_questions = {}
+
     def setUp(self) -> None:
         self.temp_dir = Path(tempfile.mkdtemp())
 
@@ -132,6 +139,10 @@ class TestAuditorCanonical(unittest.TestCase):
     def get_ruth_question(self, qid: str) -> dict:
         self.assertIn(qid, self.ruth_questions, f"ID '{qid}' no encontrado en ruth-master-input.json")
         return copy.deepcopy(self.ruth_questions[qid])
+
+    def get_1samuel_question(self, qid: str) -> dict:
+        self.assertIn(qid, self.samuel1_questions, f"ID '{qid}' no encontrado en 1samuel-master-input.json")
+        return copy.deepcopy(self.samuel1_questions[qid])
 
     # --- TEST GLOBAL DE CONSISTENCIA DE IDs Y REFERENCIAS ---
 
@@ -254,6 +265,22 @@ class TestAuditorCanonical(unittest.TestCase):
                 f"Referencia inconsistente en {qid}: ref='{ref}', esperada terminada en '{expected_suffix}'"
             )
 
+    def test_global_canonical_id_reference_integrity_1samuel(self) -> None:
+        """Verifica consistencia de IDs y referencias en 1 Samuel."""
+        if not self.samuel1_questions:
+            self.skipTest("1samuel-master-input.json aún no presente")
+        self.assertEqual(len(self.samuel1_questions), 100)
+        for qid, q in self.samuel1_questions.items():
+            ref = q.get("reference", "")
+            ch = q.get("chapter")
+            start = q.get("verse_start")
+            end = q.get("verse_end", start)
+            expected_suffix = f"{ch}:{start}" if start == end else f"{ch}:{start}-{end}"
+            self.assertTrue(
+                expected_suffix in ref or ref.endswith(expected_suffix),
+                f"Referencia inconsistente en {qid}: ref='{ref}', esperada terminada en '{expected_suffix}'"
+            )
+
     def test_numbers_book_detection(self) -> None:
         """Verifica detección de configuración de Números."""
         if not self.numbers_questions:
@@ -288,6 +315,14 @@ class TestAuditorCanonical(unittest.TestCase):
         self.assertEqual(book_key, "rut")
         self.assertEqual(BOOK_CONFIGS["rut"]["total_chapters"], 4)
         self.assertIn("ruth", BOOK_CONFIGS["rut"]["aliases"])
+
+    def test_1samuel_book_detection(self) -> None:
+        """Verifica detección de configuración de 1 Samuel."""
+        sample_q = [{"id": "NQB-AT-1SA-0001", "book": "1 Samuel", "chapter": 1, "verse_start": 1, "verse_end": 2}]
+        book_key = detect_book_key(sample_q)
+        self.assertEqual(book_key, "1samuel")
+        self.assertEqual(BOOK_CONFIGS["1samuel"]["total_chapters"], 31)
+        self.assertIn("1 samuel", BOOK_CONFIGS["1samuel"]["aliases"])
 
     def test_joshua_0061_with_additional_reference(self) -> None:
         """NQB-AT-JOS-0061: Josué 20:9 con additional_references=['Números 35:15'] se evalúa correctamente."""
@@ -850,6 +885,46 @@ class TestAuditorCanonical(unittest.TestCase):
         res = evaluate_question(q, v33, book_key="rut")
         self.assertEqual(res["controles_superados"]["control_nombres_propios"], "FAIL")
         self.assertEqual(res["estado"], "REQUIERE_CORRECCION")
+
+    def test_1samuel_regression_and_cases(self) -> None:
+        """Verifica casos canónicos clave de 1 Samuel (Ofni/Finees, 30.000, 5 tumores/ratones, 100/200 prepucios, etc.)."""
+        # 1SA-0004: Ofni y Finees hijos de Elí (1 Samuel 1:3)
+        q4 = self.get_1samuel_question("NQB-AT-1SA-0004")
+        v4 = {3: "Y todos los años aquel varón subía de su ciudad para adorar y para ofrecer sacrificios a Jehová de los ejércitos en Silo, donde estaban dos hijos de Elí, Ofni y Finees, sacerdotes de Jehová."}
+        res4 = evaluate_question(q4, v4, book_key="1samuel")
+        self.assertNotEqual(res4["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res4["controles_superados"]["control_nombres_propios"], "PASS")
+
+        # 1SA-0014: Treinta mil soldados (1 Samuel 4:10)
+        q14 = self.get_1samuel_question("NQB-AT-1SA-0014")
+        v14 = {10: "Pelearon, pues, los filisteos, e Israel fue vencido, y huyeron cada cual a sus tiendas; y fue hecha muy grande mortandad, pues cayeron de Israel treinta mil hombres de a pie."}
+        res14 = evaluate_question(q14, v14, book_key="1samuel")
+        self.assertNotEqual(res14["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res14["controles_superados"]["control_numeros_cantidades"], "PASS")
+
+        # 1SA-0019: Cinco tumores y cinco ratones de oro (1 Samuel 6:4-5)
+        q19 = self.get_1samuel_question("NQB-AT-1SA-0019")
+        v19 = {
+            4: "Y ellos dijeron: ¿Y qué será la expiación que le pagaremos? Ellos respondieron: Cinco tumores de oro, y cinco ratones de oro, conforme al número de los príncipes de los filisteos...",
+            5: "Haréis, pues, figuras de vuestros tumores, y figuras de vuestros ratones que destruyen la tierra..."
+        }
+        res19 = evaluate_question(q19, v19, book_key="1samuel")
+        self.assertNotEqual(res19["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res19["controles_superados"]["control_numeros_cantidades"], "PASS")
+
+        # 1SA-0058: Cinco piedras lisas del arroyo (1 Samuel 17:40)
+        q58 = self.get_1samuel_question("NQB-AT-1SA-0058")
+        v58 = {40: "Y tomó su cayado en su mano, y escogió cinco piedras lisas del arroyo, y las puso en el saco pastoril..."}
+        res58 = evaluate_question(q58, v58, book_key="1samuel")
+        self.assertNotEqual(res58["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res58["controles_superados"]["control_numeros_cantidades"], "PASS")
+
+        # 1SA-0098: Jonatán, Abinadab y Malquisúa (1 Samuel 31:2)
+        q98 = self.get_1samuel_question("NQB-AT-1SA-0098")
+        v98 = {2: "Y siguiendo los filisteos a Saúl y a sus hijos, mataron a Jonatán, a Abinadab y a Malquisúa, hijos de Saúl."}
+        res98 = evaluate_question(q98, v98, book_key="1samuel")
+        self.assertNotEqual(res98["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res98["controles_superados"]["control_nombres_propios"], "PASS")
 
 
 if __name__ == "__main__":
