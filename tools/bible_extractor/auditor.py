@@ -604,7 +604,7 @@ def evaluate_question(
 
     # Contexto cuantitativo o de proporción/fracción de la pregunta
     has_count_context = bool(re.search(
-        r"¿?\s*cuant[oa]s?\b|\bcuant[oa]s?\b|\bnumero\b|\bcantidad\b|\btotal\b|\bcontar\b|\bvara\b|\bdecim[oa]\b|\bdiezmo\b|\bque\s+parte\b|\bque\s+porcion\b|\bfraccion\b|\bproporcion\b|\bporcentaje\b|\bmitad\b|\btercia\b|\btercera\b|\bcuarta\b|\bquinta\b|\bdecima\s+parte\b|\brestitucion\b|\banadirse\b|\banadira\b",
+        r"¿?\s*cuant[oa]s?\b|\bcuant[oa]s?\b|\bnumero\s+de\b|\bcantidad\s+de\b|\btotal\s+de\b|\bcuantas?\s+veces\b|\bcontar\b|\bvara\b|\bdecim[oa]\b|\bdiezmo\b|\bque\s+parte\b|\bque\s+porcion\b|\bque\s+fraccion\b|\bfraccion\b|\bproporcion\b|\bporcentaje\b|\bmitad\b|\btercia\b|\btercera\b|\bcuarta\b|\bquinta\b|\bdecima\s+parte\b",
         normalize(prompt)
     ))
 
@@ -842,12 +842,23 @@ def evaluate_question(
         if any(w in all_text_norm.split() for w in words):
             kin_detected_stems.add(stem)
 
+    is_comparative = bool(re.search(r"\b(?:como|semejante|compar[oa]|figura|imagen|metafora|alusion)\b", all_text_norm))
+
     if not kin_detected_stems:
         controls["control_relaciones_personajes"] = "NOT_APPLICABLE"
     else:
-        missing_stems = [stem for stem in kin_detected_stems if not any(w in passage_norm.split() for w in KINSHIP_STEMS[stem])]
+        missing_stems = []
+        for stem in kin_detected_stems:
+            words = KINSHIP_STEMS[stem]
+            if not any(w in passage_norm.split() for w in words):
+                if is_comparative and stem in {"padr", "hij"} and any(w in passage_norm.split() for w in ["hombre", "hijo", "hija", "padre", "madre"]):
+                    continue
+                missing_stems.append(stem)
+
         if not missing_stems:
             controls["control_relaciones_personajes"] = "PASS"
+        elif is_comparative:
+            controls["control_relaciones_personajes"] = "PASS" if any(w in passage_norm.split() for w in ["hijo", "hija", "padre", "madre", "hombre"]) else "UNKNOWN"
         elif any(any(w in normalize(opcion_a).split() for w in KINSHIP_STEMS[stem]) for stem in missing_stems):
             controls["control_relaciones_personajes"] = "FAIL"
             incidencias.append(f"Relación/parentesco en opción A no tiene respaldo en el pasaje: {missing_stems}")

@@ -254,6 +254,66 @@ class TestAuditorCanonical(unittest.TestCase):
         nums = extract_numbers("Un cordero", is_quantitative_context=True)
         self.assertIn(1, nums)
 
+    # --- REGRESIONES ESPECÍFICAS DE DEUTERONOMIO ---
+
+    def test_deu_0003_comparative_father_son_metaphor(self) -> None:
+        """DEU-0003: 'Como un padre que lleva a su hijo' frente a 'como trae el hombre a su hijo' en Deuteronomio 1:31."""
+        q3 = self.get_deuteronomy_question("NQB-AT-DEU-0003")
+        v3 = {31: "Y en el desierto has visto que Jehová tu Dios te ha traído, como trae el hombre a su hijo, por todo el camino que habéis andado, hasta llegar a este lugar."}
+        res3 = evaluate_question(q3, v3, book_key="deuteronomio")
+        self.assertEqual(res3["controles_superados"]["control_relaciones_personajes"], "PASS")
+        self.assertEqual(res3["estado"], "VERIFICADO")
+
+    def test_literal_kinship_missing_produces_fail(self) -> None:
+        """Pregunta de parentesco literal sin respaldo en el pasaje produce FAIL en control_relaciones_personajes."""
+        q_literal = {
+            "id": "TEST-KINSHIP-LITERAL",
+            "book": "Deuteronomio",
+            "chapter": 1,
+            "verse_start": 38,
+            "verse_end": 38,
+            "reference": "Deuteronomio 1:38",
+            "question": "¿Qué parentesco tenía Nun respecto de Josué según el texto?",
+            "opcion_a": "Era el padre de Josué",
+            "opcion_b": "Era el tío",
+            "opcion_c": "Era el hermano",
+            "opcion_d": "Era el abuelo",
+            "correct_option": "A",
+            "correct_answer": "Era el padre de Josué",
+            "explanation": "Nun era el padre de Josué...",
+            "characters": ["Josué", "Nun"],
+            "difficulty": "Básico",
+            "category": "PERSONAJES_BIBLICOS",
+        }
+        # 1. Pasaje con 'padre' explícito -> PASS
+        v_pass = {38: "Josué hijo de Nun, y su padre Nun le enseñó..."}
+        res_pass = evaluate_question(q_literal, v_pass, book_key="deuteronomio")
+        self.assertEqual(res_pass["controles_superados"]["control_relaciones_personajes"], "PASS")
+
+        # 2. Pasaje sin 'padre' -> FAIL
+        v_fail = {38: "Josué, el cual te sirve, él entrará allá; anímale, porque él la hará heredar a Israel."}
+        res_fail = evaluate_question(q_literal, v_fail, book_key="deuteronomio")
+        self.assertEqual(res_fail["controles_superados"]["control_relaciones_personajes"], "FAIL")
+
+    def test_deu_0060_action_measure_no_spurious_one(self) -> None:
+        """DEU-0060: '¿Qué medida de seguridad...?' con 'Construir una protección...' no extrae 1 espurio."""
+        q60 = self.get_deuteronomy_question("NQB-AT-DEU-0060")
+        v60 = {8: "Cuando edifiques casa nueva, harás pretil a tu terrado, para que no pongas culpa de sangre sobre tu casa, si de él cayere alguno."}
+        res60 = evaluate_question(q60, v60, book_key="deuteronomio")
+        self.assertEqual(res60["controles_superados"]["control_numeros_cantidades"], "NOT_APPLICABLE")
+        self.assertEqual(res60["controles_superados"]["control_opcion_a_correcta"], "PASS")
+        self.assertEqual(res60["estado"], "VERIFICADO")
+
+    def test_explicit_quant_context_evaluations(self) -> None:
+        """Verifica que preguntas con '¿Cuántas...?' y '¿Cuánto debía medir...?' evalúen cantidades correctamente."""
+        # Cuántas -> extrae 1
+        nums_cuantas = extract_numbers("Una", is_quantitative_context=True)
+        self.assertEqual(nums_cuantas, [1])
+
+        # Medida de seguridad (cualitativo) -> no extrae 1
+        nums_cual = extract_numbers("Construir una protección", is_quantitative_context=False)
+        self.assertEqual(nums_cual, [])
+
     # --- REGRESIONES ESPECÍFICAS DE NÚMEROS (SIN, MIRIAM, SIHÓN, 601730, MITADES) ---
 
     def test_num_sin_preposition_not_detected_as_place(self) -> None:
