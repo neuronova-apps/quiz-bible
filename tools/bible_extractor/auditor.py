@@ -263,7 +263,7 @@ BIBLE_PERSONAJES = {
     # 2 Samuel
     "mefi-boset", "mefiboset", "is-boset", "isboset", "asael", "absalon", "absalón",
     "amnon", "amnón", "adonias", "adonías", "sarvia", "urias", "urías", "betsabe", "betsabé",
-    "natan", "natán", "ahitofel", "husai", "itai", "itaí", "simei", "ziba", "barzilai",
+    "natan", "natán", "ahitofel", "husai", "itai", "itaí", "simei", "ziba", "siba", "barzilai",
     "quimam", "seba", "sebá", "benaia", "benaías", "amasa", "arauna", "isbi-benob",
     "saf", "elhanan", "jonadab", "hanun", "hanún", "sobac", "baana", "recab", "talmai", "ahimaas",
     # Otros comunes
@@ -465,6 +465,8 @@ SYNONYMS = {
     "amalecitas": "amalec",
     "hitita": "heteo",
     "hititas": "heteos",
+    "ziba": "siba",
+    "siba": "ziba",
     # Redención y parentesco bíblico
     "suegra": "noemi",
     "noemi": "suegra",

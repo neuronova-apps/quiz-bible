@@ -994,6 +994,18 @@ class TestAuditorCanonical(unittest.TestCase):
         self.assertNotEqual(res18["estado"], "REQUIERE_CORRECCION")
         self.assertEqual(res18["controles_superados"]["control_numeros_cantidades"], "PASS")
 
+        # 2SA-0029: Ziba / Siba (2 Samuel 9:2-5)
+        q29 = self.get_2samuel_question("NQB-AT-2SA-0029")
+        v29 = {
+            2: "Y había un siervo de la casa de Saúl, que se llamaba Siba, al cual llamaron para que viniese a David...",
+            3: "Y el siervo respondió al rey: Aún queda un hijo de Jonatán, lisiado de los pies.",
+            4: "Entonces dijo el rey: ¿Dónde está? Y Siba respondió al rey...",
+            5: "Entonces envió el rey David, y le trajo de la casa de Maquir..."
+        }
+        res29 = evaluate_question(q29, v29, book_key="2samuel")
+        self.assertNotEqual(res29["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res29["controles_superados"]["control_nombres_propios"], "PASS")
+
         # 2SA-0078: Nueve meses y veinte días (2 Samuel 24:8-9)
         q78 = self.get_2samuel_question("NQB-AT-2SA-0078")
         v78 = {
