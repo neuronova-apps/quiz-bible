@@ -5,6 +5,8 @@ Carga preguntas reales directamente desde genesis-master-input.json,
 exodus-master-input.json y leviticus-master-input.json (si existe), realizando
 mutaciones controladas sobre copias profundas (deepcopy) para verificar:
 - Soporte multilibro (Génesis, Éxodo, Levítico);
+- NQB-AT-LEV-0079: 'La décima parte' vs diezmo de la tierra en Levítico 27:30;
+- NQB-AT-LEV-0079 negativo: 'La quinta parte' produce FAIL;
 - NQB-AT-LEV-0080: 'Cada décimo animal' vs concepto de diezmo/vara en Levítico 27:32;
 - NQB-AT-LEV-0080 negativo: 'Cada séptimo animal' produce FAIL;
 - No generación automática de 10 ante apariciones no cuantitativas de 'diezmo';
@@ -116,6 +118,34 @@ class TestAuditorCanonical(unittest.TestCase):
                 f"Referencia inconsistente en {qid}: ref='{ref}', esperada terminada en '{expected_suffix}'"
             )
 
+    # --- CASO NQB-AT-LEV-0079: LA DÉCIMA PARTE Y DIEZMO DE LA TIERRA EN LEVÍTICO 27:30 ---
+
+    def test_positive_lev_0079_decima_parte_tithe(self) -> None:
+        """NQB-AT-LEV-0079: 'La décima parte' respalda el diezmo de la tierra."""
+        q = self.get_leviticus_question("NQB-AT-LEV-0079")
+        self.assertEqual(q["reference"], "Levítico 27:30")
+        self.assertEqual(q["opcion_a"], "La décima parte")
+        verse_map = {
+            30: "Y el diezmo de la tierra, así de la simiente de la tierra como del fruto de los árboles, de Jehová es; es cosa dedicada a Jehová."
+        }
+        res = evaluate_question(q, verse_map, book_key="levitico")
+        self.assertEqual(res["controles_superados"]["control_numeros_cantidades"], "PASS")
+        self.assertEqual(res["controles_superados"]["control_opcion_a_correcta"], "PASS")
+        self.assertEqual(res["controles_superados"]["control_rango_suficiente"], "PASS")
+        self.assertEqual(res["estado"], "VERIFICADO")
+
+    def test_negative_lev_0079_contradictory_fraction(self) -> None:
+        """Mutación negativa sobre NQB-AT-LEV-0079: 'La quinta parte' produce FAIL."""
+        q = self.get_leviticus_question("NQB-AT-LEV-0079")
+        q["opcion_a"] = "La quinta parte"
+        q["correct_answer"] = "La quinta parte"
+        verse_map = {
+            30: "Y el diezmo de la tierra, así de la simiente de la tierra como del fruto de los árboles, de Jehová es; es cosa dedicada a Jehová."
+        }
+        res = evaluate_question(q, verse_map, book_key="levitico")
+        self.assertEqual(res["controles_superados"]["control_numeros_cantidades"], "FAIL")
+        self.assertEqual(res["estado"], "REQUIERE_CORRECCION")
+
     # --- CASO NQB-AT-LEV-0080: CADA DÉCIMO ANIMAL Y DIEZMO EN LEVÍTICO 27:32 ---
 
     def test_positive_lev_0080_decimo_animal_tithe(self) -> None:
@@ -145,8 +175,8 @@ class TestAuditorCanonical(unittest.TestCase):
         self.assertEqual(res["estado"], "REQUIERE_CORRECCION")
 
     def test_non_quantitative_diezmo_does_not_extract_10_blindly(self) -> None:
-        """Mención no cuantitativa de 'diezmo' sin conteo/vara no produce número 10."""
-        text_non_quant = "Y el diezmo de la tierra, así de la simiente como del fruto, de Jehová es."
+        """Mención no cuantitativa de 'diezmo' sin conteo/fracción no produce número 10."""
+        text_non_quant = "Y el diezmo de la tierra de Jehová es santificado."
         nums = extract_numbers(text_non_quant, is_quantitative_context=False)
         self.assertNotIn(10, nums)
 

@@ -215,10 +215,17 @@ SPANISH_TENS = {
 
 SPANISH_UNITS = {
     "cero": 0, "uno": 1, "una": 1, "dos": 2, "tres": 3, "cuatro": 4,
-    "cinco": 5, "seis": 6, "siete": 7, "ocho": 8, "nueve": 9,
-    "primero": 1, "primer": 1, "segundo": 2, "tercero": 3, "tercer": 3,
-    "cuarto": 4, "quinto": 5, "sexto": 6, "septimo": 7, "octavo": 8,
-    "noveno": 9, "decimo": 10, "decima": 10,
+    "cinco": 5, "cinco": 5, "seis": 6, "siete": 7, "ocho": 8, "nueve": 9,
+    "primero": 1, "primer": 1, "primera": 1,
+    "segundo": 2, "segunda": 2,
+    "tercero": 3, "tercer": 3, "tercera": 3, "tercia": 3,
+    "cuarto": 4, "cuarta": 4,
+    "quinto": 5, "quinta": 5,
+    "sexto": 6, "sexta": 6,
+    "septimo": 7, "septima": 7,
+    "octavo": 8, "octava": 8,
+    "noveno": 9, "novena": 9,
+    "decimo": 10, "decima": 10,
 }
 
 
@@ -273,9 +280,9 @@ def extract_numbers(text: str, is_quantitative_context: bool = False) -> list[in
             if is_quantitative_context or re.search(countable_units_pattern, cleaned_norm):
                 numbers.append(1)
 
-    # 3. Diezmo en contexto de conteo, proporción o vara
+    # 3. Diezmo en contexto de proporción, fracción, vara o conteo
     if re.search(r"\b(?:diezmo|diezmos)\b", cleaned_norm):
-        if is_quantitative_context or re.search(r"\b(?:cada|contar|vara|pasa|animal|porcion|parte|uno de cada|decim[oa])\b", cleaned_norm):
+        if is_quantitative_context or re.search(r"\b(?:cada|contar|vara|pasa|animal|porcion|parte|uno de cada|decim[oa]|fraccion|proporcion)\b", cleaned_norm):
             numbers.append(10)
 
     # 4. Palabras numéricas compuestas respetando la formación en español
@@ -460,8 +467,11 @@ def evaluate_question(
             missing_v = [v for v in all_required_verses_unique if v not in verse_map]
             incidencias.append(f"Versículos faltantes en el capítulo: {missing_v}")
 
-    # Contexto cuantitativo de la pregunta
-    has_count_context = bool(re.search(r"¿?\s*cuant[oa]s?\b|\bcuant[oa]s?\b|\bnumero\b|\bcantidad\b|\bcontar\b|\bvara\b|\bdecim[oa]\b|\bdiezmo\b", normalize(prompt)))
+    # Contexto cuantitativo o de proporción/fracción de la pregunta
+    has_count_context = bool(re.search(
+        r"¿?\s*cuant[oa]s?\b|\bcuant[oa]s?\b|\bnumero\b|\bcantidad\b|\bcontar\b|\bvara\b|\bdecim[oa]\b|\bdiezmo\b|\bque\s+parte\b|\bque\s+porcion\b|\bfraccion\b|\bproporcion\b|\bporcentaje\b|\bmitad\b|\btercia\b|\btercera\b|\bcuarta\b|\bquinta\b|\bdecima\s+parte\b",
+        normalize(prompt)
+    ))
 
     # Construir pasaje integral en memoria
     passage = " ".join(verse_map.get(v, "") for v in all_required_verses_unique) if verse_map else ""
