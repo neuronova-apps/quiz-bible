@@ -7,7 +7,8 @@ Lee directamente:
 - build/audit/genesis/correcciones-aplicadas.json
 - build/audit/genesis/genesis-XX-XX.json
 
-Compara la integridad con tools/bible_extractor/genesis-master-input.json.
+Escribe:
+- build/audit/genesis/informe-oficial.json
 """
 
 from __future__ import annotations
@@ -45,8 +46,16 @@ def generate_report(output_dir: Path, master_input_path: Path) -> dict[str, Any]
     inconc_c = summary.get("inconclusive_count", 0)
     persisted = summary.get("source_text_persisted", True)
 
+    chapters_in_bank = summary.get("chapters_present_in_bank", summary.get("chapters_covered", 0))
+    successful_fetches = summary.get("successful_chapter_fetches", summary.get("chapters_covered", 0))
+    failed_fetches_count = summary.get("failed_chapter_fetches", 0)
+    failed_chapters = summary.get("failed_chapters", [])
+    http_attempts = summary.get("http_request_attempts_total", chapters_in_bank)
+    rate_retries = summary.get("rate_limit_retries", 0)
+    textual_coverage_complete = summary.get("textual_coverage_complete", (successful_fetches == 50 and len(failed_chapters) == 0))
+
     if total_q != (verif_c + req_corr_c + inconc_c):
-        raise ValueError(f"Inconsistencia en resumen: total ({total_q}) != verif ({verif_c}) + req_corr ({req_corr_c}) + inconc ({inconc_c})")
+        raise ValueError(f"Inconsistencia matemática en resumen: total ({total_q}) != verif ({verif_c}) + req_corr ({req_corr_c}) + inconc ({inconc_c})")
 
     if total_q != len(master_questions):
         raise ValueError(f"Discrepancia en cantidad de preguntas: summary ({total_q}) vs master ({len(master_questions)})")
@@ -71,33 +80,48 @@ def generate_report(output_dir: Path, master_input_path: Path) -> dict[str, Any]
     requires_correction_items = [p for p in revision.get("pendientes", []) if p.get("estado") == "REQUIERE_CORRECCION"]
     inconclusive_items = [p for p in revision.get("pendientes", []) if p.get("estado") == "NO_CONCLUYENTE"]
 
-    report = {
+    official_report = {
+        "run_schema_version": "quizbible-official-audit-report-v1",
         "total_questions": total_q,
         "verified_count": verif_c,
         "requires_correction_count": req_corr_c,
         "inconclusive_count": inconc_c,
-        "verification_rate": summary.get("verification_rate", 0.0),
+        "verification_rate": summary.get("verification_rate", round(verif_c / total_q * 100, 2) if total_q else 0.0),
+        "chapters_present_in_bank": chapters_in_bank,
+        "successful_chapter_fetches": successful_fetches,
+        "failed_chapter_fetches": failed_fetches_count,
+        "failed_chapters": failed_chapters,
+        "textual_coverage_complete": textual_coverage_complete,
+        "http_request_attempts_total": http_attempts,
+        "rate_limit_retries": rate_retries,
         "source_text_persisted": persisted,
-        "chapters_covered": summary.get("chapters_covered", 0),
-        "chapter_coverage_complete_1_50": summary.get("chapter_coverage_complete_1_50", False),
         "controls_distribution": summary.get("controls_distribution", {}),
         "requires_correction_items": requires_correction_items,
         "inconclusive_items": inconclusive_items,
         "total_blocks": len(block_files),
     }
-    return report
+
+    # Escribir informe-oficial.json directamente
+    informe_path = output_dir / "informe-oficial.json"
+    informe_path.write_text(json.dumps(official_report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    return official_report
 
 
 def print_markdown_report(report: dict[str, Any]) -> None:
     print("================================================================================")
     print("                    INFORME OFICIAL DE AUDITORÍA RVR1960                       ")
     print("================================================================================")
-    print(f"Total preguntas procesadas : {report['total_questions']}")
-    print(f"VERIFICADO                 : {report['verified_count']} ({report['verification_rate']}%)")
-    print(f"REQUIERE_CORRECCION        : {report['requires_correction_count']}")
-    print(f"NO_CONCLUYENTE             : {report['inconclusive_count']}")
-    print(f"Cobertura Capítulos (1-50) : {report['chapters_covered']}/50 ({'COMPLETA' if report['chapter_coverage_complete_1_50'] else 'INCOMPLETA'})")
-    print(f"source_text_persisted      : {report['source_text_persisted']}")
+    print(f"Total preguntas procesadas      : {report['total_questions']}")
+    print(f"VERIFICADO                      : {report['verified_count']} ({report['verification_rate']}%)")
+    print(f"REQUIERE_CORRECCION             : {report['requires_correction_count']}")
+    print(f"NO_CONCLUYENTE                  : {report['inconclusive_count']}")
+    print(f"Capítulos en banco maestro      : {report['chapters_present_in_bank']}")
+    print(f"Capítulos obtenidos con éxito   : {report['successful_chapter_fetches']}/50")
+    print(f"Capítulos fallidos              : {report['failed_chapters']}")
+    print(f"Cobertura textual completa      : {report['textual_coverage_complete']}")
+    print(f"Intentos HTTP totales           : {report['http_request_attempts_total']}")
+    print(f"Reintentos por rate limit (429) : {report['rate_limit_retries']}")
+    print(f"source_text_persisted           : {report['source_text_persisted']}")
     print("--------------------------------------------------------------------------------")
     print("Distribución de los 17 Controles:")
     for c_name, counts in report["controls_distribution"].items():
