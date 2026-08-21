@@ -50,6 +50,7 @@ SAMUEL2_PATH = Path(__file__).parent / "2samuel-master-input.json"
 KINGS1_PATH = Path(__file__).parent / "1kings-master-input.json"
 KINGS2_PATH = Path(__file__).parent / "2kings-master-input.json"
 CHRONICLES1_PATH = Path(__file__).parent / "1chronicles-master-input.json"
+CHRONICLES2_PATH = Path(__file__).parent / "2chronicles-master-input.json"
 
 
 class TestAuditorCanonical(unittest.TestCase):
@@ -130,6 +131,12 @@ class TestAuditorCanonical(unittest.TestCase):
         else:
             cls.chronicles1_questions = {}
 
+        if CHRONICLES2_PATH.exists():
+            raw_2ch = json.loads(CHRONICLES2_PATH.read_text(encoding="utf-8"))
+            cls.chronicles2_questions = {q["id"]: q for q in (raw_2ch.get("questions", []) if isinstance(raw_2ch, dict) else raw_2ch)}
+        else:
+            cls.chronicles2_questions = {}
+
     def setUp(self) -> None:
         self.temp_dir = Path(tempfile.mkdtemp())
 
@@ -187,6 +194,10 @@ class TestAuditorCanonical(unittest.TestCase):
     def get_1chronicles_question(self, qid: str) -> dict:
         self.assertIn(qid, self.chronicles1_questions, f"ID '{qid}' no encontrado en 1chronicles-master-input.json")
         return copy.deepcopy(self.chronicles1_questions[qid])
+
+    def get_2chronicles_question(self, qid: str) -> dict:
+        self.assertIn(qid, self.chronicles2_questions, f"ID '{qid}' no encontrado en 2chronicles-master-input.json")
+        return copy.deepcopy(self.chronicles2_questions[qid])
 
     # --- TEST GLOBAL DE CONSISTENCIA DE IDs Y REFERENCIAS ---
 
@@ -389,6 +400,22 @@ class TestAuditorCanonical(unittest.TestCase):
                 f"Referencia inconsistente en {qid}: ref='{ref}', esperada terminada en '{expected_suffix}'"
             )
 
+    def test_global_canonical_id_reference_integrity_2chronicles(self) -> None:
+        """Verifica consistencia de IDs y referencias en 2 Crónicas."""
+        if not self.chronicles2_questions:
+            self.skipTest("2chronicles-master-input.json aún no presente")
+        self.assertEqual(len(self.chronicles2_questions), 102)
+        for qid, q in self.chronicles2_questions.items():
+            ref = q.get("reference", "")
+            ch = q.get("chapter")
+            start = q.get("verse_start")
+            end = q.get("verse_end", start)
+            expected_suffix = f"{ch}:{start}" if start == end else f"{ch}:{start}-{end}"
+            self.assertTrue(
+                expected_suffix in ref or ref.endswith(expected_suffix),
+                f"Referencia inconsistente en {qid}: ref='{ref}', esperada terminada en '{expected_suffix}'"
+            )
+
     def test_numbers_book_detection(self) -> None:
         """Verifica detección de configuración de Números."""
         if not self.numbers_questions:
@@ -465,6 +492,16 @@ class TestAuditorCanonical(unittest.TestCase):
         self.assertIn("1 crónicas", BOOK_CONFIGS["1chronicles"]["aliases"])
         self.assertIn("1 cronicas", BOOK_CONFIGS["1chronicles"]["aliases"])
         self.assertIn("1chronicles", BOOK_CONFIGS["1chronicles"]["aliases"])
+
+    def test_2chronicles_book_detection(self) -> None:
+        """Verifica detección de configuración de 2 Crónicas."""
+        sample_q = [{"id": "NQB-AT-2CR-0001", "book": "2 Crónicas", "chapter": 1, "verse_start": 1, "verse_end": 2}]
+        book_key = detect_book_key(sample_q)
+        self.assertEqual(book_key, "2chronicles")
+        self.assertEqual(BOOK_CONFIGS["2chronicles"]["total_chapters"], 36)
+        self.assertIn("2 crónicas", BOOK_CONFIGS["2chronicles"]["aliases"])
+        self.assertIn("2 cronicas", BOOK_CONFIGS["2chronicles"]["aliases"])
+        self.assertIn("2chronicles", BOOK_CONFIGS["2chronicles"]["aliases"])
 
     def test_joshua_0061_with_additional_reference(self) -> None:
         """NQB-AT-JOS-0061: Josué 20:9 con additional_references=['Números 35:15'] se evalúa correctamente."""
@@ -1453,6 +1490,114 @@ class TestAuditorCanonical(unittest.TestCase):
         self.assertNotEqual(res80["estado"], "REQUIERE_CORRECCION")
         self.assertEqual(res80["controles_superados"]["control_numeros_cantidades"], "PASS")
         self.assertEqual(res80["controles_superados"]["control_nombres_propios"], "PASS")
+
+    # --- CASOS DE REGRESIÓN Y COBERTURA DE 2 CRÓNICAS ---
+
+    def test_2chronicles_regression_and_cases(self) -> None:
+        """Verifica casos canónicos, cuantitativos e históricos de 2 Crónicas."""
+        if not self.chronicles2_questions:
+            self.skipTest("2chronicles-master-input.json no disponible")
+
+        # 2CR-0002: 1000 holocaustos en Gabaón (2 Crónicas 1:6)
+        q2 = self.get_2chronicles_question("NQB-AT-2CR-0002")
+        v2 = {6: "Y subió Salomón allá delante de Jehová, al altar de bronce que estaba en el tabernáculo de reunión, y ofreció sobre él mil holocaustos."}
+        res2 = evaluate_question(q2, v2, book_key="2chronicles")
+        self.assertNotEqual(res2["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res2["controles_superados"]["control_numeros_cantidades"], "PASS")
+
+        # 2CR-0003: 70000, 80000, 3600 trabajadores (2 Crónicas 2:2)
+        q3 = self.get_2chronicles_question("NQB-AT-2CR-0003")
+        v3 = {2: "Y designó Salomón setenta mil hombres que llevasen cargas, y ochenta mil hombres que cortasen en el monte, y tres mil seiscientos que los vigilasen."}
+        res3 = evaluate_question(q3, v3, book_key="2chronicles")
+        self.assertNotEqual(res3["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res3["controles_superados"]["control_numeros_cantidades"], "PASS")
+
+        # 2CR-0010: Asaf, Hemán, Jedutún y 120 trompetistas (2 Crónicas 5:11-14)
+        q10 = self.get_2chronicles_question("NQB-AT-2CR-0010")
+        v10 = {
+            11: "Y cuando los sacerdotes salieron del santuario...",
+            12: "y los levitas cantores, todos los de Asaf, los de Hemán, y los de Jedutún, juntamente con sus hijos y sus hermanos, vestidos de lino fino, estaban con címbalos y salterios y arpas al oriente del altar; y con ellos ciento veinte sacerdotes que tocaban trompetas:",
+            13: "cuando sonaban, pues, las trompetas y cantaban todos a una...",
+            14: "Y no podían los sacerdotes estar allí para ministrar, por causa de la nube; porque la gloria de Jehová había llenado la casa de Dios."
+        }
+        res10 = evaluate_question(q10, v10, book_key="2chronicles")
+        self.assertNotEqual(res10["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res10["controles_superados"]["control_numeros_cantidades"], "PASS")
+        self.assertEqual(res10["controles_superados"]["control_nombres_propios"], "PASS")
+
+        # 2CR-0026: Sisac, 1200 carros, 60000 de a caballo, libios, suquienos, etíopes (2 Crónicas 12:2-4)
+        q26 = self.get_2chronicles_question("NQB-AT-2CR-0026")
+        v26 = {
+            2: "Y en el quinto año del rey Roboam subió Sisac rey de Egipto contra Jerusalén, por cuanto se habían rebelado contra Jehová,",
+            3: "con mil doscientos carros, y con sesenta mil hombres de a caballo; mas el pueblo que venía con él de Egipto, esto es, libios, suquienos y etíopes, no tenía número.",
+            4: "Y tomó las ciudades fortificadas de Judá, y llegó hasta Jerusalén."
+        }
+        res26 = evaluate_question(q26, v26, book_key="2chronicles")
+        self.assertNotEqual(res26["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res26["controles_superados"]["control_numeros_cantidades"], "PASS")
+
+        # 2CR-0033: Zera etíope, 1,000,000 hombres, 300 carros (2 Crónicas 14:9-10)
+        q33 = self.get_2chronicles_question("NQB-AT-2CR-0033")
+        v33 = {
+            9: "Y salió contra ellos Zera etíope con un ejército de un millón de hombres y trescientos carros; y vino hasta Maresa.",
+            10: "Entonces salió Asa contra él, y ordenaron la batalla en el valle de Zefata junto a Maresa."
+        }
+        res33 = evaluate_question(q33, v33, book_key="2chronicles")
+        self.assertNotEqual(res33["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res33["controles_superados"]["control_numeros_cantidades"], "PASS")
+
+        # 2CR-0047: Amarías y Zebadías (2 Crónicas 19:8-11)
+        q47 = self.get_2chronicles_question("NQB-AT-2CR-0047")
+        v47 = {
+            8: "Puso también Josafat en Jerusalén algunos de los levitas y sacerdotes, y de los padres de familias de Israel, para el juicio de Jehová y para las causas...",
+            9: "Y les mandó diciendo: Procederéis asimismo con temor de Jehová, con verdad, y con corazón íntegro.",
+            10: "En cualquier causa que viniere a vosotros de vuestros hermanos que habitan en las ciudades...",
+            11: "Y he aquí el sacerdote Amarías será el que os presida en todo asunto de Jehová, y Zebadías hijo de Ismael, príncipe de la casa de Judá, en todos los negocios del rey; también los levitas serán oficiales en presencia vuestra. Esforzaos, pues, para obrar, y Jehová será con el bueno."
+        }
+        res47 = evaluate_question(q47, v47, book_key="2chronicles")
+        self.assertNotEqual(res47["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res47["controles_superados"]["control_nombres_propios"], "PASS")
+
+        # 2CR-0052: 3 días de botín, bendición en Beraca (2 Crónicas 20:24-30)
+        q52 = self.get_2chronicles_question("NQB-AT-2CR-0052")
+        v52 = {
+            24: "Y luego que vino Judá a la torre del desierto, miraron hacia la multitud, y he aquí yacían ellos en tierra muertos, pues ninguno había escapado.",
+            25: "Viniendo entonces Josafat y su pueblo a despojarlos, hallaron entre los cadáveres muchas riquezas, así vestidos como alhajas preciosas, que tomaron para sí, tantos, que no los podían llevar; tres días estuvieron recogiendo el botín, porque era mucho.",
+            26: "Y al cuarto día se juntaron en el valle de Beraca; porque allí bendijeron a Jehová, y por esto llamaron el nombre de aquel paraje el valle de Beraca, hasta hoy.",
+            27: "Y todo Judá y los de Jerusalén, y Josafat a la cabeza de ellos, volvieron para regresar a Jerusalén gozosos, porque Jehová les había dado gozo librándolos de sus enemigos.",
+            28: "Y vinieron a Jerusalén con salterios, arpas y trompetas, a la casa de Jehová.",
+            29: "Y el pavor de Dios cayó sobre todos los reinos de aquella tierra, cuando oyeron que Jehová había peleado contra los enemigos de Israel.",
+            30: "Y el reino de Josafat tuvo paz; porque su Dios le dio paz por todas partes."
+        }
+        res52 = evaluate_question(q52, v52, book_key="2chronicles")
+        self.assertNotEqual(res52["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res52["controles_superados"]["control_lugares"], "PASS")
+
+        # 2CR-0079: 7 novillos, 7 carneros, 7 corderos, 7 machos cabríos (2 Crónicas 29:20-27)
+        q79 = self.get_2chronicles_question("NQB-AT-2CR-0079")
+        v79 = {
+            20: "Y levantándose de mañana el rey Ezequías reunió los principales de la ciudad, y subió a la casa de Jehová.",
+            21: "Y trajeron siete novillos, siete carneros, siete corderos y siete machos cabríos, para expiación por el reino, por el santuario y por Judá...",
+            22: "Mataron, pues, los novillos, y los sacerdotes tomaron la sangre...",
+            23: "Hicieron luego acercar los machos cabríos de la expiación delante del rey y de la multitud, y pusieron sobre ellos sus manos;",
+            24: "y los sacerdotes los mataron, y expiaron con la sangre de ellos sobre el altar, para reconciliar a todo Israel; porque por todo Israel mandó el rey hacer el holocausto y la expiación.",
+            25: "Puso también levitas en la casa de Jehová con címbalos, salterios y arpas, conforme al mandamiento de David, de Gad vidente del rey, y del profeta Natán...",
+            26: "Y los levitas estaban con los instrumentos de David, y los sacerdotes con trompetas.",
+            27: "Entonces mandó Ezequías ofrecer el holocausto en el altar; y cuando comenzó el holocausto, comenzó también el cántico de Jehová, con las trompetas y los instrumentos de David rey de Israel."
+        }
+        res79 = evaluate_question(q79, v79, book_key="2chronicles")
+        self.assertNotEqual(res79["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res79["controles_superados"]["control_numeros_cantidades"], "PASS")
+
+        # 2CR-0102: Decreto de Ciro (2 Crónicas 36:22-23)
+        q102 = self.get_2chronicles_question("NQB-AT-2CR-0102")
+        v102 = {
+            22: "Mas al primer año de Ciro rey de los persas, para que se cumpliese la palabra de Jehová por boca de Jeremías, Jehová despertó el espíritu de Ciro rey de los persas, el cual hizo pregonar de palabra y también por escrito, por todo su reino, diciendo:",
+            23: "Así dice Ciro, rey de los persas: Jehová, el Dios de los cielos, me ha dado todos los reinos de la tierra; y él me ha mandado que le edifique casa en Jerusalén, que está en Judá. Quien haya entre vosotros de todo su pueblo, sea Jehová su Dios con él, y suba."
+        }
+        res102 = evaluate_question(q102, v102, book_key="2chronicles")
+        self.assertNotEqual(res102["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res102["controles_superados"]["control_nombres_propios"], "PASS")
 
 
 if __name__ == "__main__":

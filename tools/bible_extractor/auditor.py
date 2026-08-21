@@ -270,6 +270,32 @@ BOOK_CONFIGS: dict[str, dict[str, Any]] = {
             "guilboa", "gilboa", "moriah", "monte moriah"
         },
     },
+    "2chronicles": {
+        "canonical_name": "2 Crónicas",
+        "api_name": "2 Crónicas",
+        "aliases": {
+            "2 crónicas", "2 cronicas", "2crónicas", "2cronicas",
+            "2 chronicles", "2chronicles", "2 cronica", "2 crón", "2 cron",
+            "segunda de crónicas", "segunda de cronicas", "2-cronicas", "2_cronicas"
+        },
+        "total_chapters": 36,
+        "blocks": [
+            (1, 10, "2chronicles-01-10.json"),
+            (11, 20, "2chronicles-11-20.json"),
+            (21, 30, "2chronicles-21-30.json"),
+            (31, 36, "2chronicles-31-36.json"),
+        ],
+        "default_output_dir": "build/audit/2chronicles",
+        "ambient_places": {
+            "jerusalen", "jerusalén", "sion", "sión", "jordan", "jordán", "hebron", "hebrón", "gabaon", "gabaón",
+            "quiriat-jearim", "quiriatjearim", "bet-semes", "betsemes", "bet-el", "dan", "samaria", "jezreel",
+            "galaad", "siquem", "belen", "belén", "carmel", "ofir", "hamat", "sihor", "afec", "dotan", "tiro",
+            "sidon", "sidón", "damasco", "siria", "aram", "moab", "edom", "amon", "amón", "filistea", "gat",
+            "gezer", "raba", "rabá", "guilboa", "gilboa", "moriah", "monte moriah", "beraca", "valle de beraca",
+            "seir", "monte seir", "libia", "etiopia", "asiria", "babilonia", "egipto", "ninive", "nínive",
+            "valle de la sal", "quidron", "cedron", "cedrón", "meguido", "megido"
+        },
+    },
 }
 
 STOPWORDS = {
@@ -283,7 +309,7 @@ STOPWORDS = {
     "ser", "sido", "estar", "estaba", "estaban", "tener", "tenia", "tenian",
 }
 
-# Entidades y personajes bíblicos (Génesis a 1 Crónicas)
+# Entidades y personajes bíblicos (Génesis a 2 Crónicas)
 BIBLE_PERSONAJES = {
     # Génesis
     "adan", "eva", "cain", "abel", "set", "enos", "cainan", "mahalaleel",
@@ -327,7 +353,7 @@ BIBLE_PERSONAJES = {
     "natan", "natán", "ahitofel", "husai", "itai", "itaí", "simei", "ziba", "siba", "barzilai",
     "quimam", "seba", "sebá", "benaia", "benaías", "amasa", "arauna", "isbi-benob",
     "saf", "elhanan", "jonadab", "hanun", "hanún", "sobac", "baana", "recab", "talmai", "ahimaas",
-    # 1 Reyes, 2 Reyes y 1 Crónicas
+    # 1 Reyes, 2 Reyes, 1 Crónicas y 2 Crónicas
     "salomon", "salomón", "roboam", "jeroboam", "abiam", "abías", "abias", "asa",
     "baasa", "ela", "zimri", "omri", "acab", "ocozias", "ocozías", "josafat", "josafath",
     "ben-hadad", "benhadad", "hazael", "jehu", "jehú", "hiel", "segub", "abisag",
@@ -348,6 +374,7 @@ BIBLE_PERSONAJES = {
     "jasobeam", "hacmoni", "amasai", "ornan", "ornán", "heman", "hemán", "asaf", "etan", "etán",
     "quenanias", "quenanías", "jedutun", "jedutún", "pedaias", "pedaías", "zorobabel",
     "merib-baal", "meribbaal", "sealtiel", "isbaal", "satanas", "satanás", "jeconias", "jeconías",
+    "sisac", "iddo", "zera", "amarias", "amarías", "zebadias", "zebadías", "jahaziel", "conanias", "conanías", "necao", "ciro", "jeremias", "jeremías",
     # Otros comunes
     "david", "saul", "samuel", "nabucodonosor", "pablo", "pedro", "juan", "jesus", "mateo", "marcos",
     "lucas", "esteban", "timoteo",
@@ -386,7 +413,7 @@ BIBLE_PLACES = {
     "cison", "cisón", "monte tabor", "tabor", "ofra", "jezreel", "valle de jezreel", "harod", "fuente de harod",
     "more", "collado de more", "tabat", "abel-mehola", "sucot", "peniel", "karkor", "piraton", "timnat", "zora",
     "estaol", "ascalon", "ascalón", "ecron", "ecrón", "asdod", "gibea", "gabaa", "rama", "mizpa", "en-dor", "endor", "meguido", "megido",
-    # 1 Samuel, 2 Samuel, 1 Reyes, 2 Reyes y 1 Crónicas
+    # 1 Samuel, 2 Samuel, 1 Reyes, 2 Reyes, 1 Crónicas y 2 Crónicas
     "bet-semes", "betsemes", "jabes", "jabes de galaad", "nob", "adulam", "keila", "siclag",
     "bet-san", "bet-sán", "carmel", "en-gadi", "engadi", "guilboa", "gilboa", "monte gilboa",
     "baal-perazim", "baalperazim", "abel-bet-maaca", "tecoa", "mahanaim", "raba", "rabá", "gesur",
@@ -394,7 +421,7 @@ BIBLE_PLACES = {
     "gihon", "gihón", "cabul", "ezion-geber", "ezión-geber", "eziongeber", "elot", "ofir",
     "sarepta", "querit", "arroyo de querit", "ramot de galaad", "tirse", "samaria", "tiro", "sidon", "sidón", "tisbe",
     "sunem", "afec", "sela", "jocteel", "hamat", "arpat", "sefarvaim", "ribla", "ninive", "nínive", "asiria", "valle de la sal", "siloe", "siloé",
-    "sihor", "jebus", "jebús"
+    "sihor", "jebus", "jebús", "beraca", "valle de beraca"
 }
 
 # Raíces de parentesco y lemas
@@ -591,6 +618,14 @@ SYNONYMS = {
     "abraham": "abram",
     "isbaal": "is-boset",
     "is-boset": "isbaal",
+    "libio": "libia",
+    "libios": "libia",
+    "etiope": "etiopia",
+    "etiopes": "etiopia",
+    "etíope": "etiopia",
+    "etíopes": "etiopia",
+    "suquieno": "suquienos",
+    "suquienos": "suquieno",
     # Redención y parentesco bíblico
     "suegra": "noemi",
     "noemi": "suegra",
