@@ -16,6 +16,7 @@ on:
       - "tools/bible_extractor/2samuel-master-input.json"
       - "tools/bible_extractor/1kings-master-input.json"
       - "tools/bible_extractor/2kings-master-input.json"
+      - "tools/bible_extractor/1chronicles-master-input.json"
       - "tools/bible_extractor/audit-input.json"
       - "tools/bible_extractor/auditor.py"
       - "tools/bible_extractor/report_audit.py"
@@ -36,6 +37,7 @@ on:
       - "tools/bible_extractor/2samuel-master-input.json"
       - "tools/bible_extractor/1kings-master-input.json"
       - "tools/bible_extractor/2kings-master-input.json"
+      - "tools/bible_extractor/1chronicles-master-input.json"
       - "tools/bible_extractor/audit-input.json"
       - "tools/bible_extractor/auditor.py"
       - "tools/bible_extractor/report_audit.py"
@@ -46,7 +48,7 @@ on:
       input_file:
         description: "Ruta del archivo de entrada de preguntas"
         required: true
-        default: "tools/bible_extractor/2kings-master-input.json"
+        default: "tools/bible_extractor/1chronicles-master-input.json"
         type: string
 
 permissions:
@@ -75,7 +77,9 @@ jobs:
         run: |
           INPUT_FILE="${{ inputs.input_file || '' }}"
           if [ -z "$INPUT_FILE" ]; then
-            if [ -f "tools/bible_extractor/2kings-master-input.json" ]; then
+            if [ -f "tools/bible_extractor/1chronicles-master-input.json" ]; then
+              INPUT_FILE="tools/bible_extractor/1chronicles-master-input.json"
+            elif [ -f "tools/bible_extractor/2kings-master-input.json" ]; then
               INPUT_FILE="tools/bible_extractor/2kings-master-input.json"
             elif [ -f "tools/bible_extractor/1kings-master-input.json" ]; then
               INPUT_FILE="tools/bible_extractor/1kings-master-input.json"
@@ -107,7 +111,10 @@ jobs:
             fi
           fi
 
-          if [[ "$INPUT_FILE" == *"2kings"* ]] || [[ "$INPUT_FILE" == *"2-kings"* ]] || [[ "$INPUT_FILE" == *"2_kings"* ]] || [[ "$INPUT_FILE" == *"2reyes"* ]] || [[ "$INPUT_FILE" == *"2-reyes"* ]]; then
+          if [[ "$INPUT_FILE" == *"1chronicles"* ]] || [[ "$INPUT_FILE" == *"1-chronicles"* ]] || [[ "$INPUT_FILE" == *"1_chronicles"* ]] || [[ "$INPUT_FILE" == *"1cronicas"* ]] || [[ "$INPUT_FILE" == *"1-cronicas"* ]]; then
+            OUTPUT_DIR="build/audit/1chronicles"
+            ARTIFACT_NAME="auditoria-1-cronicas-rvr1960-${{ github.run_number }}"
+          elif [[ "$INPUT_FILE" == *"2kings"* ]] || [[ "$INPUT_FILE" == *"2-kings"* ]] || [[ "$INPUT_FILE" == *"2_kings"* ]] || [[ "$INPUT_FILE" == *"2reyes"* ]] || [[ "$INPUT_FILE" == *"2-reyes"* ]]; then
             OUTPUT_DIR="build/audit/2kings"
             ARTIFACT_NAME="auditoria-2-reyes-rvr1960-${{ github.run_number }}"
           elif [[ "$INPUT_FILE" == *"1kings"* ]] || [[ "$INPUT_FILE" == *"1-kings"* ]] || [[ "$INPUT_FILE" == *"1_kings"* ]] || [[ "$INPUT_FILE" == *"1reyes"* ]] || [[ "$INPUT_FILE" == *"1-reyes"* ]]; then

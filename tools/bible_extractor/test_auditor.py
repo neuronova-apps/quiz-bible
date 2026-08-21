@@ -49,6 +49,7 @@ SAMUEL1_PATH = Path(__file__).parent / "1samuel-master-input.json"
 SAMUEL2_PATH = Path(__file__).parent / "2samuel-master-input.json"
 KINGS1_PATH = Path(__file__).parent / "1kings-master-input.json"
 KINGS2_PATH = Path(__file__).parent / "2kings-master-input.json"
+CHRONICLES1_PATH = Path(__file__).parent / "1chronicles-master-input.json"
 
 
 class TestAuditorCanonical(unittest.TestCase):
@@ -123,6 +124,12 @@ class TestAuditorCanonical(unittest.TestCase):
         else:
             cls.kings2_questions = {}
 
+        if CHRONICLES1_PATH.exists():
+            raw_1ch = json.loads(CHRONICLES1_PATH.read_text(encoding="utf-8"))
+            cls.chronicles1_questions = {q["id"]: q for q in (raw_1ch.get("questions", []) if isinstance(raw_1ch, dict) else raw_1ch)}
+        else:
+            cls.chronicles1_questions = {}
+
     def setUp(self) -> None:
         self.temp_dir = Path(tempfile.mkdtemp())
 
@@ -176,6 +183,10 @@ class TestAuditorCanonical(unittest.TestCase):
     def get_2kings_question(self, qid: str) -> dict:
         self.assertIn(qid, self.kings2_questions, f"ID '{qid}' no encontrado en 2kings-master-input.json")
         return copy.deepcopy(self.kings2_questions[qid])
+
+    def get_1chronicles_question(self, qid: str) -> dict:
+        self.assertIn(qid, self.chronicles1_questions, f"ID '{qid}' no encontrado en 1chronicles-master-input.json")
+        return copy.deepcopy(self.chronicles1_questions[qid])
 
     # --- TEST GLOBAL DE CONSISTENCIA DE IDs Y REFERENCIAS ---
 
@@ -362,6 +373,22 @@ class TestAuditorCanonical(unittest.TestCase):
                 f"Referencia inconsistente en {qid}: ref='{ref}', esperada terminada en '{expected_suffix}'"
             )
 
+    def test_global_canonical_id_reference_integrity_1chronicles(self) -> None:
+        """Verifica consistencia de IDs y referencias en 1 Crónicas."""
+        if not self.chronicles1_questions:
+            self.skipTest("1chronicles-master-input.json aún no presente")
+        self.assertEqual(len(self.chronicles1_questions), 80)
+        for qid, q in self.chronicles1_questions.items():
+            ref = q.get("reference", "")
+            ch = q.get("chapter")
+            start = q.get("verse_start")
+            end = q.get("verse_end", start)
+            expected_suffix = f"{ch}:{start}" if start == end else f"{ch}:{start}-{end}"
+            self.assertTrue(
+                expected_suffix in ref or ref.endswith(expected_suffix),
+                f"Referencia inconsistente en {qid}: ref='{ref}', esperada terminada en '{expected_suffix}'"
+            )
+
     def test_numbers_book_detection(self) -> None:
         """Verifica detección de configuración de Números."""
         if not self.numbers_questions:
@@ -428,6 +455,16 @@ class TestAuditorCanonical(unittest.TestCase):
         self.assertEqual(book_key, "2kings")
         self.assertEqual(BOOK_CONFIGS["2kings"]["total_chapters"], 25)
         self.assertIn("2 reyes", BOOK_CONFIGS["2kings"]["aliases"])
+
+    def test_1chronicles_book_detection(self) -> None:
+        """Verifica detección de configuración de 1 Crónicas."""
+        sample_q = [{"id": "NQB-AT-1CR-0001", "book": "1 Crónicas", "chapter": 1, "verse_start": 1, "verse_end": 2}]
+        book_key = detect_book_key(sample_q)
+        self.assertEqual(book_key, "1chronicles")
+        self.assertEqual(BOOK_CONFIGS["1chronicles"]["total_chapters"], 29)
+        self.assertIn("1 crónicas", BOOK_CONFIGS["1chronicles"]["aliases"])
+        self.assertIn("1 cronicas", BOOK_CONFIGS["1chronicles"]["aliases"])
+        self.assertIn("1chronicles", BOOK_CONFIGS["1chronicles"]["aliases"])
 
     def test_joshua_0061_with_additional_reference(self) -> None:
         """NQB-AT-JOS-0061: Josué 20:9 con additional_references=['Números 35:15'] se evalúa correctamente."""
@@ -1243,6 +1280,179 @@ class TestAuditorCanonical(unittest.TestCase):
         res102 = evaluate_question(q102, v102, book_key="2kings")
         self.assertNotEqual(res102["estado"], "REQUIERE_CORRECCION")
         self.assertEqual(res102["controles_superados"]["control_nombres_propios"], "PASS")
+
+    # --- CASOS DE REGRESIÓN Y COBERTURA DE 1 CRÓNICAS ---
+
+    def test_1chronicles_regression_and_cases(self) -> None:
+        """Verifica casos canónicos y numéricos de 1 Crónicas."""
+        if not self.chronicles1_questions:
+            self.skipTest("1chronicles-master-input.json no disponible")
+
+        # 1CR-0001: Sem a Abram/Abraham (1 Crónicas 1:24-27)
+        q1 = self.get_1chronicles_question("NQB-AT-1CR-0001")
+        v1 = {
+            24: "Sem, Arfaxad, Sala,",
+            25: "Heber, Peleg, Reu,",
+            26: "Serug, Nacor, Taré,",
+            27: "y Abram, el cual es Abraham."
+        }
+        res1 = evaluate_question(q1, v1, book_key="1chronicles")
+        self.assertNotEqual(res1["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res1["controles_superados"]["control_nombres_propios"], "PASS")
+
+        # 1CR-0004: Sarvia y sus hijos (1 Crónicas 2:13-17)
+        q4 = self.get_1chronicles_question("NQB-AT-1CR-0004")
+        v4 = {
+            13: "Isaí engendró a Eliab su primogénito, el segundo Abinadab, Simea el tercero,",
+            14: "el cuarto Natanael, el quinto Radai,",
+            15: "el sexto Ozem, el séptimo David,",
+            16: "de los cuales Sarvia y Abigail fueron hermanas. Los hijos de Sarvia fueron tres: Abisai, Joab y Asael.",
+            17: "Abigail dio a luz a Amasa, cuyo padre fue Jeter ismaelita."
+        }
+        res4 = evaluate_question(q4, v4, book_key="1chronicles")
+        self.assertNotEqual(res4["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res4["controles_superados"]["control_nombres_propios"], "PASS")
+
+        # 1CR-0022: Jasobeam y los 300 (1 Crónicas 11:10-11)
+        q22 = self.get_1chronicles_question("NQB-AT-1CR-0022")
+        v22 = {
+            10: "Estos son los principales de los valientes que tuvo David, y los que le ayudaron en su reino...",
+            11: "Y este es el número de los valientes que tuvo David: Jasobeam hijo de Hacmoni, caudillo de los treinta, el cual blandió su lanza una vez contra trescientos, a los cuales mató."
+        }
+        res22 = evaluate_question(q22, v22, book_key="1chronicles")
+        self.assertNotEqual(res22["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res22["controles_superados"]["control_nombres_propios"], "PASS")
+        self.assertEqual(res22["controles_superados"]["control_numeros_cantidades"], "PASS")
+
+        # 1CR-0036: 7 novillos y 7 carneros (1 Crónicas 15:25-28)
+        q36 = self.get_1chronicles_question("NQB-AT-1CR-0036")
+        v36 = {
+            25: "David, pues, y los ancianos de Israel y los capitanes de millares, fueron a traer el arca del pacto de Jehová, de casa de Obed-edom, con alegría.",
+            26: "Y con la ayuda de Dios a los levitas que llevaban el arca del pacto de Jehová, sacrificaron siete novillos y siete carneros.",
+            27: "Y David iba vestido de lino fino...",
+            28: "De esta manera llevaba todo Israel el arca del pacto de Jehová, con júbilo y sonido de bocinas..."
+        }
+        res36 = evaluate_question(q36, v36, book_key="1chronicles")
+        self.assertNotEqual(res36["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res36["controles_superados"]["control_numeros_cantidades"], "PASS")
+
+        # 1CR-0045: 1000 carros, 7000 de a caballo, 20000 hombres de a pie (1 Crónicas 18:3-4)
+        q45 = self.get_1chronicles_question("NQB-AT-1CR-0045")
+        v45 = {
+            3: "Asimismo derrotó David a Hadad-ezer rey de Soba, en Hamat, yendo éste a asegurar su dominio junto al río Eufrates.",
+            4: "Y le tomó David mil carros, siete mil de a caballo, y veinte mil hombres de a pie; y desjarretó David los caballos de todos los carros, excepto los de cien carros que reservó."
+        }
+        res45 = evaluate_question(q45, v45, book_key="1chronicles")
+        self.assertNotEqual(res45["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res45["controles_superados"]["control_numeros_cantidades"], "PASS")
+
+        # 1CR-0052: 6 dedos por mano/pie, 24 en total (1 Crónicas 20:6-8)
+        q52 = self.get_1chronicles_question("NQB-AT-1CR-0052")
+        v52 = {
+            6: "Y volvió a haber guerra en Gat, donde había un hombre de grande estatura, el cual tenía seis dedos en pies y manos, veinticuatro por todos; y era también hijo del gigante.",
+            7: "Este desafió a Israel, pero lo mató Jonatán hijo de Simea, hermano de David.",
+            8: "Estos eran hijos del gigante en Gat, los cuales cayeron por mano de David y de sus siervos."
+        }
+        res52 = evaluate_question(q52, v52, book_key="1chronicles")
+        self.assertNotEqual(res52["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res52["controles_superados"]["control_numeros_cantidades"], "PASS")
+
+        # 1CR-0054: 1100000 Israel, 470000 Judá, Leví y Benjamín excluidos (1 Crónicas 21:5-6)
+        q54 = self.get_1chronicles_question("NQB-AT-1CR-0054")
+        v54 = {
+            5: "Y dio Joab el número del censo del pueblo a David; y de todo Israel había un millón cien mil hombres que sacaban espada, y de Judá cuatrocientos setenta mil hombres que sacaban espada.",
+            6: "Entre éstos no fueron contados los levitas, ni los hijos de Benjamín, porque la orden del rey era abominable a Joab."
+        }
+        res54 = evaluate_question(q54, v54, book_key="1chronicles")
+        self.assertNotEqual(res54["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res54["controles_superados"]["control_numeros_cantidades"], "PASS")
+
+        # 1CR-0056: 600 siclos de oro a Ornán (1 Crónicas 21:24-27)
+        q56 = self.get_1chronicles_question("NQB-AT-1CR-0056")
+        v56 = {
+            24: "Y el rey David dijo a Ornán: No, sino que por su justo precio la compraré...",
+            25: "Y dio David a Ornán por el lugar el peso de seiscientos siclos de oro.",
+            26: "Y edificó allí David un altar a Jehová...",
+            27: "Y Jehová habló al ángel, y éste volvió su espada a la vaina."
+        }
+        res56 = evaluate_question(q56, v56, book_key="1chronicles")
+        self.assertNotEqual(res56["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res56["controles_superados"]["control_numeros_cantidades"], "PASS")
+
+        # 1CR-0061: 38000 levitas distribuidos (1 Crónicas 23:3-6)
+        q61 = self.get_1chronicles_question("NQB-AT-1CR-0061")
+        v61 = {
+            3: "Y fueron contados los levitas de treinta años arriba; y fue el número de ellos por sus cabezas, contados uno por uno, treinta y ocho mil.",
+            4: "De éstos, veinticuatro mil para dirigir la obra de la casa de Jehová, y seis mil oficiales y jueces.",
+            5: "Además, cuatro mil porteros, y cuatro mil para alabar a Jehová con los instrumentos que David había hecho para tributar alabanzas.",
+            6: "Y los repartió David en grupos conforme a los hijos de Leví: Gersón, Coat y Merari."
+        }
+        res61 = evaluate_question(q61, v61, book_key="1chronicles")
+        self.assertNotEqual(res61["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res61["controles_superados"]["control_numeros_cantidades"], "PASS")
+
+        # 1CR-0064: 16 suertes de Eleazar y 8 de Itamar (1 Crónicas 24:1-6)
+        q64 = self.get_1chronicles_question("NQB-AT-1CR-0064")
+        v64 = {
+            1: "También los hijos de Aarón tuvieron sus distribuciones. Los hijos de Aarón: Nadab, Abiú, Eleazar e Itamar.",
+            2: "Mas Nadab y Abiú murieron antes que su padre, y no tuvieron hijos; y Eleazar e Itamar ejercieron el sacerdocio.",
+            3: "Y David, con Sadoc de los hijos de Eleazar, y Ahimelec de los hijos de Itamar, los repartió por sus turnos en el ministerio.",
+            4: "Y de los hijos de Eleazar se hallaron más varones principales que de los hijos de Itamar; y los repartieron así: De los hijos de Eleazar, dieciséis cabezas de casas paternas; y de los hijos de Itamar, por sus casas paternas, ocho.",
+            5: "Los repartieron, pues, por suerte los unos con los otros...",
+            6: "Y el escriba Semaías hijo de Natanael, de los levitas, los escribió delante del rey..."
+        }
+        res64 = evaluate_question(q64, v64, book_key="1chronicles")
+        self.assertNotEqual(res64["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res64["controles_superados"]["control_numeros_cantidades"], "PASS")
+
+        # 1CR-0066: 288 músicos (1 Crónicas 25:7-8)
+        q66 = self.get_1chronicles_question("NQB-AT-1CR-0066")
+        v66 = {
+            7: "Y el número de ellos, con sus hermanos, instruidos en el canto para Jehová, todos los aptos, fue doscientos ochenta y ocho.",
+            8: "Y echaron suertes para servir por turnos, entrando el pequeño con el grande, lo mismo el maestro que el discípulo."
+        }
+        res66 = evaluate_question(q66, v66, book_key="1chronicles")
+        self.assertNotEqual(res66["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res66["controles_superados"]["control_numeros_cantidades"], "PASS")
+
+        # 1CR-0075: 3000 oro de Ofir y 7000 plata (1 Crónicas 29:1-5)
+        q75 = self.get_1chronicles_question("NQB-AT-1CR-0075")
+        v75 = {
+            1: "Después dijo el rey David a toda la asamblea: Solamente a Salomón mi hijo ha elegido Dios; él es joven y tierno...",
+            2: "Yo con todas mis fuerzas he preparado para la casa de mi Dios...",
+            3: "Además de esto, por cuanto tengo mi afecto en la casa de mi Dios, yo guardo en mi tesoro particular oro y plata que, además de todas las cosas que he preparado para la casa del santuario, he dado para la casa de mi Dios:",
+            4: "tres mil talentos de oro, de oro de Ofir, y siete mil talentos de plata refinada para cubrir las paredes de las casas;",
+            5: "oro, pues, para las cosas de oro, y plata para las cosas de plata..."
+        }
+        res75 = evaluate_question(q75, v75, book_key="1chronicles")
+        self.assertNotEqual(res75["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res75["controles_superados"]["control_numeros_cantidades"], "PASS")
+
+        # 1CR-0076: 5000 talentos + 10000 dracmas de oro (1 Crónicas 29:6-9)
+        q76 = self.get_1chronicles_question("NQB-AT-1CR-0076")
+        v76 = {
+            6: "Entonces los jefes de familia, y los príncipes de las tribus de Israel, jefes de millares y de centenas, con los administradores de la hacienda del rey, ofrecieron voluntariamente.",
+            7: "Y dieron para el servicio de la casa de Dios cinco mil talentos y diez mil dracmas de oro, diez mil talentos de plata, dieciocho mil talentos de bronce, y cien mil talentos de hierro.",
+            8: "Y todo el que tenía piedras preciosas las dio para el tesoro de la casa de Jehová...",
+            9: "Y se alegró el pueblo por haber contribuido voluntariamente..."
+        }
+        res76 = evaluate_question(q76, v76, book_key="1chronicles")
+        self.assertNotEqual(res76["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res76["controles_superados"]["control_numeros_cantidades"], "PASS")
+
+        # 1CR-0080: 40 años total (7 en Hebrón, 33 en Jerusalén) (1 Crónicas 29:26-30)
+        q80 = self.get_1chronicles_question("NQB-AT-1CR-0080")
+        v80 = {
+            26: "Así reinó David hijo de Isaí sobre todo Israel.",
+            27: "El tiempo que reinó sobre Israel fue cuarenta años. Siete años reinó en Hebrón, y treinta y tres años reinó en Jerusalén.",
+            28: "Y murió en buena vejez, lleno de días, de riquezas y de gloria; y reinó en su lugar Salomón su hijo.",
+            29: "Y los hechos del rey David, primeros y postreros, están escritos en el libro de las crónicas de Samuel vidente, en las crónicas del profeta Natán, y en las crónicas de Gad vidente,",
+            30: "con todo lo relativo a su reinado, y a su poder, y los tiempos que pasaron sobre él, y sobre Israel y sobre todos los reinos de aquellas tierras."
+        }
+        res80 = evaluate_question(q80, v80, book_key="1chronicles")
+        self.assertNotEqual(res80["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res80["controles_superados"]["control_numeros_cantidades"], "PASS")
+        self.assertEqual(res80["controles_superados"]["control_nombres_propios"], "PASS")
 
 
 if __name__ == "__main__":
