@@ -6,6 +6,7 @@ mutaciones controladas sobre copias profundas (deepcopy) para verificar:
 - Comportamiento de NQB-AT-GEN-0110 sin y con Génesis 44:18;
 - Manejo de fallos de API como NO_CONCLUYENTE (sin generar falsos REQUIERE_CORRECCION);
 - Comprobación de las 3 preguntas de Génesis 31;
+- Verificación de soporte multilibro (Génesis y Éxodo);
 - Verificación de no interpretar artículos como números ni palabras iniciales como nombres.
 """
 
@@ -18,9 +19,10 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from auditor import evaluate_question, run_audit, extract_numbers, normalize
+from auditor import evaluate_question, run_audit, extract_numbers, normalize, detect_book_key
 
 MASTER_PATH = Path(__file__).parent / "genesis-master-input.json"
+EXODUS_MASTER_PATH = Path(__file__).parent / "exodus-master-input.json"
 
 
 class TestAuditorCanonical(unittest.TestCase):
@@ -55,6 +57,44 @@ class TestAuditorCanonical(unittest.TestCase):
                 expected_suffix in ref or ref.endswith(expected_suffix),
                 f"Referencia inconsistente en {qid}: ref='{ref}', esperada terminada en '{expected_suffix}'"
             )
+
+    # --- SOPORTE MULTILIBRO (ÉXODO) ---
+
+    def test_exodus_book_detection_and_evaluation(self) -> None:
+        """Verifica que el auditor reconozca preguntas de Éxodo y evalúe sus 40 capítulos."""
+        exodus_sample = {
+            "id": "NQB-AT-EXO-0001",
+            "book": "Éxodo",
+            "chapter": 3,
+            "verse_start": 1,
+            "verse_end": 2,
+            "reference": "Éxodo 3:1-2",
+            "category": "AT_GENERAL",
+            "subcategory": "Llamamiento de Moisés",
+            "characters": ["Moisés"],
+            "difficulty": "Básico",
+            "question_type": "Selección múltiple",
+            "question": "¿En qué forma se le apareció el ángel de Jehová a Moisés en el monte Horeb?",
+            "opcion_a": "En una llama de fuego en medio de una zarza",
+            "opcion_b": "En una nube sobre el monte",
+            "opcion_c": "En un torbellino de viento",
+            "opcion_d": "En una columna de fuego",
+            "correct_option": "A",
+            "correct_answer": "En una llama de fuego en medio de una zarza",
+            "explanation": "El ángel de Jehová se le apareció en una llama de fuego en medio de una zarza.",
+            "additional_references": [],
+            "eligible_modes": ["AT", "AMBOS"],
+        }
+        self.assertEqual(detect_book_key([exodus_sample]), "exodo")
+        verse_map = {
+            1: "Apacentando Moisés las ovejas de Jetro su suegro, sacerdote de Madián, llevó las ovejas a través del desierto, y llegó a Horeb, monte de Dios.",
+            2: "Y se le apareció el Ángel de Jehová en una llama de fuego en medio de una zarza; y él miró, y vio que la zarza ardía en fuego, y la zarza no se consumía.",
+        }
+        res = evaluate_question(exodus_sample, verse_map, book_key="exodo")
+        self.assertEqual(res["estado"], "VERIFICADO")
+        self.assertEqual(res["controles_superados"]["control_libro"], "PASS")
+        self.assertEqual(res["controles_superados"]["control_capitulo"], "PASS")
+        self.assertEqual(res["controles_superados"]["control_lugares"], "PASS")
 
     # --- REGRESIÓN ESPECÍFICA NQB-AT-GEN-0110 (Génesis 44:33-34 y 44:18) ---
 

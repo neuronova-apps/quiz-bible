@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """Auditor semántico y textual derivado de preguntas bíblicas contra RVR1960.
 
+Soporta auditoría modular para Génesis (50 capítulos), Éxodo (40 capítulos)
+y libros bíblicos adicionales.
+
 Evalúa deterministamente los 17 controles de calidad editorial:
 identidad de libro, capítulo, versículos, existencia de pasajes, respaldo
 de la pregunta, validez de la opción A, inconsistencia de distractores,
@@ -38,6 +41,36 @@ try:
 except ImportError:
     from extractor import PASSAGE_URL, api_get, extract_verses, _verse_number_from_node
 
+BOOK_CONFIGS: dict[str, dict[str, Any]] = {
+    "genesis": {
+        "canonical_name": "Génesis",
+        "api_name": "Genesis",
+        "aliases": {"genesis", "génesis"},
+        "total_chapters": 50,
+        "blocks": [
+            (1, 10, "genesis-01-10.json"),
+            (11, 20, "genesis-11-20.json"),
+            (21, 30, "genesis-21-30.json"),
+            (31, 40, "genesis-31-40.json"),
+            (41, 50, "genesis-41-50.json"),
+        ],
+        "default_output_dir": "build/audit/genesis",
+    },
+    "exodo": {
+        "canonical_name": "Éxodo",
+        "api_name": "Exodo",
+        "aliases": {"exodo", "éxodo", "exodus"},
+        "total_chapters": 40,
+        "blocks": [
+            (1, 10, "exodus-01-10.json"),
+            (11, 20, "exodus-11-20.json"),
+            (21, 30, "exodus-21-30.json"),
+            (31, 40, "exodus-31-40.json"),
+        ],
+        "default_output_dir": "build/audit/exodus",
+    },
+}
+
 STOPWORDS = {
     "a", "al", "de", "del", "el", "la", "las", "los", "que", "su", "sus",
     "un", "una", "unos", "unas", "y", "o", "en", "por", "para", "con",
@@ -49,8 +82,9 @@ STOPWORDS = {
     "ser", "sido", "estar", "estaba", "estaban", "tener", "tenia", "tenian",
 }
 
-# Entidades y personajes bíblicos (Génesis y nombres bíblicos comunes)
+# Entidades y personajes bíblicos (Génesis, Éxodo y nombres bíblicos comunes)
 BIBLE_PERSONAJES = {
+    # Génesis
     "adan", "eva", "cain", "abel", "set", "enos", "cainan", "mahalaleel",
     "jared", "enoc", "matusalen", "lamec", "noe", "sem", "cam", "jafet",
     "canaan", "tare", "abram", "abraham", "sarai", "sara", "lot", "melquisedec",
@@ -61,13 +95,20 @@ BIBLE_PERSONAJES = {
     "cetura", "zilpa", "bilha", "potifera", "zafenat-panea", "zafenatpanea",
     "eber", "peleg", "milca", "isca", "er", "onan", "sela", "fares", "zara",
     "hezron", "hamul", "siquem", "hamor", "nemrod", "mizraim", "cuz",
-    "moises", "aaron", "david", "salomon", "saul", "samuel", "josue", "elias",
-    "eliseo", "jonatan", "nabucodonosor", "pablo", "pedro", "juan", "jesus",
-    "mateo", "marcos", "lucas", "esteban", "timoteo",
+    # Éxodo
+    "moises", "aaron", "miriam", "maria", "sefora", "jetro", "reuel", "gersom",
+    "sipra", "fua", "jocabed", "amram", "hur", "josue", "bezaleel", "aholiab",
+    "nadab", "abiu", "eleazar", "itamar", "core", "datan", "abiram",
+    "balac", "balaam", "finees", "caleb",
+    # Otros comunes
+    "david", "salomon", "saul", "samuel", "elias", "eliseo", "jonatan",
+    "nabucodonosor", "pablo", "pedro", "juan", "jesus", "mateo", "marcos",
+    "lucas", "esteban", "timoteo",
 }
 
-# Lugares, regiones y accidentes geográficos bíblicos
-GENESIS_PLACES = {
+# Lugares, regiones y accidentes geográficos bíblicos (Génesis y Éxodo)
+BIBLE_PLACES = {
+    # Génesis
     "eden", "ararat", "babel", "ur", "haran", "betel", "bet-el", "hebron", "siquem",
     "sodoma", "gomorra", "adma", "zeboim", "bela", "zoar", "egipto", "gosen",
     "moriah", "beerseba", "beer-seba", "macpela", "mizpa", "seir", "rameses",
@@ -75,8 +116,12 @@ GENESIS_PLACES = {
     "galaad", "guilead", "padan-aram", "padanaram", "mesopotamia", "canaan",
     "salem", "mamre", "cala", "sinar", "ofir", "havila", "caldea", "siria",
     "lahai-roi", "lahairoi", "berseba", "sucot", "efrata", "belen", "nilo",
-    "eufrates", "hidekel", "pison", "gihon", "quedem", "sinai", "horeb",
+    "eufrates", "hidekel", "pison", "gihon", "quedem", "horeb",
     "sion", "negev", "jordan", "atarot", "shiloh", "damasco",
+    # Éxodo
+    "madian", "sinai", "mar rojo", "mara", "elim", "sin", "refidim",
+    "masa", "meriba", "etam", "pi-hahirot", "pihahirot", "baal-zefon",
+    "baalzefon", "migdol", "sur", "piton",
 }
 
 # Raíces de parentesco y lemas
@@ -110,7 +155,7 @@ SYNONYMS = {
     "aramea": "padan-aram",
 }
 
-# Diccionario de números cardinales en español (sin 'un' / 'una' ambiguos como artículos)
+# Diccionario de números cardinales en español
 SPANISH_NUMBERS_EXPLICIT = {
     "cero": 0, "uno": 1, "dos": 2, "tres": 3, "cuatro": 4,
     "cinco": 5, "seis": 6, "siete": 7, "ocho": 8, "nueve": 9, "diez": 10,
@@ -126,15 +171,6 @@ SPANISH_NUMBERS_EXPLICIT = {
     "setecientos": 700, "setecientas": 700, "ochocientos": 800, "ochocientas": 800,
     "novecientos": 900, "novecientas": 900, "mil": 1000,
 }
-
-
-def parse_args() -> argparse.Namespace:
-    p = argparse.ArgumentParser(description="Auditor bíblico semántico derivado contra RVR1960")
-    p.add_argument("--input", default="tools/bible_extractor/genesis-master-input.json", help="Archivo de entrada")
-    p.add_argument("--output-dir", default="build/audit/genesis", help="Directorio de salidas derivadas")
-    p.add_argument("--version", default="RVR1960", help="Versión bíblica (RVR1960)")
-    p.add_argument("--offline-fixture", default=None, help="Archivo JSON con fixtures simulados para pruebas offline")
-    return p.parse_args()
 
 
 def normalize(value: str) -> str:
@@ -153,12 +189,19 @@ def significant_tokens(value: str) -> list[str]:
     return [t for t in normalize(value).split() if len(t) >= 3 and t not in STOPWORDS]
 
 
-def extract_numbers(text: str, is_quantitative_context: bool = False) -> list[int]:
-    """Extrae números enteros de dígitos o palabras numéricas.
+def detect_book_key(spec: dict[str, Any] | list[dict[str, Any]]) -> str:
+    """Detecta la clave de configuración del libro a partir de las preguntas."""
+    questions = spec if isinstance(spec, list) else spec.get("questions", [])
+    if questions:
+        first_book = normalize(str(questions[0].get("book", "")))
+        for k, cfg in BOOK_CONFIGS.items():
+            if first_book in cfg["aliases"]:
+                return k
+    return "genesis"
 
-    No interpreta 'un' / 'una' como 1 salvo que exista un contexto cuantitativo
-    explícito o unidad de medida contable.
-    """
+
+def extract_numbers(text: str, is_quantitative_context: bool = False) -> list[int]:
+    """Extrae números enteros de dígitos o palabras numéricas."""
     raw_text = str(text)
     cleaned_digits_text = re.sub(r"\b\d+\s*:\s*\d+(?:-\d+)?\b", " ", raw_text)
     cleaned_norm = normalize(cleaned_digits_text)
@@ -177,7 +220,7 @@ def extract_numbers(text: str, is_quantitative_context: bool = False) -> list[in
         if is_quantitative_context or re.search(countable_units_pattern, cleaned_norm):
             numbers.append(1)
 
-    # 3. Palabras numéricas compuestas (ej. 'novecientos sesenta y nueve' -> 969)
+    # 3. Palabras numéricas compuestas
     words = cleaned_norm.split()
     i = 0
     while i < len(words):
@@ -207,8 +250,8 @@ def extract_numbers(text: str, is_quantitative_context: bool = False) -> list[in
 
 
 def parse_additional_ref(ref_str: str, default_chapter: int) -> tuple[int, list[int]]:
-    """Extrae capítulo y versículos de una referencia adicional (ej. 'Génesis 4:25' o '4:25-26')."""
-    m = re.search(r"(?:G[ée]nesis\s+)?(?:(\d+)[:.])?(\d+)(?:-(\d+))?", str(ref_str), re.IGNORECASE)
+    """Extrae capítulo y versículos de una referencia adicional multilibro."""
+    m = re.search(r"(?:[A-Za-zÁÉÍÓÚáéíóúñÑ]+\s+)?(?:(\d+)[:.])?(\d+)(?:-(\d+))?", str(ref_str), re.IGNORECASE)
     if not m:
         return default_chapter, []
     ch = int(m.group(1)) if m.group(1) else default_chapter
@@ -259,9 +302,11 @@ def split_composite_answer(answer_str: str) -> list[str]:
 def evaluate_question(
     q: dict[str, Any],
     verse_map: dict[int, str],
-    book_expected: str = "Génesis",
+    book_key: str = "genesis",
 ) -> dict[str, Any]:
     """Evalúa una pregunta contra el pasaje en memoria aplicando los 17 controles rigurosamente."""
+    book_cfg = BOOK_CONFIGS.get(book_key, BOOK_CONFIGS["genesis"])
+
     qid = str(q.get("id", "")).strip()
     book = str(q.get("book", "")).strip()
     chapter = int(q.get("chapter", 0))
@@ -291,18 +336,18 @@ def evaluate_question(
     correcciones_sugeridas: list[dict[str, Any]] = []
 
     # 1. Control Libro
-    if normalize(book) in {normalize("Genesis"), normalize("Génesis")}:
+    if normalize(book) in book_cfg["aliases"]:
         controls["control_libro"] = "PASS"
     else:
         controls["control_libro"] = "FAIL"
-        incidencias.append(f"Libro no correspondiente: '{book}'")
+        incidencias.append(f"Libro no correspondiente: '{book}' (esperado '{book_cfg['canonical_name']}')")
 
     # 2. Control Capítulo
-    if 1 <= chapter <= 50:
+    if 1 <= chapter <= book_cfg["total_chapters"]:
         controls["control_capitulo"] = "PASS"
     else:
         controls["control_capitulo"] = "FAIL"
-        incidencias.append(f"Capítulo fuera de rango 1-50: {chapter}")
+        incidencias.append(f"Capítulo fuera de rango 1-{book_cfg['total_chapters']}: {chapter}")
 
     # 3. Control Versículo Inicio
     if start >= 1:
@@ -339,7 +384,6 @@ def evaluate_question(
         controls["control_referencia_existencia"] = "PASS"
     else:
         if not verse_map:
-            # Fallo de obtención de la API (rate limit / red) -> UNKNOWN
             controls["control_referencia_existencia"] = "UNKNOWN"
             incidencias.append(f"Capítulo {chapter} no disponible temporalmente desde ApiBiblia (posible rate limit o error de red)")
         else:
@@ -376,7 +420,7 @@ def evaluate_question(
             "source_text_persisted": False,
         }
 
-    # 7. Control Soporte de Pregunta (cobertura semántica de términos, entidades y acciones)
+    # 7. Control Soporte de Pregunta
     q_toks = significant_tokens(prompt)
     if not q_toks:
         controls["control_soporte_pregunta"] = "UNKNOWN"
@@ -388,7 +432,7 @@ def evaluate_question(
         else:
             controls["control_soporte_pregunta"] = "UNKNOWN"
 
-    # 8. Control Opción A Correcta (soporte completo de componentes, números y sinónimos)
+    # 8. Control Opción A Correcta
     parts_a = split_composite_answer(opcion_a)
     missing_parts = []
     for part in parts_a:
@@ -396,7 +440,6 @@ def evaluate_question(
         part_norm = normalize(part)
         part_nums = extract_numbers(part)
 
-        # Si la parte contiene números, verificar que coincidan con los números del pasaje
         if part_nums:
             nums_matched = all(n in passage_nums for n in part_nums)
             non_num_toks = [t for t in part_toks if not t.isdigit()]
@@ -405,7 +448,6 @@ def evaluate_question(
                 continue
             missing_parts.append(part)
         else:
-            # Coincidencia directa, por sinónimos o por tokens significativos
             if part_norm and (
                 part_norm in passage_norm
                 or any(t in passage_norm or (t in SYNONYMS and SYNONYMS[t] in passage_norm) for t in part_toks)
@@ -413,7 +455,6 @@ def evaluate_question(
                 continue
             missing_parts.append(part)
 
-    # Identificación de contradicciones objetivas vs incertidumbre/paráfrasis
     if not missing_parts:
         controls["control_opcion_a_correcta"] = "PASS"
     else:
@@ -425,7 +466,7 @@ def evaluate_question(
         else:
             controls["control_opcion_a_correcta"] = "UNKNOWN"
 
-    # 9. Control Distractores Inválidos (detección de duplicados o contradicción explícita)
+    # 9. Control Distractores Inválidos
     distractor_conflicts: list[str] = []
     for d_text in (opcion_b, opcion_c, opcion_d):
         d_norm = normalize(d_text)
@@ -436,7 +477,6 @@ def evaluate_question(
             distractor_conflicts.append(f"Distractor idéntico a opción A: '{d_text}'")
             continue
 
-        # Si el distractor tiene números idénticos al pasaje mientras opción A tiene otros números erróneos
         d_nums = extract_numbers(d_text)
         opt_a_nums = extract_numbers(opcion_a)
         if d_nums and opt_a_nums and set(d_nums) == passage_nums and set(opt_a_nums) != passage_nums:
@@ -464,8 +504,8 @@ def evaluate_question(
             "referencia": ref_str,
         })
 
-    # 11. Control Explicación Compatible (contraste semántico real; exclusión de citas de capítulos/versículos)
-    exp_cleaned = re.sub(r"\b(?:G[ée]nesis\s+)?\d+\s*:\s*\d+(?:-\d+)?\b", " ", explanation, flags=re.IGNORECASE)
+    # 11. Control Explicación Compatible
+    exp_cleaned = re.sub(r"\b(?:[A-Za-zÁÉÍÓÚáéíóúñÑ]+\s+)?\d+\s*:\s*\d+(?:-\d+)?\b", " ", explanation, flags=re.IGNORECASE)
     exp_toks = significant_tokens(exp_cleaned)
     if not exp_toks:
         controls["control_explicacion_compatible"] = "UNKNOWN"
@@ -483,7 +523,7 @@ def evaluate_question(
         else:
             controls["control_explicacion_compatible"] = "UNKNOWN"
 
-    # 12. Control Nombres Propios (únicamente personajes y entidades bíblicas reconocibles)
+    # 12. Control Nombres Propios
     entities_in_opt_a = set()
     for word in normalize(opcion_a).split():
         if word in BIBLE_PERSONAJES:
@@ -516,10 +556,10 @@ def evaluate_question(
     else:
         controls["control_nombres_propios"] = "NOT_APPLICABLE"
 
-    # 13. Control Lugares (verificación real de topónimos bíblicos)
+    # 13. Control Lugares
     opt_a_toks = set(normalize(opcion_a).split())
     prompt_toks = set(normalize(prompt).split())
-    detected_places = (opt_a_toks | prompt_toks) & GENESIS_PLACES
+    detected_places = (opt_a_toks | prompt_toks) & BIBLE_PLACES
 
     if not detected_places:
         controls["control_lugares"] = "NOT_APPLICABLE"
@@ -533,7 +573,7 @@ def evaluate_question(
         else:
             controls["control_lugares"] = "UNKNOWN"
 
-    # 14. Control Números y Cantidades (verificación real de cifras cuantitativas)
+    # 14. Control Números y Cantidades
     has_count_context = bool(re.search(r"¿?\s*cuant[oa]s?\b", normalize(prompt)))
     opt_a_nums = extract_numbers(opcion_a, is_quantitative_context=has_count_context)
     prompt_nums = extract_numbers(prompt, is_quantitative_context=has_count_context)
@@ -554,7 +594,7 @@ def evaluate_question(
         else:
             controls["control_numeros_cantidades"] = "UNKNOWN"
 
-    # 15. Control Relaciones de Personajes (verificación por raíces morfológicas de parentesco)
+    # 15. Control Relaciones de Personajes
     kin_detected_stems = set()
     all_text_norm = normalize(f"{opcion_a} {prompt}")
     for stem, words in KINSHIP_STEMS.items():
@@ -573,7 +613,7 @@ def evaluate_question(
         else:
             controls["control_relaciones_personajes"] = "UNKNOWN"
 
-    # 16. Control Rango Suficiente (FAIL solo si falta evidencia demostrable fuera del rango)
+    # 16. Control Rango Suficiente
     evidence_missing_outside = []
     if controls["control_nombres_propios"] == "FAIL":
         evidence_missing_outside.append("personaje bíblico ausente")
@@ -590,7 +630,7 @@ def evaluate_question(
     else:
         controls["control_rango_suficiente"] = "UNKNOWN"
 
-    # 17. Control Sin Ambigüedad (opciones únicas y sin distractores conflictivos)
+    # 17. Control Sin Ambigüedad
     unique_options = len({normalize(x) for x in (opcion_a, opcion_b, opcion_c, opcion_d) if x}) == 4
     if not unique_options:
         controls["control_sin_ambiguedad"] = "FAIL"
@@ -645,6 +685,11 @@ def run_audit(
     else:
         raw_questions = []
 
+    book_key = detect_book_key(spec)
+    book_cfg = BOOK_CONFIGS.get(book_key, BOOK_CONFIGS["genesis"])
+    canonical_book_name = book_cfg["canonical_name"]
+    api_book_name = book_cfg["api_name"]
+
     # Agrupación dinámica por capítulo
     questions_by_chapter: dict[int, list[dict[str, Any]]] = defaultdict(list)
     for q in raw_questions:
@@ -660,14 +705,14 @@ def run_audit(
     successful_fetches: list[int] = []
     failed_fetches: list[int] = []
 
+    print(f"Libro canónico: {canonical_book_name} (API: {api_book_name})", flush=True)
     print(f"Preguntas a auditar: {len(raw_questions)}", flush=True)
     print(f"Capítulos detectados ({len(present_chapters)}): {present_chapters[:10]}...{present_chapters[-5:] if len(present_chapters)>10 else ''}", flush=True)
 
     for idx, chapter in enumerate(present_chapters, start=1):
         ch_questions = questions_by_chapter[chapter]
-        print(f"[{idx}/{len(present_chapters)}] Auditando Génesis {chapter} ({len(ch_questions)} preguntas)...", flush=True)
-        # Consulta de capítulo a ApiBiblia
-        verse_map = fetch_chapter_fn("Génesis", chapter)
+        print(f"[{idx}/{len(present_chapters)}] Auditando {canonical_book_name} {chapter} ({len(ch_questions)} preguntas)...", flush=True)
+        verse_map = fetch_chapter_fn(api_book_name, chapter)
 
         if verse_map:
             successful_fetches.append(chapter)
@@ -675,7 +720,7 @@ def run_audit(
             failed_fetches.append(chapter)
 
         for q in ch_questions:
-            res = evaluate_question(q, verse_map, "Génesis")
+            res = evaluate_question(q, verse_map, book_key=book_key)
             all_results.append(res)
             for c_name, c_state in res["controles_superados"].items():
                 controles_distribution[c_name][c_state] += 1
@@ -692,26 +737,18 @@ def run_audit(
                     "correcciones_sugeridas": res["correcciones_sugeridas"],
                 })
 
-        # Liberación inmediata de texto bíblico en memoria
         if isinstance(verse_map, dict):
             verse_map.clear()
         del verse_map
 
-    # Generar bloques de salida por rangos de capítulos
     output_dir.mkdir(parents=True, exist_ok=True)
-    blocks = [
-        (1, 10, "genesis-01-10.json"),
-        (11, 20, "genesis-11-20.json"),
-        (21, 30, "genesis-21-30.json"),
-        (31, 40, "genesis-31-40.json"),
-        (41, 50, "genesis-41-50.json"),
-    ]
+    blocks = book_cfg.get("blocks", [])
 
     for start_ch, end_ch, filename in blocks:
         block_results = [r for r in all_results if start_ch <= r.get("chapter", 0) <= end_ch]
         block_payload = {
-            "schema_version": "quizbible-rvr1960-audit-block-v1",
-            "book": "Génesis",
+            "schema_version": f"quizbible-rvr1960-audit-block-v1",
+            "book": canonical_book_name,
             "chapter_range": f"{start_ch:02d}-{end_ch:02d}",
             "questions_count": len(block_results),
             "verified_count": sum(1 for r in block_results if r["estado"] == "VERIFICADO"),
@@ -722,7 +759,6 @@ def run_audit(
         }
         (output_dir / filename).write_text(json.dumps(block_payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
-    # Correcciones aplicadas / sugeridas
     correcciones_payload = {
         "schema_version": "quizbible-audit-corrections-v1",
         "total_correcciones": len(correcciones_totales),
@@ -731,7 +767,6 @@ def run_audit(
     }
     (output_dir / "correcciones-aplicadas.json").write_text(json.dumps(correcciones_payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
-    # Revisión manual pendiente
     revision_payload = {
         "schema_version": "quizbible-manual-review-v1",
         "total_pendientes": len(revision_manual),
@@ -740,7 +775,6 @@ def run_audit(
     }
     (output_dir / "revision-manual-pendiente.json").write_text(json.dumps(revision_payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
-    # Distribución formateada de controles
     controles_stats = {
         c_name: {
             "PASS": counts.get("PASS", 0),
@@ -751,13 +785,11 @@ def run_audit(
         for c_name, counts in controles_distribution.items()
     }
 
-    # Resumen general
     total_q = len(all_results)
     verif_c = sum(1 for r in all_results if r["estado"] == "VERIFICADO")
     req_corr_c = sum(1 for r in all_results if r["estado"] == "REQUIERE_CORRECCION")
     inconc_c = sum(1 for r in all_results if r["estado"] == "NO_CONCLUYENTE")
 
-    # Integración de métricas de red y tasa si existen
     rm = rate_metrics or {}
     attempts_total = rm.get("http_request_attempts_total", len(present_chapters))
     rate_retries = rm.get("rate_limit_retries", 0)
@@ -765,15 +797,15 @@ def run_audit(
     summary = {
         "schema_version": "quizbible-rvr1960-audit-summary-v1",
         "source": "ApiBiblia API RVR1960",
-        "book": "Génesis",
+        "book": canonical_book_name,
         "total_questions": total_q,
         "chapters_present_in_bank": len(present_chapters),
         "successful_chapter_fetches": len(successful_fetches),
         "failed_chapter_fetches": len(failed_fetches),
         "failed_chapters": failed_fetches,
         "chapters_covered": len(successful_fetches),
-        "textual_coverage_complete": (len(successful_fetches) == 50 and len(failed_fetches) == 0),
-        "chapter_coverage_complete_1_50": present_chapters == list(range(1, 51)),
+        "textual_coverage_complete": (len(successful_fetches) == book_cfg["total_chapters"] and len(failed_fetches) == 0),
+        "chapter_coverage_complete_1_max": present_chapters == list(range(1, book_cfg["total_chapters"] + 1)),
         "http_request_attempts_total": attempts_total,
         "rate_limit_retries": rate_retries,
         "verified_count": verif_c,
@@ -786,12 +818,12 @@ def run_audit(
     (output_dir / "resumen-general.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     print("\nAuditoría finalizada:", flush=True)
+    print(f"- Libro: {canonical_book_name}", flush=True)
     print(f"- Total preguntas: {total_q}", flush=True)
     print(f"- VERIFICADO: {verif_c}", flush=True)
     print(f"- REQUIERE_CORRECCION: {req_corr_c}", flush=True)
     print(f"- NO_CONCLUYENTE: {inconc_c}", flush=True)
-    print(f"- Capítulos obtenidos exitosamente: {len(successful_fetches)}/50", flush=True)
-    print(f"- Capítulos fallidos: {failed_fetches}", flush=True)
+    print(f"- Capítulos obtenidos: {len(successful_fetches)}/{book_cfg['total_chapters']}", flush=True)
     print(f"- Cobertura textual completa: {summary['textual_coverage_complete']}", flush=True)
     print(f"- Texto bíblico persistido: False", flush=True)
     return summary
@@ -799,17 +831,25 @@ def run_audit(
 
 def main() -> int:
     try:
-        args = parse_args()
-        input_path = Path(args.input)
+        parser = argparse.ArgumentParser(description="Auditor bíblico semántico derivado contra RVR1960")
+        parser.add_argument("--input", default="tools/bible_extractor/genesis-master-input.json", help="Archivo de entrada")
+        parser.add_argument("--output-dir", default=None, help="Directorio de salidas derivadas")
+        parser.add_argument("--version", default="RVR1960", help="Versión bíblica (RVR1960)")
+        parser.add_argument("--offline-fixture", default=None, help="Archivo JSON con fixtures simulados")
+        args = parser.parse_args()
 
+        input_path = Path(args.input)
         if not input_path.exists():
             print(f"Error: No se encontró el archivo de entrada '{input_path}'.", file=sys.stderr)
             return 1
 
         spec = json.loads(input_path.read_text(encoding="utf-8"))
-        output_dir = Path(args.output_dir)
+        book_key = detect_book_key(spec)
+        book_cfg = BOOK_CONFIGS.get(book_key, BOOK_CONFIGS["genesis"])
 
-        # Modo offline con fixtures simulados si se especifica
+        output_dir_str = args.output_dir or book_cfg["default_output_dir"]
+        output_dir = Path(output_dir_str)
+
         if args.offline_fixture:
             fixture_data = json.loads(Path(args.offline_fixture).read_text(encoding="utf-8"))
 
@@ -819,7 +859,6 @@ def main() -> int:
             run_audit(spec, fetch_mock, output_dir)
             return 0
 
-        # Modo real con ApiBiblia y throttling proactivo (máx 26 req/minuto)
         api_key = os.environ.get("APIBIBLIA_API_KEY", "").strip()
         if not api_key:
             print("Falta APIBIBLIA_API_KEY en las variables de entorno. Para pruebas locales use --offline-fixture.", file=sys.stderr)
@@ -830,16 +869,14 @@ def main() -> int:
             "rate_limit_retries": 0,
         }
         last_request_time = [0.0]
-        min_interval = 2.3  # Intervalo mínimo proactivo: garantiza ~26 req/min (límite de la API es 30/min)
+        min_interval = 2.3
 
-        def fetch_apibiblia(book: str, chapter: int) -> dict[int, str]:
-            api_book_name = "Genesis"
+        def fetch_apibiblia(api_book_name: str, chapter: int) -> dict[int, str]:
             query = urllib.parse.urlencode({"ref": f"{api_book_name} {chapter}", "version": args.version})
             url = f"{PASSAGE_URL}?{query}"
 
             max_retries = 4
             for attempt in range(1, max_retries + 1):
-                # Throttling proactivo: asegurar intervalo de 2.3s desde la última llamada
                 elapsed = time.time() - last_request_time[0]
                 if elapsed < min_interval:
                     time.sleep(min_interval - elapsed)
@@ -858,10 +895,8 @@ def main() -> int:
 
                 except Exception as exc:
                     err_msg = str(exc)
-                    # Manejo explícito de HTTP 429 Rate Limit
                     if "429" in err_msg or "Rate" in err_msg or "RATE_LIMIT" in err_msg:
                         rate_metrics["rate_limit_retries"] += 1
-                        # Pausa de seguridad de 62 segundos para resetear la ventana de tasa
                         print(f"Rate limit detectado en capítulo {chapter}. Esperando 62s para reset de ventana (intento {attempt}/{max_retries})...", file=sys.stderr, flush=True)
                         time.sleep(62.0)
                     else:

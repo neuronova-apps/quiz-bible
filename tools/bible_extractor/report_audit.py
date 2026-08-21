@@ -2,13 +2,13 @@
 """Generador de informe oficial a partir de los artefactos JSON producidos por el auditor RVR1960.
 
 Lee directamente:
-- build/audit/genesis/resumen-general.json
-- build/audit/genesis/revision-manual-pendiente.json
-- build/audit/genesis/correcciones-aplicadas.json
-- build/audit/genesis/genesis-XX-XX.json
+- <output-dir>/resumen-general.json
+- <output-dir>/revision-manual-pendiente.json
+- <output-dir>/correcciones-aplicadas.json
+- <output-dir>/*-XX-XX.json
 
 Escribe:
-- build/audit/genesis/informe-oficial.json
+- <output-dir>/informe-oficial.json
 """
 
 from __future__ import annotations
@@ -40,6 +40,7 @@ def generate_report(output_dir: Path, master_input_path: Path) -> dict[str, Any]
     master_questions = master.get("questions", []) if isinstance(master, dict) else master
     master_map = {q["id"]: q for q in master_questions}
 
+    book_name = summary.get("book", "Desconocido")
     total_q = summary.get("total_questions", 0)
     verif_c = summary.get("verified_count", 0)
     req_corr_c = summary.get("requires_correction_count", 0)
@@ -52,7 +53,7 @@ def generate_report(output_dir: Path, master_input_path: Path) -> dict[str, Any]
     failed_chapters = summary.get("failed_chapters", [])
     http_attempts = summary.get("http_request_attempts_total", chapters_in_bank)
     rate_retries = summary.get("rate_limit_retries", 0)
-    textual_coverage_complete = summary.get("textual_coverage_complete", (successful_fetches == 50 and len(failed_chapters) == 0))
+    textual_coverage_complete = summary.get("textual_coverage_complete", (successful_fetches == chapters_in_bank and len(failed_chapters) == 0))
 
     if total_q != (verif_c + req_corr_c + inconc_c):
         raise ValueError(f"Inconsistencia matemática en resumen: total ({total_q}) != verif ({verif_c}) + req_corr ({req_corr_c}) + inconc ({inconc_c})")
@@ -61,7 +62,9 @@ def generate_report(output_dir: Path, master_input_path: Path) -> dict[str, Any]
         raise ValueError(f"Discrepancia en cantidad de preguntas: summary ({total_q}) vs master ({len(master_questions)})")
 
     # Recopilar todos los resultados individuales de los bloques
-    block_files = sorted(output_dir.glob("genesis-*.json"))
+    block_files = sorted([f for f in output_dir.glob("*.json") if f.name not in {
+        "resumen-general.json", "revision-manual-pendiente.json", "correcciones-aplicadas.json", "informe-oficial.json"
+    }])
     all_block_results = []
     for bf in block_files:
         b_data = load_json(bf)
@@ -82,6 +85,7 @@ def generate_report(output_dir: Path, master_input_path: Path) -> dict[str, Any]
 
     official_report = {
         "run_schema_version": "quizbible-official-audit-report-v1",
+        "book": book_name,
         "total_questions": total_q,
         "verified_count": verif_c,
         "requires_correction_count": req_corr_c,
@@ -109,14 +113,15 @@ def generate_report(output_dir: Path, master_input_path: Path) -> dict[str, Any]
 
 def print_markdown_report(report: dict[str, Any]) -> None:
     print("================================================================================")
-    print("                    INFORME OFICIAL DE AUDITORÍA RVR1960                       ")
+    print(f"               INFORME OFICIAL DE AUDITORÍA RVR1960 ({report['book'].upper()})               ")
     print("================================================================================")
+    print(f"Libro auditado                  : {report['book']}")
     print(f"Total preguntas procesadas      : {report['total_questions']}")
     print(f"VERIFICADO                      : {report['verified_count']} ({report['verification_rate']}%)")
     print(f"REQUIERE_CORRECCION             : {report['requires_correction_count']}")
     print(f"NO_CONCLUYENTE                  : {report['inconclusive_count']}")
     print(f"Capítulos en banco maestro      : {report['chapters_present_in_bank']}")
-    print(f"Capítulos obtenidos con éxito   : {report['successful_chapter_fetches']}/50")
+    print(f"Capítulos obtenidos con éxito   : {report['successful_chapter_fetches']}")
     print(f"Capítulos fallidos              : {report['failed_chapters']}")
     print(f"Cobertura textual completa      : {report['textual_coverage_complete']}")
     print(f"Intentos HTTP totales           : {report['http_request_attempts_total']}")

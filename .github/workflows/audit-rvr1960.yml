@@ -5,6 +5,7 @@ on:
     branches: [rvr1960-audit, main, audit-genesis-full-rvr1960]
     paths:
       - "tools/bible_extractor/genesis-master-input.json"
+      - "tools/bible_extractor/exodus-master-input.json"
       - "tools/bible_extractor/audit-input.json"
       - "tools/bible_extractor/auditor.py"
       - "tools/bible_extractor/report_audit.py"
@@ -14,6 +15,7 @@ on:
     branches: [main]
     paths:
       - "tools/bible_extractor/genesis-master-input.json"
+      - "tools/bible_extractor/exodus-master-input.json"
       - "tools/bible_extractor/audit-input.json"
       - "tools/bible_extractor/auditor.py"
       - "tools/bible_extractor/report_audit.py"
@@ -48,20 +50,35 @@ jobs:
         run: |
           python tools/bible_extractor/test_auditor.py
 
-      - name: Determinar archivo de entrada
+      - name: Determinar archivo de entrada y destino
         id: select_input
         run: |
-          INPUT_FILE="${{ inputs.input_file || 'tools/bible_extractor/genesis-master-input.json' }}"
-          if [ ! -f "$INPUT_FILE" ]; then
-            if [ -f "tools/bible_extractor/audit-input.json" ]; then
+          INPUT_FILE="${{ inputs.input_file || '' }}"
+          if [ -z "$INPUT_FILE" ]; then
+            if [ -f "tools/bible_extractor/exodus-master-input.json" ]; then
+              INPUT_FILE="tools/bible_extractor/exodus-master-input.json"
+            elif [ -f "tools/bible_extractor/genesis-master-input.json" ]; then
+              INPUT_FILE="tools/bible_extractor/genesis-master-input.json"
+            elif [ -f "tools/bible_extractor/audit-input.json" ]; then
               INPUT_FILE="tools/bible_extractor/audit-input.json"
             else
               echo "No se encontró archivo de entrada de auditoría."
               exit 1
             fi
           fi
+
+          if [[ "$INPUT_FILE" == *"exodus"* ]] || [[ "$INPUT_FILE" == *"exodo"* ]]; then
+            OUTPUT_DIR="build/audit/exodus"
+            ARTIFACT_NAME="auditoria-exodo-rvr1960-${{ github.run_number }}"
+          else
+            OUTPUT_DIR="build/audit/genesis"
+            ARTIFACT_NAME="auditoria-genesis-rvr1960-${{ github.run_number }}"
+          fi
+
           echo "selected_file=$INPUT_FILE" >> $GITHUB_OUTPUT
-          echo "Archivo seleccionado: $INPUT_FILE"
+          echo "output_dir=$OUTPUT_DIR" >> $GITHUB_OUTPUT
+          echo "artifact_name=$ARTIFACT_NAME" >> $GITHUB_OUTPUT
+          echo "Archivo seleccionado: $INPUT_FILE -> Salida: $OUTPUT_DIR"
 
       - name: Auditar preguntas con ApiBiblia RVR1960
         env:
@@ -70,15 +87,17 @@ jobs:
         run: |
           python tools/bible_extractor/auditor.py \
             --input "${{ steps.select_input.outputs.selected_file }}" \
-            --output-dir build/audit/genesis
+            --output-dir "${{ steps.select_input.outputs.output_dir }}"
 
       - name: Validar que no se persiste texto bíblico
+        env:
+          TARGET_DIR: ${{ steps.select_input.outputs.output_dir }}
         run: |
           python - <<'PY'
-          import json
+          import json, os
           from pathlib import Path
           
-          out_dir = Path('build/audit/genesis')
+          out_dir = Path(os.environ.get('TARGET_DIR', 'build/audit/genesis'))
           json_files = list(out_dir.glob('*.json'))
           assert len(json_files) > 0, "No se generaron archivos derivados de auditoría."
           
@@ -103,12 +122,12 @@ jobs:
       - name: Generar informe oficial de auditoría
         run: |
           python tools/bible_extractor/report_audit.py \
-            --output-dir build/audit/genesis \
+            --output-dir "${{ steps.select_input.outputs.output_dir }}" \
             --master-input "${{ steps.select_input.outputs.selected_file }}"
 
       - name: Publicar resultados derivados
         uses: actions/upload-artifact@v4
         with:
-          name: auditoria-genesis-rvr1960-${{ github.run_number }}
-          path: build/audit/genesis/
+          name: ${{ steps.select_input.outputs.artifact_name }}
+          path: ${{ steps.select_input.outputs.output_dir }}/
           retention-days: 7
