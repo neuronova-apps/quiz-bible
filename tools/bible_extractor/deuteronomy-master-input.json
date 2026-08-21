@@ -1,0 +1,2955 @@
+{
+  "source": "Quiz Bible master bank - Deuteronomy",
+  "version": "RVR1960",
+  "book": "Deuteronomio",
+  "total_questions": 100,
+  "questions": [
+    {
+      "id": "NQB-AT-DEU-0001",
+      "book": "Deuteronomio",
+      "chapter": 1,
+      "verse_start": 2,
+      "verse_end": 2,
+      "reference": "Deuteronomio 1:2",
+      "category": "AT_GENERAL",
+      "subcategory": "Distancia entre Horeb y Cades-barnea",
+      "characters": [
+        "israelitas",
+        "Moisés"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Cuántos días de camino se indican entre Horeb y Cades-barnea por la ruta del monte Seir?",
+      "opcion_a": "Once días",
+      "opcion_b": "Siete días",
+      "opcion_c": "Cuarenta días",
+      "opcion_d": "Treinta días",
+      "correct_option": "A",
+      "correct_answer": "Once días",
+      "explanation": "El inicio de Deuteronomio ubica geográficamente el discurso de Moisés y señala que el trayecto entre Horeb y Cades-barnea por el camino del monte Seir podía recorrerse en once días. Es un detalle cronológico-geográfico específico y por ello se clasifica como experto.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0002",
+      "book": "Deuteronomio",
+      "chapter": 1,
+      "verse_start": 13,
+      "verse_end": 13,
+      "reference": "Deuteronomio 1:13",
+      "category": "AT_GENERAL",
+      "subcategory": "Criterios para escoger dirigentes",
+      "characters": [
+        "Moisés",
+        "israelitas",
+        "jefes tribales"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué cualidades debían tener los hombres escogidos para asumir responsabilidades de dirección entre las tribus?",
+      "opcion_a": "Ser sabios, entendidos y reconocidos por sus tribus",
+      "opcion_b": "Ser únicamente los más ricos de cada tribu",
+      "opcion_c": "Ser todos sacerdotes levitas",
+      "opcion_d": "Ser los primogénitos de cada familia",
+      "correct_option": "A",
+      "correct_answer": "Ser sabios, entendidos y reconocidos por sus tribus",
+      "explanation": "Moisés recordó que la organización del pueblo requería dirigentes capaces y reconocidos dentro de sus propias tribus. La selección no se basaba solo en parentesco o posición económica, sino en cualidades vinculadas con sabiduría, entendimiento y experiencia comunitaria.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0003",
+      "book": "Deuteronomio",
+      "chapter": 1,
+      "verse_start": 31,
+      "verse_end": 31,
+      "reference": "Deuteronomio 1:31",
+      "category": "AT_GENERAL",
+      "subcategory": "Imagen del cuidado durante el desierto",
+      "characters": [
+        "Moisés",
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Con qué imagen familiar describió Moisés el cuidado recibido durante el camino por el desierto?",
+      "opcion_a": "Como un padre que lleva a su hijo",
+      "opcion_b": "Como un rey que dirige un ejército",
+      "opcion_c": "Como un pastor que cuenta ovejas",
+      "opcion_d": "Como un juez que dicta sentencia",
+      "correct_option": "A",
+      "correct_answer": "Como un padre que lleva a su hijo",
+      "explanation": "Al recordar el trayecto por el desierto, Moisés empleó la imagen de un padre que carga a su hijo para describir la manera en que el pueblo fue sostenido durante el camino. La pregunta evalúa la comparación narrativa, no una reproducción literal del versículo.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0004",
+      "book": "Deuteronomio",
+      "chapter": 2,
+      "verse_start": 4,
+      "verse_end": 5,
+      "reference": "Deuteronomio 2:4-5",
+      "category": "AT_GENERAL",
+      "subcategory": "Respeto al territorio de Esaú",
+      "characters": [
+        "descendientes de Esaú",
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Por qué Israel no debía provocar una guerra para apoderarse del territorio de los descendientes de Esaú en Seir?",
+      "opcion_a": "Porque ese territorio había sido dado a los descendientes de Esaú",
+      "opcion_b": "Porque la región pertenecía a los levitas",
+      "opcion_c": "Porque Israel debía entregar Seir a Moab",
+      "opcion_d": "Porque el territorio estaba reservado para Egipto",
+      "correct_option": "A",
+      "correct_answer": "Porque ese territorio había sido dado a los descendientes de Esaú",
+      "explanation": "Durante el avance hacia Canaán, Israel recibió instrucciones específicas sobre pueblos emparentados. En el caso de los descendientes de Esaú, no debía intentar tomar su territorio porque la región de Seir les había sido asignada como posesión.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0005",
+      "book": "Deuteronomio",
+      "chapter": 2,
+      "verse_start": 9,
+      "verse_end": 9,
+      "reference": "Deuteronomio 2:9",
+      "category": "AT_GENERAL",
+      "subcategory": "Territorio asignado a Moab",
+      "characters": [
+        "moabitas",
+        "descendientes de Lot",
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué razón se dio para que Israel no atacara a Moab con el propósito de tomar su territorio?",
+      "opcion_a": "Que Ar había sido dada como posesión a los descendientes de Lot",
+      "opcion_b": "Que Moab formaba parte de la tribu de Judá",
+      "opcion_c": "Que Moab estaba bajo dominio egipcio",
+      "opcion_d": "Que la región debía quedar deshabitada",
+      "correct_option": "A",
+      "correct_answer": "Que Ar había sido dada como posesión a los descendientes de Lot",
+      "explanation": "El relato distingue el territorio de Moab de las tierras que Israel sí conquistaría. La región asociada con Ar había sido concedida a los descendientes de Lot, por lo que Israel no debía iniciar una campaña para apoderarse de ella.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0006",
+      "book": "Deuteronomio",
+      "chapter": 3,
+      "verse_start": 11,
+      "verse_end": 11,
+      "reference": "Deuteronomio 3:11",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Cama de Og rey de Basán",
+      "characters": [
+        "Og",
+        "amonitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿De qué material se menciona que era la cama de Og, rey de Basán?",
+      "opcion_a": "De hierro",
+      "opcion_b": "De cedro",
+      "opcion_c": "De bronce",
+      "opcion_d": "De piedra",
+      "correct_option": "A",
+      "correct_answer": "De hierro",
+      "explanation": "Al recordar la derrota de Og, el texto añade un detalle singular sobre el rey de Basán: su cama era de hierro y se conservaba como referencia en territorio amonita. Este dato secundario permite una pregunta de personaje distinta de las ya formuladas sobre su batalla.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0007",
+      "book": "Deuteronomio",
+      "chapter": 3,
+      "verse_start": 27,
+      "verse_end": 27,
+      "reference": "Deuteronomio 3:27",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Moisés contempla la tierra desde Pisga",
+      "characters": [
+        "Moisés",
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Desde qué cumbre se indicó a Moisés que contemplara la tierra que no cruzaría para poseer?",
+      "opcion_a": "Desde la cumbre de Pisga",
+      "opcion_b": "Desde el monte Sinaí",
+      "opcion_c": "Desde el monte Hor",
+      "opcion_d": "Desde el monte Carmelo",
+      "correct_option": "A",
+      "correct_answer": "Desde la cumbre de Pisga",
+      "explanation": "Moisés recordó que se le permitió observar ampliamente la tierra desde una posición elevada, aunque no cruzaría el Jordán para entrar en ella. La indicación concreta lo sitúa en la cumbre de Pisga, un detalle geográfico propio del cierre de su liderazgo.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0008",
+      "book": "Deuteronomio",
+      "chapter": 4,
+      "verse_start": 2,
+      "verse_end": 2,
+      "reference": "Deuteronomio 4:2",
+      "category": "AT_GENERAL",
+      "subcategory": "No añadir ni quitar a los mandamientos",
+      "characters": [
+        "israelitas",
+        "Moisés"
+      ],
+      "difficulty": "Básico",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué principio se estableció respecto de las palabras de los mandamientos recibidos por Israel?",
+      "opcion_a": "No añadirles ni quitarles",
+      "opcion_b": "Cambiar los mandamientos según cada tribu",
+      "opcion_c": "Aplicar solo los mandamientos relacionados con las fiestas",
+      "opcion_d": "Reservarlos únicamente para los sacerdotes",
+      "correct_option": "A",
+      "correct_answer": "No añadirles ni quitarles",
+      "explanation": "Moisés insistió en que los mandamientos debían conservarse sin ampliaciones ni recortes arbitrarios. El principio protege la integridad de la instrucción recibida y funciona como una regla general antes de continuar con otras exhortaciones del libro.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0009",
+      "book": "Deuteronomio",
+      "chapter": 4,
+      "verse_start": 9,
+      "verse_end": 9,
+      "reference": "Deuteronomio 4:9",
+      "category": "AT_GENERAL",
+      "subcategory": "Transmitir lo aprendido a nuevas generaciones",
+      "characters": [
+        "israelitas",
+        "hijos",
+        "nietos"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿A quiénes debía transmitir Israel los acontecimientos y enseñanzas que había conocido?",
+      "opcion_a": "A sus hijos y a los hijos de sus hijos",
+      "opcion_b": "Solo a los sacerdotes",
+      "opcion_c": "Únicamente a los jefes militares",
+      "opcion_d": "Solo a los extranjeros residentes",
+      "correct_option": "A",
+      "correct_answer": "A sus hijos y a los hijos de sus hijos",
+      "explanation": "La exhortación no se limita a recordar personalmente lo vivido. También exige comunicarlo a las generaciones siguientes, incluyendo a hijos y nietos, para que la memoria de los acontecimientos y de las enseñanzas no desaparezca con la generación presente.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0010",
+      "book": "Deuteronomio",
+      "chapter": 4,
+      "verse_start": 43,
+      "verse_end": 43,
+      "reference": "Deuteronomio 4:43",
+      "category": "AT_GENERAL",
+      "subcategory": "Ciudad de refugio para Rubén",
+      "characters": [
+        "Moisés",
+        "rubenitas"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué ciudad fue apartada como ciudad de refugio para los rubenitas al oriente del Jordán?",
+      "opcion_a": "Beser",
+      "opcion_b": "Ramot",
+      "opcion_c": "Golán",
+      "opcion_d": "Hebrón",
+      "correct_option": "A",
+      "correct_answer": "Beser",
+      "explanation": "Antes de continuar con el discurso, se enumeran tres ciudades de refugio al oriente del Jordán. Beser correspondía al territorio de Rubén, mientras que Ramot y Golán estaban asociadas con otras tribus. La identificación de la ciudad específica requiere conocimiento detallado.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0011",
+      "book": "Deuteronomio",
+      "chapter": 5,
+      "verse_start": 15,
+      "verse_end": 15,
+      "reference": "Deuteronomio 5:15",
+      "category": "AT_GENERAL",
+      "subcategory": "Motivo recordado para el día de reposo",
+      "characters": [
+        "israelitas",
+        "Moisés"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué experiencia histórica debía recordar Israel al observar el día de reposo según esta formulación del mandamiento?",
+      "opcion_a": "Que había sido esclavo en Egipto y había sido liberado",
+      "opcion_b": "Que había construido el tabernáculo en el desierto",
+      "opcion_c": "Que había derrotado a Madián",
+      "opcion_d": "Que había recibido el maná por primera vez en Sinaí",
+      "correct_option": "A",
+      "correct_answer": "Que había sido esclavo en Egipto y había sido liberado",
+      "explanation": "En Deuteronomio, la observancia del día de reposo se vincula explícitamente con la memoria de la esclavitud en Egipto y la liberación recibida. La pregunta diferencia esta motivación histórica de otros elementos asociados con el mandamiento en pasajes anteriores.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0012",
+      "book": "Deuteronomio",
+      "chapter": 5,
+      "verse_start": 27,
+      "verse_end": 27,
+      "reference": "Deuteronomio 5:27",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Moisés como mediador ante el pueblo",
+      "characters": [
+        "Moisés",
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué pidió el pueblo a Moisés que hiciera después de escuchar la voz en medio del fuego?",
+      "opcion_a": "Que se acercara, oyera el mensaje y luego se lo comunicara",
+      "opcion_b": "Que regresara inmediatamente a Egipto",
+      "opcion_c": "Que enviara a Josué en su lugar",
+      "opcion_d": "Que escogiera doce exploradores para subir al monte",
+      "correct_option": "A",
+      "correct_answer": "Que se acercara, oyera el mensaje y luego se lo comunicara",
+      "explanation": "El pueblo pidió que Moisés asumiera una función de mediación: él debía acercarse, escuchar lo que se le comunicara y después transmitirlo a la congregación. El episodio explica la posición de Moisés como intermediario en la recepción posterior de instrucciones.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0013",
+      "book": "Deuteronomio",
+      "chapter": 6,
+      "verse_start": 4,
+      "verse_end": 4,
+      "reference": "Deuteronomio 6:4",
+      "category": "AT_GENERAL",
+      "subcategory": "Confesión central sobre Dios",
+      "characters": [
+        "israelitas",
+        "Moisés"
+      ],
+      "difficulty": "Básico",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué afirmación fundamental acerca de Dios encabeza la exhortación dirigida a Israel en este pasaje?",
+      "opcion_a": "Que Dios es uno",
+      "opcion_b": "Que cada tribu tiene un dios distinto",
+      "opcion_c": "Que solo los sacerdotes pueden conocer a Dios",
+      "opcion_d": "Que Dios habita únicamente fuera de Canaán",
+      "correct_option": "A",
+      "correct_answer": "Que Dios es uno",
+      "explanation": "El pasaje introduce una de las confesiones más conocidas de Deuteronomio al afirmar la unidad de Dios antes de llamar al pueblo a amarlo con todo su ser. La pregunta identifica la afirmación central sin convertirla en una cita textual completa.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0014",
+      "book": "Deuteronomio",
+      "chapter": 6,
+      "verse_start": 7,
+      "verse_end": 7,
+      "reference": "Deuteronomio 6:7",
+      "category": "AT_GENERAL",
+      "subcategory": "Enseñanza cotidiana de los mandamientos",
+      "characters": [
+        "padres",
+        "hijos",
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿En qué momentos de la vida cotidiana debía hablarse de estas enseñanzas a los hijos?",
+      "opcion_a": "Al estar en casa, al caminar, al acostarse y al levantarse",
+      "opcion_b": "Solo durante las fiestas anuales",
+      "opcion_c": "Únicamente al entrar en batalla",
+      "opcion_d": "Solo durante las reuniones de los ancianos",
+      "correct_option": "A",
+      "correct_answer": "Al estar en casa, al caminar, al acostarse y al levantarse",
+      "explanation": "La transmisión de las enseñanzas debía integrarse en la vida diaria, no limitarse a ceremonias ocasionales. El pasaje menciona distintos momentos ordinarios del día para mostrar una enseñanza constante dentro de la familia y de la experiencia cotidiana.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0015",
+      "book": "Deuteronomio",
+      "chapter": 6,
+      "verse_start": 9,
+      "verse_end": 9,
+      "reference": "Deuteronomio 6:9",
+      "category": "AT_GENERAL",
+      "subcategory": "Palabras escritas en casas y puertas",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿En qué lugares visibles debían escribirse estas palabras como recordatorio para Israel?",
+      "opcion_a": "En los postes de las casas y en las puertas",
+      "opcion_b": "En las armas de los soldados",
+      "opcion_c": "En los carros de los jefes tribales",
+      "opcion_d": "En las piedras del río Jordán solamente",
+      "correct_option": "A",
+      "correct_answer": "En los postes de las casas y en las puertas",
+      "explanation": "Además de enseñarse oralmente, las palabras debían estar presentes en espacios visibles de la vida comunitaria. La instrucción menciona los postes de las casas y las puertas, reforzando la idea de memoria constante dentro del hogar y de la comunidad.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0016",
+      "book": "Deuteronomio",
+      "chapter": 7,
+      "verse_start": 1,
+      "verse_end": 1,
+      "reference": "Deuteronomio 7:1",
+      "category": "AT_GENERAL",
+      "subcategory": "Siete pueblos mencionados en Canaán",
+      "characters": [
+        "israelitas",
+        "cananeos"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Cuántas naciones mayores y más poderosas que Israel se enumeran al describir los pueblos que encontraría en la tierra?",
+      "opcion_a": "Siete naciones",
+      "opcion_b": "Cinco naciones",
+      "opcion_c": "Diez naciones",
+      "opcion_d": "Doce naciones",
+      "correct_option": "A",
+      "correct_answer": "Siete naciones",
+      "explanation": "El capítulo enumera siete pueblos distintos antes de desarrollar las instrucciones sobre la relación de Israel con ellos. La pregunta exige identificar el número total de naciones mencionadas, un dato de precisión que no depende de memorizar solo uno de sus nombres.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0017",
+      "book": "Deuteronomio",
+      "chapter": 7,
+      "verse_start": 22,
+      "verse_end": 22,
+      "reference": "Deuteronomio 7:22",
+      "category": "AT_GENERAL",
+      "subcategory": "Conquista progresiva de las naciones",
+      "characters": [
+        "israelitas",
+        "pueblos de Canaán"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Cómo se anunció que serían desplazadas las naciones de delante de Israel?",
+      "opcion_a": "Poco a poco, y no todas de una sola vez",
+      "opcion_b": "Todas en un único día",
+      "opcion_c": "Solo después de cuarenta años adicionales",
+      "opcion_d": "Mediante acuerdos sin ocupación territorial",
+      "correct_option": "A",
+      "correct_answer": "Poco a poco, y no todas de una sola vez",
+      "explanation": "La conquista se describe como un proceso gradual. El texto explica que las naciones serían desplazadas poco a poco y no de manera instantánea, relacionando ese ritmo con las condiciones prácticas de ocupar y administrar la tierra.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0018",
+      "book": "Deuteronomio",
+      "chapter": 8,
+      "verse_start": 2,
+      "verse_end": 2,
+      "reference": "Deuteronomio 8:2",
+      "category": "AT_GENERAL",
+      "subcategory": "Propósito formativo del camino por el desierto",
+      "characters": [
+        "israelitas",
+        "Moisés"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué propósito se atribuye al prolongado camino por el desierto al recordar esa experiencia?",
+      "opcion_a": "Humillar y poner a prueba al pueblo para revelar lo que había en su corazón",
+      "opcion_b": "Preparar un ejército para conquistar Egipto",
+      "opcion_c": "Enseñar exclusivamente técnicas de agricultura",
+      "opcion_d": "Evitar que las tribus se conocieran entre sí",
+      "correct_option": "A",
+      "correct_answer": "Humillar y poner a prueba al pueblo para revelar lo que había en su corazón",
+      "explanation": "El recuerdo del desierto se presenta también como una experiencia formativa. El recorrido permitió poner a prueba al pueblo y mostrar su disposición interior frente a los mandamientos, por lo que la pregunta se centra en el propósito pedagógico atribuido al proceso.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0019",
+      "book": "Deuteronomio",
+      "chapter": 8,
+      "verse_start": 4,
+      "verse_end": 4,
+      "reference": "Deuteronomio 8:4",
+      "category": "AT_GENERAL",
+      "subcategory": "Conservación de la ropa en el desierto",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Básico",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué se recuerda que no se desgastó durante los años de recorrido por el desierto?",
+      "opcion_a": "La ropa del pueblo",
+      "opcion_b": "Las tiendas del tabernáculo",
+      "opcion_c": "Las trompetas de plata",
+      "opcion_d": "Las armas de los soldados",
+      "correct_option": "A",
+      "correct_answer": "La ropa del pueblo",
+      "explanation": "Entre las señales de cuidado durante el desierto se menciona que la ropa del pueblo no se desgastó. El mismo contexto añade otra observación sobre sus pies, pero la pregunta se concentra únicamente en el elemento cotidiano relacionado con el vestido.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0020",
+      "book": "Deuteronomio",
+      "chapter": 8,
+      "verse_start": 18,
+      "verse_end": 18,
+      "reference": "Deuteronomio 8:18",
+      "category": "AT_GENERAL",
+      "subcategory": "Recordatorio al alcanzar prosperidad",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué debía recordar Israel al obtener bienes y prosperidad en la tierra?",
+      "opcion_a": "Que Dios es quien da la capacidad para producir riqueza",
+      "opcion_b": "Que la riqueza demostraba superioridad sobre todas las naciones",
+      "opcion_c": "Que los bienes pertenecían únicamente a los jefes tribales",
+      "opcion_d": "Que la prosperidad hacía innecesarios los mandamientos",
+      "correct_option": "A",
+      "correct_answer": "Que Dios es quien da la capacidad para producir riqueza",
+      "explanation": "El capítulo advierte contra atribuir la prosperidad únicamente a la propia fuerza. Israel debía recordar el origen de su capacidad para producir riqueza y mantener ese reconocimiento aun cuando disfrutara de abundancia en la tierra.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0021",
+      "book": "Deuteronomio",
+      "chapter": 9,
+      "verse_start": 4,
+      "verse_end": 6,
+      "reference": "Deuteronomio 9:4-6",
+      "category": "AT_GENERAL",
+      "subcategory": "La tierra no se recibe por justicia propia",
+      "characters": [
+        "Moisés",
+        "israelitas",
+        "pueblos de Canaán"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué idea debía evitar Israel al entrar en posesión de la tierra después de la derrota de las naciones?",
+      "opcion_a": "Pensar que recibía la tierra por su propia justicia",
+      "opcion_b": "Pensar que debía dividir la tierra con Egipto",
+      "opcion_c": "Pensar que los levitas recibirían todo el territorio",
+      "opcion_d": "Pensar que la conquista debía aplazarse otros cuarenta años",
+      "correct_option": "A",
+      "correct_answer": "Pensar que recibía la tierra por su propia justicia",
+      "explanation": "Moisés advirtió que Israel no debía atribuir la posesión de Canaán a su propia justicia. El discurso relaciona la expulsión de aquellas naciones con su conducta y con el cumplimiento de la promesa hecha a los antepasados, evitando una interpretación basada en superioridad moral propia.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0022",
+      "book": "Deuteronomio",
+      "chapter": 9,
+      "verse_start": 20,
+      "verse_end": 20,
+      "reference": "Deuteronomio 9:20",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Intercesión de Moisés por Aarón",
+      "characters": [
+        "Moisés",
+        "Aarón"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Por qué personaje recordó Moisés que había orado cuando también estuvo bajo fuerte enojo durante el episodio del becerro?",
+      "opcion_a": "Por Aarón",
+      "opcion_b": "Por Josué",
+      "opcion_c": "Por Caleb",
+      "opcion_d": "Por Eleazar",
+      "correct_option": "A",
+      "correct_answer": "Por Aarón",
+      "explanation": "En su recapitulación del episodio del becerro, Moisés añadió que Aarón también estuvo en una situación grave y que él intercedió por su hermano. Este detalle aporta una perspectiva específica de Deuteronomio sin repetir simplemente la destrucción del becerro ya narrada en otros libros.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0023",
+      "book": "Deuteronomio",
+      "chapter": 9,
+      "verse_start": 27,
+      "verse_end": 29,
+      "reference": "Deuteronomio 9:27-29",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Argumento de Moisés en su intercesión",
+      "characters": [
+        "Moisés",
+        "Abraham",
+        "Isaac",
+        "Jacob",
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué preocupación mencionó Moisés al interceder por Israel respecto de cómo podía interpretarse su destrucción?",
+      "opcion_a": "Que se dijera que Dios no pudo llevarlos a la tierra prometida o que los había sacado por rechazo",
+      "opcion_b": "Que Egipto reclamara legalmente el territorio de Canaán",
+      "opcion_c": "Que las tribus atribuyeran la conquista exclusivamente a Josué",
+      "opcion_d": "Que los levitas abandonaran definitivamente el sacerdocio",
+      "correct_option": "A",
+      "correct_answer": "Que se dijera que Dios no pudo llevarlos a la tierra prometida o que los había sacado por rechazo",
+      "explanation": "En su intercesión, Moisés apeló a la relación de Israel con los patriarcas y al significado público de la liberación. Señaló que la destrucción del pueblo podía ser interpretada por otros como incapacidad para cumplir la promesa o como rechazo hacia quienes habían sido sacados de Egipto.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0024",
+      "book": "Deuteronomio",
+      "chapter": 10,
+      "verse_start": 1,
+      "verse_end": 3,
+      "reference": "Deuteronomio 10:1-3",
+      "category": "AT_GENERAL",
+      "subcategory": "Arca preparada para las nuevas tablas",
+      "characters": [
+        "Moisés"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿De qué material debía preparar Moisés un arca cuando recibió la instrucción relacionada con las nuevas tablas?",
+      "opcion_a": "De madera",
+      "opcion_b": "De bronce",
+      "opcion_c": "De hierro",
+      "opcion_d": "De piedra",
+      "correct_option": "A",
+      "correct_answer": "De madera",
+      "explanation": "Al prepararse para recibir nuevamente las tablas, Moisés debía disponer también de un arca de madera. La pregunta se centra en un detalle de la recapitulación deuteronómica y no en repetir únicamente el hecho de que se hicieron nuevas tablas.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0025",
+      "book": "Deuteronomio",
+      "chapter": 10,
+      "verse_start": 8,
+      "verse_end": 8,
+      "reference": "Deuteronomio 10:8",
+      "category": "AT_GENERAL",
+      "subcategory": "Funciones asignadas a la tribu de Leví",
+      "characters": [
+        "levitas",
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué conjunto de funciones se asocia con la separación de la tribu de Leví en esta recapitulación?",
+      "opcion_a": "Llevar el arca, servir delante de Dios y bendecir en su nombre",
+      "opcion_b": "Dirigir el ejército, repartir la tierra y cobrar tributos",
+      "opcion_c": "Cultivar las tierras reales, fabricar armas y vigilar fronteras",
+      "opcion_d": "Elegir a los reyes, juzgar todas las tribus y dirigir los censos",
+      "correct_option": "A",
+      "correct_answer": "Llevar el arca, servir delante de Dios y bendecir en su nombre",
+      "explanation": "Deuteronomio resume la separación de Leví mediante varias funciones complementarias: transportar el arca del pacto, estar delante de Dios para servir y pronunciar bendición en su nombre. La combinación permite evaluar la función levítica desde la perspectiva sintética del libro.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0026",
+      "book": "Deuteronomio",
+      "chapter": 10,
+      "verse_start": 12,
+      "verse_end": 13,
+      "reference": "Deuteronomio 10:12-13",
+      "category": "AT_GENERAL",
+      "subcategory": "Resumen de lo requerido a Israel",
+      "characters": [
+        "israelitas",
+        "Moisés"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué combinación resume lo que se requería de Israel en esta exhortación?",
+      "opcion_a": "Temer a Dios, andar en sus caminos, amarlo, servirle y guardar sus mandamientos",
+      "opcion_b": "Construir ciudades, formar un ejército y ampliar las fronteras",
+      "opcion_c": "Realizar un censo anual y elegir nuevos sacerdotes",
+      "opcion_d": "Peregrinar permanentemente por el desierto y evitar establecerse",
+      "correct_option": "A",
+      "correct_answer": "Temer a Dios, andar en sus caminos, amarlo, servirle y guardar sus mandamientos",
+      "explanation": "Moisés condensó la respuesta esperada de Israel en actitudes y acciones relacionadas: reverencia, obediencia, amor, servicio y cumplimiento de los mandamientos. La pregunta evalúa el conjunto conceptual y no una frase aislada del pasaje.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0027",
+      "book": "Deuteronomio",
+      "chapter": 10,
+      "verse_start": 17,
+      "verse_end": 17,
+      "reference": "Deuteronomio 10:17",
+      "category": "AT_GENERAL",
+      "subcategory": "Imparcialidad y rechazo del soborno",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué dos rasgos se destacan al describir la imparcialidad de Dios en este pasaje?",
+      "opcion_a": "No hace acepción de personas ni acepta soborno",
+      "opcion_b": "Favorece siempre al más rico y acepta regalos",
+      "opcion_c": "Solo escucha a los dirigentes y evita juzgar extranjeros",
+      "opcion_d": "Delega toda decisión a los jefes tribales",
+      "correct_option": "A",
+      "correct_answer": "No hace acepción de personas ni acepta soborno",
+      "explanation": "La descripción enfatiza una justicia que no depende de la posición de las personas ni puede ser comprada mediante sobornos. Estos dos rasgos aparecen unidos y preparan el llamado posterior a actuar con consideración hacia quienes tienen menor protección social.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0028",
+      "book": "Deuteronomio",
+      "chapter": 11,
+      "verse_start": 10,
+      "verse_end": 12,
+      "reference": "Deuteronomio 11:10-12",
+      "category": "AT_GENERAL",
+      "subcategory": "La tierra depende de la lluvia",
+      "characters": [
+        "israelitas",
+        "Egipto",
+        "Canaán"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué diferencia de abastecimiento de agua se destaca entre la tierra prometida y la agricultura recordada de Egipto?",
+      "opcion_a": "La tierra prometida recibe agua de la lluvia del cielo",
+      "opcion_b": "La tierra prometida depende exclusivamente de pozos excavados por cada tribu",
+      "opcion_c": "La tierra prometida solo puede cultivarse mediante canales del Nilo",
+      "opcion_d": "La tierra prometida no necesita agua para sus cultivos",
+      "correct_option": "A",
+      "correct_answer": "La tierra prometida recibe agua de la lluvia del cielo",
+      "explanation": "Moisés contrastó la experiencia agrícola de Egipto con la tierra a la que Israel se dirigía. Canaán se describe como una región de montes y valles que recibe agua de la lluvia, subrayando una relación distinta entre cultivo, clima y dependencia de la provisión recibida.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0029",
+      "book": "Deuteronomio",
+      "chapter": 11,
+      "verse_start": 26,
+      "verse_end": 28,
+      "reference": "Deuteronomio 11:26-28",
+      "category": "AT_GENERAL",
+      "subcategory": "Bendición y maldición según la obediencia",
+      "characters": [
+        "israelitas",
+        "Moisés"
+      ],
+      "difficulty": "Básico",
+      "question_type": "Selección múltiple",
+      "question": "¿De qué dependía recibir la bendición en contraste con la maldición presentada ante Israel?",
+      "opcion_a": "De obedecer los mandamientos en lugar de apartarse de ellos",
+      "opcion_b": "De pertenecer a la tribu más numerosa",
+      "opcion_c": "De poseer más ganado que las demás naciones",
+      "opcion_d": "De vivir únicamente al este del Jordán",
+      "correct_option": "A",
+      "correct_answer": "De obedecer los mandamientos en lugar de apartarse de ellos",
+      "explanation": "El discurso presenta dos caminos opuestos: la bendición vinculada con escuchar y obedecer, y la maldición asociada con apartarse del camino señalado. La pregunta recoge esa relación central sin convertirla en una cita literal.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0030",
+      "book": "Deuteronomio",
+      "chapter": 11,
+      "verse_start": 29,
+      "verse_end": 29,
+      "reference": "Deuteronomio 11:29",
+      "category": "AT_GENERAL",
+      "subcategory": "Gerizim y Ebal",
+      "characters": [
+        "israelitas",
+        "Moisés"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué monte quedó asociado con la bendición al entrar Israel en la tierra?",
+      "opcion_a": "El monte Gerizim",
+      "opcion_b": "El monte Ebal",
+      "opcion_c": "El monte Hor",
+      "opcion_d": "El monte Seir",
+      "correct_option": "A",
+      "correct_answer": "El monte Gerizim",
+      "explanation": "La ceremonia futura vinculó la bendición con el monte Gerizim y la maldición con el monte Ebal. La pregunta identifica solo uno de los dos montes para mantener una respuesta inequívoca y preparar contenidos posteriores del propio Deuteronomio.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0031",
+      "book": "Deuteronomio",
+      "chapter": 12,
+      "verse_start": 5,
+      "verse_end": 7,
+      "reference": "Deuteronomio 12:5-7",
+      "category": "AT_GENERAL",
+      "subcategory": "Lugar escogido para el culto",
+      "characters": [
+        "israelitas",
+        "levitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Dónde debía concentrar Israel sus ofrendas y actos de culto en vez de adoptar los lugares religiosos de las naciones?",
+      "opcion_a": "En el lugar que Dios escogiera entre las tribus para poner allí su nombre",
+      "opcion_b": "En cualquier colina elegida por cada familia",
+      "opcion_c": "Únicamente en las ciudades fronterizas",
+      "opcion_d": "En los antiguos santuarios de las naciones conquistadas",
+      "correct_option": "A",
+      "correct_answer": "En el lugar que Dios escogiera entre las tribus para poner allí su nombre",
+      "explanation": "El capítulo contrasta los lugares de culto de los pueblos de Canaán con un centro escogido para Israel. Allí debían llevarse sacrificios, diezmos y otras ofrendas, evitando reproducir sin criterio los espacios religiosos que encontraran en la tierra.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0032",
+      "book": "Deuteronomio",
+      "chapter": 12,
+      "verse_start": 20,
+      "verse_end": 21,
+      "reference": "Deuteronomio 12:20-21",
+      "category": "AT_GENERAL",
+      "subcategory": "Consumo de carne cuando el lugar escogido estaba lejos",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué circunstancia permitía sacrificar animales del ganado para comer carne dentro de las poblaciones sin llevarlos primero al lugar central de culto?",
+      "opcion_a": "Que el lugar escogido para el culto estuviera demasiado lejos",
+      "opcion_b": "Que no existiera ningún sacerdote en Israel",
+      "opcion_c": "Que fuera exclusivamente el primer día del séptimo mes",
+      "opcion_d": "Que la familia perteneciera a la tribu de Leví",
+      "correct_option": "A",
+      "correct_answer": "Que el lugar escogido para el culto estuviera demasiado lejos",
+      "explanation": "La legislación distingue entre sacrificios ofrecidos en el lugar escogido y el consumo ordinario de carne. Cuando la distancia hacía impráctico llevar allí cada animal destinado a alimento, se permitía sacrificarlo y comerlo en las poblaciones conforme a la provisión recibida.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0033",
+      "book": "Deuteronomio",
+      "chapter": 13,
+      "verse_start": 1,
+      "verse_end": 3,
+      "reference": "Deuteronomio 13:1-3",
+      "category": "AT_GENERAL",
+      "subcategory": "Prueba de un profeta por su mensaje",
+      "characters": [
+        "profeta",
+        "soñador",
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué hacía inaceptable el mensaje de un profeta o soñador aunque la señal anunciada llegara a cumplirse?",
+      "opcion_a": "Que intentara llevar al pueblo a seguir y servir a otros dioses",
+      "opcion_b": "Que hablara ante más de una tribu",
+      "opcion_c": "Que anunciara una señal durante una fiesta",
+      "opcion_d": "Que fuera originario de una ciudad pequeña",
+      "correct_option": "A",
+      "correct_answer": "Que intentara llevar al pueblo a seguir y servir a otros dioses",
+      "explanation": "El criterio no dependía únicamente de que una señal ocurriera. Si el mensaje conducía a abandonar la fidelidad debida y a seguir otros dioses, no debía ser aceptado. La pregunta distingue entre el cumplimiento de una señal y la orientación religiosa del mensaje.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0034",
+      "book": "Deuteronomio",
+      "chapter": 13,
+      "verse_start": 6,
+      "verse_end": 8,
+      "reference": "Deuteronomio 13:6-8",
+      "category": "AT_GENERAL",
+      "subcategory": "Respuesta ante una invitación secreta a la idolatría",
+      "characters": [
+        "familia",
+        "amigo cercano",
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué respuesta se ordenaba ante una persona muy cercana que intentara convencer en secreto de servir a otros dioses?",
+      "opcion_a": "No consentir, no escucharla y no encubrir la propuesta",
+      "opcion_b": "Aceptar temporalmente para evitar un conflicto familiar",
+      "opcion_c": "Consultar únicamente a los comerciantes de la ciudad",
+      "opcion_d": "Posponer cualquier decisión hasta el siguiente año sabático",
+      "correct_option": "A",
+      "correct_answer": "No consentir, no escucharla y no encubrir la propuesta",
+      "explanation": "El capítulo aplica la fidelidad religiosa incluso a relaciones familiares o de amistad muy estrechas. La cercanía personal no debía convertir una invitación secreta a la idolatría en algo aceptable ni justificar que la propuesta fuera ocultada.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0035",
+      "book": "Deuteronomio",
+      "chapter": 13,
+      "verse_start": 12,
+      "verse_end": 14,
+      "reference": "Deuteronomio 13:12-14",
+      "category": "AT_GENERAL",
+      "subcategory": "Investigación de una denuncia de idolatría colectiva",
+      "characters": [
+        "israelitas",
+        "habitantes de una ciudad"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué procedimiento debía realizarse antes de actuar ante el informe de que una ciudad había sido desviada hacia otros dioses?",
+      "opcion_a": "Investigar, examinar y preguntar cuidadosamente si el informe era verdadero",
+      "opcion_b": "Aceptar el primer rumor sin ninguna comprobación",
+      "opcion_c": "Esperar automáticamente siete años sin investigar",
+      "opcion_d": "Trasladar a todos los habitantes antes de revisar el caso",
+      "correct_option": "A",
+      "correct_answer": "Investigar, examinar y preguntar cuidadosamente si el informe era verdadero",
+      "explanation": "Antes de aplicar una consecuencia colectiva, la norma exige comprobar cuidadosamente la acusación. La pregunta resalta ese componente de investigación previa, que evita presentar el pasaje como una reacción automática basada en rumores no verificados.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0036",
+      "book": "Deuteronomio",
+      "chapter": 14,
+      "verse_start": 1,
+      "verse_end": 1,
+      "reference": "Deuteronomio 14:1",
+      "category": "AT_GENERAL",
+      "subcategory": "Prácticas de duelo prohibidas",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué prácticas corporales de duelo se prohibieron a Israel por causa de los muertos?",
+      "opcion_a": "Hacerse incisiones y raparse entre los ojos",
+      "opcion_b": "Vestirse de lino y guardar silencio",
+      "opcion_c": "Lavarse las manos y quitarse las sandalias",
+      "opcion_d": "Encender lámparas y dormir fuera de casa",
+      "correct_option": "A",
+      "correct_answer": "Hacerse incisiones y raparse entre los ojos",
+      "explanation": "La instrucción diferencia a Israel de determinadas prácticas funerarias de su entorno mediante dos prohibiciones corporales concretas. La pregunta se limita a identificar esas acciones sin extender la respuesta a costumbres que no aparecen en la referencia.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0037",
+      "book": "Deuteronomio",
+      "chapter": 14,
+      "verse_start": 22,
+      "verse_end": 22,
+      "reference": "Deuteronomio 14:22",
+      "category": "AT_GENERAL",
+      "subcategory": "Diezmo anual del producto",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Con qué frecuencia debía separarse el diezmo del producto del campo indicado en esta norma?",
+      "opcion_a": "Cada año",
+      "opcion_b": "Cada siete años",
+      "opcion_c": "Una sola vez al entrar en Canaán",
+      "opcion_d": "Cada cincuenta años",
+      "correct_option": "A",
+      "correct_answer": "Cada año",
+      "explanation": "La norma introduce el diezmo del producto agrícola como una práctica anual. La pregunta se centra en la periodicidad, diferenciándola de otras disposiciones de Deuteronomio que utilizan ciclos de tres o siete años.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0038",
+      "book": "Deuteronomio",
+      "chapter": 14,
+      "verse_start": 28,
+      "verse_end": 29,
+      "reference": "Deuteronomio 14:28-29",
+      "category": "AT_GENERAL",
+      "subcategory": "Diezmo del tercer año para grupos sin provisión propia",
+      "characters": [
+        "levitas",
+        "extranjeros",
+        "huérfanos",
+        "viudas",
+        "israelitas"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué grupos se mencionan como beneficiarios del diezmo que debía depositarse en las poblaciones al final de cada tercer año?",
+      "opcion_a": "Levitas, extranjeros, huérfanos y viudas",
+      "opcion_b": "Reyes, soldados, comerciantes y artesanos",
+      "opcion_c": "Solo sacerdotes y jefes tribales",
+      "opcion_d": "Únicamente propietarios de ganado y agricultores",
+      "correct_option": "A",
+      "correct_answer": "Levitas, extranjeros, huérfanos y viudas",
+      "explanation": "El ciclo del tercer año asignaba el diezmo almacenado localmente a grupos con menor acceso a una provisión territorial propia o con mayor vulnerabilidad social. Recordar simultáneamente el momento y los cuatro grupos convierte esta pregunta en un detalle de nivel experto.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0039",
+      "book": "Deuteronomio",
+      "chapter": 15,
+      "verse_start": 1,
+      "verse_end": 2,
+      "reference": "Deuteronomio 15:1-2",
+      "category": "AT_GENERAL",
+      "subcategory": "Remisión de deudas al séptimo año",
+      "characters": [
+        "israelitas",
+        "acreedores",
+        "deudores"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Cada cuánto tiempo se establecía la remisión de las deudas entre miembros del pueblo?",
+      "opcion_a": "Cada siete años",
+      "opcion_b": "Cada tres años",
+      "opcion_c": "Cada cincuenta años",
+      "opcion_d": "Cada año",
+      "correct_option": "A",
+      "correct_answer": "Cada siete años",
+      "explanation": "Deuteronomio introduce un ciclo de remisión al final de cada siete años. La disposición afectaba la reclamación de determinadas deudas entre miembros del pueblo y forma parte de un conjunto más amplio de normas económicas y sociales del capítulo.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0040",
+      "book": "Deuteronomio",
+      "chapter": 15,
+      "verse_start": 13,
+      "verse_end": 14,
+      "reference": "Deuteronomio 15:13-14",
+      "category": "AT_GENERAL",
+      "subcategory": "Provisión al liberar a un siervo",
+      "characters": [
+        "siervo hebreo",
+        "amo israelita"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Cómo debía tratarse al siervo liberado después de completar su período de servicio?",
+      "opcion_a": "No debía irse con las manos vacías, sino recibir provisión generosa",
+      "opcion_b": "Debía abandonar el territorio sin ningún bien",
+      "opcion_c": "Debía servir otros siete años sin recibir nada",
+      "opcion_d": "Debía entregar al amo todos sus bienes personales",
+      "correct_option": "A",
+      "correct_answer": "No debía irse con las manos vacías, sino recibir provisión generosa",
+      "explanation": "La liberación no debía reducirse a terminar formalmente el servicio. El amo debía proporcionar bienes de su rebaño y producción para que la persona no saliera sin recursos, vinculando la libertad con una provisión concreta para comenzar una nueva etapa.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0041",
+      "book": "Deuteronomio",
+      "chapter": 16,
+      "verse_start": 16,
+      "verse_end": 16,
+      "reference": "Deuteronomio 16:16",
+      "category": "AT_GENERAL",
+      "subcategory": "Tres celebraciones anuales ante Dios",
+      "characters": [
+        "israelitas",
+        "varones de Israel"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué tres celebraciones se mencionan como ocasiones en las que los varones debían presentarse anualmente en el lugar escogido para el culto?",
+      "opcion_a": "Panes sin levadura, Fiesta de las Semanas y Fiesta de los Tabernáculos",
+      "opcion_b": "Pascua, Trompetas y Día de Expiación",
+      "opcion_c": "Semanas, Jubileo y Purim",
+      "opcion_d": "Panes sin levadura, Luna Nueva y Año Sabático",
+      "correct_option": "A",
+      "correct_answer": "Panes sin levadura, Fiesta de las Semanas y Fiesta de los Tabernáculos",
+      "explanation": "Deuteronomio reúne tres celebraciones en las que se esperaba la presentación anual en el lugar escogido: Panes sin levadura, Semanas y Tabernáculos. La pregunta exige distinguir este conjunto de otras fechas del calendario bíblico ya tratadas en libros anteriores.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0042",
+      "book": "Deuteronomio",
+      "chapter": 16,
+      "verse_start": 18,
+      "verse_end": 18,
+      "reference": "Deuteronomio 16:18",
+      "category": "AT_GENERAL",
+      "subcategory": "Jueces y oficiales en las ciudades",
+      "characters": [
+        "jueces",
+        "oficiales",
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué autoridades debían establecerse en las ciudades para juzgar al pueblo con justicia?",
+      "opcion_a": "Jueces y oficiales",
+      "opcion_b": "Reyes y profetas",
+      "opcion_c": "Sacerdotes y artesanos",
+      "opcion_d": "Capitanes y comerciantes",
+      "correct_option": "A",
+      "correct_answer": "Jueces y oficiales",
+      "explanation": "La organización judicial debía extenderse por las ciudades conforme a las tribus. Jueces y oficiales tenían la responsabilidad de administrar justicia al pueblo, de modo que el orden legal no quedara limitado a un único centro nacional.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0043",
+      "book": "Deuteronomio",
+      "chapter": 16,
+      "verse_start": 19,
+      "verse_end": 19,
+      "reference": "Deuteronomio 16:19",
+      "category": "AT_GENERAL",
+      "subcategory": "Prohibición del soborno judicial",
+      "characters": [
+        "jueces",
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué práctica se prohibía a los jueces porque podía distorsionar la evaluación de un caso?",
+      "opcion_a": "Aceptar sobornos",
+      "opcion_b": "Escuchar a más de un testigo",
+      "opcion_c": "Consultar a otros jueces",
+      "opcion_d": "Registrar por escrito una decisión",
+      "correct_option": "A",
+      "correct_answer": "Aceptar sobornos",
+      "explanation": "La justicia debía ejercerse sin favoritismo ni corrupción. Deuteronomio advierte específicamente contra recibir sobornos, pues alteran la percepción del juez y pueden torcer la decisión de quienes deberían actuar con rectitud.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0044",
+      "book": "Deuteronomio",
+      "chapter": 17,
+      "verse_start": 8,
+      "verse_end": 11,
+      "reference": "Deuteronomio 17:8-11",
+      "category": "AT_GENERAL",
+      "subcategory": "Casos judiciales difíciles",
+      "characters": [
+        "sacerdotes levitas",
+        "juez",
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Dónde debían resolverse los casos demasiado difíciles para las autoridades locales?",
+      "opcion_a": "Ante los sacerdotes levitas y el juez que estuviera en el lugar escogido",
+      "opcion_b": "Ante el ejército reunido de las doce tribus",
+      "opcion_c": "Ante los comerciantes principales de la ciudad",
+      "opcion_d": "Ante el clan más numeroso de la región",
+      "correct_option": "A",
+      "correct_answer": "Ante los sacerdotes levitas y el juez que estuviera en el lugar escogido",
+      "explanation": "Cuando un asunto excedía la capacidad del tribunal local, debía llevarse al lugar escogido y presentarse ante la autoridad sacerdotal y judicial correspondiente. La norma establece así una instancia superior para controversias difíciles.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0045",
+      "book": "Deuteronomio",
+      "chapter": 17,
+      "verse_start": 16,
+      "verse_end": 16,
+      "reference": "Deuteronomio 17:16",
+      "category": "AT_GENERAL",
+      "subcategory": "Límites para los caballos del rey",
+      "characters": [
+        "rey de Israel",
+        "israelitas",
+        "egipcios"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué restricción se establecía para el rey respecto de los caballos y de Egipto?",
+      "opcion_a": "No debía multiplicar caballos ni hacer volver al pueblo a Egipto para conseguirlos",
+      "opcion_b": "Debía mantener doce mil caballos comprados únicamente en Egipto",
+      "opcion_c": "Debía entregar todos los caballos a los levitas",
+      "opcion_d": "Solo podía usar caballos durante las fiestas religiosas",
+      "correct_option": "A",
+      "correct_answer": "No debía multiplicar caballos ni hacer volver al pueblo a Egipto para conseguirlos",
+      "explanation": "La futura monarquía debía funcionar con límites. Entre ellos estaba evitar la acumulación excesiva de caballos y no utilizar esa necesidad como motivo para conducir nuevamente al pueblo hacia Egipto, una restricción ligada al poder militar y a la memoria del éxodo.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0046",
+      "book": "Deuteronomio",
+      "chapter": 17,
+      "verse_start": 18,
+      "verse_end": 19,
+      "reference": "Deuteronomio 17:18-19",
+      "category": "AT_GENERAL",
+      "subcategory": "Copia de la ley para el rey",
+      "characters": [
+        "rey de Israel",
+        "sacerdotes levitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué debía hacer el rey con una copia de la ley durante su vida?",
+      "opcion_a": "Conservarla consigo y leerla todos los días",
+      "opcion_b": "Guardarla sellada sin consultarla",
+      "opcion_c": "Entregarla al ejército después de su coronación",
+      "opcion_d": "Leerla únicamente una vez cada siete años",
+      "correct_option": "A",
+      "correct_answer": "Conservarla consigo y leerla todos los días",
+      "explanation": "El rey no debía gobernar separado de la instrucción recibida. Debía disponer de una copia, mantenerla consigo y leerla de manera constante, de modo que su autoridad permaneciera sometida a la ley y no dependiera solo de su voluntad personal.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0047",
+      "book": "Deuteronomio",
+      "chapter": 18,
+      "verse_start": 10,
+      "verse_end": 11,
+      "reference": "Deuteronomio 18:10-11",
+      "category": "AT_GENERAL",
+      "subcategory": "Prácticas de adivinación prohibidas",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué conjunto está formado por prácticas que Israel no debía adoptar al entrar en la tierra?",
+      "opcion_a": "Adivinación, hechicería, consulta de espíritus y prácticas semejantes",
+      "opcion_b": "Agricultura, pastoreo, comercio y artesanía",
+      "opcion_c": "Lectura de la ley, oración, hospitalidad y justicia",
+      "opcion_d": "Cultivo de viñas, cría de ganado, pesca y construcción",
+      "correct_option": "A",
+      "correct_answer": "Adivinación, hechicería, consulta de espíritus y prácticas semejantes",
+      "explanation": "Deuteronomio enumera diversas prácticas de adivinación y consulta ocultista que no debían formar parte de la vida de Israel. La pregunta agrupa esas prácticas para evaluar la categoría general sin depender de una sola denominación cuya traducción pueda variar.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0048",
+      "book": "Deuteronomio",
+      "chapter": 18,
+      "verse_start": 15,
+      "verse_end": 15,
+      "reference": "Deuteronomio 18:15",
+      "category": "AT_GENERAL",
+      "subcategory": "Profeta semejante a Moisés",
+      "characters": [
+        "Moisés",
+        "profeta",
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿De dónde se anunció que surgiría el profeta semejante a Moisés al que el pueblo debía escuchar?",
+      "opcion_a": "De entre sus propios hermanos israelitas",
+      "opcion_b": "De la casa real de Egipto",
+      "opcion_c": "De los sacerdotes de Moab",
+      "opcion_d": "De una nación situada más allá del mar",
+      "correct_option": "A",
+      "correct_answer": "De entre sus propios hermanos israelitas",
+      "explanation": "Moisés anunció que surgiría un profeta de en medio del propio pueblo, semejante a él, y que Israel debía escucharlo. La pregunta se concentra en el origen señalado para ese profeta y evita reproducir literalmente toda la promesa.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0049",
+      "book": "Deuteronomio",
+      "chapter": 18,
+      "verse_start": 21,
+      "verse_end": 22,
+      "reference": "Deuteronomio 18:21-22",
+      "category": "AT_GENERAL",
+      "subcategory": "Criterio para evaluar una profecía",
+      "characters": [
+        "profeta",
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué indicaba que una palabra atribuida a un profeta no había sido pronunciada con autoridad divina?",
+      "opcion_a": "Que lo anunciado no sucediera ni se cumpliera",
+      "opcion_b": "Que el profeta hablara ante una multitud",
+      "opcion_c": "Que el mensaje incluyera una advertencia",
+      "opcion_d": "Que el profeta fuera joven",
+      "correct_option": "A",
+      "correct_answer": "Que lo anunciado no sucediera ni se cumpliera",
+      "explanation": "El pasaje ofrece un criterio concreto frente a una afirmación profética: si lo anunciado no acontece, esa palabra no debe atribuirse a la autoridad divina. La pregunta evalúa el criterio verificable descrito en el texto.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0050",
+      "book": "Deuteronomio",
+      "chapter": 19,
+      "verse_start": 2,
+      "verse_end": 3,
+      "reference": "Deuteronomio 19:2-3",
+      "category": "AT_GENERAL",
+      "subcategory": "Preparación del acceso a ciudades de refugio",
+      "characters": [
+        "israelitas",
+        "homicida involuntario"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué preparación debía hacerse para facilitar que una persona llegara a las ciudades de refugio?",
+      "opcion_a": "Preparar los caminos y dividir el territorio en zonas de acceso",
+      "opcion_b": "Construir murallas dobles alrededor de cada ciudad",
+      "opcion_c": "Reservar únicamente rutas para los sacerdotes",
+      "opcion_d": "Cerrar los caminos durante las fiestas anuales",
+      "correct_option": "A",
+      "correct_answer": "Preparar los caminos y dividir el territorio en zonas de acceso",
+      "explanation": "Deuteronomio añade un elemento logístico a la legislación de refugio: debían prepararse caminos y organizar el territorio de forma que el responsable de una muerte involuntaria pudiera alcanzar una ciudad destinada a protegerlo mientras se resolvía su caso.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0051",
+      "book": "Deuteronomio",
+      "chapter": 19,
+      "verse_start": 16,
+      "verse_end": 19,
+      "reference": "Deuteronomio 19:16-19",
+      "category": "AT_GENERAL",
+      "subcategory": "Consecuencia para un testigo falso",
+      "characters": [
+        "testigo falso",
+        "jueces",
+        "acusados"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué consecuencia debía recibir un testigo que hubiera acusado falsamente a otra persona?",
+      "opcion_a": "La misma consecuencia que había intentado provocar contra el acusado",
+      "opcion_b": "Una multa fija sin importar la acusación",
+      "opcion_c": "Ser enviado automáticamente a una ciudad de refugio",
+      "opcion_d": "Perder únicamente su derecho a declarar por un mes",
+      "correct_option": "A",
+      "correct_answer": "La misma consecuencia que había intentado provocar contra el acusado",
+      "explanation": "Si una investigación demostraba que alguien había presentado un testimonio falso, la norma establecía aplicar al falso testigo la consecuencia que pretendía causar a la otra persona. El principio busca desalentar acusaciones maliciosas mediante una sanción proporcional.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0052",
+      "book": "Deuteronomio",
+      "chapter": 20,
+      "verse_start": 2,
+      "verse_end": 4,
+      "reference": "Deuteronomio 20:2-4",
+      "category": "AT_GENERAL",
+      "subcategory": "Palabras del sacerdote antes de la batalla",
+      "characters": [
+        "sacerdote",
+        "soldados israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué debía comunicar el sacerdote al ejército antes de entrar en batalla?",
+      "opcion_a": "Que no debían temer porque Dios iba con ellos para combatir y darles ayuda",
+      "opcion_b": "Que debían retirarse siempre que el enemigo tuviera carros",
+      "opcion_c": "Que solo los levitas podían participar en el combate",
+      "opcion_d": "Que la victoria dependía del tamaño del ejército",
+      "correct_option": "A",
+      "correct_answer": "Que no debían temer porque Dios iba con ellos para combatir y darles ayuda",
+      "explanation": "Antes de la batalla, el sacerdote debía hablar al ejército y combatir el miedo recordando que no estaban solos frente al enemigo. El mensaje vinculaba la confianza militar con la presencia y ayuda de Dios, no con una simple superioridad numérica.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0053",
+      "book": "Deuteronomio",
+      "chapter": 20,
+      "verse_start": 5,
+      "verse_end": 8,
+      "reference": "Deuteronomio 20:5-8",
+      "category": "AT_GENERAL",
+      "subcategory": "Exenciones antes de una batalla",
+      "characters": [
+        "oficiales",
+        "soldados israelitas"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué conjunto reúne situaciones por las que un hombre podía regresar a casa antes de una batalla?",
+      "opcion_a": "Casa nueva sin estrenar, viña aún no disfrutada, compromiso matrimonial pendiente o temor",
+      "opcion_b": "Ser levita, comerciante, artesano o pastor",
+      "opcion_c": "Tener más de cincuenta años, poseer ganado, vivir lejos o ser hijo mayor",
+      "opcion_d": "Haber participado antes en una guerra, tener hijos, cultivar trigo o saber leer",
+      "correct_option": "A",
+      "correct_answer": "Casa nueva sin estrenar, viña aún no disfrutada, compromiso matrimonial pendiente o temor",
+      "explanation": "Los oficiales debían identificar varias situaciones que justificaban el regreso de un hombre antes del combate: una casa nueva aún no inaugurada, una viña todavía no disfrutada, un compromiso matrimonial pendiente o el temor que pudiera contagiarse a otros. Recordar el conjunto completo exige mayor precisión.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0054",
+      "book": "Deuteronomio",
+      "chapter": 20,
+      "verse_start": 10,
+      "verse_end": 11,
+      "reference": "Deuteronomio 20:10-11",
+      "category": "AT_GENERAL",
+      "subcategory": "Oferta de paz antes del combate",
+      "characters": [
+        "israelitas",
+        "habitantes de una ciudad"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué debía proponerse primero al acercarse a una ciudad para combatir contra ella en el caso descrito?",
+      "opcion_a": "Una oferta de paz",
+      "opcion_b": "La destrucción inmediata de sus cultivos",
+      "opcion_c": "Un duelo entre los dos reyes",
+      "opcion_d": "La entrega del territorio a otra nación",
+      "correct_option": "A",
+      "correct_answer": "Una oferta de paz",
+      "explanation": "La legislación de guerra distingue situaciones y establece que, ante la ciudad contemplada en este caso, debía proclamarse primero una propuesta de paz. Solo después la respuesta de la ciudad determinaba la forma en que continuaría el conflicto.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0055",
+      "book": "Deuteronomio",
+      "chapter": 20,
+      "verse_start": 19,
+      "verse_end": 20,
+      "reference": "Deuteronomio 20:19-20",
+      "category": "AT_GENERAL",
+      "subcategory": "Árboles frutales durante un sitio",
+      "characters": [
+        "israelitas",
+        "ciudades sitiadas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué tipo de árboles no debían destruirse para construir obras de sitio porque servían como alimento?",
+      "opcion_a": "Los árboles frutales",
+      "opcion_b": "Todos los árboles secos",
+      "opcion_c": "Únicamente los cedros",
+      "opcion_d": "Los árboles que no daban fruto",
+      "correct_option": "A",
+      "correct_answer": "Los árboles frutales",
+      "explanation": "Durante un sitio prolongado no debía tratarse del mismo modo a todos los árboles. Los que producían alimento debían conservarse, mientras que los árboles que no eran frutales podían utilizarse para las necesidades de la obra militar.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0056",
+      "book": "Deuteronomio",
+      "chapter": 21,
+      "verse_start": 15,
+      "verse_end": 17,
+      "reference": "Deuteronomio 21:15-17",
+      "category": "AT_GENERAL",
+      "subcategory": "Derecho del hijo primogénito",
+      "characters": [
+        "padre",
+        "hijo primogénito",
+        "familia israelita"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué derecho conservaba el hijo primogénito aunque fuera hijo de la esposa menos favorecida por su padre?",
+      "opcion_a": "Recibir una porción doble de la herencia",
+      "opcion_b": "Recibir toda la herencia familiar",
+      "opcion_c": "Ser nombrado sacerdote automáticamente",
+      "opcion_d": "Quedar exento de toda obligación familiar",
+      "correct_option": "A",
+      "correct_answer": "Recibir una porción doble de la herencia",
+      "explanation": "La preferencia afectiva del padre no debía modificar el derecho reconocido al primogénito. Aunque el hijo mayor perteneciera a la esposa menos favorecida, debía recibir la porción doble correspondiente a su condición de primero en la descendencia.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0057",
+      "book": "Deuteronomio",
+      "chapter": 21,
+      "verse_start": 22,
+      "verse_end": 23,
+      "reference": "Deuteronomio 21:22-23",
+      "category": "AT_GENERAL",
+      "subcategory": "Sepultura el mismo día",
+      "characters": [
+        "israelitas",
+        "persona ejecutada"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué debía hacerse con el cuerpo de una persona expuesta después de una ejecución antes de terminar el día?",
+      "opcion_a": "Retirarlo y sepultarlo ese mismo día",
+      "opcion_b": "Dejarlo expuesto durante siete días",
+      "opcion_c": "Trasladarlo a una ciudad de refugio",
+      "opcion_d": "Mantenerlo hasta la siguiente luna nueva",
+      "correct_option": "A",
+      "correct_answer": "Retirarlo y sepultarlo ese mismo día",
+      "explanation": "La exposición del cuerpo no debía prolongarse durante la noche. La norma ordenaba retirarlo y darle sepultura el mismo día, estableciendo un límite temporal incluso después de haberse aplicado una sentencia.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0058",
+      "book": "Deuteronomio",
+      "chapter": 22,
+      "verse_start": 1,
+      "verse_end": 3,
+      "reference": "Deuteronomio 22:1-3",
+      "category": "AT_GENERAL",
+      "subcategory": "Restitución de animales u objetos perdidos",
+      "characters": [
+        "israelitas",
+        "vecinos"
+      ],
+      "difficulty": "Básico",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué debía hacerse al encontrar un animal u objeto perdido perteneciente a otra persona del pueblo?",
+      "opcion_a": "Devolverlo a su dueño y no ignorar la situación",
+      "opcion_b": "Conservarlo automáticamente como propiedad propia",
+      "opcion_c": "Entregarlo siempre al sacerdote principal",
+      "opcion_d": "Dejarlo donde fue encontrado sin intervenir",
+      "correct_option": "A",
+      "correct_answer": "Devolverlo a su dueño y no ignorar la situación",
+      "explanation": "La norma convierte el cuidado de la propiedad ajena en una responsabilidad activa. Si se encontraba un animal u otro objeto perdido, no debía ignorarse el problema; debía protegerse y restituirse a su propietario cuando fuera posible.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0059",
+      "book": "Deuteronomio",
+      "chapter": 22,
+      "verse_start": 6,
+      "verse_end": 7,
+      "reference": "Deuteronomio 22:6-7",
+      "category": "AT_GENERAL",
+      "subcategory": "Norma sobre un nido de aves",
+      "characters": [
+        "israelitas",
+        "aves"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué debía hacerse con la madre al encontrar un nido con crías o huevos?",
+      "opcion_a": "Dejar libre a la madre aunque se tomaran las crías",
+      "opcion_b": "Tomar siempre a la madre y dejar las crías",
+      "opcion_c": "Llevar todo el nido al sacerdote",
+      "opcion_d": "Destruir el nido antes de continuar el camino",
+      "correct_option": "A",
+      "correct_answer": "Dejar libre a la madre aunque se tomaran las crías",
+      "explanation": "La regulación distingue entre la madre y las crías: si alguien encontraba un nido accesible, no debía tomar a la madre junto con ellas. La madre debía dejarse libre, un detalle concreto dentro de las normas de la vida cotidiana.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0060",
+      "book": "Deuteronomio",
+      "chapter": 22,
+      "verse_start": 8,
+      "verse_end": 8,
+      "reference": "Deuteronomio 22:8",
+      "category": "AT_GENERAL",
+      "subcategory": "Protección en el techo de una casa",
+      "characters": [
+        "israelitas",
+        "propietarios de casas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué medida de seguridad debía añadirse al techo de una casa nueva para evitar caídas?",
+      "opcion_a": "Construir una protección o pretil alrededor del techo",
+      "opcion_b": "Cubrir el techo completamente con arena",
+      "opcion_c": "Cerrar el acceso al techo con una piedra",
+      "opcion_d": "Colocar una lámpara encendida en cada esquina",
+      "correct_option": "A",
+      "correct_answer": "Construir una protección o pretil alrededor del techo",
+      "explanation": "Los techos planos podían utilizarse como espacio habitable, por lo que una casa nueva debía incorporar una barrera protectora. La medida buscaba prevenir una caída y evitar que la responsabilidad por un accidente quedara vinculada con una omisión del propietario.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0063",
+      "book": "Deuteronomio",
+      "chapter": 23,
+      "verse_start": 3,
+      "verse_end": 4,
+      "reference": "Deuteronomio 23:3-4",
+      "category": "AT_GENERAL",
+      "subcategory": "Amón y Moab en la restricción de la congregación",
+      "characters": [
+        "amonitas",
+        "moabitas",
+        "Balaam",
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué dos pueblos se mencionan juntos en la restricción vinculada con no haber recibido a Israel con pan y agua y con el episodio de Balaam?",
+      "opcion_a": "Amón y Moab",
+      "opcion_b": "Edom y Egipto",
+      "opcion_c": "Madián y Amalec",
+      "opcion_d": "Tiro y Sidón",
+      "correct_option": "A",
+      "correct_answer": "Amón y Moab",
+      "explanation": "La norma recuerda a Amón y Moab dentro de una restricción relacionada con la manera en que Israel fue tratado durante su salida de Egipto y con el intento de emplear a Balaam contra el pueblo. Así se conserva un hecho propio de Deuteronomio sin repetir las preguntas narrativas de Números sobre Balaam.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0062",
+      "book": "Deuteronomio",
+      "chapter": 23,
+      "verse_start": 7,
+      "verse_end": 7,
+      "reference": "Deuteronomio 23:7",
+      "category": "AT_GENERAL",
+      "subcategory": "Edomita y egipcio en la memoria histórica",
+      "characters": [
+        "edomitas",
+        "egipcios",
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué dos pueblos se mencionan como aquellos a los que Israel no debía aborrecer, uno por ser hermano y otro porque Israel había sido extranjero en su tierra?",
+      "opcion_a": "Al edomita y al egipcio",
+      "opcion_b": "Al amonita y al moabita",
+      "opcion_c": "Al madianita y al amalecita",
+      "opcion_d": "Al cananeo y al amorreo",
+      "correct_option": "A",
+      "correct_answer": "Al edomita y al egipcio",
+      "explanation": "Deuteronomio distingue la relación de Israel con distintos pueblos vecinos. Al edomita no debía aborrecérsele por el vínculo de parentesco, y al egipcio tampoco por la memoria de haber vivido Israel como extranjero en su tierra. La pregunta evalúa ese contraste específicamente deuteronómico.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0061",
+      "book": "Deuteronomio",
+      "chapter": 23,
+      "verse_start": 15,
+      "verse_end": 16,
+      "reference": "Deuteronomio 23:15-16",
+      "category": "AT_GENERAL",
+      "subcategory": "Protección de un siervo fugitivo",
+      "characters": [
+        "siervo fugitivo",
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué debía hacerse con un siervo que hubiera escapado de su amo y buscara refugio entre los israelitas?",
+      "opcion_a": "No entregarlo de nuevo a su amo y permitirle vivir donde eligiera",
+      "opcion_b": "Expulsarlo inmediatamente del territorio",
+      "opcion_c": "Devolverlo sin escuchar su situación",
+      "opcion_d": "Obligarlo a servir a un sacerdote",
+      "correct_option": "A",
+      "correct_answer": "No entregarlo de nuevo a su amo y permitirle vivir donde eligiera",
+      "explanation": "La norma protege al siervo que había huido y buscaba refugio. No debía ser devuelto por la fuerza a su antiguo amo, sino que podía establecerse en el lugar que eligiera dentro de la comunidad sin ser oprimido.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0064",
+      "book": "Deuteronomio",
+      "chapter": 23,
+      "verse_start": 24,
+      "verse_end": 24,
+      "reference": "Deuteronomio 23:24",
+      "category": "AT_GENERAL",
+      "subcategory": "Uvas del viñedo ajeno",
+      "characters": [
+        "israelitas",
+        "vecinos"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué podía hacer una persona al entrar en el viñedo de su vecino según esta norma?",
+      "opcion_a": "Comer uvas hasta quedar satisfecha, pero no llevarlas en un recipiente",
+      "opcion_b": "Cortar todas las uvas y venderlas",
+      "opcion_c": "Llevarse un saco de uvas sin límite",
+      "opcion_d": "Arrancar las vides para trasplantarlas",
+      "correct_option": "A",
+      "correct_answer": "Comer uvas hasta quedar satisfecha, pero no llevarlas en un recipiente",
+      "explanation": "La norma permitía satisfacer una necesidad inmediata al pasar por el viñedo de otra persona, pero marcaba un límite claro: no convertir esa autorización en recolección para llevarse producto fuera del lugar.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0065",
+      "book": "Deuteronomio",
+      "chapter": 24,
+      "verse_start": 5,
+      "verse_end": 5,
+      "reference": "Deuteronomio 24:5",
+      "category": "AT_GENERAL",
+      "subcategory": "Exención del recién casado",
+      "characters": [
+        "hombre recién casado",
+        "esposa"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Durante cuánto tiempo quedaba libre de determinadas obligaciones públicas un hombre recién casado para dedicarse a su esposa?",
+      "opcion_a": "Un año",
+      "opcion_b": "Un mes",
+      "opcion_c": "Siete años",
+      "opcion_d": "Cuarenta días",
+      "correct_option": "A",
+      "correct_answer": "Un año",
+      "explanation": "El recién casado recibía un período de un año sin ser enviado a ciertas obligaciones externas, con el propósito de permanecer en casa y atender su nueva vida matrimonial. La cifra concreta diferencia esta norma de otras exenciones del libro.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0066",
+      "book": "Deuteronomio",
+      "chapter": 24,
+      "verse_start": 6,
+      "verse_end": 6,
+      "reference": "Deuteronomio 24:6",
+      "category": "AT_GENERAL",
+      "subcategory": "Piedra de molino como garantía",
+      "characters": [
+        "acreedor",
+        "deudor"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué objeto doméstico no debía tomarse como garantía de una deuda porque afectaba directamente el sustento de la persona?",
+      "opcion_a": "La piedra de molino, especialmente la superior",
+      "opcion_b": "Una vasija de barro",
+      "opcion_c": "Una lámpara de aceite",
+      "opcion_d": "Una manta de viaje",
+      "correct_option": "A",
+      "correct_answer": "La piedra de molino, especialmente la superior",
+      "explanation": "La prohibición protege un instrumento esencial para preparar alimento. Tomar la piedra de molino como prenda podía privar al deudor de un medio básico de subsistencia, por eso el pasaje la trata como algo ligado a su vida cotidiana.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0067",
+      "book": "Deuteronomio",
+      "chapter": 24,
+      "verse_start": 10,
+      "verse_end": 13,
+      "reference": "Deuteronomio 24:10-13",
+      "category": "AT_GENERAL",
+      "subcategory": "Respeto al tomar una prenda",
+      "characters": [
+        "acreedor",
+        "deudor"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Cómo debía actuar un acreedor al recibir una prenda de una persona a la que había prestado?",
+      "opcion_a": "Esperar fuera de la casa para que el deudor sacara la prenda",
+      "opcion_b": "Entrar y escoger personalmente cualquier objeto",
+      "opcion_c": "Registrar toda la vivienda antes de salir",
+      "opcion_d": "Tomar siempre la cama como garantía",
+      "correct_option": "A",
+      "correct_answer": "Esperar fuera de la casa para que el deudor sacara la prenda",
+      "explanation": "La norma limita el poder del acreedor dentro del hogar del deudor. No podía entrar a escoger por sí mismo la garantía, sino permanecer afuera mientras la otra persona entregaba la prenda correspondiente.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0068",
+      "book": "Deuteronomio",
+      "chapter": 24,
+      "verse_start": 14,
+      "verse_end": 15,
+      "reference": "Deuteronomio 24:14-15",
+      "category": "AT_GENERAL",
+      "subcategory": "Pago oportuno al trabajador",
+      "characters": [
+        "trabajador",
+        "empleador",
+        "israelitas",
+        "extranjeros"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Cuándo debía pagarse el salario al trabajador pobre que dependía de esa remuneración?",
+      "opcion_a": "Ese mismo día, antes de ponerse el sol",
+      "opcion_b": "Al final de cada siete años",
+      "opcion_c": "Después de la cosecha anual",
+      "opcion_d": "Cuando el empleador reuniera tres jornales",
+      "correct_option": "A",
+      "correct_answer": "Ese mismo día, antes de ponerse el sol",
+      "explanation": "La legislación exige rapidez en el pago al trabajador que depende del jornal para vivir. Retener su salario podía convertir una relación laboral legítima en una forma de abuso económico.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0069",
+      "book": "Deuteronomio",
+      "chapter": 24,
+      "verse_start": 19,
+      "verse_end": 19,
+      "reference": "Deuteronomio 24:19",
+      "category": "AT_GENERAL",
+      "subcategory": "Gavilla olvidada en el campo",
+      "characters": [
+        "agricultores",
+        "extranjeros",
+        "huérfanos",
+        "viudas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué debía hacerse con una gavilla que el agricultor hubiera olvidado en el campo después de cosechar?",
+      "opcion_a": "Dejarla para el extranjero, el huérfano y la viuda",
+      "opcion_b": "Regresar obligatoriamente para recogerla",
+      "opcion_c": "Entregarla únicamente al sacerdote",
+      "opcion_d": "Quemarla para que nadie la tomara",
+      "correct_option": "A",
+      "correct_answer": "Dejarla para el extranjero, el huérfano y la viuda",
+      "explanation": "La norma convierte un olvido durante la cosecha en una oportunidad de provisión para personas con menor protección económica. El agricultor no debía volver a recoger la gavilla, sino dejarla disponible para esos grupos.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0070",
+      "book": "Deuteronomio",
+      "chapter": 25,
+      "verse_start": 4,
+      "verse_end": 4,
+      "reference": "Deuteronomio 25:4",
+      "category": "AT_GENERAL",
+      "subcategory": "Buey que trilla",
+      "characters": [
+        "agricultores",
+        "buey"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué no debía hacerse al buey mientras estaba trillando?",
+      "opcion_a": "Ponerle bozal para impedirle comer",
+      "opcion_b": "Atarlo fuera del campo",
+      "opcion_c": "Cubrirle los ojos",
+      "opcion_d": "Retirarle el yugo al comenzar la labor",
+      "correct_option": "A",
+      "correct_answer": "Ponerle bozal para impedirle comer",
+      "explanation": "La instrucción protege al animal durante su trabajo de trilla y prohíbe impedirle comer mediante un bozal. Es una norma breve y concreta vinculada con el trato durante una labor agrícola.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0071",
+      "book": "Deuteronomio",
+      "chapter": 25,
+      "verse_start": 13,
+      "verse_end": 15,
+      "reference": "Deuteronomio 25:13-15",
+      "category": "AT_GENERAL",
+      "subcategory": "Pesas y medidas honestas",
+      "characters": [
+        "comerciantes",
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué principio debía respetarse al usar pesas y medidas en las transacciones?",
+      "opcion_a": "Usar pesas y medidas completas y justas",
+      "opcion_b": "Tener una medida distinta para cada comprador",
+      "opcion_c": "Cobrar siempre el doble a los extranjeros",
+      "opcion_d": "Modificar las pesas según la época de cosecha",
+      "correct_option": "A",
+      "correct_answer": "Usar pesas y medidas completas y justas",
+      "explanation": "Deuteronomio prohíbe mantener medidas diferentes para obtener ventaja en las transacciones. La norma exige instrumentos completos y justos, vinculando la actividad comercial con la integridad cotidiana.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0072",
+      "book": "Deuteronomio",
+      "chapter": 25,
+      "verse_start": 17,
+      "verse_end": 18,
+      "reference": "Deuteronomio 25:17-18",
+      "category": "AT_GENERAL",
+      "subcategory": "Ataque de Amalec a los rezagados",
+      "characters": [
+        "Amalec",
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué pueblo atacó a los rezagados y débiles de Israel durante el camino después de salir de Egipto?",
+      "opcion_a": "Amalec",
+      "opcion_b": "Moab",
+      "opcion_c": "Edom",
+      "opcion_d": "Basán",
+      "correct_option": "A",
+      "correct_answer": "Amalec",
+      "explanation": "Moisés ordenó recordar la forma en que Amalec atacó durante el camino, aprovechándose de quienes quedaban rezagados y estaban cansados. La pregunta se concentra en identificar al pueblo asociado con ese ataque.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0073",
+      "book": "Deuteronomio",
+      "chapter": 26,
+      "verse_start": 1,
+      "verse_end": 2,
+      "reference": "Deuteronomio 26:1-2",
+      "category": "AT_GENERAL",
+      "subcategory": "Presentación de las primicias",
+      "characters": [
+        "israelitas",
+        "agricultores"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Cómo debía prepararse la primera parte de los frutos de la tierra para presentarla en el lugar escogido para el culto?",
+      "opcion_a": "Colocarla en una canasta y llevarla al lugar escogido",
+      "opcion_b": "Quemarla completamente en el campo",
+      "opcion_c": "Distribuirla únicamente entre los soldados",
+      "opcion_d": "Guardar una parte durante siete años",
+      "correct_option": "A",
+      "correct_answer": "Colocarla en una canasta y llevarla al lugar escogido",
+      "explanation": "Al establecerse en la tierra, Israel debía separar las primicias y colocarlas en una canasta para presentarlas en el lugar escogido. La acción unía la cosecha con una declaración de memoria y reconocimiento.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0074",
+      "book": "Deuteronomio",
+      "chapter": 26,
+      "verse_start": 6,
+      "verse_end": 8,
+      "reference": "Deuteronomio 26:6-8",
+      "category": "AT_GENERAL",
+      "subcategory": "Memoria de la liberación de Egipto",
+      "characters": [
+        "israelitas",
+        "egipcios"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué hizo Dios después de que Israel clamó por la opresión sufrida en Egipto según la confesión histórica asociada con las primicias?",
+      "opcion_a": "Oyó su clamor y los sacó de Egipto con gran poder",
+      "opcion_b": "Los dejó en Egipto hasta que formaran un ejército",
+      "opcion_c": "Los envió primero a Moab antes de liberarlos",
+      "opcion_d": "Ordenó que regresaran a Canaán sin señales ni intervención",
+      "correct_option": "A",
+      "correct_answer": "Oyó su clamor y los sacó de Egipto con gran poder",
+      "explanation": "La declaración que acompañaba las primicias no se limitaba a la cosecha. Recordaba la opresión en Egipto, el clamor del pueblo y la liberación recibida, conectando la posesión de la tierra con una historia previa de rescate.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0075",
+      "book": "Deuteronomio",
+      "chapter": 27,
+      "verse_start": 2,
+      "verse_end": 4,
+      "reference": "Deuteronomio 27:2-4",
+      "category": "AT_GENERAL",
+      "subcategory": "Piedras con la ley al cruzar el Jordán",
+      "characters": [
+        "Moisés",
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué debía hacerse con grandes piedras después de cruzar el Jordán como parte de la ceremonia indicada?",
+      "opcion_a": "Levantarlas, cubrirlas con cal y escribir sobre ellas las palabras de la ley",
+      "opcion_b": "Arrojarlas nuevamente al río",
+      "opcion_c": "Usarlas para construir una muralla militar",
+      "opcion_d": "Entregarlas a cada jefe tribal como propiedad privada",
+      "correct_option": "A",
+      "correct_answer": "Levantarlas, cubrirlas con cal y escribir sobre ellas las palabras de la ley",
+      "explanation": "La ceremonia posterior al cruce del Jordán incluía preparar grandes piedras, recubrirlas y escribir en ellas la ley. El gesto convertía la entrada en la tierra en un acto público de memoria y compromiso.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0076",
+      "book": "Deuteronomio",
+      "chapter": 27,
+      "verse_start": 13,
+      "verse_end": 13,
+      "reference": "Deuteronomio 27:13",
+      "category": "AT_GENERAL",
+      "subcategory": "Tribus destinadas al monte Ebal",
+      "characters": [
+        "tribus de Israel"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué grupo de tribus fue asignado al monte Ebal para la proclamación de la maldición?",
+      "opcion_a": "Rubén, Gad, Aser, Zabulón, Dan y Neftalí",
+      "opcion_b": "Simeón, Leví, Judá, Isacar, José y Benjamín",
+      "opcion_c": "Judá, Rubén, Leví, Efraín, Manasés y Benjamín",
+      "opcion_d": "Gad, Isacar, José, Dan, Judá y Simeón",
+      "correct_option": "A",
+      "correct_answer": "Rubén, Gad, Aser, Zabulón, Dan y Neftalí",
+      "explanation": "Deuteronomio distribuye las tribus entre dos montes para una ceremonia pública de bendición y maldición. Recordar el conjunto de seis tribus asignadas a Ebal exige un nivel alto de precisión.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0077",
+      "book": "Deuteronomio",
+      "chapter": 28,
+      "verse_start": 12,
+      "verse_end": 12,
+      "reference": "Deuteronomio 28:12",
+      "category": "AT_GENERAL",
+      "subcategory": "Lluvia y capacidad de prestar",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué situación económica se presenta entre las bendiciones vinculadas con la obediencia?",
+      "opcion_a": "Prestar a muchas naciones sin necesitar pedir prestado",
+      "opcion_b": "Depender siempre de préstamos extranjeros",
+      "opcion_c": "Prohibir todo intercambio con otras naciones",
+      "opcion_d": "Entregar toda la cosecha fuera de Israel",
+      "correct_option": "A",
+      "correct_answer": "Prestar a muchas naciones sin necesitar pedir prestado",
+      "explanation": "Entre las bendiciones se describe una situación de abundancia en la que Israel tendría recursos suficientes para prestar a otros sin depender del endeudamiento. La imagen relaciona provisión agrícola y estabilidad económica.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0078",
+      "book": "Deuteronomio",
+      "chapter": 28,
+      "verse_start": 13,
+      "verse_end": 14,
+      "reference": "Deuteronomio 28:13-14",
+      "category": "AT_GENERAL",
+      "subcategory": "Posición asociada con la obediencia",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué imagen de posición favorable se usa para describir el resultado de permanecer obedientes sin apartarse tras otros dioses?",
+      "opcion_a": "Ser cabeza y no cola, estar arriba y no abajo",
+      "opcion_b": "Vivir siempre fuera de las ciudades",
+      "opcion_c": "Ser la tribu más pequeña y permanecer aislada",
+      "opcion_d": "Depender de Egipto para cada cosecha",
+      "correct_option": "A",
+      "correct_answer": "Ser cabeza y no cola, estar arriba y no abajo",
+      "explanation": "El discurso utiliza una imagen de posición social y política favorable para expresar las consecuencias de la obediencia. La comparación contrasta estar en una posición de liderazgo y estabilidad con una condición subordinada.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0079",
+      "book": "Deuteronomio",
+      "chapter": 29,
+      "verse_start": 10,
+      "verse_end": 11,
+      "reference": "Deuteronomio 29:10-11",
+      "category": "AT_GENERAL",
+      "subcategory": "Participantes en la renovación del pacto",
+      "characters": [
+        "israelitas",
+        "extranjeros residentes"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué amplitud de participantes se menciona al reunir al pueblo para renovar el pacto?",
+      "opcion_a": "Desde dirigentes y familias hasta extranjeros residentes, incluidos quienes cortaban leña y sacaban agua",
+      "opcion_b": "Únicamente sacerdotes y jefes militares",
+      "opcion_c": "Solo varones mayores de veinte años",
+      "opcion_d": "Exclusivamente las tribus de Judá y Leví",
+      "correct_option": "A",
+      "correct_answer": "Desde dirigentes y familias hasta extranjeros residentes, incluidos quienes cortaban leña y sacaban agua",
+      "explanation": "La convocatoria se presenta como ampliamente inclusiva dentro de la comunidad: abarca autoridades, familias y extranjeros residentes, incluso personas asociadas con tareas humildes. El detalle subraya que la renovación del pacto involucraba al conjunto social.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0080",
+      "book": "Deuteronomio",
+      "chapter": 29,
+      "verse_start": 24,
+      "verse_end": 28,
+      "reference": "Deuteronomio 29:24-28",
+      "category": "AT_GENERAL",
+      "subcategory": "Explicación futura de la devastación de la tierra",
+      "characters": [
+        "israelitas",
+        "naciones extranjeras"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué explicación se daría a las naciones que preguntaran por qué la tierra había sufrido una devastación tan severa?",
+      "opcion_a": "Que el pueblo había abandonado el pacto y servido a otros dioses",
+      "opcion_b": "Que la tierra nunca había sido apta para cultivo",
+      "opcion_c": "Que las tribus habían decidido mudarse voluntariamente a Egipto",
+      "opcion_d": "Que una sequía natural había ocurrido sin relación con el pacto",
+      "correct_option": "A",
+      "correct_answer": "Que el pueblo había abandonado el pacto y servido a otros dioses",
+      "explanation": "El pasaje imagina a futuras generaciones y naciones observando una tierra devastada y preguntando por su causa. La respuesta conecta esa situación con el abandono del pacto y la adopción de otros dioses, presentando la devastación como consecuencia de esa ruptura.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0081",
+      "book": "Deuteronomio",
+      "chapter": 30,
+      "verse_start": 1,
+      "verse_end": 3,
+      "reference": "Deuteronomio 30:1-3",
+      "category": "AT_GENERAL",
+      "subcategory": "Restauración después del retorno",
+      "characters": [
+        "israelitas",
+        "Moisés"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué se anuncia que ocurriría si el pueblo, aun estando disperso entre las naciones, volvía a Dios y obedecía?",
+      "opcion_a": "Sería restaurado y reunido nuevamente",
+      "opcion_b": "Quedaría obligado a permanecer para siempre entre las naciones",
+      "opcion_c": "Regresaría únicamente a Egipto",
+      "opcion_d": "Perdería definitivamente toda posibilidad de volver a la tierra",
+      "correct_option": "A",
+      "correct_answer": "Sería restaurado y reunido nuevamente",
+      "explanation": "La exhortación contempla incluso un escenario de dispersión. Si el pueblo reflexionaba, regresaba y volvía a obedecer, se anunciaba una restauración que incluía compasión y reunión desde los lugares donde hubiera sido dispersado.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0082",
+      "book": "Deuteronomio",
+      "chapter": 30,
+      "verse_start": 6,
+      "verse_end": 6,
+      "reference": "Deuteronomio 30:6",
+      "category": "AT_GENERAL",
+      "subcategory": "Transformación del corazón",
+      "characters": [
+        "israelitas",
+        "descendientes"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué transformación interior se menciona para que el pueblo pudiera amar a Dios plenamente?",
+      "opcion_a": "La circuncisión del corazón",
+      "opcion_b": "El cambio de nombre de todas las tribus",
+      "opcion_c": "La sustitución del sacerdocio levítico",
+      "opcion_d": "La eliminación de toda actividad agrícola",
+      "correct_option": "A",
+      "correct_answer": "La circuncisión del corazón",
+      "explanation": "El pasaje emplea una imagen interior para describir una renovación profunda del pueblo y de sus descendientes. La finalidad indicada es que puedan amar a Dios con todo su corazón y vida, no solo cumplir externamente una norma.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0083",
+      "book": "Deuteronomio",
+      "chapter": 30,
+      "verse_start": 11,
+      "verse_end": 14,
+      "reference": "Deuteronomio 30:11-14",
+      "category": "AT_GENERAL",
+      "subcategory": "Mandamiento cercano y accesible",
+      "characters": [
+        "israelitas",
+        "Moisés"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Cómo presenta Moisés el mandamiento respecto de la capacidad del pueblo para conocerlo y cumplirlo?",
+      "opcion_a": "Como algo cercano y accesible, no inalcanzable ni lejano",
+      "opcion_b": "Como un secreto reservado únicamente a los sacerdotes",
+      "opcion_c": "Como una instrucción imposible de comprender sin viajar a otra nación",
+      "opcion_d": "Como una norma destinada solo a las generaciones futuras",
+      "correct_option": "A",
+      "correct_answer": "Como algo cercano y accesible, no inalcanzable ni lejano",
+      "explanation": "Moisés insiste en que la instrucción no está fuera del alcance del pueblo. No requiere buscarla en lugares inaccesibles; se presenta como cercana, conocida y disponible para ser llevada a la práctica.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0084",
+      "book": "Deuteronomio",
+      "chapter": 30,
+      "verse_start": 19,
+      "verse_end": 20,
+      "reference": "Deuteronomio 30:19-20",
+      "category": "AT_GENERAL",
+      "subcategory": "Elección entre vida y muerte",
+      "characters": [
+        "israelitas",
+        "Moisés"
+      ],
+      "difficulty": "Básico",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué opción exhortó Moisés a escoger al presentar ante el pueblo la vida y la muerte?",
+      "opcion_a": "Escoger la vida",
+      "opcion_b": "Escoger el exilio",
+      "opcion_c": "Escoger volver a Egipto",
+      "opcion_d": "Escoger abandonar el pacto",
+      "correct_option": "A",
+      "correct_answer": "Escoger la vida",
+      "explanation": "El cierre de la exhortación presenta dos caminos opuestos y llama al pueblo a elegir la vida. Esa elección se relaciona con amar, escuchar y mantenerse unido a Dios para continuar en la tierra prometida a sus antepasados.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0085",
+      "book": "Deuteronomio",
+      "chapter": 31,
+      "verse_start": 2,
+      "verse_end": 2,
+      "reference": "Deuteronomio 31:2",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Edad de Moisés al final de su liderazgo",
+      "characters": [
+        "Moisés",
+        "israelitas"
+      ],
+      "difficulty": "Básico",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué edad declaró tener Moisés cuando anunció al pueblo que se acercaba el final de su liderazgo?",
+      "opcion_a": "Ciento veinte años",
+      "opcion_b": "Ochenta años",
+      "opcion_c": "Cien años",
+      "opcion_d": "Ciento cuarenta años",
+      "correct_option": "A",
+      "correct_answer": "Ciento veinte años",
+      "explanation": "Al dirigirse a Israel en esta etapa final, Moisés indicó que tenía ciento veinte años. El dato sitúa cronológicamente la transición de liderazgo que inmediatamente se vincula con la futura conducción de Josué.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0087",
+      "book": "Deuteronomio",
+      "chapter": 31,
+      "verse_start": 10,
+      "verse_end": 13,
+      "reference": "Deuteronomio 31:10-13",
+      "category": "AT_GENERAL",
+      "subcategory": "Lectura pública de la ley cada siete años",
+      "characters": [
+        "Moisés",
+        "sacerdotes",
+        "israelitas"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Cuándo debía realizarse la lectura pública de la ley ante todo Israel según esta instrucción?",
+      "opcion_a": "Cada siete años, durante la Fiesta de los Tabernáculos",
+      "opcion_b": "Cada año, durante la Pascua",
+      "opcion_c": "Cada cincuenta años, durante el jubileo",
+      "opcion_d": "Cada mes, en la luna nueva",
+      "correct_option": "A",
+      "correct_answer": "Cada siete años, durante la Fiesta de los Tabernáculos",
+      "explanation": "La instrucción combina un ciclo de siete años con una celebración concreta. Durante esa ocasión debía reunirse al pueblo, incluyendo familias y extranjeros residentes, para escuchar la ley y aprender a respetarla y cumplirla.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0086",
+      "book": "Deuteronomio",
+      "chapter": 31,
+      "verse_start": 17,
+      "verse_end": 18,
+      "reference": "Deuteronomio 31:17-18",
+      "category": "AT_GENERAL",
+      "subcategory": "Ocultamiento del rostro tras abandonar el pacto",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué reacción se anuncia cuando Israel abandone el pacto y se vuelva a otros dioses?",
+      "opcion_a": "Dios ocultaría su rostro y sobrevendrían males y angustias",
+      "opcion_b": "La ley dejaría de tener vigencia inmediatamente",
+      "opcion_c": "El pueblo regresaría a Egipto sin ninguna consecuencia",
+      "opcion_d": "Se nombraría un nuevo sacerdocio fuera de Leví",
+      "correct_option": "A",
+      "correct_answer": "Dios ocultaría su rostro y sobrevendrían males y angustias",
+      "explanation": "El discurso anticipa que abandonar el pacto y seguir a otros dioses tendría consecuencias graves. La imagen central es el ocultamiento del rostro, acompañado por males y angustias que llevarían al pueblo a reconocer que algo había cambiado en su relación de pacto.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0088",
+      "book": "Deuteronomio",
+      "chapter": 31,
+      "verse_start": 19,
+      "verse_end": 22,
+      "reference": "Deuteronomio 31:19-22",
+      "category": "AT_GENERAL",
+      "subcategory": "Cántico como testigo para Israel",
+      "characters": [
+        "Moisés",
+        "Josué",
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué recurso debía enseñarse al pueblo para que sirviera como testigo en el futuro?",
+      "opcion_a": "Un cántico",
+      "opcion_b": "Una nueva lista del censo",
+      "opcion_c": "Un mapa de las fronteras tribales",
+      "opcion_d": "Un registro de las ofrendas diarias",
+      "correct_option": "A",
+      "correct_answer": "Un cántico",
+      "explanation": "Moisés recibió la instrucción de escribir y enseñar un cántico al pueblo. Su función era permanecer en la memoria colectiva y servir como testimonio cuando Israel se apartara del pacto en generaciones posteriores.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0089",
+      "book": "Deuteronomio",
+      "chapter": 31,
+      "verse_start": 26,
+      "verse_end": 26,
+      "reference": "Deuteronomio 31:26",
+      "category": "AT_GENERAL",
+      "subcategory": "Libro de la ley junto al arca",
+      "characters": [
+        "levitas",
+        "arca del pacto",
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Dónde debía colocarse el libro de la ley para que permaneciera como testigo?",
+      "opcion_a": "Junto al arca del pacto",
+      "opcion_b": "Dentro del altar del holocausto",
+      "opcion_c": "En la tienda de cada jefe tribal",
+      "opcion_d": "Debajo de las piedras del monte Ebal",
+      "correct_option": "A",
+      "correct_answer": "Junto al arca del pacto",
+      "explanation": "Después de completarse por escrito, el libro debía quedar junto al arca del pacto. La ubicación lo vinculaba con el centro simbólico del pacto y con su función de testimonio permanente para el pueblo.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0092",
+      "book": "Deuteronomio",
+      "chapter": 32,
+      "verse_start": 7,
+      "verse_end": 7,
+      "reference": "Deuteronomio 32:7",
+      "category": "AT_GENERAL",
+      "subcategory": "Memoria de los días antiguos",
+      "characters": [
+        "padres",
+        "ancianos",
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿A quiénes se indicaba acudir para conocer y comprender los hechos de generaciones anteriores?",
+      "opcion_a": "Al padre y a los ancianos",
+      "opcion_b": "Únicamente al rey",
+      "opcion_c": "A comerciantes extranjeros",
+      "opcion_d": "Solo a los jefes militares",
+      "correct_option": "A",
+      "correct_answer": "Al padre y a los ancianos",
+      "explanation": "El cántico invita a recordar los tiempos antiguos y a considerar la experiencia de generaciones pasadas. Para conocer esa memoria, el oyente debía preguntar a su padre y a los ancianos, resaltando la transmisión intergeneracional como fuente de comprensión histórica.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0090",
+      "book": "Deuteronomio",
+      "chapter": 32,
+      "verse_start": 44,
+      "verse_end": 44,
+      "reference": "Deuteronomio 32:44",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Josué acompaña a Moisés en el cántico",
+      "characters": [
+        "Moisés",
+        "Josué",
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Quién acompañó a Moisés al pronunciar ante el pueblo las palabras del cántico?",
+      "opcion_a": "Josué, hijo de Nun",
+      "opcion_b": "Caleb, hijo de Jefone",
+      "opcion_c": "Eleazar, hijo de Aarón",
+      "opcion_d": "Finees, hijo de Eleazar",
+      "correct_option": "A",
+      "correct_answer": "Josué, hijo de Nun",
+      "explanation": "Al concluir el cántico, el relato identifica a Josué, hijo de Nun, junto a Moisés ante el pueblo. El detalle refuerza la transición de liderazgo en el mismo marco en que se presentan las últimas instrucciones de Moisés.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0091",
+      "book": "Deuteronomio",
+      "chapter": 32,
+      "verse_start": 48,
+      "verse_end": 50,
+      "reference": "Deuteronomio 32:48-50",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Monte indicado para la muerte de Moisés",
+      "characters": [
+        "Moisés",
+        "Aarón"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿A qué monte se indicó a Moisés que subiera para contemplar Canaán antes de morir?",
+      "opcion_a": "Al monte Nebo",
+      "opcion_b": "Al monte Carmelo",
+      "opcion_c": "Al monte Tabor",
+      "opcion_d": "Al monte Gerizim",
+      "correct_option": "A",
+      "correct_answer": "Al monte Nebo",
+      "explanation": "En la etapa final de su vida, Moisés recibió la indicación de subir al monte Nebo, en la región de Abarim, desde donde podría contemplar la tierra de Canaán antes de morir.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0093",
+      "book": "Deuteronomio",
+      "chapter": 33,
+      "verse_start": 1,
+      "verse_end": 1,
+      "reference": "Deuteronomio 33:1",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Bendición final de Moisés",
+      "characters": [
+        "Moisés",
+        "tribus de Israel"
+      ],
+      "difficulty": "Básico",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué hizo Moisés con los israelitas antes de su muerte según el inicio de esta sección?",
+      "opcion_a": "Los bendijo",
+      "opcion_b": "Los censó nuevamente",
+      "opcion_c": "Los envió de regreso a Egipto",
+      "opcion_d": "Los dividió en dos naciones",
+      "correct_option": "A",
+      "correct_answer": "Los bendijo",
+      "explanation": "Antes de la muerte de Moisés, Deuteronomio presenta una bendición dirigida a Israel. La sección recorre distintas tribus y funciona como una de las últimas acciones públicas del dirigente antes del cierre del libro.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0094",
+      "book": "Deuteronomio",
+      "chapter": 33,
+      "verse_start": 8,
+      "verse_end": 8,
+      "reference": "Deuteronomio 33:8",
+      "category": "AT_GENERAL",
+      "subcategory": "Urim y Tumim asociados con Leví",
+      "characters": [
+        "Leví",
+        "levitas",
+        "Moisés"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Con qué tribu se asocian el Urim y el Tumim dentro de las bendiciones finales?",
+      "opcion_a": "Con Leví",
+      "opcion_b": "Con Judá",
+      "opcion_c": "Con Benjamín",
+      "opcion_d": "Con Gad",
+      "correct_option": "A",
+      "correct_answer": "Con Leví",
+      "explanation": "La bendición dirigida a Leví menciona los instrumentos vinculados con la función sacerdotal. Es un detalle específico dentro de las palabras finales de Moisés y exige reconocer la relación entre la tribu y su servicio religioso.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0095",
+      "book": "Deuteronomio",
+      "chapter": 33,
+      "verse_start": 13,
+      "verse_end": 16,
+      "reference": "Deuteronomio 33:13-16",
+      "category": "AT_GENERAL",
+      "subcategory": "Bendiciones de la tierra para José",
+      "characters": [
+        "José",
+        "tribus de Israel"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué tribu recibe una bendición que destaca abundancia procedente del cielo, de las aguas y de la tierra?",
+      "opcion_a": "José",
+      "opcion_b": "Simeón",
+      "opcion_c": "Dan",
+      "opcion_d": "Rubén",
+      "correct_option": "A",
+      "correct_answer": "José",
+      "explanation": "La bendición de José utiliza una serie de imágenes de abundancia asociadas con el cielo, las aguas profundas, el sol, los montes y la tierra. La pregunta identifica al destinatario de ese conjunto de bendiciones sin exigir reproducir la poesía literalmente.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0096",
+      "book": "Deuteronomio",
+      "chapter": 34,
+      "verse_start": 5,
+      "verse_end": 5,
+      "reference": "Deuteronomio 34:5",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Muerte de Moisés en Moab",
+      "characters": [
+        "Moisés",
+        "israelitas"
+      ],
+      "difficulty": "Básico",
+      "question_type": "Selección múltiple",
+      "question": "¿En qué región murió Moisés al final de Deuteronomio?",
+      "opcion_a": "En la tierra de Moab",
+      "opcion_b": "En Egipto",
+      "opcion_c": "En Canaán occidental",
+      "opcion_d": "En el desierto de Sinaí",
+      "correct_option": "A",
+      "correct_answer": "En la tierra de Moab",
+      "explanation": "El relato final sitúa la muerte de Moisés en territorio de Moab, antes del cruce de Israel hacia Canaán. El dato marca geográficamente el cierre de su vida y del propio Pentateuco.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0097",
+      "book": "Deuteronomio",
+      "chapter": 34,
+      "verse_start": 6,
+      "verse_end": 6,
+      "reference": "Deuteronomio 34:6",
+      "category": "AT_GENERAL",
+      "subcategory": "Lugar desconocido de la sepultura de Moisés",
+      "characters": [
+        "Moisés",
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué particularidad se señala sobre el lugar donde fue sepultado Moisés?",
+      "opcion_a": "Que nadie conocía con certeza su sepultura",
+      "opcion_b": "Que fue marcado con un monumento visible para todas las tribus",
+      "opcion_c": "Que se encontraba dentro del tabernáculo",
+      "opcion_d": "Que estaba junto a la tumba de Aarón en el monte Hor",
+      "correct_option": "A",
+      "correct_answer": "Que nadie conocía con certeza su sepultura",
+      "explanation": "El cierre del relato menciona la sepultura de Moisés en Moab y añade que su localización no quedó conocida por el pueblo. Ese detalle distingue su muerte de otras sepulturas claramente identificadas en la narrativa bíblica.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0098",
+      "book": "Deuteronomio",
+      "chapter": 34,
+      "verse_start": 8,
+      "verse_end": 8,
+      "reference": "Deuteronomio 34:8",
+      "category": "AT_GENERAL",
+      "subcategory": "Duelo por Moisés",
+      "characters": [
+        "Moisés",
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Durante cuánto tiempo lloraron los israelitas la muerte de Moisés en las llanuras de Moab?",
+      "opcion_a": "Treinta días",
+      "opcion_b": "Siete días",
+      "opcion_c": "Cuarenta días",
+      "opcion_d": "Setenta días",
+      "correct_option": "A",
+      "correct_answer": "Treinta días",
+      "explanation": "Israel guardó duelo por Moisés durante treinta días en las llanuras de Moab. La duración establece un cierre formal del período de luto antes de que la narración destaque la autoridad de Josué.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0099",
+      "book": "Deuteronomio",
+      "chapter": 34,
+      "verse_start": 9,
+      "verse_end": 9,
+      "reference": "Deuteronomio 34:9",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Josué lleno de espíritu de sabiduría",
+      "characters": [
+        "Josué",
+        "Moisés",
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué se dice de Josué después de que Moisés había puesto sus manos sobre él?",
+      "opcion_a": "Que estaba lleno de espíritu de sabiduría",
+      "opcion_b": "Que perdió toda autoridad frente al pueblo",
+      "opcion_c": "Que regresó a vivir como explorador",
+      "opcion_d": "Que fue reemplazado por Caleb",
+      "correct_option": "A",
+      "correct_answer": "Que estaba lleno de espíritu de sabiduría",
+      "explanation": "Después de la muerte de Moisés, Josué aparece preparado para dirigir a Israel. El relato relaciona su espíritu de sabiduría con el gesto previo de Moisés al imponerle las manos, reforzando la continuidad del liderazgo.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-DEU-0100",
+      "book": "Deuteronomio",
+      "chapter": 34,
+      "verse_start": 10,
+      "verse_end": 12,
+      "reference": "Deuteronomio 34:10-12",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Singularidad profética de Moisés",
+      "characters": [
+        "Moisés",
+        "israelitas",
+        "egipcios"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué rasgo destaca el cierre de Deuteronomio al comparar a Moisés con los profetas posteriores de Israel?",
+      "opcion_a": "Que no había surgido otro profeta como él, conocido por Dios de manera excepcional",
+      "opcion_b": "Que fue el único israelita que llegó a Canaán",
+      "opcion_c": "Que nunca realizó señales en Egipto",
+      "opcion_d": "Que gobernó como rey hereditario sobre las tribus",
+      "correct_option": "A",
+      "correct_answer": "Que no había surgido otro profeta como él, conocido por Dios de manera excepcional",
+      "explanation": "El libro concluye resaltando la singularidad de Moisés por su relación con Dios y por las señales realizadas en Egipto y ante Israel. La valoración final funciona como síntesis de su papel dentro de la historia narrada.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    }
+  ]
+}

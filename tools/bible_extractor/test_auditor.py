@@ -41,6 +41,7 @@ GENESIS_PATH = Path(__file__).parent / "genesis-master-input.json"
 EXODUS_PATH = Path(__file__).parent / "exodus-master-input.json"
 LEVITICUS_PATH = Path(__file__).parent / "leviticus-master-input.json"
 NUMBERS_PATH = Path(__file__).parent / "numbers-master-input.json"
+DEUTERONOMY_PATH = Path(__file__).parent / "deuteronomy-master-input.json"
 
 
 class TestAuditorCanonical(unittest.TestCase):
@@ -67,6 +68,12 @@ class TestAuditorCanonical(unittest.TestCase):
         else:
             cls.numbers_questions = {}
 
+        if DEUTERONOMY_PATH.exists():
+            raw_deut = json.loads(DEUTERONOMY_PATH.read_text(encoding="utf-8"))
+            cls.deuteronomy_questions = {q["id"]: q for q in (raw_deut.get("questions", []) if isinstance(raw_deut, dict) else raw_deut)}
+        else:
+            cls.deuteronomy_questions = {}
+
     def setUp(self) -> None:
         self.temp_dir = Path(tempfile.mkdtemp())
 
@@ -88,6 +95,10 @@ class TestAuditorCanonical(unittest.TestCase):
     def get_numbers_question(self, qid: str) -> dict:
         self.assertIn(qid, self.numbers_questions, f"ID '{qid}' no encontrado en numbers-master-input.json")
         return copy.deepcopy(self.numbers_questions[qid])
+
+    def get_deuteronomy_question(self, qid: str) -> dict:
+        self.assertIn(qid, self.deuteronomy_questions, f"ID '{qid}' no encontrado en deuteronomy-master-input.json")
+        return copy.deepcopy(self.deuteronomy_questions[qid])
 
     # --- TEST GLOBAL DE CONSISTENCIA DE IDs Y REFERENCIAS ---
 
@@ -149,12 +160,34 @@ class TestAuditorCanonical(unittest.TestCase):
                 f"Referencia inconsistente en {qid}: ref='{ref}', esperada terminada en '{expected_suffix}'"
             )
 
+    def test_global_canonical_id_reference_integrity_deuteronomy(self) -> None:
+        """Verifica consistencia de IDs y referencias en Deuteronomio."""
+        if not self.deuteronomy_questions:
+            self.skipTest("deuteronomy-master-input.json no disponible")
+        for qid, q in self.deuteronomy_questions.items():
+            ref = q.get("reference", "")
+            ch = q.get("chapter")
+            start = q.get("verse_start")
+            end = q.get("verse_end", start)
+            expected_suffix = f"{ch}:{start}" if start == end else f"{ch}:{start}-{end}"
+            self.assertTrue(
+                expected_suffix in ref or ref.endswith(expected_suffix),
+                f"Referencia inconsistente en {qid}: ref='{ref}', esperada terminada en '{expected_suffix}'"
+            )
+
     def test_numbers_book_detection(self) -> None:
         """Verifica detección de configuración de Números."""
         if not self.numbers_questions:
             self.skipTest("numbers-master-input.json no disponible")
         book_key = detect_book_key(list(self.numbers_questions.values()))
         self.assertEqual(book_key, "numeros")
+
+    def test_deuteronomy_book_detection(self) -> None:
+        """Verifica detección de configuración de Deuteronomio."""
+        if not self.deuteronomy_questions:
+            self.skipTest("deuteronomy-master-input.json no disponible")
+        book_key = detect_book_key(list(self.deuteronomy_questions.values()))
+        self.assertEqual(book_key, "deuteronomio")
 
     # --- REGRESIONES DE ARTÍCULOS INDEFINIDOS UN / UNA Y FRACCIONES EN NÚMEROS ---
 

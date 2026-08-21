@@ -102,6 +102,26 @@ BOOK_CONFIGS: dict[str, dict[str, Any]] = {
         "default_output_dir": "build/audit/numbers",
         "ambient_places": {"sinai", "monte sinai", "desierto", "moab", "cades", "paran", "jordan", "canaan", "edom", "madian", "tabernaculo", "hor", "escol", "zin"},
     },
+    "deuteronomio": {
+        "canonical_name": "Deuteronomio",
+        "api_name": "Deuteronomio",
+        "aliases": {"deuteronomio", "deuteronomy"},
+        "total_chapters": 34,
+        "blocks": [
+            (1, 10, "deuteronomy-01-10.json"),
+            (11, 20, "deuteronomy-11-20.json"),
+            (21, 30, "deuteronomy-21-30.json"),
+            (31, 34, "deuteronomy-31-34.json"),
+        ],
+        "default_output_dir": "build/audit/deuteronomy",
+        "ambient_places": {
+            "moab", "campos de moab", "llanuras de moab", "tierra de moab", "jordan", "canaan",
+            "horeb", "sinai", "monte sinai", "seir", "nebo", "monte nebo",
+            "pisga", "monte pisga", "desierto", "gerizim", "monte gerizim",
+            "ebal", "monte ebal", "tabernaculo", "cades", "cadesbarnea", "cades-barnea",
+            "hesbon", "hesbón", "arava", "aravá", "basan", "basán", "galaad"
+        },
+    },
 }
 
 STOPWORDS = {
@@ -161,13 +181,15 @@ BIBLE_PLACES = {
     "madian", "sinai", "monte sinai", "mar rojo", "mara", "elim", "desierto de sin", "refidim",
     "masa", "meriba", "etam", "pi-hahirot", "pihahirot", "baal-zefon",
     "baalzefon", "migdol", "sur", "piton", "tabernaculo", "desierto",
-    # Números
+    # Números y Deuteronomio
     "cades", "cades-barnea", "cadesbarnea", "paran", "desierto de paran", "zin", "desierto de zin", "moab", "campos de moab",
     "llanuras de moab", "jerico", "jericó", "arava", "aravá", "edom", "hor", "monte hor",
     "hesbon", "hesbón", "arnon", "arnón", "bamot", "pisga", "monte pisga", "peor",
     "monte peor", "tabera", "taberah", "hazelot", "hazerot", "kibrot-hataava", "horma",
     "zalmona", "punon", "obot", "abarim", "monte abarim", "nebo", "monte nebo",
     "almon-diblataim", "arba", "escol", "valle de escol", "petor",
+    "gerizim", "monte gerizim", "ebal", "monte ebal", "basan", "basán", "hermon", "monte hermon",
+    "sirion", "senir", "aroer", "quedemot", "salca", "edrei", "bet-peor", "betpeor",
 }
 
 # Raíces de parentesco y lemas
