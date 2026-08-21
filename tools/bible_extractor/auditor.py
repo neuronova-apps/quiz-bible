@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 """Auditor semántico y textual derivado de preguntas bíblicas contra RVR1960.
 
-Soporta auditoría modular para Génesis (50 capítulos), Éxodo (40 capítulos)
+Soporta auditoría modular para:
+- Génesis (50 capítulos, 5 bloques)
+- Éxodo (40 capítulos, 4 bloques)
+- Levítico (27 capítulos, 3 bloques)
 y libros bíblicos adicionales.
 
 Evalúa deterministamente los 17 controles de calidad editorial:
@@ -71,6 +74,19 @@ BOOK_CONFIGS: dict[str, dict[str, Any]] = {
         "default_output_dir": "build/audit/exodus",
         "ambient_places": {"egipto"},
     },
+    "levitico": {
+        "canonical_name": "Levítico",
+        "api_name": "Levitico",
+        "aliases": {"levitico", "levítico", "leviticus"},
+        "total_chapters": 27,
+        "blocks": [
+            (1, 10, "leviticus-01-10.json"),
+            (11, 20, "leviticus-11-20.json"),
+            (21, 27, "leviticus-21-27.json"),
+        ],
+        "default_output_dir": "build/audit/leviticus",
+        "ambient_places": {"sinai", "monte sinai", "desierto", "tabernaculo", "egipto", "canaan"},
+    },
 }
 
 STOPWORDS = {
@@ -84,7 +100,7 @@ STOPWORDS = {
     "ser", "sido", "estar", "estaba", "estaban", "tener", "tenia", "tenian",
 }
 
-# Entidades y personajes bíblicos (Génesis, Éxodo y nombres bíblicos comunes)
+# Entidades y personajes bíblicos (Génesis, Éxodo, Levítico y nombres comunes)
 BIBLE_PERSONAJES = {
     # Génesis
     "adan", "eva", "cain", "abel", "set", "enos", "cainan", "mahalaleel",
@@ -102,13 +118,15 @@ BIBLE_PERSONAJES = {
     "sipra", "fua", "jocabed", "amram", "hur", "josue", "bezaleel", "aholiab",
     "nadab", "abiu", "eleazar", "itamar", "core", "datan", "abiram",
     "balac", "balaam", "finees", "caleb",
+    # Levítico
+    "misael", "elzafan", "elsafan", "uziel", "selomit", "dibri",
     # Otros comunes
     "david", "salomon", "saul", "samuel", "elias", "eliseo", "jonatan",
     "nabucodonosor", "pablo", "pedro", "juan", "jesus", "mateo", "marcos",
     "lucas", "esteban", "timoteo",
 }
 
-# Lugares, regiones y accidentes geográficos bíblicos (Génesis y Éxodo)
+# Lugares, regiones y accidentes geográficos bíblicos (Génesis, Éxodo, Levítico)
 BIBLE_PLACES = {
     # Génesis
     "eden", "ararat", "babel", "babilonia", "ur", "haran", "betel", "bet-el", "hebron", "siquem",
@@ -120,10 +138,10 @@ BIBLE_PLACES = {
     "lahai-roi", "lahairoi", "berseba", "sucot", "efrata", "belen", "nilo",
     "eufrates", "hidekel", "pison", "gihon", "quedem", "horeb",
     "sion", "negev", "jordan", "atarot", "shiloh", "damasco",
-    # Éxodo
-    "madian", "sinai", "mar rojo", "mara", "elim", "sin", "refidim",
+    # Éxodo y Levítico
+    "madian", "sinai", "monte sinai", "mar rojo", "mara", "elim", "sin", "refidim",
     "masa", "meriba", "etam", "pi-hahirot", "pihahirot", "baal-zefon",
-    "baalzefon", "migdol", "sur", "piton",
+    "baalzefon", "migdol", "sur", "piton", "tabernaculo", "desierto",
 }
 
 # Raíces de parentesco y lemas
@@ -143,6 +161,7 @@ KINSHIP_STEMS = {
     "abuel": ["abuelo", "abuela"],
     "concubin": ["concubina", "concubinas"],
     "gemel": ["gemelos", "mellizos"],
+    "primo": ["primo", "prima", "primos"],
 }
 
 # Equivalencias semánticas y de dimensiones
@@ -164,6 +183,9 @@ SYNONYMS = {
     "ganado": "vacas",
     "ovejas": "rebanos",
     "vacas": "ganados",
+    "sacerdote": "sacerdotes",
+    "sumo sacerdote": "sacerdote",
+    "lefa": "efod",
 }
 
 # Componentes de números cardinales en español
@@ -234,7 +256,7 @@ def extract_numbers(text: str, is_quantitative_context: bool = False) -> list[in
 
     # 2. 'un' / 'una' con unidades contables explícitas
     if re.search(r"\b(?:un|una)\b", cleaned_norm):
-        countable_units_pattern = r"\b(?:un|una)\s+(?:vez|ano|anos|mes|meses|dia|dias|codo|codos|pareja|parejas|talento|siclo|pieza|piezas|hora|horas|parte|partes|cordero|corderos)\b"
+        countable_units_pattern = r"\b(?:un|una)\s+(?:vez|ano|anos|mes|meses|dia|dias|codo|codos|pareja|parejas|talento|siclo|pieza|piezas|hora|horas|parte|partes|cordero|corderos|carnero|carneros|becerro|becerros|toro|toros|palomino|palominos|tortola|tortolas|efa|efas|hin|hines|gomer|gomeres)\b"
         if is_quantitative_context or re.search(countable_units_pattern, cleaned_norm):
             numbers.append(1)
 
@@ -602,7 +624,7 @@ def evaluate_question(
             if pl in ambient_places and pl not in opt_a_toks:
                 continue
             if pl in ambient_places and pl in opt_a_toks and not any(p in opt_a_toks for p in BIBLE_PLACES if p not in ambient_places):
-                # Si el único lugar en opción A es el país marco (ej. Egipto) en una pregunta sobre rebaños/servicios
+                # Si el único lugar en opción A es el marco ambiental del libro
                 continue
             missing_places.append(pl)
 

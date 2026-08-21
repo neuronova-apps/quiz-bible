@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Pruebas unitarias y de regresión para el auditor bíblico semántico RVR1960.
 
-Carga preguntas reales directamente desde genesis-master-input.json y
-exodus-master-input.json, realizando mutaciones controladas sobre copias
-profundas (deepcopy) para verificar:
+Carga preguntas reales directamente desde genesis-master-input.json,
+exodus-master-input.json y leviticus-master-input.json (si existe), realizando
+mutaciones controladas sobre copias profundas (deepcopy) para verificar:
+- Soporte multilibro (Génesis, Éxodo, Levítico);
 - Comportamiento de NQB-AT-EXO-0003 (Nilo / río);
 - Comportamiento de NQB-AT-EXO-0027 (Egipto como marco ambiental);
 - Comportamiento de NQB-AT-EXO-0074 (Dos corderos, uno...);
@@ -25,6 +26,7 @@ from auditor import evaluate_question, run_audit, extract_numbers, normalize, de
 
 GENESIS_PATH = Path(__file__).parent / "genesis-master-input.json"
 EXODUS_PATH = Path(__file__).parent / "exodus-master-input.json"
+LEVITICUS_PATH = Path(__file__).parent / "leviticus-master-input.json"
 
 
 class TestAuditorCanonical(unittest.TestCase):
@@ -38,6 +40,12 @@ class TestAuditorCanonical(unittest.TestCase):
             cls.exodus_questions = {q["id"]: q for q in (raw_exo.get("questions", []) if isinstance(raw_exo, dict) else raw_exo)}
         else:
             cls.exodus_questions = {}
+
+        if LEVITICUS_PATH.exists():
+            raw_lev = json.loads(LEVITICUS_PATH.read_text(encoding="utf-8"))
+            cls.leviticus_questions = {q["id"]: q for q in (raw_lev.get("questions", []) if isinstance(raw_lev, dict) else raw_lev)}
+        else:
+            cls.leviticus_questions = {}
 
     def setUp(self) -> None:
         self.temp_dir = Path(tempfile.mkdtemp())
@@ -82,6 +90,44 @@ class TestAuditorCanonical(unittest.TestCase):
                 expected_suffix in ref or ref.endswith(expected_suffix),
                 f"Referencia inconsistente en {qid}: ref='{ref}', esperada terminada en '{expected_suffix}'"
             )
+
+    # --- SOPORTE MULTILIBRO (LEVÍTICO) ---
+
+    def test_leviticus_book_detection_and_evaluation(self) -> None:
+        """Verifica que el auditor reconozca preguntas de Levítico y evalúe sus 27 capítulos."""
+        leviticus_sample = {
+            "id": "NQB-AT-LEV-0001",
+            "book": "Levítico",
+            "chapter": 1,
+            "verse_start": 1,
+            "verse_end": 2,
+            "reference": "Levítico 1:1-2",
+            "category": "AT_GENERAL",
+            "subcategory": "Leyes de los holocaustos",
+            "characters": ["Moisés"],
+            "difficulty": "Básico",
+            "question_type": "Selección múltiple",
+            "question": "¿Desde dónde llamó Jehová a Moisés para darle las instrucciones sobre las ofrendas?",
+            "opcion_a": "Desde el tabernáculo de reunión",
+            "opcion_b": "Desde la cima del monte Sinaí",
+            "opcion_c": "Desde la tienda de Aarón",
+            "opcion_d": "Desde el campamento de Judá",
+            "correct_option": "A",
+            "correct_answer": "Desde el tabernáculo de reunión",
+            "explanation": "Jehová llamó a Moisés y habló con él desde el tabernáculo de reunión.",
+            "additional_references": [],
+            "eligible_modes": ["AT", "AMBOS"],
+        }
+        self.assertEqual(detect_book_key([leviticus_sample]), "levitico")
+        verse_map = {
+            1: "Llamó Jehová a Moisés, y habló con él desde el tabernáculo de reunión, diciendo:",
+            2: "Habla a los hijos de Israel y diles: Cuando alguno de entre vosotros ofrece ofrenda a Jehová, de ganado vacuno u ovejuno haréis vuestra ofrenda.",
+        }
+        res = evaluate_question(leviticus_sample, verse_map, book_key="levitico")
+        self.assertEqual(res["estado"], "VERIFICADO")
+        self.assertEqual(res["controles_superados"]["control_libro"], "PASS")
+        self.assertEqual(res["controles_superados"]["control_capitulo"], "PASS")
+        self.assertEqual(res["controles_superados"]["control_opcion_a_correcta"], "PASS")
 
     # --- CASO NQB-AT-EXO-0003: NILO / RÍO EN ÉXODO 1:22 ---
 
