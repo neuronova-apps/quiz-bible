@@ -339,6 +339,51 @@ SYNONYMS = {
     "monte": "montana",
     "montana": "monte",
     "montanosa": "monte",
+    # Gentilicios bíblicos y equivalencias tribales
+    "benjamin": "benjamita",
+    "benjamita": "benjamin",
+    "benjamitas": "benjamin",
+    "efrain": "efraimita",
+    "efraimita": "efrain",
+    "efraimitas": "efrain",
+    "galaad": "galaadita",
+    "galaadita": "galaad",
+    "galaaditas": "galaad",
+    "dan": "danita",
+    "danita": "dan",
+    "danitas": "dan",
+    "moab": "moabita",
+    "moabita": "moab",
+    "moabitas": "moab",
+    "amon": "amonita",
+    "amonita": "amon",
+    "amonitas": "amon",
+    "filistea": "filisteos",
+    "filisteo": "filistea",
+    "filisteos": "filistea",
+    "levi": "levita",
+    "levita": "levi",
+    "levitas": "levi",
+    "canaan": "cananeo",
+    "cananeo": "canaan",
+    "cananeos": "canaan",
+    "cananeas": "canaan",
+    "israel": "israelita",
+    "israelita": "israel",
+    "israelitas": "israel",
+    "jebus": "jebuseos",
+    "jebuseo": "jebus",
+    "jebuseos": "jebus",
+    "amorreo": "amorreos",
+    "amorreos": "amorreo",
+    "heteo": "heteos",
+    "heteos": "heteo",
+    "heveo": "heveos",
+    "heveos": "heveo",
+    "ferezeo": "ferezeos",
+    "ferezeos": "ferezeo",
+    "gergeseo": "gergeseos",
+    "gergeseos": "gergeseo",
 }
 
 # Componentes de números cardinales en español
@@ -359,9 +404,12 @@ SPANISH_TENS = {
     "cincuenta": 50, "sesenta": 60, "setenta": 70, "ochenta": 80, "noventa": 90,
 }
 
-SPANISH_UNITS = {
+SPANISH_CARDINAL_UNITS = {
     "cero": 0, "dos": 2, "tres": 3, "cuatro": 4, "cinco": 5,
     "seis": 6, "siete": 7, "ocho": 8, "nueve": 9,
+}
+
+SPANISH_ORDINALS = {
     "primero": 1, "primer": 1, "primera": 1,
     "segundo": 2, "segunda": 2,
     "tercero": 3, "tercer": 3, "tercera": 3, "tercia": 3,
@@ -372,6 +420,14 @@ SPANISH_UNITS = {
     "octavo": 8, "octava": 8,
     "noveno": 9, "novena": 9,
     "decimo": 10, "decima": 10,
+}
+
+SPANISH_UNITS = {**SPANISH_CARDINAL_UNITS, **SPANISH_ORDINALS}
+
+ORDINAL_CONTEXT_WORDS = {
+    "ano", "anos", "mes", "meses", "dia", "dias", "parte", "partes",
+    "porcion", "porciones", "vez", "veces", "generacion", "generaciones",
+    "hijo", "hijos", "lugar", "lugares", "grado", "grados", "hora", "horas"
 }
 
 SPANISH_ONE_WORDS = {"uno", "un", "una"}
@@ -451,13 +507,27 @@ def _eval_sub_1000(tokens: list[str], is_quantitative: bool = False) -> list[int
                 u_val = SPANISH_UNITS.get(tokens[i + 1], 1)
                 val += u_val
                 i += 2
-        elif w in SPANISH_UNITS:
+        elif w in SPANISH_CARDINAL_UNITS:
             if val > 0 and val % 100 != 0:
                 results.append(val)
                 val = 0
-            val += SPANISH_UNITS[w]
+            val += SPANISH_CARDINAL_UNITS[w]
             results.append(val)
             val = 0
+            i += 1
+        elif w in SPANISH_ORDINALS:
+            has_ordinal_unit_context = (
+                is_quantitative
+                or (i + 1 < len(tokens) and tokens[i + 1] in ORDINAL_CONTEXT_WORDS)
+                or (i > 0 and tokens[i - 1] in ORDINAL_CONTEXT_WORDS)
+            )
+            if has_ordinal_unit_context:
+                if val > 0 and val % 100 != 0:
+                    results.append(val)
+                    val = 0
+                val += SPANISH_ORDINALS[w]
+                results.append(val)
+                val = 0
             i += 1
         elif w in SPANISH_ONE_WORDS:
             # Reconocer 'un/una' en números compuestos (ej. 'seiscientos un', 'ciento un')
@@ -867,7 +937,7 @@ def evaluate_question(
     if entities_in_opt_a:
         missing_entities = [
             n for n in entities_in_opt_a
-            if not token_matches_text(n, passage_norm)
+            if not token_matches_text(n, passage_norm) and n not in entities_in_prompt
         ]
         if not missing_entities:
             controls["control_nombres_propios"] = "PASS"

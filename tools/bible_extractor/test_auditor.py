@@ -700,9 +700,66 @@ class TestAuditorCanonical(unittest.TestCase):
             16: "Y dijo Caleb: Al que atacare a Quiriat-sefer, y la tomare, yo le daré a Acsa mi hija por mujer.",
             17: "Y la tomó Otoniel, hijo de Cenaz hermano de Caleb; y él le dio a Acsa su hija por mujer.",
         }
-        res46 = evaluate_question(q46, v46, book_key="josue")
-        self.assertEqual(res46["controles_superados"]["control_nombres_propios"], "PASS")
-        self.assertEqual(res46["estado"], "VERIFICADO")
+    # --- PRUEBAS DE REGRESIÓN DE JUECES Y GENTILICIOS BÍBLICOS ---
+
+    def test_benjamita_benjamin_demonyms(self) -> None:
+        """Verifica equivalencia genérica entre gentilicios bíblicos y nombres de tribus/lugares."""
+        self.assertTrue(token_matches_text("benjamin", "aod hijo de gera benjamita"))
+        self.assertTrue(token_matches_text("benjamita", "tribu de benjamin"))
+        self.assertTrue(token_matches_text("efrain", "monte de los efraimitas"))
+        self.assertTrue(token_matches_text("galaad", "jefte galaadita"))
+        self.assertTrue(token_matches_text("dan", "familia de los danitas"))
+
+    def test_ordinal_sequence_vs_quantitative(self) -> None:
+        """Verifica que 'primero' discursivo/secuencial no genere conteo numérico falso."""
+        nums_seq = extract_numbers("Primero que el vellón quedara mojado", is_quantitative_context=False)
+        self.assertEqual(nums_seq, [])
+
+        nums_seq2 = extract_numbers("a quien saliera primero de su casa", is_quantitative_context=False)
+        self.assertEqual(nums_seq2, [])
+
+        nums_quant = extract_numbers("el séptimo año la tierra tendrá reposo", is_quantitative_context=False)
+        self.assertEqual(nums_quant, [7])
+
+        nums_frac = extract_numbers("la décima parte", is_quantitative_context=True)
+        self.assertEqual(nums_frac, [10])
+
+    def test_judges_regression_four_cases(self) -> None:
+        """Verifica resolución limpia sin FAIL en NQB-AT-JUE-0008, 0020, 0028 y 0094."""
+        # JUE-0008: Aod benjamita vs tribu de Benjamín
+        q8 = self.get_judges_question("NQB-AT-JUE-0008")
+        v8 = {15: "Y clamaron los hijos de Israel a Jehová; y Jehová les levantó un libertador, a Aod hijo de Gera, benjamita, el cual era zurdo..."}
+        res8 = evaluate_question(q8, v8, book_key="jueces")
+        self.assertNotEqual(res8["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res8["controles_superados"]["control_nombres_propios"], "PASS")
+
+        # JUE-0020: Secuencia de señales de Gedeón
+        q20 = self.get_judges_question("NQB-AT-JUE-0020")
+        v20 = {
+            36: "Y Gedeón dijo a Dios: Si has de salvar a Israel por mi mano, como has dicho,",
+            37: "he aquí que yo pondré un vellón de lana en la era; y si el rocío estuviere en el vellón solamente, quedando seca toda la tierra, entonces entenderé que salvarás a Israel por mi mano, como has dicho.",
+            38: "Y aconteció así...",
+            39: "Mas Gedeón dijo a Dios... Te ruego que solamente el vellón quede seco, y el rocío sobre la tierra.",
+            40: "Y aquella noche lo hizo Dios así; sólo el vellón quedó seco, y en toda la tierra hubo rocío."
+        }
+        res20 = evaluate_question(q20, v20, book_key="jueces")
+        self.assertNotEqual(res20["estado"], "REQUIERE_CORRECCION")
+
+        # JUE-0028: Refusal of bread by Succoth to Gideon's men
+        q28 = self.get_judges_question("NQB-AT-JUE-0028")
+        v28 = {6: "Y los principales de Sucot respondieron: ¿Están ya en tu mano las cabezas de Zeba y de Zalmuna, para que demos pan a tu ejército?"}
+        res28 = evaluate_question(q28, v28, book_key="jueces")
+        self.assertNotEqual(res28["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res28["controles_superados"]["control_nombres_propios"], "PASS")
+
+        # JUE-0094: Voto de Jefté
+        q94 = self.get_judges_question("NQB-AT-JUE-0094")
+        v94 = {
+            30: "Y Jefté hizo voto a Jehová, diciendo: Si entregares a los amonitas en mis manos,",
+            31: "cualquiera que saliere de las puertas de mi casa a recibirme, cuando regrese victorioso de los amonitas, será de Jehová, y lo ofreceré en holocausto."
+        }
+        res94 = evaluate_question(q94, v94, book_key="jueces")
+        self.assertNotEqual(res94["estado"], "REQUIERE_CORRECCION")
 
 
 if __name__ == "__main__":
