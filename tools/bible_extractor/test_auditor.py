@@ -1224,6 +1224,16 @@ class TestAuditorCanonical(unittest.TestCase):
         self.assertNotEqual(res84["estado"], "REQUIERE_CORRECCION")
         self.assertEqual(res84["controles_superados"]["control_numeros_cantidades"], "PASS")
 
+        # 2RE-0050: Dos siervos conspiraron (2 Reyes 12:20-21)
+        q50 = self.get_2kings_question("NQB-AT-2RE-0050")
+        v50 = {
+            20: "Y se levantaron sus siervos y conspiraron en conjuración, y mataron a Joás en la casa de Milo, cuando descendía a Sila;",
+            21: "porque Josacar hijo de Simeat y Jozabad hijo de Somer, sus siervos, le hirieron, y murió. Y le sepultaron con sus padres en la ciudad de David, y reinó en su lugar Amasías su hijo."
+        }
+        res50 = evaluate_question(q50, v50, book_key="2kings")
+        self.assertNotEqual(res50["estado"], "REQUIERE_CORRECCION")
+        self.assertEqual(res50["controles_superados"]["control_numeros_cantidades"], "PASS")
+
         # 2RE-0102: Hazael asciende tras muerte de Ben-adad (2 Reyes 8:14-15)
         q102 = self.get_2kings_question("NQB-AT-2RE-0102")
         v102 = {

@@ -1211,8 +1211,26 @@ def evaluate_question(
         missing_opt_nums = [n for n in opt_a_nums if n not in passage_nums]
         missing_nums = [n for n in (set(opt_a_nums) | set(prompt_nums_clean)) if n not in passage_nums]
         if missing_opt_nums:
-            controls["control_numeros_cantidades"] = "FAIL"
-            incidencias.append(f"Cantidad numérica en opción A ({opt_a_nums}) no coincide con el pasaje ({sorted(passage_nums)})")
+            if passage_nums:
+                controls["control_numeros_cantidades"] = "FAIL"
+                incidencias.append(f"Cantidad numérica en opción A ({missing_opt_nums}) no coincide con el pasaje ({sorted(passage_nums)})")
+            elif has_count_context:
+                controls["control_numeros_cantidades"] = "FAIL"
+                incidencias.append(f"Pregunta cuantitativa requiere cantidad ({missing_opt_nums}) no hallada en el pasaje")
+            else:
+                # Pregunta cualitativa sin números en el pasaje
+                resolved = True
+                for n in missing_opt_nums:
+                    if n in {2, 3}:
+                        chars_in_passage = [c for c in characters if token_matches_text(normalize(c), passage_norm)]
+                        if len(chars_in_passage) >= n:
+                            continue
+                    resolved = False
+                    break
+                if resolved:
+                    controls["control_numeros_cantidades"] = "PASS"
+                else:
+                    controls["control_numeros_cantidades"] = "UNKNOWN"
         elif not missing_nums or all(n in passage_nums for n in opt_a_nums):
             controls["control_numeros_cantidades"] = "PASS"
         else:
