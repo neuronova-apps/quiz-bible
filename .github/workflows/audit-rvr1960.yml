@@ -9,6 +9,7 @@ on:
       - "tools/bible_extractor/leviticus-master-input.json"
       - "tools/bible_extractor/numbers-master-input.json"
       - "tools/bible_extractor/deuteronomy-master-input.json"
+      - "tools/bible_extractor/joshua-master-input.json"
       - "tools/bible_extractor/audit-input.json"
       - "tools/bible_extractor/auditor.py"
       - "tools/bible_extractor/report_audit.py"
@@ -22,6 +23,7 @@ on:
       - "tools/bible_extractor/leviticus-master-input.json"
       - "tools/bible_extractor/numbers-master-input.json"
       - "tools/bible_extractor/deuteronomy-master-input.json"
+      - "tools/bible_extractor/joshua-master-input.json"
       - "tools/bible_extractor/audit-input.json"
       - "tools/bible_extractor/auditor.py"
       - "tools/bible_extractor/report_audit.py"
@@ -32,7 +34,7 @@ on:
       input_file:
         description: "Ruta del archivo de entrada de preguntas"
         required: true
-        default: "tools/bible_extractor/deuteronomy-master-input.json"
+        default: "tools/bible_extractor/joshua-master-input.json"
         type: string
 
 permissions:
@@ -61,7 +63,9 @@ jobs:
         run: |
           INPUT_FILE="${{ inputs.input_file || '' }}"
           if [ -z "$INPUT_FILE" ]; then
-            if [ -f "tools/bible_extractor/deuteronomy-master-input.json" ]; then
+            if [ -f "tools/bible_extractor/joshua-master-input.json" ]; then
+              INPUT_FILE="tools/bible_extractor/joshua-master-input.json"
+            elif [ -f "tools/bible_extractor/deuteronomy-master-input.json" ]; then
               INPUT_FILE="tools/bible_extractor/deuteronomy-master-input.json"
             elif [ -f "tools/bible_extractor/numbers-master-input.json" ]; then
               INPUT_FILE="tools/bible_extractor/numbers-master-input.json"
@@ -79,7 +83,10 @@ jobs:
             fi
           fi
 
-          if [[ "$INPUT_FILE" == *"deuteronomy"* ]] || [[ "$INPUT_FILE" == *"deuteronomio"* ]]; then
+          if [[ "$INPUT_FILE" == *"joshua"* ]] || [[ "$INPUT_FILE" == *"josue"* ]]; then
+            OUTPUT_DIR="build/audit/joshua"
+            ARTIFACT_NAME="auditoria-josue-rvr1960-${{ github.run_number }}"
+          elif [[ "$INPUT_FILE" == *"deuteronomy"* ]] || [[ "$INPUT_FILE" == *"deuteronomio"* ]]; then
             OUTPUT_DIR="build/audit/deuteronomy"
             ARTIFACT_NAME="auditoria-deuteronomio-rvr1960-${{ github.run_number }}"
           elif [[ "$INPUT_FILE" == *"numbers"* ]] || [[ "$INPUT_FILE" == *"numeros"* ]]; then

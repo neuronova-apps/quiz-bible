@@ -1,0 +1,3041 @@
+{
+  "source": "Quiz Bible master bank - Joshua",
+  "version": "RVR1960",
+  "book": "Josué",
+  "total_questions": 100,
+  "questions": [
+    {
+      "id": "NQB-AT-JOS-0001",
+      "book": "Josué",
+      "chapter": 1,
+      "verse_start": 1,
+      "verse_end": 2,
+      "reference": "Josué 1:1-2",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Encargo inicial a Josué",
+      "characters": [
+        "Josué",
+        "Moisés",
+        "israelitas"
+      ],
+      "difficulty": "Básico",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué río debía disponerse a cruzar Josué con todo el pueblo para entrar en la tierra?",
+      "opcion_a": "El Jordán",
+      "opcion_b": "El Nilo",
+      "opcion_c": "El Éufrates",
+      "opcion_d": "El Arnón",
+      "correct_option": "A",
+      "correct_answer": "El Jordán",
+      "explanation": "Tras la muerte de Moisés, Josué recibió la orden de ponerse al frente del pueblo y avanzar hacia la tierra prometida. El paso inmediato señalado era cruzar el Jordán con Israel, marcando el inicio de una nueva etapa narrativa.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0002",
+      "book": "Josué",
+      "chapter": 1,
+      "verse_start": 8,
+      "verse_end": 8,
+      "reference": "Josué 1:8",
+      "category": "AT_GENERAL",
+      "subcategory": "Meditación continua en la ley",
+      "characters": [
+        "Josué"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué práctica debía mantener Josué respecto del libro de la ley para orientar su conducta?",
+      "opcion_a": "Meditar en él de día y de noche",
+      "opcion_b": "Leerlo únicamente durante las fiestas",
+      "opcion_c": "Entregarlo por completo a los sacerdotes",
+      "opcion_d": "Consultarlo solo antes de una batalla",
+      "correct_option": "A",
+      "correct_answer": "Meditar en él de día y de noche",
+      "explanation": "La instrucción a Josué no se limita a conservar el libro de la ley. Debía mantenerlo presente de manera constante, meditar en su contenido y actuar de acuerdo con él, relacionando liderazgo, reflexión y obediencia práctica.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0081",
+      "book": "Josué",
+      "chapter": 1,
+      "verse_start": 9,
+      "verse_end": 9,
+      "reference": "Josué 1:9",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Fortaleza y valentía en el encargo",
+      "characters": [
+        "Josué"
+      ],
+      "difficulty": "Básico",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué actitud debía mantener Josué ante la responsabilidad de conducir al pueblo?",
+      "opcion_a": "Actuar con fortaleza y valentía, sin dejarse dominar por el temor",
+      "opcion_b": "Esperar a que otro dirigente asumiera la tarea",
+      "opcion_c": "Evitar toda decisión hasta recibir una nueva señal",
+      "opcion_d": "Delegar el liderazgo únicamente en los sacerdotes",
+      "correct_option": "A",
+      "correct_answer": "Actuar con fortaleza y valentía, sin dejarse dominar por el temor",
+      "explanation": "El encargo a Josué combina responsabilidad y ánimo. Debía afrontar la misión con firmeza y valentía, sin paralizarse por el temor, porque su tarea requería conducir al pueblo en una etapa nueva y exigente.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0003",
+      "book": "Josué",
+      "chapter": 1,
+      "verse_start": 11,
+      "verse_end": 11,
+      "reference": "Josué 1:11",
+      "category": "AT_GENERAL",
+      "subcategory": "Preparación antes de cruzar el Jordán",
+      "characters": [
+        "Josué",
+        "oficiales",
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿En cuánto tiempo se anunció que el pueblo cruzaría el Jordán para entrar en la tierra?",
+      "opcion_a": "En tres días",
+      "opcion_b": "En siete días",
+      "opcion_c": "En cuarenta días",
+      "opcion_d": "En un mes",
+      "correct_option": "A",
+      "correct_answer": "En tres días",
+      "explanation": "Los oficiales transmitieron al campamento la orden de preparar provisiones porque el cruce del Jordán se aproximaba. El plazo indicado fue de tres días, un detalle cronológico que sitúa la inmediatez del avance hacia Canaán.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0004",
+      "book": "Josué",
+      "chapter": 1,
+      "verse_start": 16,
+      "verse_end": 17,
+      "reference": "Josué 1:16-17",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Respuesta de las tribus orientales a Josué",
+      "characters": [
+        "Josué",
+        "rubenitas",
+        "gaditas",
+        "media tribu de Manasés"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué compromiso expresaron a Josué los representantes de las tribus que habían recibido territorio al oriente del Jordán?",
+      "opcion_a": "Obedecer sus órdenes e ir a donde los enviara",
+      "opcion_b": "Regresar inmediatamente a sus ciudades sin participar",
+      "opcion_c": "Esperar una nueva orden de Moisés",
+      "opcion_d": "Cruzar únicamente después de la conquista completa",
+      "correct_option": "A",
+      "correct_answer": "Obedecer sus órdenes e ir a donde los enviara",
+      "explanation": "Los representantes de las tribus orientales respondieron afirmando su disposición a obedecer a Josué y acudir donde fueran enviados. La declaración refuerza públicamente la continuidad del liderazgo al comenzar la campaña al oeste del Jordán.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0005",
+      "book": "Josué",
+      "chapter": 2,
+      "verse_start": 1,
+      "verse_end": 1,
+      "reference": "Josué 2:1",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Envío secreto de dos espías",
+      "characters": [
+        "Josué",
+        "espías",
+        "Rahab"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Desde qué lugar envió Josué secretamente a dos hombres para reconocer Jericó y sus alrededores?",
+      "opcion_a": "Desde Sitim",
+      "opcion_b": "Desde Gilgal",
+      "opcion_c": "Desde Hebrón",
+      "opcion_d": "Desde Betel",
+      "correct_option": "A",
+      "correct_answer": "Desde Sitim",
+      "explanation": "Antes del cruce del Jordán, Josué envió en secreto a dos exploradores desde Sitim. Su misión se concentró en reconocer la tierra y especialmente Jericó, lo que introduce el encuentro posterior con Rahab.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0006",
+      "book": "Josué",
+      "chapter": 2,
+      "verse_start": 4,
+      "verse_end": 6,
+      "reference": "Josué 2:4-6",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Rahab oculta a los espías",
+      "characters": [
+        "Rahab",
+        "espías",
+        "enviados del rey de Jericó"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Dónde escondió Rahab a los dos espías cuando llegaron hombres del rey de Jericó a buscarlos?",
+      "opcion_a": "En el techo, entre tallos de lino",
+      "opcion_b": "En un pozo fuera de la ciudad",
+      "opcion_c": "Dentro de una torre de vigilancia",
+      "opcion_d": "En una cueva junto al Jordán",
+      "correct_option": "A",
+      "correct_answer": "En el techo, entre tallos de lino",
+      "explanation": "Rahab había hecho subir a los espías al techo y los ocultó entre el lino que tenía dispuesto allí. El detalle muestra cómo evitó que fueran encontrados cuando los enviados del rey llegaron a su casa.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0082",
+      "book": "Josué",
+      "chapter": 2,
+      "verse_start": 9,
+      "verse_end": 11,
+      "reference": "Josué 2:9-11",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Razón del temor expresado por Rahab",
+      "characters": [
+        "Rahab",
+        "israelitas",
+        "Sehón",
+        "Og"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué noticias mencionó Rahab como motivo de que los habitantes de la tierra temieran a Israel?",
+      "opcion_a": "El cruce del mar al salir de Egipto y las derrotas de Sehón y Og",
+      "opcion_b": "Las plagas de Egipto y la entrega de la ley en el desierto",
+      "opcion_c": "La rebelión de Coré y el episodio de la serpiente de bronce",
+      "opcion_d": "El maná del desierto y la victoria de Israel sobre Amalec",
+      "correct_option": "A",
+      "correct_answer": "El cruce del mar al salir de Egipto y las derrotas de Sehón y Og",
+      "explanation": "Rahab explicó que en Jericó habían oído noticias de hechos ocurridos antes de la llegada de Israel. Mencionó tanto la salida de Egipto atravesando el mar como las derrotas de los dos reyes amorreos al oriente del Jordán, y relacionó esas noticias con el temor de la población.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0007",
+      "book": "Josué",
+      "chapter": 2,
+      "verse_start": 12,
+      "verse_end": 13,
+      "reference": "Josué 2:12-13",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Petición de Rahab por su familia",
+      "characters": [
+        "Rahab",
+        "espías",
+        "familia de Rahab"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué pidió Rahab a los espías como respuesta al favor de haberlos protegido?",
+      "opcion_a": "Que preservaran con vida a su familia",
+      "opcion_b": "Que la nombraran gobernante de Jericó",
+      "opcion_c": "Que le entregaran parte del botín",
+      "opcion_d": "Que la llevaran de inmediato al campamento israelita",
+      "correct_option": "A",
+      "correct_answer": "Que preservaran con vida a su familia",
+      "explanation": "Rahab pidió una señal de compromiso para que, cuando Israel entrara en la ciudad, fueran preservados su padre, su madre, sus hermanos, sus hermanas y los suyos. La petición se centra en la protección de su familia.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0008",
+      "book": "Josué",
+      "chapter": 2,
+      "verse_start": 18,
+      "verse_end": 18,
+      "reference": "Josué 2:18",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Señal del cordón escarlata",
+      "characters": [
+        "Rahab",
+        "espías"
+      ],
+      "difficulty": "Básico",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué señal debía colocar Rahab en la ventana de su casa para identificarla cuando llegara el ataque contra Jericó?",
+      "opcion_a": "Un cordón escarlata",
+      "opcion_b": "Una lámpara de oro",
+      "opcion_c": "Una rama de olivo",
+      "opcion_d": "Un paño azul",
+      "correct_option": "A",
+      "correct_answer": "Un cordón escarlata",
+      "explanation": "Los espías acordaron con Rahab una señal visible en la ventana por la que habían escapado. El cordón escarlata permitiría identificar la casa vinculada con el acuerdo y distinguirla cuando Israel actuara contra la ciudad.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0009",
+      "book": "Josué",
+      "chapter": 3,
+      "verse_start": 3,
+      "verse_end": 4,
+      "reference": "Josué 3:3-4",
+      "category": "AT_GENERAL",
+      "subcategory": "Arca como guía durante el cruce",
+      "characters": [
+        "sacerdotes",
+        "levitas",
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué debían observar y seguir los israelitas para saber por dónde avanzar hacia el Jordán?",
+      "opcion_a": "El arca del pacto llevada por los sacerdotes levitas",
+      "opcion_b": "La tienda personal de Josué",
+      "opcion_c": "Una columna formada por los jefes tribales",
+      "opcion_d": "Las trompetas de los soldados de Judá",
+      "correct_option": "A",
+      "correct_answer": "El arca del pacto llevada por los sacerdotes levitas",
+      "explanation": "El pueblo recibió la indicación de avanzar cuando viera el arca del pacto transportada por los sacerdotes levitas. El arca funcionaba como referencia visible para una ruta que la nueva generación todavía no había recorrido.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0010",
+      "book": "Josué",
+      "chapter": 3,
+      "verse_start": 13,
+      "verse_end": 13,
+      "reference": "Josué 3:13",
+      "category": "AT_GENERAL",
+      "subcategory": "Señal en las aguas del Jordán",
+      "characters": [
+        "sacerdotes",
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué debía ocurrir cuando los pies de los sacerdotes que llevaban el arca tocaran las aguas del Jordán?",
+      "opcion_a": "Las aguas que descendían se detendrían",
+      "opcion_b": "El río aumentaría su caudal",
+      "opcion_c": "Comenzaría una lluvia intensa",
+      "opcion_d": "Los sacerdotes regresarían a la orilla oriental",
+      "correct_option": "A",
+      "correct_answer": "Las aguas que descendían se detendrían",
+      "explanation": "El cruce fue asociado con una señal concreta: al entrar los sacerdotes que llevaban el arca en el Jordán, el flujo del río debía detenerse. Así se preparaba un paso extraordinario para toda la congregación.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0083",
+      "book": "Josué",
+      "chapter": 3,
+      "verse_start": 15,
+      "verse_end": 15,
+      "reference": "Josué 3:15",
+      "category": "AT_GENERAL",
+      "subcategory": "Condición del Jordán durante el cruce",
+      "characters": [
+        "Jordán",
+        "sacerdotes",
+        "israelitas"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué condición presentaba el Jordán en la época en que los sacerdotes entraron en sus aguas?",
+      "opcion_a": "Estaba desbordado por todas sus riberas durante el tiempo de la cosecha",
+      "opcion_b": "Se encontraba completamente seco por una sequía prolongada",
+      "opcion_c": "Había quedado congelado por el invierno",
+      "opcion_d": "Su cauce había sido desviado por los habitantes de Jericó",
+      "correct_option": "A",
+      "correct_answer": "Estaba desbordado por todas sus riberas durante el tiempo de la cosecha",
+      "explanation": "El relato subraya que el cruce no ocurrió cuando el río estaba en su nivel más bajo. El Jordán se encontraba crecido y desbordado durante la época de la cosecha, lo que hace más significativa la detención de las aguas descrita en el episodio.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0011",
+      "book": "Josué",
+      "chapter": 3,
+      "verse_start": 17,
+      "verse_end": 17,
+      "reference": "Josué 3:17",
+      "category": "AT_GENERAL",
+      "subcategory": "Sacerdotes en medio del Jordán",
+      "characters": [
+        "sacerdotes",
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Dónde permanecieron los sacerdotes que llevaban el arca mientras el pueblo terminaba de cruzar el Jordán?",
+      "opcion_a": "En medio del Jordán, sobre terreno seco",
+      "opcion_b": "En la cima del monte Ebal",
+      "opcion_c": "En la entrada de Jericó",
+      "opcion_d": "En la orilla occidental junto a Gilgal",
+      "correct_option": "A",
+      "correct_answer": "En medio del Jordán, sobre terreno seco",
+      "explanation": "Los sacerdotes permanecieron firmes en medio del cauce mientras Israel avanzaba sobre terreno seco. Solo después de completarse el cruce de toda la nación continuaría la secuencia del relato.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0012",
+      "book": "Josué",
+      "chapter": 4,
+      "verse_start": 2,
+      "verse_end": 3,
+      "reference": "Josué 4:2-3",
+      "category": "AT_GENERAL",
+      "subcategory": "Doce hombres y doce piedras",
+      "characters": [
+        "israelitas",
+        "representantes tribales"
+      ],
+      "difficulty": "Básico",
+      "question_type": "Selección múltiple",
+      "question": "¿Cuántos hombres debían escogerse, uno de cada tribu, para tomar piedras del lugar del cruce?",
+      "opcion_a": "Doce hombres",
+      "opcion_b": "Siete hombres",
+      "opcion_c": "Diez hombres",
+      "opcion_d": "Veinticuatro hombres",
+      "correct_option": "A",
+      "correct_answer": "Doce hombres",
+      "explanation": "Después del cruce se ordenó seleccionar un representante por cada tribu. Los doce hombres debían tomar piedras del Jordán, creando un memorial vinculado con la experiencia vivida por las doce tribus de Israel.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0013",
+      "book": "Josué",
+      "chapter": 4,
+      "verse_start": 6,
+      "verse_end": 7,
+      "reference": "Josué 4:6-7",
+      "category": "AT_GENERAL",
+      "subcategory": "Propósito pedagógico de las piedras",
+      "characters": [
+        "israelitas",
+        "hijos"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Para qué debían servir las piedras tomadas del Jordán cuando las generaciones futuras preguntaran por ellas?",
+      "opcion_a": "Como memorial para explicar el cruce del Jordán",
+      "opcion_b": "Como límite de propiedad entre las tribus",
+      "opcion_c": "Como base para levantar un altar de sacrificios diarios",
+      "opcion_d": "Como material para construir las murallas de Jericó",
+      "correct_option": "A",
+      "correct_answer": "Como memorial para explicar el cruce del Jordán",
+      "explanation": "Las piedras fueron pensadas como una señal que provocara preguntas en los hijos. Al explicar su significado, las familias podrían transmitir la memoria del cruce y del modo en que las aguas se detuvieron ante el arca.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0084",
+      "book": "Josué",
+      "chapter": 4,
+      "verse_start": 19,
+      "verse_end": 19,
+      "reference": "Josué 4:19",
+      "category": "AT_GENERAL",
+      "subcategory": "Fecha de salida del Jordán",
+      "characters": [
+        "israelitas",
+        "Josué"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿En qué día del primer mes salió el pueblo del Jordán y acampó en Gilgal?",
+      "opcion_a": "El día diez",
+      "opcion_b": "El día uno",
+      "opcion_c": "El día catorce",
+      "opcion_d": "El día veinte",
+      "correct_option": "A",
+      "correct_answer": "El día diez",
+      "explanation": "El relato proporciona una fecha precisa para situar el ingreso de Israel en la tierra. El pueblo salió del Jordán el décimo día del primer mes y estableció su campamento en Gilgal, antes de los acontecimientos que siguieron en esa zona.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0014",
+      "book": "Josué",
+      "chapter": 5,
+      "verse_start": 2,
+      "verse_end": 3,
+      "reference": "Josué 5:2-3",
+      "category": "AT_GENERAL",
+      "subcategory": "Circuncisión con cuchillos de pedernal",
+      "characters": [
+        "Josué",
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿De qué material debían ser los cuchillos preparados para realizar la circuncisión indicada en esta etapa?",
+      "opcion_a": "De pedernal",
+      "opcion_b": "De hierro",
+      "opcion_c": "De bronce",
+      "opcion_d": "De madera",
+      "correct_option": "A",
+      "correct_answer": "De pedernal",
+      "explanation": "Antes de continuar con la campaña en Canaán, Josué recibió la instrucción de preparar cuchillos de pedernal para la circuncisión de los varones de la nueva generación. El detalle material hace de esta una pregunta de mayor precisión.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0015",
+      "book": "Josué",
+      "chapter": 5,
+      "verse_start": 10,
+      "verse_end": 12,
+      "reference": "Josué 5:10-12",
+      "category": "AT_GENERAL",
+      "subcategory": "Cese del maná en Canaán",
+      "characters": [
+        "israelitas"
+      ],
+      "difficulty": "Básico",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué alimento dejó de aparecer después de que Israel comenzó a comer del producto de la tierra?",
+      "opcion_a": "El maná",
+      "opcion_b": "Las codornices",
+      "opcion_c": "El pan sin levadura",
+      "opcion_d": "Los higos",
+      "correct_option": "A",
+      "correct_answer": "El maná",
+      "explanation": "Tras celebrar la Pascua en la región de Gilgal y comenzar a alimentarse de los productos de Canaán, el relato señala el fin del maná. El cambio marca la transición entre la provisión del desierto y la alimentación obtenida en la tierra.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0016",
+      "book": "Josué",
+      "chapter": 5,
+      "verse_start": 13,
+      "verse_end": 14,
+      "reference": "Josué 5:13-14",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Encuentro de Josué cerca de Jericó",
+      "characters": [
+        "Josué",
+        "jefe del ejército de Dios"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué función declaró tener el hombre armado que se presentó ante Josué cerca de Jericó?",
+      "opcion_a": "Ser el jefe del ejército de Dios",
+      "opcion_b": "Ser un mensajero del rey de Jericó",
+      "opcion_c": "Ser un explorador de la tribu de Judá",
+      "opcion_d": "Ser un sacerdote enviado desde Gilgal",
+      "correct_option": "A",
+      "correct_answer": "Ser el jefe del ejército de Dios",
+      "explanation": "Josué encontró a un hombre con una espada desenvainada y le preguntó de qué lado estaba. La respuesta lo identificó como jefe del ejército de Dios, dando al encuentro un carácter distinto de una simple reunión militar humana.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0017",
+      "book": "Josué",
+      "chapter": 6,
+      "verse_start": 3,
+      "verse_end": 4,
+      "reference": "Josué 6:3-4",
+      "category": "AT_GENERAL",
+      "subcategory": "Secuencia de vueltas alrededor de Jericó",
+      "characters": [
+        "Josué",
+        "sacerdotes",
+        "soldados"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué secuencia de marchas se indicó alrededor de Jericó antes de la caída de la ciudad?",
+      "opcion_a": "Una vuelta diaria durante seis días y siete vueltas el séptimo día",
+      "opcion_b": "Siete vueltas cada día durante siete días",
+      "opcion_c": "Una vuelta total el primer día y ninguna después",
+      "opcion_d": "Doce vueltas el primer día y una el séptimo",
+      "correct_option": "A",
+      "correct_answer": "Una vuelta diaria durante seis días y siete vueltas el séptimo día",
+      "explanation": "El plan para Jericó siguió una secuencia precisa. Durante seis días el pueblo debía rodear la ciudad una vez por día; en el séptimo, la marcha se repetía siete veces antes de la señal final.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0018",
+      "book": "Josué",
+      "chapter": 6,
+      "verse_start": 20,
+      "verse_end": 20,
+      "reference": "Josué 6:20",
+      "category": "AT_GENERAL",
+      "subcategory": "Caída de la muralla de Jericó",
+      "characters": [
+        "israelitas",
+        "sacerdotes"
+      ],
+      "difficulty": "Básico",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué ocurrió con la muralla de Jericó después de la señal de las trompetas y del grito del pueblo?",
+      "opcion_a": "La muralla cayó",
+      "opcion_b": "La puerta principal se abrió lentamente",
+      "opcion_c": "La ciudad fue abandonada durante la noche",
+      "opcion_d": "El Jordán cambió nuevamente de curso",
+      "correct_option": "A",
+      "correct_answer": "La muralla cayó",
+      "explanation": "En el momento señalado, el pueblo gritó mientras sonaban las trompetas y la muralla de Jericó cayó. El episodio permitió que los israelitas avanzaran directamente hacia la ciudad desde sus posiciones.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0019",
+      "book": "Josué",
+      "chapter": 6,
+      "verse_start": 22,
+      "verse_end": 23,
+      "reference": "Josué 6:22-23",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Rescate de Rahab y su familia",
+      "characters": [
+        "Rahab",
+        "dos espías",
+        "familia de Rahab"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿A quiénes encargó Josué sacar de la ciudad a Rahab y a quienes estaban con ella?",
+      "opcion_a": "A los dos hombres que habían reconocido la tierra",
+      "opcion_b": "A los sacerdotes que llevaban las trompetas",
+      "opcion_c": "A los jefes de Rubén y Gad",
+      "opcion_d": "A los ancianos de Jericó",
+      "correct_option": "A",
+      "correct_answer": "A los dos hombres que habían reconocido la tierra",
+      "explanation": "Josué asignó la tarea a los mismos dos hombres que habían entrado previamente como espías. Ellos conocían la casa y el acuerdo realizado con Rahab, por lo que fueron quienes sacaron a ella y a su familia.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0085",
+      "book": "Josué",
+      "chapter": 6,
+      "verse_start": 26,
+      "verse_end": 26,
+      "reference": "Josué 6:26",
+      "category": "AT_GENERAL",
+      "subcategory": "Advertencia sobre la reconstrucción de Jericó",
+      "characters": [
+        "Josué",
+        "futuro reconstructor de Jericó"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué consecuencias familiares quedaron asociadas con la advertencia de Josué contra quien intentara reconstruir Jericó?",
+      "opcion_a": "Perdería a su primogénito al poner los cimientos y a su hijo menor al colocar las puertas",
+      "opcion_b": "Perdería únicamente sus bienes y su ganado",
+      "opcion_c": "Sería expulsado de Israel durante siete años",
+      "opcion_d": "Tendría que entregar la ciudad a la tribu de Leví",
+      "correct_option": "A",
+      "correct_answer": "Perdería a su primogénito al poner los cimientos y a su hijo menor al colocar las puertas",
+      "explanation": "Después de la caída de Jericó, Josué pronunció una advertencia específica sobre una futura reconstrucción. La formulación vincula el inicio de la obra y su terminación con pérdidas familiares, haciendo de este un detalle distinto de la conquista misma.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0020",
+      "book": "Josué",
+      "chapter": 7,
+      "verse_start": 1,
+      "verse_end": 1,
+      "reference": "Josué 7:1",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Acán y lo dedicado",
+      "characters": [
+        "Acán",
+        "Carmi",
+        "Judá",
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué hombre de la tribu de Judá es señalado como responsable de haber tomado de lo dedicado después de Jericó?",
+      "opcion_a": "Acán hijo de Carmi",
+      "opcion_b": "Caleb hijo de Jefone",
+      "opcion_c": "Finees hijo de Eleazar",
+      "opcion_d": "Naasón hijo de Aminadab",
+      "correct_option": "A",
+      "correct_answer": "Acán hijo de Carmi",
+      "explanation": "El inicio del capítulo identifica a Acán, descendiente de la tribu de Judá, como quien tomó de aquello que había sido apartado. El hecho se convierte en la explicación narrativa de la crisis que Israel afronta inmediatamente después de Jericó.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0086",
+      "book": "Josué",
+      "chapter": 7,
+      "verse_start": 4,
+      "verse_end": 5,
+      "reference": "Josué 7:4-5",
+      "category": "AT_GENERAL",
+      "subcategory": "Primera derrota frente a Hai",
+      "characters": [
+        "israelitas",
+        "habitantes de Hai"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué ocurrió en el primer ataque contra Hai antes de descubrirse el problema dentro de Israel?",
+      "opcion_a": "Los hombres de Hai hicieron retroceder a Israel y murieron alrededor de treinta y seis israelitas",
+      "opcion_b": "Hai se rindió sin combatir",
+      "opcion_c": "Israel tomó la ciudad pero perdió todo el botín",
+      "opcion_d": "Los habitantes de Hai huyeron hacia Jericó sin presentar resistencia",
+      "correct_option": "A",
+      "correct_answer": "Los hombres de Hai hicieron retroceder a Israel y murieron alrededor de treinta y seis israelitas",
+      "explanation": "El primer intento contra Hai terminó de manera muy distinta a la victoria en Jericó. Los israelitas fueron obligados a retroceder y sufrieron pérdidas, lo que provocó alarma en el campamento y dio paso a la investigación sobre la causa de la derrota.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0087",
+      "book": "Josué",
+      "chapter": 7,
+      "verse_start": 20,
+      "verse_end": 21,
+      "reference": "Josué 7:20-21",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Objetos tomados por Acán",
+      "characters": [
+        "Acán",
+        "israelitas"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué conjunto de objetos confesó Acán haber tomado del botín prohibido?",
+      "opcion_a": "Un manto babilónico, doscientos siclos de plata y un lingote de oro de cincuenta siclos",
+      "opcion_b": "Una espada de bronce, cien siclos de plata y una corona",
+      "opcion_c": "Dos mantos egipcios, cincuenta siclos de oro y una copa",
+      "opcion_d": "Un ídolo de madera, trescientas monedas y un collar",
+      "correct_option": "A",
+      "correct_answer": "Un manto babilónico, doscientos siclos de plata y un lingote de oro de cincuenta siclos",
+      "explanation": "En su confesión, Acán identificó tres tipos de bienes: una prenda valiosa procedente de Babilonia, una cantidad de plata y una pieza de oro. El detalle combina naturaleza y peso de los objetos, por lo que exige una memoria más precisa del episodio.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0021",
+      "book": "Josué",
+      "chapter": 8,
+      "verse_start": 1,
+      "verse_end": 2,
+      "reference": "Josué 8:1-2",
+      "category": "AT_GENERAL",
+      "subcategory": "Botín permitido en Hai",
+      "characters": [
+        "Josué",
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué diferencia se estableció respecto de los bienes de Hai en comparación con lo ocurrido en Jericó?",
+      "opcion_a": "Israel podía tomar para sí el botín y el ganado de Hai",
+      "opcion_b": "Todo debía quedar intacto dentro de la ciudad",
+      "opcion_c": "Los bienes debían entregarse exclusivamente a los gabaonitas",
+      "opcion_d": "Solo los sacerdotes podían tomar el ganado",
+      "correct_option": "A",
+      "correct_answer": "Israel podía tomar para sí el botín y el ganado de Hai",
+      "explanation": "Al preparar un nuevo ataque contra Hai, la instrucción permitió que el pueblo tomara como botín los bienes y el ganado de la ciudad. El detalle distingue esta campaña de la restricción aplicada anteriormente en Jericó y ayuda a explicar el nuevo plan militar.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0022",
+      "book": "Josué",
+      "chapter": 8,
+      "verse_start": 3,
+      "verse_end": 3,
+      "reference": "Josué 8:3",
+      "category": "AT_GENERAL",
+      "subcategory": "Fuerza enviada para la emboscada",
+      "characters": [
+        "Josué",
+        "hombres de guerra"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Cuántos hombres valientes escogió inicialmente Josué y envió de noche para preparar la operación contra Hai?",
+      "opcion_a": "Treinta mil hombres",
+      "opcion_b": "Cinco mil hombres",
+      "opcion_c": "Doce mil hombres",
+      "opcion_d": "Cuarenta mil hombres",
+      "correct_option": "A",
+      "correct_answer": "Treinta mil hombres",
+      "explanation": "El relato describe una primera selección de treinta mil hombres valientes enviados de noche como parte de la estrategia contra Hai. Más adelante se menciona otro grupo numérico, por lo que esta pregunta exige distinguir el dato asociado con la preparación inicial de la emboscada.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0023",
+      "book": "Josué",
+      "chapter": 8,
+      "verse_start": 18,
+      "verse_end": 19,
+      "reference": "Josué 8:18-19",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Señal de Josué hacia Hai",
+      "characters": [
+        "Josué",
+        "emboscada israelita"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué objeto extendió Josué hacia Hai como señal vinculada con la entrada en acción de la emboscada?",
+      "opcion_a": "La lanza que llevaba en su mano",
+      "opcion_b": "El arca del pacto",
+      "opcion_c": "Una trompeta de plata",
+      "opcion_d": "Un estandarte de Judá",
+      "correct_option": "A",
+      "correct_answer": "La lanza que llevaba en su mano",
+      "explanation": "Durante la maniobra contra Hai, Josué recibió la indicación de extender el arma que llevaba hacia la ciudad. Ese gesto quedó asociado con el momento en que los hombres de la emboscada salieron de su posición y avanzaron para ejecutar el plan.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0088",
+      "book": "Josué",
+      "chapter": 8,
+      "verse_start": 29,
+      "verse_end": 29,
+      "reference": "Josué 8:29",
+      "category": "AT_GENERAL",
+      "subcategory": "Destino del cuerpo del rey de Hai",
+      "characters": [
+        "Josué",
+        "rey de Hai",
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Dónde fue colocado el cuerpo del rey de Hai después de bajarlo del madero al atardecer?",
+      "opcion_a": "A la entrada de la puerta de la ciudad, bajo un gran montón de piedras",
+      "opcion_b": "En el campamento israelita de Gilgal",
+      "opcion_c": "Dentro de una cueva cerca del monte Ebal",
+      "opcion_d": "Junto al altar levantado después de la batalla",
+      "correct_option": "A",
+      "correct_answer": "A la entrada de la puerta de la ciudad, bajo un gran montón de piedras",
+      "explanation": "El relato indica que el rey de Hai no permaneció colgado durante la noche. Al atardecer, su cuerpo fue bajado y arrojado a la entrada de la puerta de la ciudad; sobre él levantaron un gran montón de piedras. El detalle combina la secuencia posterior a la batalla con un lugar específico.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0024",
+      "book": "Josué",
+      "chapter": 8,
+      "verse_start": 30,
+      "verse_end": 31,
+      "reference": "Josué 8:30-31",
+      "category": "AT_GENERAL",
+      "subcategory": "Altar levantado en Ebal",
+      "characters": [
+        "Josué",
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿En qué monte levantó Josué un altar después de la victoria sobre Hai?",
+      "opcion_a": "En el monte Ebal",
+      "opcion_b": "En el monte Gerizim",
+      "opcion_c": "En el monte Carmelo",
+      "opcion_d": "En el monte Hor",
+      "correct_option": "A",
+      "correct_answer": "En el monte Ebal",
+      "explanation": "Después de la campaña de Hai, Josué levantó un altar en el monte Ebal. La acción enlaza la entrada en Canaán con las instrucciones previamente dadas a Israel y sitúa la ceremonia dentro de la nueva etapa de ocupación de la tierra.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0025",
+      "book": "Josué",
+      "chapter": 8,
+      "verse_start": 34,
+      "verse_end": 35,
+      "reference": "Josué 8:34-35",
+      "category": "AT_GENERAL",
+      "subcategory": "Lectura pública completa de la ley",
+      "characters": [
+        "Josué",
+        "israelitas",
+        "extranjeros residentes"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué grupos, además de los hombres de Israel, estuvieron incluidos en la reunión en la que Josué leyó las palabras de la ley?",
+      "opcion_a": "Mujeres, niños y extranjeros que vivían entre ellos",
+      "opcion_b": "Únicamente sacerdotes y jefes tribales",
+      "opcion_c": "Solo los soldados que habían combatido en Hai",
+      "opcion_d": "Exclusivamente los representantes de Judá y Leví",
+      "correct_option": "A",
+      "correct_answer": "Mujeres, niños y extranjeros que vivían entre ellos",
+      "explanation": "La lectura se presenta como una reunión amplia de la comunidad y no como un acto reservado a dirigentes o combatientes. El relato incluye expresamente a mujeres, niños y extranjeros residentes, reforzando el carácter colectivo de la instrucción.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0026",
+      "book": "Josué",
+      "chapter": 9,
+      "verse_start": 3,
+      "verse_end": 6,
+      "reference": "Josué 9:3-6",
+      "category": "AT_GENERAL",
+      "subcategory": "Engaño de los gabaonitas",
+      "characters": [
+        "gabaonitas",
+        "Josué",
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué querían hacer creer los gabaonitas mediante sus ropas, recipientes y provisiones gastadas?",
+      "opcion_a": "Que venían de una tierra muy lejana",
+      "opcion_b": "Que eran sacerdotes procedentes de Gilgal",
+      "opcion_c": "Que habían escapado de Jericó esa misma mañana",
+      "opcion_d": "Que pertenecían a las tribus orientales de Israel",
+      "correct_option": "A",
+      "correct_answer": "Que venían de una tierra muy lejana",
+      "explanation": "Los habitantes de Gabaón prepararon una apariencia deliberadamente envejecida para que su viaje pareciera mucho más largo de lo que realmente había sido. La estrategia buscaba convencer a Israel de que no pertenecían a los pueblos vecinos de Canaán.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0027",
+      "book": "Josué",
+      "chapter": 9,
+      "verse_start": 14,
+      "verse_end": 14,
+      "reference": "Josué 9:14",
+      "category": "AT_GENERAL",
+      "subcategory": "Falta de consulta ante la propuesta gabaonita",
+      "characters": [
+        "israelitas",
+        "gabaonitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué paso importante omitieron los dirigentes de Israel antes de aceptar la versión presentada por los gabaonitas?",
+      "opcion_a": "Consultar a Dios antes de tomar la decisión",
+      "opcion_b": "Realizar un nuevo censo de las tribus",
+      "opcion_c": "Enviar mensajeros a Egipto",
+      "opcion_d": "Esperar siete días fuera del campamento",
+      "correct_option": "A",
+      "correct_answer": "Consultar a Dios antes de tomar la decisión",
+      "explanation": "Los dirigentes examinaron las provisiones presentadas por los gabaonitas, pero el relato destaca que no realizaron la consulta que habría debido acompañar una decisión de esa importancia. Esa omisión explica el problema que surgió después al descubrirse el engaño.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0028",
+      "book": "Josué",
+      "chapter": 9,
+      "verse_start": 15,
+      "verse_end": 16,
+      "reference": "Josué 9:15-16",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Pacto de Josué con Gabaón",
+      "characters": [
+        "Josué",
+        "jefes de Israel",
+        "gabaonitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué acuerdo hizo Josué con los gabaonitas antes de descubrir que en realidad vivían cerca?",
+      "opcion_a": "Hizo paz con ellos y acordó preservarles la vida",
+      "opcion_b": "Los incorporó inmediatamente al ejército de Judá",
+      "opcion_c": "Les entregó Jericó como territorio permanente",
+      "opcion_d": "Los envió de regreso a Egipto",
+      "correct_option": "A",
+      "correct_answer": "Hizo paz con ellos y acordó preservarles la vida",
+      "explanation": "Josué estableció un acuerdo de paz con los gabaonitas y los dirigentes confirmaron el compromiso. Solo después se descubrió que aquellas personas no procedían de una región distante, lo que convirtió el juramento ya realizado en un asunto complejo para Israel.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0089",
+      "book": "Josué",
+      "chapter": 9,
+      "verse_start": 17,
+      "verse_end": 17,
+      "reference": "Josué 9:17",
+      "category": "AT_GENERAL",
+      "subcategory": "Ciudades de los gabaonitas",
+      "characters": [
+        "gabaonitas",
+        "israelitas"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué conjunto corresponde a las cuatro ciudades vinculadas con los gabaonitas descubiertas por Israel?",
+      "opcion_a": "Gabaón, Cafira, Beerot y Quiriat-jearim",
+      "opcion_b": "Jericó, Hai, Betel y Gilgal",
+      "opcion_c": "Hebrón, Debir, Libna y Laquis",
+      "opcion_d": "Siquem, Silo, Bet-el y Timnat-sera",
+      "correct_option": "A",
+      "correct_answer": "Gabaón, Cafira, Beerot y Quiriat-jearim",
+      "explanation": "Tres días después del acuerdo, Israel llegó a las ciudades de quienes habían presentado la historia del largo viaje. El relato enumera cuatro localidades vinculadas con ese grupo: Gabaón, Cafira, Beerot y Quiriat-jearim.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0029",
+      "book": "Josué",
+      "chapter": 9,
+      "verse_start": 27,
+      "verse_end": 27,
+      "reference": "Josué 9:27",
+      "category": "AT_GENERAL",
+      "subcategory": "Servicio asignado a los gabaonitas",
+      "characters": [
+        "gabaonitas",
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué tipo de labores quedaron asignadas a los gabaonitas para la comunidad y el lugar de culto?",
+      "opcion_a": "Cortar leña y sacar agua",
+      "opcion_b": "Fabricar armas y dirigir carros",
+      "opcion_c": "Realizar censos y repartir territorios",
+      "opcion_d": "Administrar las ciudades de refugio",
+      "correct_option": "A",
+      "correct_answer": "Cortar leña y sacar agua",
+      "explanation": "Después de mantenerse el juramento que les preservaba la vida, los gabaonitas quedaron vinculados a tareas de servicio. El relato los relaciona con el corte de leña y la provisión de agua para la comunidad y para el lugar asociado con el culto.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0030",
+      "book": "Josué",
+      "chapter": 10,
+      "verse_start": 3,
+      "verse_end": 5,
+      "reference": "Josué 10:3-5",
+      "category": "AT_GENERAL",
+      "subcategory": "Coalición amorrea contra Gabaón",
+      "characters": [
+        "reyes amorreos",
+        "gabaonitas"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Cuántos reyes amorreos se unieron para atacar Gabaón después de conocer su acuerdo con Israel?",
+      "opcion_a": "Cinco reyes",
+      "opcion_b": "Tres reyes",
+      "opcion_c": "Siete reyes",
+      "opcion_d": "Doce reyes",
+      "correct_option": "A",
+      "correct_answer": "Cinco reyes",
+      "explanation": "El rey de Jerusalén convocó a otros cuatro reyes de la región para formar una coalición contra Gabaón. El total de cinco gobernantes se convierte después en un elemento importante de la campaña del sur narrada en este capítulo.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0031",
+      "book": "Josué",
+      "chapter": 10,
+      "verse_start": 6,
+      "verse_end": 7,
+      "reference": "Josué 10:6-7",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Josué sale en ayuda de Gabaón",
+      "characters": [
+        "Josué",
+        "gabaonitas",
+        "hombres de guerra"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Desde qué campamento partió Josué con sus hombres de guerra para responder al pedido de ayuda de Gabaón?",
+      "opcion_a": "Desde Gilgal",
+      "opcion_b": "Desde Jericó",
+      "opcion_c": "Desde Hebrón",
+      "opcion_d": "Desde Siquem",
+      "correct_option": "A",
+      "correct_answer": "Desde Gilgal",
+      "explanation": "Los gabaonitas enviaron un mensaje urgente a Josué solicitando ayuda frente a la coalición de reyes amorreos. Josué respondió movilizando desde Gilgal a las fuerzas disponibles, iniciando así la campaña de auxilio.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0032",
+      "book": "Josué",
+      "chapter": 10,
+      "verse_start": 11,
+      "verse_end": 11,
+      "reference": "Josué 10:11",
+      "category": "AT_GENERAL",
+      "subcategory": "Granizo durante la persecución",
+      "characters": [
+        "israelitas",
+        "amorreos"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué fenómeno cayó sobre los enemigos durante su retirada y causó numerosas bajas?",
+      "opcion_a": "Grandes piedras de granizo",
+      "opcion_b": "Una tormenta de arena",
+      "opcion_c": "Una inundación del Jordán",
+      "opcion_d": "Una lluvia de ceniza",
+      "correct_option": "A",
+      "correct_answer": "Grandes piedras de granizo",
+      "explanation": "Durante la persecución de los ejércitos amorreos, el relato describe una intervención mediante grandes piedras de granizo. La narración incluso destaca que este fenómeno causó más bajas que las producidas directamente por los israelitas con la espada.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0033",
+      "book": "Josué",
+      "chapter": 10,
+      "verse_start": 12,
+      "verse_end": 13,
+      "reference": "Josué 10:12-13",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Sol y luna durante la batalla",
+      "characters": [
+        "Josué",
+        "israelitas",
+        "amorreos"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué dos lugares se asocian respectivamente con el sol y la luna en la petición de Josué durante la batalla?",
+      "opcion_a": "Gabaón y el valle de Ajalón",
+      "opcion_b": "Jericó y el monte Ebal",
+      "opcion_c": "Gilgal y el valle de Escol",
+      "opcion_d": "Hebrón y el monte Gerizim",
+      "correct_option": "A",
+      "correct_answer": "Gabaón y el valle de Ajalón",
+      "explanation": "La escena extraordinaria relaciona el sol con Gabaón y la luna con el valle de Ajalón mientras Israel perseguía a sus enemigos. Recordar correctamente ambos lugares exige distinguir la geografía específica de este episodio.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0034",
+      "book": "Josué",
+      "chapter": 10,
+      "verse_start": 16,
+      "verse_end": 17,
+      "reference": "Josué 10:16-17",
+      "category": "AT_GENERAL",
+      "subcategory": "Escondite de los cinco reyes",
+      "characters": [
+        "cinco reyes amorreos",
+        "Josué"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Dónde se escondieron los cinco reyes que habían formado la coalición contra Gabaón?",
+      "opcion_a": "En una cueva en Maceda",
+      "opcion_b": "En una torre dentro de Jericó",
+      "opcion_c": "En el monte Ebal",
+      "opcion_d": "En una casa de Gilgal",
+      "correct_option": "A",
+      "correct_answer": "En una cueva en Maceda",
+      "explanation": "Mientras continuaba la persecución, los cinco reyes buscaron refugio en una cueva situada en Maceda. Al conocerse el lugar, Josué dio instrucciones para asegurar la entrada mientras la campaña contra los ejércitos enemigos seguía adelante.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0090",
+      "book": "Josué",
+      "chapter": 10,
+      "verse_start": 24,
+      "verse_end": 24,
+      "reference": "Josué 10:24",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Acto simbólico sobre los cinco reyes",
+      "characters": [
+        "Josué",
+        "jefes de guerra",
+        "cinco reyes amorreos"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué ordenó Josué a los jefes de los hombres de guerra hacer con los cinco reyes antes de su ejecución?",
+      "opcion_a": "Poner sus pies sobre los cuellos de los reyes",
+      "opcion_b": "Llevarlos encadenados a Gilgal para juzgarlos",
+      "opcion_c": "Obligarlos a reconstruir las ciudades conquistadas",
+      "opcion_d": "Entregarlos a los gabaonitas como prisioneros",
+      "correct_option": "A",
+      "correct_answer": "Poner sus pies sobre los cuellos de los reyes",
+      "explanation": "Tras sacar a los cinco reyes de la cueva, Josué llamó a los jefes que habían acompañado la campaña y les indicó que pusieran sus pies sobre los cuellos de aquellos reyes. El gesto ocurrió antes del desenlace de los gobernantes y funcionó como una demostración pública vinculada con la victoria sobre sus enemigos.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0035",
+      "book": "Josué",
+      "chapter": 11,
+      "verse_start": 1,
+      "verse_end": 1,
+      "reference": "Josué 11:1",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Jabín organiza la coalición del norte",
+      "characters": [
+        "Jabín",
+        "rey de Hazor",
+        "reyes del norte"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué rey aparece convocando a otros gobernantes al inicio de la gran coalición del norte contra Israel?",
+      "opcion_a": "Jabín, rey de Hazor",
+      "opcion_b": "Adonisedec, rey de Jerusalén",
+      "opcion_c": "Og, rey de Basán",
+      "opcion_d": "Sehón, rey de Hesbón",
+      "correct_option": "A",
+      "correct_answer": "Jabín, rey de Hazor",
+      "explanation": "El capítulo inicia con Jabín, rey de Hazor, reaccionando ante las campañas israelitas y contactando a otros gobernantes. Su iniciativa da origen a una coalición amplia que concentra fuerzas en el norte de Canaán.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0036",
+      "book": "Josué",
+      "chapter": 11,
+      "verse_start": 4,
+      "verse_end": 4,
+      "reference": "Josué 11:4",
+      "category": "AT_GENERAL",
+      "subcategory": "Recursos de la coalición del norte",
+      "characters": [
+        "reyes del norte",
+        "ejércitos cananeos"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué recursos militares se destacan especialmente al describir a la gran coalición reunida contra Israel?",
+      "opcion_a": "Muchos caballos y carros",
+      "opcion_b": "Espadas y escudos en grandes cantidades",
+      "opcion_c": "Arcos y hondas para el combate a distancia",
+      "opcion_d": "Lanzas y jabalinas para la infantería",
+      "correct_option": "A",
+      "correct_answer": "Muchos caballos y carros",
+      "explanation": "La fuerza reunida en el norte se describe como muy numerosa y con abundantes caballos y carros. Estos recursos daban a la coalición una capacidad militar considerable y explican la relevancia de las instrucciones que Josué recibió antes del enfrentamiento.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0037",
+      "book": "Josué",
+      "chapter": 11,
+      "verse_start": 6,
+      "verse_end": 6,
+      "reference": "Josué 11:6",
+      "category": "AT_GENERAL",
+      "subcategory": "Destino de caballos y carros enemigos",
+      "characters": [
+        "Josué",
+        "coalición del norte"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué instrucciones recibió Josué respecto de los caballos y carros de la coalición enemiga?",
+      "opcion_a": "Inutilizar los caballos y quemar los carros",
+      "opcion_b": "Conservar todos los caballos y carros para formar una caballería",
+      "opcion_c": "Entregar los carros a Gabaón y liberar los caballos",
+      "opcion_d": "Enviar los caballos y carros a las tribus orientales",
+      "correct_option": "A",
+      "correct_answer": "Inutilizar los caballos y quemar los carros",
+      "explanation": "Antes del combate, Josué recibió una instrucción específica sobre los recursos militares del enemigo. Los caballos debían quedar inutilizados para la guerra y los carros debían ser quemados, evitando que Israel basara su futura fuerza en ese equipamiento capturado.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0038",
+      "book": "Josué",
+      "chapter": 11,
+      "verse_start": 10,
+      "verse_end": 11,
+      "reference": "Josué 11:10-11",
+      "category": "AT_GENERAL",
+      "subcategory": "Hazor como centro principal del norte",
+      "characters": [
+        "Josué",
+        "Jabín",
+        "Hazor"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué ciudad, presentada como principal entre aquellos reinos del norte, fue capturada y quemada por Josué?",
+      "opcion_a": "Hazor",
+      "opcion_b": "Gabaón",
+      "opcion_c": "Betel",
+      "opcion_d": "Siquem",
+      "correct_option": "A",
+      "correct_answer": "Hazor",
+      "explanation": "Después de derrotar a la coalición, Josué volvió contra Hazor. El relato la identifica como una ciudad principal entre aquellos reinos, lo que explica su relevancia particular dentro del cierre de la campaña del norte.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0091",
+      "book": "Josué",
+      "chapter": 11,
+      "verse_start": 21,
+      "verse_end": 22,
+      "reference": "Josué 11:21-22",
+      "category": "AT_GENERAL",
+      "subcategory": "Lugares donde quedaron descendientes de Anac",
+      "characters": [
+        "anaceos",
+        "israelitas"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿En qué tres ciudades se señala que aún quedaron descendientes de Anac después de las campañas de Josué?",
+      "opcion_a": "Gaza, Gat y Asdod",
+      "opcion_b": "Jericó, Hai y Gabaón",
+      "opcion_c": "Hebrón, Debir y Libna",
+      "opcion_d": "Siquem, Betel y Silo",
+      "correct_option": "A",
+      "correct_answer": "Gaza, Gat y Asdod",
+      "explanation": "El resumen de la campaña contra los descendientes de Anac indica que fueron eliminados de las zonas controladas por Israel, pero menciona tres ciudades filisteas donde permanecieron: Gaza, Gat y Asdod. El detalle exige precisión geográfica.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0039",
+      "book": "Josué",
+      "chapter": 11,
+      "verse_start": 23,
+      "verse_end": 23,
+      "reference": "Josué 11:23",
+      "category": "AT_GENERAL",
+      "subcategory": "Descanso de la tierra tras las campañas",
+      "characters": [
+        "Josué",
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué situación se describe al terminar esta etapa de las campañas de conquista?",
+      "opcion_a": "La tierra tuvo descanso de la guerra",
+      "opcion_b": "Israel regresó al desierto por cuarenta años",
+      "opcion_c": "Todas las tribus volvieron al oriente del Jordán",
+      "opcion_d": "Jericó fue reconstruida como capital",
+      "correct_option": "A",
+      "correct_answer": "La tierra tuvo descanso de la guerra",
+      "explanation": "El capítulo resume la extensa campaña de Josué y concluye señalando un período de descanso respecto de la guerra. La afirmación funciona como cierre narrativo de una fase antes de los resúmenes y repartos territoriales posteriores.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0040",
+      "book": "Josué",
+      "chapter": 12,
+      "verse_start": 24,
+      "verse_end": 24,
+      "reference": "Josué 12:24",
+      "category": "AT_GENERAL",
+      "subcategory": "Total de reyes derrotados al oeste del Jordán",
+      "characters": [
+        "Josué",
+        "reyes de Canaán"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Cuántos reyes aparecen en el total final de la lista de gobernantes derrotados por Josué al oeste del Jordán?",
+      "opcion_a": "Treinta y un reyes",
+      "opcion_b": "Doce reyes",
+      "opcion_c": "Veinticuatro reyes",
+      "opcion_d": "Cuarenta reyes",
+      "correct_option": "A",
+      "correct_answer": "Treinta y un reyes",
+      "explanation": "El capítulo reúne en una lista a los gobernantes vencidos en las campañas realizadas al oeste del Jordán. El cierre de esa enumeración establece un total de treinta y un reyes, un dato de síntesis que requiere precisión numérica.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0041",
+      "book": "Josué",
+      "chapter": 13,
+      "verse_start": 1,
+      "verse_end": 1,
+      "reference": "Josué 13:1",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Josué envejecido y tierra aún por conquistar",
+      "characters": [
+        "Josué",
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué situación se destaca al comenzar la nueva etapa del reparto territorial?",
+      "opcion_a": "Josué ya era de edad avanzada y todavía quedaba mucha tierra por conquistar",
+      "opcion_b": "Josué había regresado a Egipto y la conquista había terminado",
+      "opcion_c": "Todas las tribus habían recibido ya su heredad completa",
+      "opcion_d": "El pueblo había abandonado Canaán para volver al desierto",
+      "correct_option": "A",
+      "correct_answer": "Josué ya era de edad avanzada y todavía quedaba mucha tierra por conquistar",
+      "explanation": "El libro marca una transición entre las grandes campañas militares y la distribución territorial. Josué es presentado como un dirigente de edad avanzada mientras aún permanecían zonas por ocupar, lo que explica la necesidad de organizar el reparto sin esperar a que cada región estuviera completamente sometida.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0042",
+      "book": "Josué",
+      "chapter": 13,
+      "verse_start": 13,
+      "verse_end": 13,
+      "reference": "Josué 13:13",
+      "category": "AT_GENERAL",
+      "subcategory": "Pueblos no expulsados de la región",
+      "characters": [
+        "gesureos",
+        "maacateos",
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué dos pueblos se menciona que Israel no expulsó y que continuaron habitando entre ellos en esa etapa?",
+      "opcion_a": "Los gesureos y los maacateos",
+      "opcion_b": "Los moabitas y los amonitas",
+      "opcion_c": "Los edomitas y los madianitas",
+      "opcion_d": "Los filisteos y los amalecitas",
+      "correct_option": "A",
+      "correct_answer": "Los gesureos y los maacateos",
+      "explanation": "Dentro del resumen de las tierras aún no plenamente ocupadas, el relato señala específicamente que los gesureos y los maacateos no fueron expulsados. Ambos grupos continuaron viviendo entre Israel, un detalle que muestra que la distribución territorial avanzó aun cuando algunas poblaciones permanecían en determinadas regiones.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0092",
+      "book": "Josué",
+      "chapter": 14,
+      "verse_start": 7,
+      "verse_end": 7,
+      "reference": "Josué 14:7",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Edad de Caleb al ser enviado como explorador",
+      "characters": [
+        "Caleb",
+        "Moisés"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué edad tenía Caleb cuando Moisés lo envió desde Cades-barnea a reconocer la tierra?",
+      "opcion_a": "Cuarenta años",
+      "opcion_b": "Veinte años",
+      "opcion_c": "Sesenta años",
+      "opcion_d": "Ochenta y cinco años",
+      "correct_option": "A",
+      "correct_answer": "Cuarenta años",
+      "explanation": "Al solicitar su heredad, Caleb repasó su propia historia y recordó la misión de reconocimiento realizada décadas antes. Señaló que tenía cuarenta años cuando fue enviado desde Cades-barnea, lo que permite comparar ese momento con sus ochenta y cinco años al formular la petición.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0043",
+      "book": "Josué",
+      "chapter": 14,
+      "verse_start": 10,
+      "verse_end": 12,
+      "reference": "Josué 14:10-12",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Edad de Caleb al pedir su heredad",
+      "characters": [
+        "Caleb",
+        "Josué"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué edad declaró tener Caleb cuando pidió recibir la región que se le había prometido?",
+      "opcion_a": "Ochenta y cinco años",
+      "opcion_b": "Cuarenta años",
+      "opcion_c": "Sesenta años",
+      "opcion_d": "Ciento veinte años",
+      "correct_option": "A",
+      "correct_answer": "Ochenta y cinco años",
+      "explanation": "Caleb recordó el largo período transcurrido desde la misión de reconocimiento de Canaán y afirmó conservar fuerzas para afrontar la nueva etapa. Al solicitar su heredad declaró tener ochenta y cinco años, un dato que sitúa su petición dentro de la cronología del relato.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0044",
+      "book": "Josué",
+      "chapter": 14,
+      "verse_start": 13,
+      "verse_end": 14,
+      "reference": "Josué 14:13-14",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Hebrón entregada a Caleb",
+      "characters": [
+        "Josué",
+        "Caleb"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué ciudad o región recibió Caleb como heredad después de presentar su petición a Josué?",
+      "opcion_a": "Hebrón",
+      "opcion_b": "Jericó",
+      "opcion_c": "Gabaón",
+      "opcion_d": "Siquem",
+      "correct_option": "A",
+      "correct_answer": "Hebrón",
+      "explanation": "Josué bendijo a Caleb y le concedió Hebrón como heredad. El relato vincula esta asignación con la fidelidad que Caleb había mostrado desde la generación de los exploradores y con su disposición a ocupar una región aún desafiante.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0045",
+      "book": "Josué",
+      "chapter": 15,
+      "verse_start": 13,
+      "verse_end": 14,
+      "reference": "Josué 15:13-14",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Caleb expulsa a los descendientes de Anac",
+      "characters": [
+        "Caleb",
+        "Sesai",
+        "Ahimán",
+        "Talmai"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué tres hombres descendientes de Anac son nombrados como expulsados de Hebrón por Caleb?",
+      "opcion_a": "Sesai, Ahimán y Talmai",
+      "opcion_b": "Coré, Datán y Abiram",
+      "opcion_c": "Eldad, Medad y Josué",
+      "opcion_d": "Nadab, Abiú y Eleazar",
+      "correct_option": "A",
+      "correct_answer": "Sesai, Ahimán y Talmai",
+      "explanation": "La ocupación de Hebrón incluye la expulsión de tres personajes asociados con los descendientes de Anac: Sesai, Ahimán y Talmai. Recordar el conjunto completo exige distinguir nombres poco frecuentes dentro de una sección territorial y narrativa.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0046",
+      "book": "Josué",
+      "chapter": 15,
+      "verse_start": 16,
+      "verse_end": 17,
+      "reference": "Josué 15:16-17",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Otoniel conquista Quiriat-sefer",
+      "characters": [
+        "Caleb",
+        "Otoniel",
+        "Acsa"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Quién conquistó Quiriat-sefer y recibió a Acsa, hija de Caleb, como esposa?",
+      "opcion_a": "Otoniel",
+      "opcion_b": "Finees",
+      "opcion_c": "Eleazar",
+      "opcion_d": "Aod",
+      "correct_option": "A",
+      "correct_answer": "Otoniel",
+      "explanation": "Caleb ofreció a su hija Acsa como esposa al hombre que tomara Quiriat-sefer. Otoniel fue quien realizó la conquista y recibió a Acsa, introduciendo a un personaje que volverá a tener importancia en la historia posterior de Israel.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0047",
+      "book": "Josué",
+      "chapter": 15,
+      "verse_start": 18,
+      "verse_end": 19,
+      "reference": "Josué 15:18-19",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Acsa pide fuentes de agua",
+      "characters": [
+        "Acsa",
+        "Caleb",
+        "Otoniel"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué pidió Acsa a Caleb además de la tierra que había recibido?",
+      "opcion_a": "Fuentes de agua",
+      "opcion_b": "Un ejército de tres mil hombres",
+      "opcion_c": "Una ciudad de refugio",
+      "opcion_d": "Un rebaño de camellos",
+      "correct_option": "A",
+      "correct_answer": "Fuentes de agua",
+      "explanation": "Acsa explicó que la tierra recibida necesitaba una provisión complementaria y pidió fuentes de agua. Caleb respondió dándole fuentes superiores e inferiores, un detalle que combina herencia territorial, recursos y una acción concreta de personaje.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0048",
+      "book": "Josué",
+      "chapter": 15,
+      "verse_start": 63,
+      "verse_end": 63,
+      "reference": "Josué 15:63",
+      "category": "AT_GENERAL",
+      "subcategory": "Jebuseos permanecen en Jerusalén",
+      "characters": [
+        "judíos",
+        "jebuseos"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué pueblo es señalado como no expulsado por Judá de Jerusalén en esta etapa?",
+      "opcion_a": "Los jebuseos",
+      "opcion_b": "Los moabitas",
+      "opcion_c": "Los madianitas",
+      "opcion_d": "Los amonitas",
+      "correct_option": "A",
+      "correct_answer": "Los jebuseos",
+      "explanation": "El cierre de la descripción de Judá menciona una limitación concreta de la ocupación: los jebuseos permanecieron en Jerusalén. El dato anticipa una situación que continuará teniendo importancia en etapas posteriores de la historia de Israel.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0093",
+      "book": "Josué",
+      "chapter": 16,
+      "verse_start": 4,
+      "verse_end": 4,
+      "reference": "Josué 16:4",
+      "category": "AT_GENERAL",
+      "subcategory": "Herencia de los descendientes de José",
+      "characters": [
+        "Efraín",
+        "Manasés",
+        "José"
+      ],
+      "difficulty": "Básico",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué dos tribus descendientes de José recibieron sus heredades en esta sección del reparto?",
+      "opcion_a": "Efraín y Manasés",
+      "opcion_b": "Judá y Simeón",
+      "opcion_c": "Rubén y Gad",
+      "opcion_d": "Isacar y Zabulón",
+      "correct_option": "A",
+      "correct_answer": "Efraín y Manasés",
+      "explanation": "La distribución territorial presenta a los descendientes de José a través de sus dos ramas principales. Efraín y Manasés recibieron sus respectivas heredades, que luego se describen con mayor detalle en los capítulos siguientes.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0049",
+      "book": "Josué",
+      "chapter": 16,
+      "verse_start": 10,
+      "verse_end": 10,
+      "reference": "Josué 16:10",
+      "category": "AT_GENERAL",
+      "subcategory": "Cananeos de Gezer bajo trabajo forzado",
+      "characters": [
+        "efraimitas",
+        "cananeos"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué ocurrió con los cananeos que permanecieron en Gezer dentro del territorio de Efraín?",
+      "opcion_a": "Permanecieron allí y fueron sometidos a trabajos forzados",
+      "opcion_b": "Fueron trasladados a Egipto como aliados",
+      "opcion_c": "Se convirtieron en sacerdotes de Israel",
+      "opcion_d": "Recibieron una ciudad de refugio propia",
+      "correct_option": "A",
+      "correct_answer": "Permanecieron allí y fueron sometidos a trabajos forzados",
+      "explanation": "Efraín no expulsó completamente a los cananeos de Gezer. El relato indica que continuaron viviendo en la zona bajo una condición de trabajo forzado, mostrando que la distribución territorial no equivalía todavía a una ocupación total de cada región.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0050",
+      "book": "Josué",
+      "chapter": 17,
+      "verse_start": 1,
+      "verse_end": 1,
+      "reference": "Josué 17:1",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Maquir y los territorios de Galaad y Basán",
+      "characters": [
+        "Maquir",
+        "Manasés"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué descendiente de Manasés aparece asociado con Galaad y Basán por ser un hombre de guerra?",
+      "opcion_a": "Maquir",
+      "opcion_b": "Efraín",
+      "opcion_c": "Benjamín",
+      "opcion_d": "Simeón",
+      "correct_option": "A",
+      "correct_answer": "Maquir",
+      "explanation": "El reparto de Manasés menciona de forma particular a Maquir, primogénito de Manasés y padre de Galaad. Su condición de hombre de guerra aparece vinculada con la posesión de Galaad y Basán, un detalle genealógico y territorial específico.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0094",
+      "book": "Josué",
+      "chapter": 17,
+      "verse_start": 5,
+      "verse_end": 5,
+      "reference": "Josué 17:5",
+      "category": "AT_GENERAL",
+      "subcategory": "Número de porciones de Manasés",
+      "characters": [
+        "Manasés",
+        "descendientes de Manasés"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Cuántas porciones correspondieron a Manasés en Canaán, además de Galaad y Basán situadas al otro lado del Jordán?",
+      "opcion_a": "Diez porciones",
+      "opcion_b": "Cinco porciones",
+      "opcion_c": "Siete porciones",
+      "opcion_d": "Doce porciones",
+      "correct_option": "A",
+      "correct_answer": "Diez porciones",
+      "explanation": "Al describir la heredad de Manasés, el texto distingue las posesiones orientales de Galaad y Basán de las porciones distribuidas en Canaán. El número indicado para estas últimas es diez. Este dato surge en el mismo contexto en que se explica la participación de las hijas de Zelofehad, pero evalúa un hecho territorial distinto de su derecho hereditario.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0051",
+      "book": "Josué",
+      "chapter": 17,
+      "verse_start": 14,
+      "verse_end": 14,
+      "reference": "Josué 17:14",
+      "category": "AT_GENERAL",
+      "subcategory": "Queja de los descendientes de José por una sola porción",
+      "characters": [
+        "descendientes de José",
+        "Josué"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué reclamaron los descendientes de José a Josué respecto de la heredad que habían recibido?",
+      "opcion_a": "Que una sola porción les parecía insuficiente porque eran numerosos",
+      "opcion_b": "Que querían abandonar Canaán y volver a Egipto",
+      "opcion_c": "Que deseaban entregar su territorio a Judá",
+      "opcion_d": "Que no querían recibir ninguna ciudad",
+      "correct_option": "A",
+      "correct_answer": "Que una sola porción les parecía insuficiente porque eran numerosos",
+      "explanation": "Los descendientes de José plantearon que su número y prosperidad hacían insuficiente una sola porción. La conversación con Josué abre una respuesta práctica: si eran numerosos, también debían asumir el esfuerzo de ampliar el espacio efectivamente ocupado.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0052",
+      "book": "Josué",
+      "chapter": 17,
+      "verse_start": 15,
+      "verse_end": 15,
+      "reference": "Josué 17:15",
+      "category": "AT_GENERAL",
+      "subcategory": "Desmonte de la región boscosa",
+      "characters": [
+        "descendientes de José",
+        "Josué",
+        "ferezeos",
+        "refaítas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué les propuso Josué hacer a los descendientes de José si su territorio montañoso les resultaba insuficiente?",
+      "opcion_a": "Subir a la región boscosa y despejar allí espacio para establecerse",
+      "opcion_b": "Cruzar nuevamente el Jordán y ocupar Moab",
+      "opcion_c": "Tomar una parte del territorio de Judá sin acuerdo",
+      "opcion_d": "Esperar hasta que otra tribu abandonara sus ciudades",
+      "correct_option": "A",
+      "correct_answer": "Subir a la región boscosa y despejar allí espacio para establecerse",
+      "explanation": "Josué respondió a la queja territorial señalando una alternativa concreta: aprovechar la región boscosa y abrir allí espacio. La respuesta vincula el tamaño del grupo con la responsabilidad de desarrollar y ocupar de manera efectiva una zona más amplia.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0053",
+      "book": "Josué",
+      "chapter": 17,
+      "verse_start": 16,
+      "verse_end": 16,
+      "reference": "Josué 17:16",
+      "category": "AT_GENERAL",
+      "subcategory": "Carros de hierro de los cananeos",
+      "characters": [
+        "descendientes de José",
+        "cananeos"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué ventaja militar de los cananeos mencionaron los descendientes de José al explicar la dificultad de ocupar el valle?",
+      "opcion_a": "Tenían carros de hierro",
+      "opcion_b": "Arqueros numerosos protegían las entradas del valle",
+      "opcion_c": "Las ciudades del valle estaban rodeadas por murallas dobles",
+      "opcion_d": "Los soldados enemigos dominaban los pasos con hondas y lanzas",
+      "correct_option": "A",
+      "correct_answer": "Tenían carros de hierro",
+      "explanation": "La dificultad señalada no era solo territorial. Los cananeos de determinadas zonas del valle contaban con carros de hierro, un recurso militar importante que los descendientes de José presentaron como obstáculo para ampliar su ocupación.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0054",
+      "book": "Josué",
+      "chapter": 18,
+      "verse_start": 1,
+      "verse_end": 1,
+      "reference": "Josué 18:1",
+      "category": "AT_GENERAL",
+      "subcategory": "Tabernáculo establecido en Silo",
+      "characters": [
+        "israelitas",
+        "Josué"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿En qué lugar se reunió la congregación y se instaló el tabernáculo durante el reparto territorial?",
+      "opcion_a": "En Silo",
+      "opcion_b": "En Jericó",
+      "opcion_c": "En Hebrón",
+      "opcion_d": "En Betel",
+      "correct_option": "A",
+      "correct_answer": "En Silo",
+      "explanation": "La congregación se reunió en Silo y allí fue levantado el tabernáculo. Desde ese centro continuó la organización de las tribus que todavía no habían recibido su heredad, haciendo de Silo un punto importante en esta etapa.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0055",
+      "book": "Josué",
+      "chapter": 18,
+      "verse_start": 2,
+      "verse_end": 2,
+      "reference": "Josué 18:2",
+      "category": "AT_GENERAL",
+      "subcategory": "Tribus pendientes de recibir heredad",
+      "characters": [
+        "tribus de Israel",
+        "Josué"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Cuántas tribus de Israel permanecían todavía sin una heredad territorial definida en ese momento?",
+      "opcion_a": "Siete tribus",
+      "opcion_b": "Tres tribus",
+      "opcion_c": "Cinco tribus",
+      "opcion_d": "Doce tribus",
+      "correct_option": "A",
+      "correct_answer": "Siete tribus",
+      "explanation": "A pesar de los repartos ya realizados, siete tribus todavía no habían recibido una porción territorial definida. Este dato explica por qué Josué impulsó un procedimiento organizado de reconocimiento y división del territorio restante.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0056",
+      "book": "Josué",
+      "chapter": 18,
+      "verse_start": 4,
+      "verse_end": 4,
+      "reference": "Josué 18:4",
+      "category": "AT_GENERAL",
+      "subcategory": "Comisión para reconocer la tierra",
+      "characters": [
+        "Josué",
+        "representantes tribales"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Cuántos hombres de cada tribu debían seleccionarse para recorrer y describir la tierra pendiente de reparto?",
+      "opcion_a": "Tres hombres por tribu",
+      "opcion_b": "Un hombre por tribu",
+      "opcion_c": "Siete hombres por tribu",
+      "opcion_d": "Doce hombres por tribu",
+      "correct_option": "A",
+      "correct_answer": "Tres hombres por tribu",
+      "explanation": "Josué estableció un procedimiento previo al sorteo: cada tribu debía aportar tres hombres para recorrer la tierra y elaborar una descripción. El número concreto y la función de la comisión hacen de esta una pregunta de precisión procedimental.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0057",
+      "book": "Josué",
+      "chapter": 18,
+      "verse_start": 6,
+      "verse_end": 10,
+      "reference": "Josué 18:6-10",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Josué reparte por suerte en Silo",
+      "characters": [
+        "Josué",
+        "tribus de Israel"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Dónde realizó Josué el sorteo para distribuir las porciones de tierra entre las tribus restantes?",
+      "opcion_a": "En Silo",
+      "opcion_b": "En Jericó",
+      "opcion_c": "En el monte Nebo",
+      "opcion_d": "En Cades-barnea",
+      "correct_option": "A",
+      "correct_answer": "En Silo",
+      "explanation": "Después de recibir la descripción del territorio, Josué efectuó el reparto por suerte en Silo. El lugar conecta la distribución de la tierra con el centro comunitario establecido allí durante esta fase de la organización de Israel.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0095",
+      "book": "Josué",
+      "chapter": 18,
+      "verse_start": 11,
+      "verse_end": 11,
+      "reference": "Josué 18:11",
+      "category": "AT_GENERAL",
+      "subcategory": "Primer sorteo entre las siete tribus restantes",
+      "characters": [
+        "Benjamín",
+        "tribus de Israel"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué tribu recibió la primera porción sorteada después de organizarse el reparto de las siete tribus que aún faltaban?",
+      "opcion_a": "Benjamín",
+      "opcion_b": "Simeón",
+      "opcion_c": "Dan",
+      "opcion_d": "Neftalí",
+      "correct_option": "A",
+      "correct_answer": "Benjamín",
+      "explanation": "Una vez descrito el territorio pendiente y realizado el sorteo en Silo, la primera porción entre las siete tribus restantes correspondió a Benjamín. Después continuarían los sorteos registrados en el capítulo siguiente.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0058",
+      "book": "Josué",
+      "chapter": 19,
+      "verse_start": 1,
+      "verse_end": 1,
+      "reference": "Josué 19:1",
+      "category": "AT_GENERAL",
+      "subcategory": "Segundo sorteo para Simeón",
+      "characters": [
+        "Simeón",
+        "tribus de Israel"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué tribu recibió la segunda porción sorteada, situada dentro de la heredad de Judá?",
+      "opcion_a": "Simeón",
+      "opcion_b": "Benjamín",
+      "opcion_c": "Aser",
+      "opcion_d": "Neftalí",
+      "correct_option": "A",
+      "correct_answer": "Simeón",
+      "explanation": "La segunda porción del reparto correspondió a Simeón y quedó situada dentro de la heredad previamente asignada a Judá. El dato refleja cómo algunos límites tribales se ajustaron a la distribución real del territorio.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0059",
+      "book": "Josué",
+      "chapter": 19,
+      "verse_start": 9,
+      "verse_end": 9,
+      "reference": "Josué 19:9",
+      "category": "AT_GENERAL",
+      "subcategory": "Razón del territorio de Simeón dentro de Judá",
+      "characters": [
+        "Simeón",
+        "Judá"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Por qué parte de la heredad de Judá fue utilizada para establecer la porción de Simeón?",
+      "opcion_a": "Porque la porción de Judá era demasiado extensa para esa tribu",
+      "opcion_b": "Porque Judá había renunciado por completo a Canaán",
+      "opcion_c": "Porque Simeón había conquistado Jerusalén antes que Judá",
+      "opcion_d": "Porque los levitas administraban toda la heredad de Judá",
+      "correct_option": "A",
+      "correct_answer": "Porque la porción de Judá era demasiado extensa para esa tribu",
+      "explanation": "La distribución fue ajustada porque el territorio asignado inicialmente a Judá resultaba mayor de lo necesario. Por eso la heredad de Simeón se ubicó dentro de esa zona, mostrando que el reparto podía corregirse según la proporción territorial.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0060",
+      "book": "Josué",
+      "chapter": 19,
+      "verse_start": 49,
+      "verse_end": 50,
+      "reference": "Josué 19:49-50",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Heredad personal de Josué",
+      "characters": [
+        "Josué",
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué ciudad recibió Josué como heredad personal después de terminar el reparto entre las tribus?",
+      "opcion_a": "Timnat-sera",
+      "opcion_b": "Jericó",
+      "opcion_c": "Hebrón",
+      "opcion_d": "Gabaón",
+      "correct_option": "A",
+      "correct_answer": "Timnat-sera",
+      "explanation": "Después de distribuir las porciones tribales, los israelitas asignaron a Josué una ciudad dentro de la región montañosa de Efraín. Timnat-sera quedó como su heredad personal y fue edificada y habitada por él.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0062",
+      "book": "Josué",
+      "chapter": 20,
+      "verse_start": 4,
+      "verse_end": 4,
+      "reference": "Josué 20:4",
+      "category": "AT_GENERAL",
+      "subcategory": "Procedimiento al llegar a una ciudad de refugio",
+      "characters": [
+        "ancianos",
+        "refugiado"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué debía hacer quien buscaba refugio al llegar a la entrada de una de estas ciudades?",
+      "opcion_a": "Exponer su caso ante los ancianos de la ciudad",
+      "opcion_b": "Entregar sus bienes a los sacerdotes antes de entrar",
+      "opcion_c": "Esperar fuera de la ciudad durante treinta días",
+      "opcion_d": "Presentarse únicamente ante el jefe militar de la región",
+      "correct_option": "A",
+      "correct_answer": "Exponer su caso ante los ancianos de la ciudad",
+      "explanation": "El procedimiento no consistía simplemente en cruzar las puertas de la ciudad. La persona debía presentar su situación ante los ancianos, quienes la recibirían y le proporcionarían un lugar mientras se desarrollaba el proceso correspondiente.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0063",
+      "book": "Josué",
+      "chapter": 20,
+      "verse_start": 7,
+      "verse_end": 7,
+      "reference": "Josué 20:7",
+      "category": "AT_GENERAL",
+      "subcategory": "Ciudad de refugio en Efraín",
+      "characters": [
+        "israelitas",
+        "efraimitas"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué ciudad de la región montañosa de Efraín fue apartada como ciudad de refugio?",
+      "opcion_a": "Siquem",
+      "opcion_b": "Hebrón",
+      "opcion_c": "Cedes",
+      "opcion_d": "Ramot de Galaad",
+      "correct_option": "A",
+      "correct_answer": "Siquem",
+      "explanation": "Entre las ciudades apartadas al oeste del Jordán, Siquem quedó ubicada en la región montañosa de Efraín. La pregunta exige distinguirla de otras ciudades de refugio situadas en Judá, Neftalí o al oriente del Jordán.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0096",
+      "book": "Josué",
+      "chapter": 20,
+      "verse_start": 8,
+      "verse_end": 8,
+      "reference": "Josué 20:8",
+      "category": "AT_GENERAL",
+      "subcategory": "Ciudad de refugio para Gad",
+      "characters": [
+        "Gad",
+        "israelitas"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué ciudad de Galaad fue apartada como ciudad de refugio dentro del territorio de Gad?",
+      "opcion_a": "Ramot de Galaad",
+      "opcion_b": "Beser",
+      "opcion_c": "Siquem",
+      "opcion_d": "Cedes",
+      "correct_option": "A",
+      "correct_answer": "Ramot de Galaad",
+      "explanation": "Entre las ciudades de refugio situadas al oriente del Jordán, Ramot de Galaad correspondió al territorio de Gad. Distinguirla de Beser, Siquem y Cedes requiere relacionar correctamente cada ciudad con su región o tribu.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0061",
+      "book": "Josué",
+      "chapter": 20,
+      "verse_start": 9,
+      "verse_end": 9,
+      "reference": "Josué 20:9",
+      "category": "AT_GENERAL",
+      "subcategory": "Acceso de extranjeros a las ciudades de refugio",
+      "characters": [
+        "israelitas",
+        "extranjeros residentes",
+        "refugiados"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Quiénes podían acogerse a las ciudades de refugio además de los propios israelitas?",
+      "opcion_a": "Los extranjeros que vivían entre ellos",
+      "opcion_b": "Los levitas de otras ciudades, pero ningún extranjero",
+      "opcion_c": "Los miembros de pueblos aliados que no residieran en Israel",
+      "opcion_d": "Los viajeros que estuvieran de paso, sin residir entre ellos",
+      "correct_option": "A",
+      "correct_answer": "Los extranjeros que vivían entre ellos",
+      "explanation": "Las ciudades de refugio no estaban limitadas a los israelitas por nacimiento. La disposición incluía también al extranjero que residía entre ellos, de modo que una persona que hubiera causado una muerte sin intención pudiera acceder al procedimiento de protección y juicio previsto para estos casos.",
+      "additional_references": [
+        "Números 35:15"
+      ],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0064",
+      "book": "Josué",
+      "chapter": 21,
+      "verse_start": 1,
+      "verse_end": 2,
+      "reference": "Josué 21:1-2",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Petición de los jefes levitas",
+      "characters": [
+        "jefes levitas",
+        "Eleazar",
+        "Josué",
+        "jefes tribales"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Ante quiénes se presentaron los jefes de los levitas para recordar la asignación de ciudades donde pudieran vivir?",
+      "opcion_a": "Ante Eleazar, Josué y los jefes de las familias tribales",
+      "opcion_b": "Ante Caleb y los ancianos de Hebrón",
+      "opcion_c": "Ante los reyes de las ciudades cananeas",
+      "opcion_d": "Ante los representantes de Rubén y Gad únicamente",
+      "correct_option": "A",
+      "correct_answer": "Ante Eleazar, Josué y los jefes de las familias tribales",
+      "explanation": "Los jefes levitas acudieron a las autoridades responsables del reparto: Eleazar, Josué y los jefes de las familias de las tribus. Así se llevó a la práctica la disposición de proporcionar ciudades y zonas de pastoreo a Leví.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0065",
+      "book": "Josué",
+      "chapter": 21,
+      "verse_start": 4,
+      "verse_end": 4,
+      "reference": "Josué 21:4",
+      "category": "AT_GENERAL",
+      "subcategory": "Ciudades para los descendientes de Aarón",
+      "characters": [
+        "descendientes de Aarón",
+        "coatitas",
+        "levitas"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Cuántas ciudades correspondieron por sorteo a los descendientes sacerdotales de Aarón dentro de las familias coatitas?",
+      "opcion_a": "Trece ciudades",
+      "opcion_b": "Seis ciudades",
+      "opcion_c": "Veinticuatro ciudades",
+      "opcion_d": "Doce ciudades",
+      "correct_option": "A",
+      "correct_answer": "Trece ciudades",
+      "explanation": "El primer sorteo dentro del reparto levítico recayó en las familias coatitas relacionadas con Aarón. A sus descendientes sacerdotales les correspondieron trece ciudades procedentes de territorios de Judá, Simeón y Benjamín.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0066",
+      "book": "Josué",
+      "chapter": 21,
+      "verse_start": 7,
+      "verse_end": 7,
+      "reference": "Josué 21:7",
+      "category": "AT_GENERAL",
+      "subcategory": "Tribus que aportaron ciudades a Merari",
+      "characters": [
+        "meraritas",
+        "Rubén",
+        "Gad",
+        "Zabulón"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿De qué tres tribus procedían las ciudades asignadas a los descendientes de Merari?",
+      "opcion_a": "Rubén, Gad y Zabulón",
+      "opcion_b": "Judá, Simeón y Benjamín",
+      "opcion_c": "Efraín, Dan y media tribu de Manasés",
+      "opcion_d": "Isacar, Aser y Neftalí",
+      "correct_option": "A",
+      "correct_answer": "Rubén, Gad y Zabulón",
+      "explanation": "En el reparto de ciudades levíticas, las familias de Merari recibieron doce ciudades procedentes de tres tribus concretas: Rubén, Gad y Zabulón. La pregunta exige distinguir este grupo de las asignaciones hechas a las familias de Coat y Gersón, que procedían de otras combinaciones tribales.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0067",
+      "book": "Josué",
+      "chapter": 22,
+      "verse_start": 8,
+      "verse_end": 8,
+      "reference": "Josué 22:8",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Reparto del botín al regresar al oriente",
+      "characters": [
+        "Josué",
+        "rubenitas",
+        "gaditas",
+        "media tribu de Manasés"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué indicó Josué a las tribus orientales que hicieran con el abundante botín al regresar a sus territorios?",
+      "opcion_a": "Compartirlo con sus hermanos",
+      "opcion_b": "Entregarlo por completo al santuario de Silo",
+      "opcion_c": "Dejarlo al oeste del Jordán para las otras tribus",
+      "opcion_d": "Repartirlo únicamente entre los jefes militares",
+      "correct_option": "A",
+      "correct_answer": "Compartirlo con sus hermanos",
+      "explanation": "Al despedir a las tribus que regresaban al oriente, Josué mencionó las riquezas obtenidas durante las campañas y les dio una instrucción concreta: debían compartir el botín con sus hermanos. Así, la despedida no se limita al regreso territorial, sino que incluye una norma práctica sobre lo adquirido durante el servicio militar.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0068",
+      "book": "Josué",
+      "chapter": 22,
+      "verse_start": 10,
+      "verse_end": 10,
+      "reference": "Josué 22:10",
+      "category": "AT_GENERAL",
+      "subcategory": "Altar levantado junto al Jordán",
+      "characters": [
+        "rubenitas",
+        "gaditas",
+        "media tribu de Manasés"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué construyeron las tribus orientales cerca del Jordán cuando regresaban a sus territorios?",
+      "opcion_a": "Un gran altar",
+      "opcion_b": "Una nueva ciudad amurallada",
+      "opcion_c": "Un palacio para Josué",
+      "opcion_d": "Una torre para guardar el arca",
+      "correct_option": "A",
+      "correct_answer": "Un gran altar",
+      "explanation": "Al llegar a la región del Jordán, las tribus orientales levantaron un altar de gran tamaño. La noticia generó preocupación entre las demás tribus porque inicialmente no estaba claro qué función tendría aquella construcción.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0069",
+      "book": "Josué",
+      "chapter": 22,
+      "verse_start": 12,
+      "verse_end": 12,
+      "reference": "Josué 22:12",
+      "category": "AT_GENERAL",
+      "subcategory": "Reacción inicial ante el altar oriental",
+      "characters": [
+        "tribus de Israel",
+        "rubenitas",
+        "gaditas",
+        "media tribu de Manasés"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué se preparó a hacer la congregación de Israel al enterarse de la construcción del altar junto al Jordán?",
+      "opcion_a": "Reunirse para ir a combatir contra las tribus orientales",
+      "opcion_b": "Enviar inmediatamente el arca al otro lado del río",
+      "opcion_c": "Abandonar Silo y trasladarse a Jericó",
+      "opcion_d": "Dividir la tierra nuevamente por sorteo",
+      "correct_option": "A",
+      "correct_answer": "Reunirse para ir a combatir contra las tribus orientales",
+      "explanation": "Al interpretar inicialmente el altar como una posible rebelión religiosa, la congregación se reunió con disposición de combatir. Antes de llegar a ese extremo, sin embargo, se envió una delegación para conocer la explicación de las tribus orientales.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0097",
+      "book": "Josué",
+      "chapter": 22,
+      "verse_start": 13,
+      "verse_end": 14,
+      "reference": "Josué 22:13-14",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Delegación enviada a las tribus orientales",
+      "characters": [
+        "Finees",
+        "jefes tribales",
+        "tribus orientales"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Quién encabezó la delegación enviada para hablar con Rubén, Gad y la media tribu de Manasés acerca del altar?",
+      "opcion_a": "Finees, hijo de Eleazar, acompañado por diez jefes tribales",
+      "opcion_b": "Josué acompañado únicamente por Caleb",
+      "opcion_c": "Eleazar acompañado por los dos espías de Jericó",
+      "opcion_d": "Otoniel acompañado por los jefes de Judá",
+      "correct_option": "A",
+      "correct_answer": "Finees, hijo de Eleazar, acompañado por diez jefes tribales",
+      "explanation": "Antes de iniciar un conflicto, Israel envió una delegación formal para investigar la situación. Finees, hijo de Eleazar, la encabezó y fue acompañado por diez dirigentes, lo que muestra que se buscó una explicación representativa antes de actuar militarmente.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0070",
+      "book": "Josué",
+      "chapter": 22,
+      "verse_start": 26,
+      "verse_end": 27,
+      "reference": "Josué 22:26-27",
+      "category": "AT_GENERAL",
+      "subcategory": "Altar como testigo de unidad",
+      "characters": [
+        "tribus orientales",
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué finalidad explicaron las tribus orientales que tenía el altar levantado junto al Jordán?",
+      "opcion_a": "Servir como testimonio de que también compartían la relación y el culto del pueblo de Israel",
+      "opcion_b": "Reemplazar el altar principal del tabernáculo",
+      "opcion_c": "Ser usado para coronar a un rey propio",
+      "opcion_d": "Marcar el inicio de una nación separada",
+      "correct_option": "A",
+      "correct_answer": "Servir como testimonio de que también compartían la relación y el culto del pueblo de Israel",
+      "explanation": "Las tribus orientales negaron que pretendieran establecer un centro rival de sacrificios. Explicaron que el altar debía funcionar como testimonio visible para las generaciones futuras de que ellos también formaban parte del mismo pueblo y de su culto.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0071",
+      "book": "Josué",
+      "chapter": 22,
+      "verse_start": 30,
+      "verse_end": 31,
+      "reference": "Josué 22:30-31",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Respuesta de Finees a la explicación",
+      "characters": [
+        "Finees",
+        "jefes de Israel",
+        "tribus orientales"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Cómo reaccionó Finees después de escuchar la explicación de las tribus orientales sobre el altar?",
+      "opcion_a": "Consideró satisfactoria la explicación y reconoció que no se habían rebelado",
+      "opcion_b": "Ordenó destruir inmediatamente el altar y las ciudades orientales",
+      "opcion_c": "Decidió permanecer como gobernante al otro lado del Jordán",
+      "opcion_d": "Exigió que las tribus orientales abandonaran su territorio",
+      "correct_option": "A",
+      "correct_answer": "Consideró satisfactoria la explicación y reconoció que no se habían rebelado",
+      "explanation": "Finees y los representantes de Israel entendieron que el altar no había sido construido como una ruptura del culto común. La explicación evitó un conflicto armado y permitió reconocer que las tribus orientales no estaban intentando separarse del pueblo.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0072",
+      "book": "Josué",
+      "chapter": 23,
+      "verse_start": 2,
+      "verse_end": 2,
+      "reference": "Josué 23:2",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Última convocatoria de dirigentes",
+      "characters": [
+        "Josué",
+        "ancianos",
+        "jefes",
+        "jueces",
+        "oficiales"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿A qué grupos de dirigentes reunió Josué cuando ya era de edad avanzada para dirigirles una exhortación final?",
+      "opcion_a": "A los ancianos, jefes, jueces y oficiales de Israel",
+      "opcion_b": "Solo a los sacerdotes descendientes de Aarón",
+      "opcion_c": "Únicamente a Rubén, Gad y Manasés",
+      "opcion_d": "A los reyes cananeos que aún permanecían",
+      "correct_option": "A",
+      "correct_answer": "A los ancianos, jefes, jueces y oficiales de Israel",
+      "explanation": "En la etapa final de su vida, Josué reunió a los principales responsables de la comunidad: ancianos, jefes, jueces y oficiales. A ellos les recordó lo sucedido en las campañas y les dio advertencias para el futuro.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0073",
+      "book": "Josué",
+      "chapter": 23,
+      "verse_start": 7,
+      "verse_end": 7,
+      "reference": "Josué 23:7",
+      "category": "AT_GENERAL",
+      "subcategory": "Separación de los cultos cananeos",
+      "characters": [
+        "israelitas",
+        "naciones restantes"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué debía evitar Israel en su relación con las naciones que aún permanecían entre ellos?",
+      "opcion_a": "Adoptar o promover el culto a los dioses de esas naciones",
+      "opcion_b": "Comer cualquier alimento producido por ellas",
+      "opcion_c": "Aprender los nombres de sus ciudades",
+      "opcion_d": "Usar caminos que atravesaran sus territorios",
+      "correct_option": "A",
+      "correct_answer": "Adoptar o promover el culto a los dioses de esas naciones",
+      "explanation": "La advertencia de Josué se concentra en la fidelidad religiosa. Israel no debía mezclarse con los cultos de los pueblos restantes ni convertir sus dioses en objetos de veneración, juramento o servicio.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0074",
+      "book": "Josué",
+      "chapter": 23,
+      "verse_start": 10,
+      "verse_end": 10,
+      "reference": "Josué 23:10",
+      "category": "AT_GENERAL",
+      "subcategory": "Un israelita frente a mil enemigos",
+      "characters": [
+        "israelitas",
+        "enemigos"
+      ],
+      "difficulty": "Experto",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué proporción utilizó Josué para ilustrar la ayuda recibida por Israel frente a sus enemigos?",
+      "opcion_a": "Un hombre podía perseguir a mil",
+      "opcion_b": "Diez hombres podían perseguir a cien",
+      "opcion_c": "Cien hombres podían perseguir a mil",
+      "opcion_d": "Mil hombres podían perseguir a diez mil",
+      "correct_option": "A",
+      "correct_answer": "Un hombre podía perseguir a mil",
+      "explanation": "Josué recordó que la capacidad de Israel para imponerse no se explicaba solo por fuerza numérica. Utilizó la imagen de un solo hombre persiguiendo a mil para subrayar que el resultado dependía de la ayuda recibida en las campañas.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0075",
+      "book": "Josué",
+      "chapter": 23,
+      "verse_start": 14,
+      "verse_end": 14,
+      "reference": "Josué 23:14",
+      "category": "AT_GENERAL",
+      "subcategory": "Cumplimiento de las promesas",
+      "characters": [
+        "Josué",
+        "israelitas"
+      ],
+      "difficulty": "Básico",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué afirmó Josué acerca de las buenas promesas que habían recibido como pueblo?",
+      "opcion_a": "Que ninguna había fallado",
+      "opcion_b": "Que solo se había cumplido la mitad",
+      "opcion_c": "Que todas habían sido anuladas después de Jericó",
+      "opcion_d": "Que debían cumplirse únicamente después de otra generación",
+      "correct_option": "A",
+      "correct_answer": "Que ninguna había fallado",
+      "explanation": "Al despedirse, Josué pidió al pueblo reconocer que las promesas favorables que habían recibido se habían cumplido. La afirmación resume la experiencia de conquista y asentamiento y sirve de base para sus advertencias sobre la fidelidad futura.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0076",
+      "book": "Josué",
+      "chapter": 24,
+      "verse_start": 1,
+      "verse_end": 1,
+      "reference": "Josué 24:1",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Asamblea final en Siquem",
+      "characters": [
+        "Josué",
+        "tribus de Israel",
+        "ancianos",
+        "jefes",
+        "jueces",
+        "oficiales"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿En qué ciudad reunió Josué a las tribus de Israel para la gran renovación final del pacto?",
+      "opcion_a": "En Siquem",
+      "opcion_b": "En Jericó",
+      "opcion_c": "En Hebrón",
+      "opcion_d": "En Gilgal",
+      "correct_option": "A",
+      "correct_answer": "En Siquem",
+      "explanation": "Josué reunió a las tribus y a sus dirigentes en Siquem para una última asamblea de gran importancia. Allí repasó la historia del pueblo y planteó de forma directa la decisión de a quién servirían.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0077",
+      "book": "Josué",
+      "chapter": 24,
+      "verse_start": 2,
+      "verse_end": 2,
+      "reference": "Josué 24:2",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Antepasados de Abraham al otro lado del río",
+      "characters": [
+        "Taré",
+        "Abraham",
+        "Nacor"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué se recordó acerca de Taré, padre de Abraham y Nacor, antes del llamado de Abraham?",
+      "opcion_a": "Que vivía al otro lado del río y servía a otros dioses",
+      "opcion_b": "Que fue sacerdote en Jerusalén",
+      "opcion_c": "Que gobernó como rey de Canaán",
+      "opcion_d": "Que acompañó a Moisés durante el éxodo",
+      "correct_option": "A",
+      "correct_answer": "Que vivía al otro lado del río y servía a otros dioses",
+      "explanation": "En el repaso histórico de Josué se vuelve al origen de la familia de Abraham. Taré aparece viviendo al otro lado del gran río y asociado con el servicio a otros dioses, lo que contrasta con la trayectoria posterior iniciada con Abraham.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0078",
+      "book": "Josué",
+      "chapter": 24,
+      "verse_start": 14,
+      "verse_end": 15,
+      "reference": "Josué 24:14-15",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Decisión de Josué sobre el servicio",
+      "characters": [
+        "Josué",
+        "familia de Josué",
+        "israelitas"
+      ],
+      "difficulty": "Básico",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué decisión expresó Josué para sí mismo y su familia al pedir al pueblo que eligiera a quién servir?",
+      "opcion_a": "Que él y su casa servirían a Dios",
+      "opcion_b": "Que su familia abandonaría la tierra",
+      "opcion_c": "Que seguirían a los dioses de Egipto",
+      "opcion_d": "Que dejarían la decisión únicamente a los sacerdotes",
+      "correct_option": "A",
+      "correct_answer": "Que él y su casa servirían a Dios",
+      "explanation": "Josué llevó la renovación del pacto a una decisión personal y familiar. Después de pedir al pueblo que eligiera a quién servir, declaró claramente la orientación que asumirían él y su casa.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0098",
+      "book": "Josué",
+      "chapter": 24,
+      "verse_start": 25,
+      "verse_end": 26,
+      "reference": "Josué 24:25-26",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Piedra como testigo del pacto",
+      "characters": [
+        "Josué",
+        "israelitas"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué elemento físico colocó Josué como testigo después de renovar el pacto con el pueblo?",
+      "opcion_a": "Una gran piedra bajo una encina cerca del santuario",
+      "opcion_b": "Doce piedras en medio del Jordán",
+      "opcion_c": "Una estatua de bronce en la entrada de Jericó",
+      "opcion_d": "Un altar nuevo sobre el monte Nebo",
+      "correct_option": "A",
+      "correct_answer": "Una gran piedra bajo una encina cerca del santuario",
+      "explanation": "Después de establecer el pacto y registrar las palabras, Josué levantó una gran piedra en un lugar asociado con el santuario. El objeto quedó como testimonio visible de la decisión asumida por el pueblo en aquella asamblea.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0079",
+      "book": "Josué",
+      "chapter": 24,
+      "verse_start": 29,
+      "verse_end": 29,
+      "reference": "Josué 24:29",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Edad de Josué al morir",
+      "characters": [
+        "Josué",
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Qué edad tenía Josué cuando murió?",
+      "opcion_a": "Ciento diez años",
+      "opcion_b": "Ciento veinte años",
+      "opcion_c": "Ochenta y cinco años",
+      "opcion_d": "Cien años",
+      "correct_option": "A",
+      "correct_answer": "Ciento diez años",
+      "explanation": "El cierre del libro registra la muerte de Josué después de su prolongado liderazgo sobre Israel. Tenía ciento diez años, un dato cronológico que distingue su final del de Moisés, cuya edad al morir fue diferente.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0099",
+      "book": "Josué",
+      "chapter": 24,
+      "verse_start": 31,
+      "verse_end": 31,
+      "reference": "Josué 24:31",
+      "category": "AT_GENERAL",
+      "subcategory": "Fidelidad durante la generación de Josué",
+      "characters": [
+        "Josué",
+        "ancianos",
+        "israelitas"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Durante qué período se afirma que Israel se mantuvo sirviendo a Dios al cierre del libro?",
+      "opcion_a": "Durante los días de Josué y de los ancianos que lo sobrevivieron y conocían las obras realizadas por Israel",
+      "opcion_b": "Solo durante la campaña de Jericó",
+      "opcion_c": "Únicamente hasta el reparto de la tierra",
+      "opcion_d": "Exclusivamente mientras Moisés permaneció con vida",
+      "correct_option": "A",
+      "correct_answer": "Durante los días de Josué y de los ancianos que lo sobrevivieron y conocían las obras realizadas por Israel",
+      "explanation": "El cierre del libro evalúa una generación completa. Israel permaneció fiel durante la vida de Josué y también durante la de los ancianos que continuaron después de él y habían conocido directamente los acontecimientos principales de aquella etapa.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0080",
+      "book": "Josué",
+      "chapter": 24,
+      "verse_start": 32,
+      "verse_end": 32,
+      "reference": "Josué 24:32",
+      "category": "AT_GENERAL",
+      "subcategory": "Sepultura de los huesos de José",
+      "characters": [
+        "José",
+        "hijos de Israel",
+        "Jacob"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "Selección múltiple",
+      "question": "¿Dónde fueron sepultados los huesos de José que los israelitas habían llevado desde Egipto?",
+      "opcion_a": "En Siquem",
+      "opcion_b": "En Hebrón",
+      "opcion_c": "En Jericó",
+      "opcion_d": "En el monte Nebo",
+      "correct_option": "A",
+      "correct_answer": "En Siquem",
+      "explanation": "El libro concluye también una historia iniciada mucho antes: los restos de José, llevados desde Egipto durante el éxodo, fueron finalmente sepultados en Siquem, en una parcela vinculada con la familia de Jacob.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-JOS-0100",
+      "book": "Josué",
+      "chapter": 24,
+      "verse_start": 33,
+      "verse_end": 33,
+      "reference": "Josué 24:33",
+      "category": "PERSONAJES_BIBLICOS",
+      "subcategory": "Muerte y sepultura de Eleazar",
+      "characters": [
+        "Eleazar",
+        "Finees"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "Selección múltiple",
+      "question": "¿Dónde fue sepultado Eleazar después de su muerte al final del libro?",
+      "opcion_a": "En el collado de Finees, en la región montañosa de Efraín",
+      "opcion_b": "En el monte Nebo junto a Moisés",
+      "opcion_c": "En Hebrón junto a Caleb",
+      "opcion_d": "En Gilgal junto al memorial del Jordán",
+      "correct_option": "A",
+      "correct_answer": "En el collado de Finees, en la región montañosa de Efraín",
+      "explanation": "La última nota del libro registra también la muerte de Eleazar. Fue sepultado en un lugar vinculado con su hijo Finees dentro de la región montañosa de Efraín, cerrando otra línea de liderazgo junto con la de Josué.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS",
+        "PERSONAJES_AT",
+        "PERSONAJES_AMBOS"
+      ]
+    }
+  ]
+}

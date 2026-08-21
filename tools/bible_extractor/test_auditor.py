@@ -42,6 +42,7 @@ EXODUS_PATH = Path(__file__).parent / "exodus-master-input.json"
 LEVITICUS_PATH = Path(__file__).parent / "leviticus-master-input.json"
 NUMBERS_PATH = Path(__file__).parent / "numbers-master-input.json"
 DEUTERONOMY_PATH = Path(__file__).parent / "deuteronomy-master-input.json"
+JOSHUA_PATH = Path(__file__).parent / "joshua-master-input.json"
 
 
 class TestAuditorCanonical(unittest.TestCase):
@@ -74,6 +75,12 @@ class TestAuditorCanonical(unittest.TestCase):
         else:
             cls.deuteronomy_questions = {}
 
+        if JOSHUA_PATH.exists():
+            raw_jos = json.loads(JOSHUA_PATH.read_text(encoding="utf-8"))
+            cls.joshua_questions = {q["id"]: q for q in (raw_jos.get("questions", []) if isinstance(raw_jos, dict) else raw_jos)}
+        else:
+            cls.joshua_questions = {}
+
     def setUp(self) -> None:
         self.temp_dir = Path(tempfile.mkdtemp())
 
@@ -99,6 +106,10 @@ class TestAuditorCanonical(unittest.TestCase):
     def get_deuteronomy_question(self, qid: str) -> dict:
         self.assertIn(qid, self.deuteronomy_questions, f"ID '{qid}' no encontrado en deuteronomy-master-input.json")
         return copy.deepcopy(self.deuteronomy_questions[qid])
+
+    def get_joshua_question(self, qid: str) -> dict:
+        self.assertIn(qid, self.joshua_questions, f"ID '{qid}' no encontrado en joshua-master-input.json")
+        return copy.deepcopy(self.joshua_questions[qid])
 
     # --- TEST GLOBAL DE CONSISTENCIA DE IDs Y REFERENCIAS ---
 
@@ -175,6 +186,21 @@ class TestAuditorCanonical(unittest.TestCase):
                 f"Referencia inconsistente en {qid}: ref='{ref}', esperada terminada en '{expected_suffix}'"
             )
 
+    def test_global_canonical_id_reference_integrity_joshua(self) -> None:
+        """Verifica consistencia de IDs y referencias en Josué."""
+        if not self.joshua_questions:
+            self.skipTest("joshua-master-input.json no disponible")
+        for qid, q in self.joshua_questions.items():
+            ref = q.get("reference", "")
+            ch = q.get("chapter")
+            start = q.get("verse_start")
+            end = q.get("verse_end", start)
+            expected_suffix = f"{ch}:{start}" if start == end else f"{ch}:{start}-{end}"
+            self.assertTrue(
+                expected_suffix in ref or ref.endswith(expected_suffix),
+                f"Referencia inconsistente en {qid}: ref='{ref}', esperada terminada en '{expected_suffix}'"
+            )
+
     def test_numbers_book_detection(self) -> None:
         """Verifica detección de configuración de Números."""
         if not self.numbers_questions:
@@ -188,6 +214,22 @@ class TestAuditorCanonical(unittest.TestCase):
             self.skipTest("deuteronomy-master-input.json no disponible")
         book_key = detect_book_key(list(self.deuteronomy_questions.values()))
         self.assertEqual(book_key, "deuteronomio")
+
+    def test_joshua_book_detection(self) -> None:
+        """Verifica detección de configuración de Josué."""
+        if not self.joshua_questions:
+            self.skipTest("joshua-master-input.json no disponible")
+        book_key = detect_book_key(list(self.joshua_questions.values()))
+        self.assertEqual(book_key, "josue")
+
+    def test_joshua_0061_with_additional_reference(self) -> None:
+        """NQB-AT-JOS-0061: Josué 20:9 con additional_references=['Números 35:15'] se evalúa correctamente."""
+        q61 = self.get_joshua_question("NQB-AT-JOS-0061")
+        self.assertEqual(q61["reference"], "Josué 20:9")
+        v61 = {9: "Estas fueron las ciudades señaladas para todos los hijos de Israel, y para el extranjero que morase entre ellos, para que se acogiese a ellas cualquiera que hiriese a alguno de muerte por yerro, y no muriese a mano del vengador de la sangre, hasta que compareciese delante de la congregación."}
+        res61 = evaluate_question(q61, v61, book_key="josue")
+        self.assertEqual(res61["controles_superados"]["control_opcion_a_correcta"], "PASS")
+        self.assertEqual(res61["estado"], "VERIFICADO")
 
     # --- REGRESIONES DE ARTÍCULOS INDEFINIDOS UN / UNA Y FRACCIONES EN NÚMEROS ---
 

@@ -122,6 +122,24 @@ BOOK_CONFIGS: dict[str, dict[str, Any]] = {
             "hesbon", "hesbón", "arava", "aravá", "basan", "basán", "galaad"
         },
     },
+    "josue": {
+        "canonical_name": "Josué",
+        "api_name": "Josue",
+        "aliases": {"josue", "josué", "joshua"},
+        "total_chapters": 24,
+        "blocks": [
+            (1, 10, "joshua-01-10.json"),
+            (11, 20, "joshua-11-20.json"),
+            (21, 24, "joshua-21-24.json"),
+        ],
+        "default_output_dir": "build/audit/joshua",
+        "ambient_places": {
+            "canaan", "jordan", "jerico", "jericó", "gilgal", "hai", "gabaon", "gabaón",
+            "hebron", "hebrón", "silo", "siquem", "monte ebal", "monte gerizim", "ebal",
+            "gerizim", "desierto", "maceda", "libna", "laquis", "eglon", "debir", "hazor",
+            "merom", "galaad", "basan", "basán", "timnat-sera"
+        },
+    },
 }
 
 STOPWORDS = {
@@ -135,7 +153,7 @@ STOPWORDS = {
     "ser", "sido", "estar", "estaba", "estaban", "tener", "tenia", "tenian",
 }
 
-# Entidades y personajes bíblicos (Génesis, Éxodo, Levítico, Números y nombres comunes)
+# Entidades y personajes bíblicos (Génesis, Éxodo, Levítico, Números, Deuteronomio, Josué)
 BIBLE_PERSONAJES = {
     # Génesis
     "adan", "eva", "cain", "abel", "set", "enos", "cainan", "mahalaleel",
@@ -153,18 +171,21 @@ BIBLE_PERSONAJES = {
     "sipra", "fua", "jocabed", "amram", "hur", "josue", "bezaleel", "aholiab",
     "nadab", "abiu", "eleazar", "itamar", "core", "datan", "abiram",
     "misael", "elzafan", "elsafan", "uziel", "selomit", "dibri",
-    # Números
+    # Números y Deuteronomio
     "balaam", "balac", "finees", "caleb", "hobab", "eldad", "medad",
     "zelofehad", "mahla", "noa", "hogla", "milca", "tirsa", "cozbi", "zuri", "zur",
     "og", "sehon", "sihon", "on", "eliasaf", "pagiel", "ahiezer", "ahira", "ocran",
     "enam", "helon", "amiasadai", "pedasur", "gamaliel", "zuriel", "eliseba",
+    # Josué
+    "rahab", "acan", "carmi", "zabdi", "zera", "jefone", "nun",
+    "adonicedec", "hoham", "piram", "jafia", "debir", "jabin", "jobab", "otniel", "cenaz", "acsa",
     # Otros comunes
     "david", "salomon", "saul", "samuel", "elias", "eliseo", "jonatan",
     "nabucodonosor", "pablo", "pedro", "juan", "jesus", "mateo", "marcos",
     "lucas", "esteban", "timoteo",
 }
 
-# Lugares, regiones y accidentes geográficos bíblicos (Génesis, Éxodo, Levítico, Números)
+# Lugares, regiones y accidentes geográficos bíblicos
 # Nota: La preposición común española 'sin' NO se incluye como topónimo aislado.
 BIBLE_PLACES = {
     # Génesis
@@ -181,7 +202,7 @@ BIBLE_PLACES = {
     "madian", "sinai", "monte sinai", "mar rojo", "mara", "elim", "desierto de sin", "refidim",
     "masa", "meriba", "etam", "pi-hahirot", "pihahirot", "baal-zefon",
     "baalzefon", "migdol", "sur", "piton", "tabernaculo", "desierto",
-    # Números y Deuteronomio
+    # Números, Deuteronomio y Josué
     "cades", "cades-barnea", "cadesbarnea", "paran", "desierto de paran", "zin", "desierto de zin", "moab", "campos de moab",
     "llanuras de moab", "jerico", "jericó", "arava", "aravá", "edom", "hor", "monte hor",
     "hesbon", "hesbón", "arnon", "arnón", "bamot", "pisga", "monte pisga", "peor",
@@ -190,6 +211,10 @@ BIBLE_PLACES = {
     "almon-diblataim", "arba", "escol", "valle de escol", "petor",
     "gerizim", "monte gerizim", "ebal", "monte ebal", "basan", "basán", "hermon", "monte hermon",
     "sirion", "senir", "aroer", "quedemot", "salca", "edrei", "bet-peor", "betpeor",
+    "sitim", "gilgal", "hai", "gabaon", "gabaón", "cefila", "beerot", "quiriat-jearim", "quiriat-arba",
+    "jerusalen", "jerusalén", "jarmut", "laquis", "eglon", "eglón", "maceda", "libna", "gezer", "debir",
+    "gaza", "hazor", "madon", "madón", "simron", "simrón", "acsaf", "cineret", "dor", "mizpa",
+    "merom", "aguas de merom", "monte halac", "anab", "timnat-sera", "silo", "siló", "bezer", "ramot", "golan", "golán", "galilea", "cedes",
 }
 
 # Raíces de parentesco y lemas
