@@ -56,40 +56,39 @@ class TestAuditorCanonical(unittest.TestCase):
                 f"Referencia inconsistente en {qid}: ref='{ref}', esperada terminada en '{expected_suffix}'"
             )
 
-    # --- PROBLEMA 2: REGRESIÓN ESPECÍFICA NQB-AT-GEN-0110 (Génesis 44:33-34 y 44:18) ---
+    # --- REGRESIÓN ESPECÍFICA NQB-AT-GEN-0110 (Génesis 44:33-34 y 44:18) ---
 
     def test_regression_nqb_0110_without_and_with_additional_ref(self) -> None:
         """Demuestra el diagnóstico de NQB-AT-GEN-0110 sin y con Génesis 44:18."""
-        q_original = self.get_real_question("NQB-AT-GEN-0110")
-        self.assertEqual(q_original["reference"], "Génesis 44:33-34")
-        self.assertEqual(q_original["opcion_a"], "Judá")
+        q_canonical = self.get_real_question("NQB-AT-GEN-0110")
+        self.assertEqual(q_canonical["reference"], "Génesis 44:33-34")
+        self.assertEqual(q_canonical["opcion_a"], "Judá")
+        self.assertIn("Génesis 44:18", q_canonical["additional_references"])
 
-        # Versículos del pasaje 44:33-34 (el hablante no se nombra a sí mismo en los versículos 33-34)
+        # 1. Mutación: Sin Génesis 44:18 -> REQUIERE_CORRECCION (Judá no aparece en 33-34)
+        q_without = copy.deepcopy(q_canonical)
+        q_without["additional_references"] = []
         verse_map_33_34 = {
             33: "Ahora, pues, quede tu siervo por siervo de mi señor en lugar del joven, y vaya el joven con sus hermanos.",
             34: "Porque ¿cómo volveré yo a mi padre sin el joven? No vea yo el mal que sobrevendrá a mi padre.",
         }
-
-        # 1. Sin Génesis 44:18 -> Debe marcar REQUIERE_CORRECCION porque 'Judá' no aparece en 33-34
-        res_without = evaluate_question(q_original, verse_map_33_34)
+        res_without = evaluate_question(q_without, verse_map_33_34)
         self.assertEqual(res_without["estado"], "REQUIERE_CORRECCION")
         self.assertEqual(res_without["controles_superados"]["control_nombres_propios"], "FAIL")
         self.assertEqual(res_without["controles_superados"]["control_rango_suficiente"], "FAIL")
 
-        # 2. Con additional_references=["Génesis 44:18"] -> Desaparecen los FAIL y valida 'Judá'
-        q_corrected = copy.deepcopy(q_original)
-        q_corrected["additional_references"] = ["Génesis 44:18"]
+        # 2. Con additional_references=["Génesis 44:18"] canónico -> Desaparecen los FAIL y valida 'Judá'
         verse_map_with_18 = {
             18: "Entonces Judá se acercó a él, y dijo: ¡Ay, señor mío! te ruego que permitas que hable tu siervo una palabra en oídos de mi señor...",
             33: "Ahora, pues, quede tu siervo por siervo de mi señor en lugar del joven, y vaya el joven con sus hermanos.",
             34: "Porque ¿cómo volveré yo a mi padre sin el joven? No vea yo el mal que sobrevendrá a mi padre.",
         }
-        res_with = evaluate_question(q_corrected, verse_map_with_18)
+        res_with = evaluate_question(q_canonical, verse_map_with_18)
         self.assertEqual(res_with["controles_superados"]["control_nombres_propios"], "PASS")
         self.assertEqual(res_with["controles_superados"]["control_rango_suficiente"], "PASS")
         self.assertEqual(res_with["estado"], "VERIFICADO")
 
-    # --- PROBLEMA 4: MANEJO DE ERROR DE API VS ERROR DEL BANCO ---
+    # --- MANEJO DE ERROR DE API VS ERROR DEL BANCO ---
 
     def test_api_failure_produces_inconclusive_not_requires_correction(self) -> None:
         """Cuando un capítulo no se puede obtener (verse_map={}), produce NO_CONCLUYENTE, nunca REQUIERE_CORRECCION."""
@@ -101,7 +100,7 @@ class TestAuditorCanonical(unittest.TestCase):
         self.assertEqual(res["controles_superados"]["control_opcion_a_correcta"], "UNKNOWN")
         self.assertNotEqual(res["estado"], "REQUIERE_CORRECCION")
 
-    # --- PROBLEMA 1: CASOS DE GÉNESIS 31 EVALUADOS CON TEXTO REAL ---
+    # --- CASOS DE GÉNESIS 31 EVALUADOS CON TEXTO REAL ---
 
     def test_genesis_31_questions_evaluate_when_chapter_fetched(self) -> None:
         """Verifica que las 3 preguntas de Génesis 31 se evalúen al disponer del texto."""

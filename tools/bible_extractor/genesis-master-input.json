@@ -3245,7 +3245,9 @@
       "correct_option": "A",
       "correct_answer": "Judá",
       "explanation": "Después de que la copa fue encontrada en el costal de Benjamín, Judá habló extensamente ante José y explicó el efecto que tendría sobre su padre perder también al hijo menor. Al final se ofreció a permanecer como siervo en lugar de Benjamín para que este pudiera regresar con sus hermanos. Esa intervención prepara directamente el momento posterior en que José revela su identidad.",
-      "additional_references": [],
+      "additional_references": [
+        "Génesis 44:18"
+      ],
       "eligible_modes": [
         "AT",
         "AMBOS",
