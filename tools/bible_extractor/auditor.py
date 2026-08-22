@@ -399,6 +399,24 @@ BOOK_CONFIGS: dict[str, dict[str, Any]] = {
             "filistea", "moab", "edom", "galaad", "sirion", "senir", "basan", "basán"
         },
     },
+    "proverbs": {
+        "canonical_name": "Proverbios",
+        "api_name": "Proverbios",
+        "aliases": {
+            "proverbios", "proverbio", "proverbs", "proverb", "libro de proverbios", "libro de los proverbios"
+        },
+        "total_chapters": 31,
+        "blocks": [
+            (1, 10, "proverbs-01-10.json"),
+            (11, 20, "proverbs-11-20.json"),
+            (21, 30, "proverbs-21-30.json"),
+            (31, 31, "proverbs-31.json"),
+        ],
+        "default_output_dir": "build/audit/proverbs",
+        "ambient_places": {
+            "jerusalen", "jerusalén", "juda", "judá", "israel", "sion", "sión", "egipto"
+        },
+    },
 }
 
 STOPWORDS = {
@@ -490,6 +508,8 @@ BIBLE_PERSONAJES = {
     "hatac", "memucan", "memucán", "harbona", "bigtan", "bigtán", "bigtana", "teres",
     "jair", "simei", "cis", "marsena", "admeta", "tarso", "carsena", "setar",
     "job", "elifaz", "bildad", "zofar", "eliu", "eliú", "baraquel", "jemima", "cesia", "keren-hapuc", "kerenhapuc",
+    # Proverbios
+    "agur", "lemuel",
     # Otros comunes
     "david", "saul", "samuel", "nabucodonosor", "pablo", "pedro", "juan", "jesus", "mateo", "marcos",
     "lucas", "esteban", "timoteo",

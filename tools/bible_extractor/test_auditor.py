@@ -59,6 +59,7 @@ NEHEMIAH_PATH = Path(__file__).parent / "nehemiah-master-input.json"
 ESTHER_PATH = Path(__file__).parent / "esther-master-input.json"
 JOB_PATH = Path(__file__).parent / "job-master-input.json"
 PSALMS_PATH = Path(__file__).parent / "psalms-master-input.json"
+PROVERBS_PATH = Path(__file__).parent / "proverbs-master-input.json"
 
 
 class TestAuditorCanonical(unittest.TestCase):
@@ -175,6 +176,12 @@ class TestAuditorCanonical(unittest.TestCase):
         else:
             cls.psalms_questions = {}
 
+        if PROVERBS_PATH.exists():
+            raw_pro = json.loads(PROVERBS_PATH.read_text(encoding="utf-8"))
+            cls.proverbs_questions = {q["id"]: q for q in (raw_pro.get("questions", []) if isinstance(raw_pro, dict) else raw_pro)}
+        else:
+            cls.proverbs_questions = {}
+
     def setUp(self) -> None:
         self.temp_dir = Path(tempfile.mkdtemp())
 
@@ -256,6 +263,10 @@ class TestAuditorCanonical(unittest.TestCase):
     def get_psalms_question(self, qid: str) -> dict:
         self.assertIn(qid, self.psalms_questions, f"ID '{qid}' no encontrado en psalms-master-input.json")
         return copy.deepcopy(self.psalms_questions[qid])
+
+    def get_proverbs_question(self, qid: str) -> dict:
+        self.assertIn(qid, self.proverbs_questions, f"ID '{qid}' no encontrado en proverbs-master-input.json")
+        return copy.deepcopy(self.proverbs_questions[qid])
 
     # --- TEST GLOBAL DE CONSISTENCIA DE IDs Y REFERENCIAS ---
 
@@ -2085,6 +2096,60 @@ class TestAuditorCanonical(unittest.TestCase):
                 f"Referencia inconsistente en {qid}: ref='{ref}', esperada terminada en '{expected_suffix}'"
             )
         self.assertEqual(len(chapters_seen), 79, f"Se esperaban 79 salmos representados editorialmente, hallados {len(chapters_seen)}")
+
+    # --- TESTS PARA PROVERBIOS ---
+
+    def test_detect_book_key_proverbs(self) -> None:
+        """Verifica la detección automática de clave para Proverbios."""
+        spec_pro = {"questions": [{"id": "NQB-AT-PRO-0001", "book": "Proverbios"}]}
+        self.assertEqual(detect_book_key(spec_pro), "proverbs")
+
+        spec_alias = {"questions": [{"id": "NQB-AT-PRO-0001", "book": "proverbios"}]}
+        self.assertEqual(detect_book_key(spec_alias), "proverbs")
+
+        spec_en = {"questions": [{"id": "NQB-AT-PRO-0001", "book": "Proverbs"}]}
+        self.assertEqual(detect_book_key(spec_en), "proverbs")
+
+        spec_sing = {"questions": [{"id": "NQB-AT-PRO-0001", "book": "Proverbio"}]}
+        self.assertEqual(detect_book_key(spec_sing), "proverbs")
+
+        spec_libro = {"questions": [{"id": "NQB-AT-PRO-0001", "book": "Libro de Proverbios"}]}
+        self.assertEqual(detect_book_key(spec_libro), "proverbs")
+
+    def test_proverbs_book_config_and_aliases(self) -> None:
+        """Verifica configuración canónica de Proverbios: 31 capítulos, 4 bloques."""
+        self.assertIn("proverbs", BOOK_CONFIGS)
+        cfg = BOOK_CONFIGS["proverbs"]
+        self.assertEqual(cfg["canonical_name"], "Proverbios")
+        self.assertEqual(cfg["api_name"], "Proverbios")
+        self.assertEqual(cfg["total_chapters"], 31)
+        self.assertEqual(len(cfg["blocks"]), 4)
+        self.assertEqual(cfg["blocks"][0], (1, 10, "proverbs-01-10.json"))
+        self.assertEqual(cfg["blocks"][1], (11, 20, "proverbs-11-20.json"))
+        self.assertEqual(cfg["blocks"][2], (21, 30, "proverbs-21-30.json"))
+        self.assertEqual(cfg["blocks"][3], (31, 31, "proverbs-31.json"))
+        self.assertTrue({"proverbios", "proverbio", "proverbs", "proverb"}.issubset(cfg["aliases"]))
+
+    def test_global_canonical_id_reference_integrity_proverbs(self) -> None:
+        """Verifica consistencia de IDs y referencias en Proverbios (72 preguntas, 31/31 capítulos cubiertos)."""
+        if not self.proverbs_questions:
+            self.skipTest("proverbs-master-input.json no disponible")
+        self.assertEqual(len(self.proverbs_questions), 72)
+        chapters_seen = set()
+        for qid, q in self.proverbs_questions.items():
+            ref = q.get("reference", "")
+            ch = q.get("chapter")
+            self.assertIsNotNone(ch)
+            self.assertTrue(1 <= ch <= 31, f"Capítulo {ch} fuera del rango 1..31 en {qid}")
+            chapters_seen.add(ch)
+            start = q.get("verse_start")
+            end = q.get("verse_end", start)
+            expected_suffix = f"{ch}:{start}" if start == end else f"{ch}:{start}-{end}"
+            self.assertTrue(
+                expected_suffix in ref or ref.endswith(expected_suffix),
+                f"Referencia inconsistente en {qid}: ref='{ref}', esperada terminada en '{expected_suffix}'"
+            )
+        self.assertEqual(len(chapters_seen), 31, f"Se esperaban 31 capítulos cubiertos, hallados {len(chapters_seen)}")
 
 
 if __name__ == "__main__":
