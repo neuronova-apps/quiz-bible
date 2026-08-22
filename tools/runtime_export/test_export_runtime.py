@@ -313,6 +313,22 @@ class TestRuntimeExport(unittest.TestCase):
         is_production_ready_rejected = (q0["auditStatus"] != "REQUIRES_CORRECTION") and (q0["humanReviewStatus"] == "APPROVED")
         self.assertFalse(is_production_ready_rejected)
 
+    def test_question_type_normalization_opcion_multiple(self) -> None:
+        """Verifica que normalize_question_type soporte genéricamente variantes de OPCION_MULTIPLE y rechace tipos desconocidos (Fail-Closed)."""
+        self.assertEqual(normalize_question_type("OPCION_MULTIPLE"), "MULTIPLE_CHOICE")
+        self.assertEqual(normalize_question_type("opcion_multiple"), "MULTIPLE_CHOICE")
+        self.assertEqual(normalize_question_type("opción múltiple"), "MULTIPLE_CHOICE")
+        self.assertEqual(normalize_question_type("opcion multiple"), "MULTIPLE_CHOICE")
+        self.assertEqual(normalize_question_type("MULTIPLE_CHOICE"), "MULTIPLE_CHOICE")
+        self.assertEqual(normalize_question_type("seleccion multiple"), "MULTIPLE_CHOICE")
+        self.assertEqual(normalize_question_type("mc"), "MULTIPLE_CHOICE")
+
+        with self.assertRaises(ValueError):
+            normalize_question_type("tipo_desconocido_invalido")
+
+        with self.assertRaises(ValueError):
+            normalize_question_type("verdadero_falso_no_soportado")
+
 
 if __name__ == "__main__":
     unittest.main()

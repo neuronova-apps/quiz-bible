@@ -93,8 +93,15 @@ def normalize_difficulty(diff_str: str) -> str:
 def normalize_question_type(qtype_str: str) -> str:
     """Normaliza el tipo de pregunta a la enumeración técnica de runtime (Fail-Closed)."""
     s = str(qtype_str).strip().lower()
-    s_clean = s.replace("é", "e").replace("ó", "o").replace("ú", "u")
-    if s_clean in {"seleccion multiple", "multiple_choice", "multiple choice", "mc"}:
+    s_clean = s.replace("é", "e").replace("ó", "o").replace("ú", "u").replace("í", "i").replace("á", "a")
+    if s_clean in {
+        "seleccion multiple",
+        "multiple_choice",
+        "multiple choice",
+        "mc",
+        "opcion_multiple",
+        "opcion multiple",
+    }:
         return "MULTIPLE_CHOICE"
     raise ValueError(f"Tipo de pregunta desconocido o no soportado: '{qtype_str}'. Fail-closed: exportación rechazada.")
 

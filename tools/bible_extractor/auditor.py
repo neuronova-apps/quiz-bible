@@ -433,6 +433,21 @@ BOOK_CONFIGS: dict[str, dict[str, Any]] = {
             "jerusalen", "jerusalén", "israel", "juda", "judá"
         },
     },
+    "song_of_songs": {
+        "canonical_name": "Cantar de los Cantares",
+        "api_name": "Cantares",
+        "aliases": {
+            "cantar de los cantares", "cantar de cantares", "cantar", "cantares", "song of songs", "song of solomon", "libro de los cantares", "libro del cantar de los cantares"
+        },
+        "total_chapters": 8,
+        "blocks": [
+            (1, 8, "song-of-songs-01-08.json"),
+        ],
+        "default_output_dir": "build/audit/song_of_songs",
+        "ambient_places": {
+            "jerusalen", "jerusalén", "en-gadi", "engadi", "en gadi", "sarón", "saron", "hermón", "hermon", "senir", "amana", "tirsa", "damasco", "hesbon", "hesbón", "bat-rabim", "carmelo", "galilea", "sion", "sión"
+        },
+    },
 }
 
 STOPWORDS = {

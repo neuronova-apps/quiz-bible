@@ -1,0 +1,1161 @@
+{
+  "source": "Quiz Bible master bank - Cantar de los Cantares",
+  "version": "RVR1960",
+  "book": "Cantar de los Cantares",
+  "total_questions": 40,
+  "questions": [
+    {
+      "id": "NQB-AT-CAN-0001",
+      "book": "Cantar de los Cantares",
+      "chapter": 1,
+      "verse_start": 2,
+      "verse_end": 4,
+      "reference": "Cantar de los Cantares 1:2-4",
+      "category": "AT_GENERAL",
+      "subcategory": "AMOR_Y_ADMIRACION",
+      "characters": [
+        "Amada",
+        "Amado"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "OPCION_MULTIPLE",
+      "question": "¿Qué valoración hace la voz femenina de las muestras de amor del amado?",
+      "opcion_a": "Las considera más valiosas y agradables que placeres comparables con el vino",
+      "opcion_b": "Las considera secundarias frente al prestigio social",
+      "opcion_c": "Las presenta como una obligación familiar",
+      "opcion_d": "Las reduce a una costumbre ceremonial",
+      "correct_option": "A",
+      "correct_answer": "Las considera más valiosas y agradables que placeres comparables con el vino",
+      "explanation": "La comparación expresa la intensidad y el valor que la voz femenina concede al afecto del amado. El énfasis está en la alegría y atracción que produce la relación.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-CAN-0002",
+      "book": "Cantar de los Cantares",
+      "chapter": 1,
+      "verse_start": 5,
+      "verse_end": 6,
+      "reference": "Cantar de los Cantares 1:5-6",
+      "category": "AT_GENERAL",
+      "subcategory": "IDENTIDAD_Y_AUTOIMAGEN",
+      "characters": [
+        "Amada"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "OPCION_MULTIPLE",
+      "question": "¿Cómo explica la voz femenina su apariencia y el efecto del trabajo impuesto por su familia?",
+      "opcion_a": "Relaciona su aspecto con la exposición al sol y lamenta no haber podido cuidar su propia viña",
+      "opcion_b": "Afirma que eligió vivir aislada para evitar responsabilidades",
+      "opcion_c": "Explica que abandonó voluntariamente toda labor agrícola",
+      "opcion_d": "Atribuye su apariencia a una enfermedad repentina",
+      "correct_option": "A",
+      "correct_answer": "Relaciona su aspecto con la exposición al sol y lamenta no haber podido cuidar su propia viña",
+      "explanation": "La voz femenina vincula su aspecto con el trabajo al aire libre y con las tareas que otros le asignaron. La mención de su propia viña introduce además una dimensión personal de cuidado descuidado.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-CAN-0003",
+      "book": "Cantar de los Cantares",
+      "chapter": 1,
+      "verse_start": 7,
+      "verse_end": 8,
+      "reference": "Cantar de los Cantares 1:7-8",
+      "category": "AT_GENERAL",
+      "subcategory": "BUSQUEDA_Y_ENCUENTRO",
+      "characters": [
+        "Amada",
+        "Amado"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "OPCION_MULTIPLE",
+      "question": "¿Qué desea evitar la voz femenina cuando pregunta dónde se encuentra el amado con su rebaño?",
+      "opcion_a": "Vagar sin rumbo entre los rebaños de otros compañeros",
+      "opcion_b": "Interrumpir una ceremonia pública",
+      "opcion_c": "Ser enviada de regreso a su familia",
+      "opcion_d": "Perder una recompensa económica",
+      "correct_option": "A",
+      "correct_answer": "Vagar sin rumbo entre los rebaños de otros compañeros",
+      "explanation": "La pregunta expresa deseo de encuentro directo y claridad sobre el lugar del amado. La respuesta orienta la búsqueda hacia los caminos y lugares propios del pastoreo.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-CAN-0004",
+      "book": "Cantar de los Cantares",
+      "chapter": 1,
+      "verse_start": 9,
+      "verse_end": 11,
+      "reference": "Cantar de los Cantares 1:9-11",
+      "category": "AT_GENERAL",
+      "subcategory": "IMAGENES_DE_ADMIRACION",
+      "characters": [
+        "Amada",
+        "Amado"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "OPCION_MULTIPLE",
+      "question": "¿Qué función cumple la comparación con una yegua entre los carros del faraón?",
+      "opcion_a": "Comunicar admiración mediante una imagen de belleza, presencia y distinción",
+      "opcion_b": "Describir literalmente una carrera de caballos",
+      "opcion_c": "Explicar la ocupación cotidiana de la mujer",
+      "opcion_d": "Presentar una advertencia militar",
+      "correct_option": "A",
+      "correct_answer": "Comunicar admiración mediante una imagen de belleza, presencia y distinción",
+      "explanation": "La comparación pertenece al lenguaje poético de admiración y no a una descripción literal. La imagen resalta presencia, atractivo y distinción dentro de un entorno prestigioso.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-CAN-0005",
+      "book": "Cantar de los Cantares",
+      "chapter": 1,
+      "verse_start": 15,
+      "verse_end": 17,
+      "reference": "Cantar de los Cantares 1:15-17",
+      "category": "AT_GENERAL",
+      "subcategory": "ADMIRACION_MUTUA",
+      "characters": [
+        "Amada",
+        "Amado"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "OPCION_MULTIPLE",
+      "question": "¿Qué dinámica domina el cierre de esta primera sección del poema?",
+      "opcion_a": "Un intercambio mutuo de elogios dentro de un entorno compartido y agradable",
+      "opcion_b": "Una disputa por cuestiones económicas",
+      "opcion_c": "Una despedida definitiva entre los amantes",
+      "opcion_d": "Una discusión entre familias rivales",
+      "correct_option": "A",
+      "correct_answer": "Un intercambio mutuo de elogios dentro de un entorno compartido y agradable",
+      "explanation": "El cierre presenta una reciprocidad clara: ambos expresan admiración y disfrutan de un espacio común. Esa reciprocidad prepara el tono relacional de secciones posteriores.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-CAN-0006",
+      "book": "Cantar de los Cantares",
+      "chapter": 2,
+      "verse_start": 2,
+      "verse_end": 3,
+      "reference": "Cantar de los Cantares 2:2-3",
+      "category": "AT_GENERAL",
+      "subcategory": "IMAGENES_DE_ADMIRACION",
+      "characters": [
+        "Amada",
+        "Amado"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "OPCION_MULTIPLE",
+      "question": "¿Qué comunica el contraste entre una flor entre espinos y un árbol frutal entre árboles comunes?",
+      "opcion_a": "Que cada amante percibe al otro como especialmente valioso y distinguido",
+      "opcion_b": "Que ambos desean abandonar el campo",
+      "opcion_c": "Que la relación depende de la riqueza agrícola",
+      "opcion_d": "Que existe una competencia entre familias",
+      "correct_option": "A",
+      "correct_answer": "Que cada amante percibe al otro como especialmente valioso y distinguido",
+      "explanation": "Las imágenes destacan singularidad y preferencia mutua. El lenguaje natural sirve para expresar valor afectivo sin necesidad de una comparación literal.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-CAN-0007",
+      "book": "Cantar de los Cantares",
+      "chapter": 2,
+      "verse_start": 4,
+      "verse_end": 7,
+      "reference": "Cantar de los Cantares 2:4-7",
+      "category": "AT_GENERAL",
+      "subcategory": "DESEO_Y_TIEMPO",
+      "characters": [
+        "Amada",
+        "Amado"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "OPCION_MULTIPLE",
+      "question": "¿Qué principio aparece en la advertencia repetida acerca de no despertar el amor antes de tiempo?",
+      "opcion_a": "Que el amor no debe forzarse ni acelerarse fuera de su momento adecuado",
+      "opcion_b": "Que toda expresión de afecto debe mantenerse secreta",
+      "opcion_c": "Que el amor solo puede existir después del matrimonio real",
+      "opcion_d": "Que el afecto depende de la aprobación de una ciudad",
+      "correct_option": "A",
+      "correct_answer": "Que el amor no debe forzarse ni acelerarse fuera de su momento adecuado",
+      "explanation": "La advertencia funciona como un límite frente a la presión o precipitación del deseo. El poema reconoce intensidad afectiva, pero también la importancia del momento apropiado.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-CAN-0008",
+      "book": "Cantar de los Cantares",
+      "chapter": 2,
+      "verse_start": 8,
+      "verse_end": 13,
+      "reference": "Cantar de los Cantares 2:8-13",
+      "category": "AT_GENERAL",
+      "subcategory": "REENCUENTRO_Y_PRIMAVERA",
+      "characters": [
+        "Amada",
+        "Amado"
+      ],
+      "difficulty": "Básico",
+      "question_type": "OPCION_MULTIPLE",
+      "question": "¿Qué señales acompañan la invitación del amado a levantarse y salir?",
+      "opcion_a": "El fin del invierno y la aparición de flores, cantos y una nueva estación",
+      "opcion_b": "La llegada de una tormenta y el cierre de los caminos",
+      "opcion_c": "El comienzo de una guerra entre pueblos vecinos",
+      "opcion_d": "La cosecha final antes de un largo invierno",
+      "correct_option": "A",
+      "correct_answer": "El fin del invierno y la aparición de flores, cantos y una nueva estación",
+      "explanation": "La escena utiliza el cambio de estación como símbolo de renovación y oportunidad para el encuentro. La naturaleza acompaña el tono de alegría y movimiento.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-CAN-0009",
+      "book": "Cantar de los Cantares",
+      "chapter": 2,
+      "verse_start": 15,
+      "verse_end": 15,
+      "reference": "Cantar de los Cantares 2:15",
+      "category": "AT_GENERAL",
+      "subcategory": "CUIDADO_DE_LA_RELACION",
+      "characters": [
+        "Amada",
+        "Amado"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "OPCION_MULTIPLE",
+      "question": "¿Qué enseñanza comunica la imagen de las pequeñas zorras que dañan las viñas?",
+      "opcion_a": "Que problemas aparentemente pequeños pueden perjudicar algo valioso si no se atienden",
+      "opcion_b": "Que toda dificultad debe resolverse mediante castigo",
+      "opcion_c": "Que la vida agrícola es superior a la vida urbana",
+      "opcion_d": "Que la relación debe mantenerse lejos de toda comunidad",
+      "correct_option": "A",
+      "correct_answer": "Que problemas aparentemente pequeños pueden perjudicar algo valioso si no se atienden",
+      "explanation": "La imagen convierte una amenaza pequeña en una advertencia sobre cuidado y vigilancia. El valor está en proteger lo que está creciendo antes de que el daño aumente.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-CAN-0010",
+      "book": "Cantar de los Cantares",
+      "chapter": 2,
+      "verse_start": 16,
+      "verse_end": 17,
+      "reference": "Cantar de los Cantares 2:16-17",
+      "category": "AT_GENERAL",
+      "subcategory": "PERTENENCIA_MUTUA",
+      "characters": [
+        "Amada",
+        "Amado"
+      ],
+      "difficulty": "Básico",
+      "question_type": "OPCION_MULTIPLE",
+      "question": "¿Qué idea central expresa la afirmación de pertenencia mutua entre los amantes?",
+      "opcion_a": "Reciprocidad, vínculo y deseo de estar juntos",
+      "opcion_b": "Dependencia económica unilateral",
+      "opcion_c": "Obligación política entre dos familias",
+      "opcion_d": "Distancia emocional aceptada por ambos",
+      "correct_option": "A",
+      "correct_answer": "Reciprocidad, vínculo y deseo de estar juntos",
+      "explanation": "La afirmación resume uno de los ejes del poema: la relación se expresa en términos recíprocos. No se trata de una pertenencia de dominio, sino de un vínculo afectivo mutuamente reconocido.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-CAN-0011",
+      "book": "Cantar de los Cantares",
+      "chapter": 3,
+      "verse_start": 1,
+      "verse_end": 4,
+      "reference": "Cantar de los Cantares 3:1-4",
+      "category": "AT_GENERAL",
+      "subcategory": "BUSQUEDA_Y_ENCUENTRO",
+      "characters": [
+        "Amada",
+        "Amado"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "OPCION_MULTIPLE",
+      "question": "¿Qué muestra la búsqueda nocturna de la voz femenina hasta encontrar al amado?",
+      "opcion_a": "Persistencia y deseo de recuperar la cercanía perdida",
+      "opcion_b": "Desinterés creciente por la relación",
+      "opcion_c": "Una decisión de abandonar la ciudad para siempre",
+      "opcion_d": "Un plan para ocultarse de sus familiares",
+      "correct_option": "A",
+      "correct_answer": "Persistencia y deseo de recuperar la cercanía perdida",
+      "explanation": "La escena avanza desde la ausencia hasta la búsqueda activa y el reencuentro. La insistencia de la voz femenina subraya el valor que concede a la presencia del amado.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-CAN-0012",
+      "book": "Cantar de los Cantares",
+      "chapter": 3,
+      "verse_start": 3,
+      "verse_end": 3,
+      "reference": "Cantar de los Cantares 3:3",
+      "category": "AT_GENERAL",
+      "subcategory": "BUSQUEDA_Y_ENCUENTRO",
+      "characters": [
+        "Amada"
+      ],
+      "difficulty": "Básico",
+      "question_type": "OPCION_MULTIPLE",
+      "question": "¿A quién encuentra la voz femenina durante su búsqueda antes de hallar al amado?",
+      "opcion_a": "A los guardias que recorrían la ciudad",
+      "opcion_b": "A un grupo de comerciantes extranjeros",
+      "opcion_c": "A los hermanos del amado",
+      "opcion_d": "A una delegación del palacio",
+      "correct_option": "A",
+      "correct_answer": "A los guardias que recorrían la ciudad",
+      "explanation": "Los guardias aparecen como parte del recorrido urbano de la búsqueda. Su presencia ayuda a situar la escena en la ciudad antes del encuentro deseado.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-CAN-0013",
+      "book": "Cantar de los Cantares",
+      "chapter": 3,
+      "verse_start": 6,
+      "verse_end": 8,
+      "reference": "Cantar de los Cantares 3:6-8",
+      "category": "AT_GENERAL",
+      "subcategory": "CEREMONIA_Y_SEGURIDAD",
+      "characters": [
+        "Salomón"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "OPCION_MULTIPLE",
+      "question": "¿Qué comunica la descripción de la comitiva que llega desde el desierto acompañada por hombres armados?",
+      "opcion_a": "Una procesión solemne protegida y preparada para una ocasión importante",
+      "opcion_b": "Una retirada militar después de una derrota",
+      "opcion_c": "Una caravana comercial sin relación con una celebración",
+      "opcion_d": "Un grupo de fugitivos que abandona la ciudad",
+      "correct_option": "A",
+      "correct_answer": "Una procesión solemne protegida y preparada para una ocasión importante",
+      "explanation": "La escena combina perfumes, movimiento ceremonial y protección. El conjunto sugiere solemnidad y seguridad alrededor de una figura real.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-CAN-0014",
+      "book": "Cantar de los Cantares",
+      "chapter": 3,
+      "verse_start": 9,
+      "verse_end": 10,
+      "reference": "Cantar de los Cantares 3:9-10",
+      "category": "AT_GENERAL",
+      "subcategory": "CEREMONIA_Y_HONOR",
+      "characters": [
+        "Salomón"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "OPCION_MULTIPLE",
+      "question": "¿Qué transmite la descripción detallada de la litera real construida con materiales valiosos?",
+      "opcion_a": "Honor, cuidado artístico y carácter ceremonial",
+      "opcion_b": "Improvisación y pobreza de recursos",
+      "opcion_c": "Uso exclusivamente militar",
+      "opcion_d": "Rechazo de cualquier símbolo público",
+      "correct_option": "A",
+      "correct_answer": "Honor, cuidado artístico y carácter ceremonial",
+      "explanation": "Los materiales y detalles de la litera subrayan prestigio y preparación. El interés del poema está en la importancia de la ocasión, no en una lista técnica de objetos.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-CAN-0015",
+      "book": "Cantar de los Cantares",
+      "chapter": 3,
+      "verse_start": 11,
+      "verse_end": 11,
+      "reference": "Cantar de los Cantares 3:11",
+      "category": "AT_GENERAL",
+      "subcategory": "CELEBRACION_NUPCIAL",
+      "characters": [
+        "Salomón"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "OPCION_MULTIPLE",
+      "question": "¿Qué contexto explica la corona y la alegría asociadas al rey en esta escena?",
+      "opcion_a": "Una celebración nupcial presentada como día de especial gozo",
+      "opcion_b": "Una coronación después de una guerra civil",
+      "opcion_c": "Una ceremonia funeraria de la familia real",
+      "opcion_d": "Una alianza comercial con pueblos vecinos",
+      "correct_option": "A",
+      "correct_answer": "Una celebración nupcial presentada como día de especial gozo",
+      "explanation": "La referencia a la corona aparece vinculada con una ocasión de alegría nupcial. La escena cierra la procesión destacando celebración y honor.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-CAN-0016",
+      "book": "Cantar de los Cantares",
+      "chapter": 4,
+      "verse_start": 1,
+      "verse_end": 7,
+      "reference": "Cantar de los Cantares 4:1-7",
+      "category": "AT_GENERAL",
+      "subcategory": "IMAGENES_DE_ADMIRACION",
+      "characters": [
+        "Amada",
+        "Amado"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "OPCION_MULTIPLE",
+      "question": "¿Qué recurso literario domina la larga descripción de la belleza de la amada?",
+      "opcion_a": "Una serie de comparaciones tomadas de animales, naturaleza, colores y paisajes",
+      "opcion_b": "Una lista de títulos administrativos",
+      "opcion_c": "Una narración de hechos militares",
+      "opcion_d": "Una genealogía de familias",
+      "correct_option": "A",
+      "correct_answer": "Una serie de comparaciones tomadas de animales, naturaleza, colores y paisajes",
+      "explanation": "El pasaje utiliza imágenes sucesivas para construir admiración poética. Las comparaciones deben leerse como lenguaje figurado y no como equivalencias físicas exactas.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-CAN-0017",
+      "book": "Cantar de los Cantares",
+      "chapter": 4,
+      "verse_start": 7,
+      "verse_end": 7,
+      "reference": "Cantar de los Cantares 4:7",
+      "category": "AT_GENERAL",
+      "subcategory": "ADMIRACION_TOTAL",
+      "characters": [
+        "Amada",
+        "Amado"
+      ],
+      "difficulty": "Básico",
+      "question_type": "OPCION_MULTIPLE",
+      "question": "¿Qué valoración global hace el amado después de la serie de elogios?",
+      "opcion_a": "Expresa una admiración completa por la amada",
+      "opcion_b": "Concluye que todavía no la conoce",
+      "opcion_c": "Reduce la relación a una amistad distante",
+      "opcion_d": "Afirma que la belleza carece de importancia",
+      "correct_option": "A",
+      "correct_answer": "Expresa una admiración completa por la amada",
+      "explanation": "La declaración resume la secuencia anterior de elogios. Funciona como conclusión afectiva de una descripción acumulativa.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-CAN-0018",
+      "book": "Cantar de los Cantares",
+      "chapter": 4,
+      "verse_start": 8,
+      "verse_end": 8,
+      "reference": "Cantar de los Cantares 4:8",
+      "category": "AT_GENERAL",
+      "subcategory": "INVITACION_Y_CERCANIA",
+      "characters": [
+        "Amada",
+        "Amado"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "OPCION_MULTIPLE",
+      "question": "¿Qué comunica la invitación a venir desde lugares montañosos y peligrosos?",
+      "opcion_a": "El deseo de acercamiento y de dejar atrás la distancia y los riesgos",
+      "opcion_b": "Una orden para iniciar una expedición militar",
+      "opcion_c": "Una obligación de abandonar definitivamente la familia",
+      "opcion_d": "Una instrucción para establecer una ruta comercial",
+      "correct_option": "A",
+      "correct_answer": "El deseo de acercamiento y de dejar atrás la distancia y los riesgos",
+      "explanation": "Los lugares mencionados crean sensación de distancia y peligro. La invitación contrasta ese entorno con el deseo de cercanía entre los amantes.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-CAN-0019",
+      "book": "Cantar de los Cantares",
+      "chapter": 4,
+      "verse_start": 12,
+      "verse_end": 15,
+      "reference": "Cantar de los Cantares 4:12-15",
+      "category": "AT_GENERAL",
+      "subcategory": "EXCLUSIVIDAD_Y_PRECIOSIDAD",
+      "characters": [
+        "Amada",
+        "Amado"
+      ],
+      "difficulty": "Experto",
+      "question_type": "OPCION_MULTIPLE",
+      "question": "¿Qué expresa la imagen de un jardín cerrado y una fuente sellada dentro del poema?",
+      "opcion_a": "Exclusividad, valor y una intimidad que no se presenta como acceso indiscriminado",
+      "opcion_b": "Prohibición de cultivar cualquier terreno",
+      "opcion_c": "Una crítica a los jardines de la ciudad",
+      "opcion_d": "El temor de perder una propiedad real",
+      "correct_option": "A",
+      "correct_answer": "Exclusividad, valor y una intimidad que no se presenta como acceso indiscriminado",
+      "explanation": "La metáfora presenta algo valioso, cuidado y reservado dentro de la relación. Conviene leerla como imagen poética de exclusividad y preciosidad, no como descripción física literal.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-CAN-0020",
+      "book": "Cantar de los Cantares",
+      "chapter": 4,
+      "verse_start": 16,
+      "verse_end": 16,
+      "reference": "Cantar de los Cantares 4:16",
+      "category": "AT_GENERAL",
+      "subcategory": "MUTUALIDAD_Y_ACOGIDA",
+      "characters": [
+        "Amada",
+        "Amado"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "OPCION_MULTIPLE",
+      "question": "¿Qué comunica la invitación a que los vientos recorran el jardín y el amado entre en él?",
+      "opcion_a": "Apertura mutua y deseo de que el amor florezca y sea disfrutado",
+      "opcion_b": "Una advertencia de abandonar el lugar",
+      "opcion_c": "Un ritual agrícola obligatorio",
+      "opcion_d": "Un llamado a destruir la vegetación",
+      "correct_option": "A",
+      "correct_answer": "Apertura mutua y deseo de que el amor florezca y sea disfrutado",
+      "explanation": "La naturaleza vuelve a servir como lenguaje simbólico de afecto y acogida. La escena expresa disposición mutua dentro de la relación sin necesidad de volver gráfica la imagen.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-CAN-0021",
+      "book": "Cantar de los Cantares",
+      "chapter": 5,
+      "verse_start": 2,
+      "verse_end": 6,
+      "reference": "Cantar de los Cantares 5:2-6",
+      "category": "AT_GENERAL",
+      "subcategory": "DISTANCIA_Y_OPORTUNIDAD",
+      "characters": [
+        "Amada",
+        "Amado"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "OPCION_MULTIPLE",
+      "question": "¿Qué consecuencia sigue a la demora de la voz femenina antes de abrir al amado?",
+      "opcion_a": "Cuando finalmente abre, él ya se ha retirado y ella inicia una búsqueda",
+      "opcion_b": "El amado entra y la conversación termina de inmediato",
+      "opcion_c": "La familia interrumpe el encuentro y expulsa al amado",
+      "opcion_d": "Los guardias anuncian una celebración pública",
+      "correct_option": "A",
+      "correct_answer": "Cuando finalmente abre, él ya se ha retirado y ella inicia una búsqueda",
+      "explanation": "La escena presenta una oportunidad perdida por la demora y el inicio posterior de una búsqueda. El motivo sirve para explorar distancia, deseo y recuperación de la cercanía.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-CAN-0022",
+      "book": "Cantar de los Cantares",
+      "chapter": 5,
+      "verse_start": 7,
+      "verse_end": 7,
+      "reference": "Cantar de los Cantares 5:7",
+      "category": "AT_GENERAL",
+      "subcategory": "BUSQUEDA_Y_CONFLICTO",
+      "characters": [
+        "Amada"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "OPCION_MULTIPLE",
+      "question": "¿Qué le ocurre a la voz femenina cuando continúa buscando por la ciudad?",
+      "opcion_a": "Los guardias la tratan con violencia y le quitan su velo",
+      "opcion_b": "Es invitada al palacio por los guardias",
+      "opcion_c": "Encuentra inmediatamente al amado junto a una puerta",
+      "opcion_d": "Recibe ayuda de sus hermanos para regresar a casa",
+      "correct_option": "A",
+      "correct_answer": "Los guardias la tratan con violencia y le quitan su velo",
+      "explanation": "El poema introduce un episodio duro durante la búsqueda, descrito sin necesidad de recrear detalles gráficos. La escena intensifica la vulnerabilidad de la voz femenina.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-CAN-0023",
+      "book": "Cantar de los Cantares",
+      "chapter": 5,
+      "verse_start": 8,
+      "verse_end": 8,
+      "reference": "Cantar de los Cantares 5:8",
+      "category": "AT_GENERAL",
+      "subcategory": "ANHELO_Y_MENSAJE",
+      "characters": [
+        "Amada",
+        "Hijas de Jerusalén"
+      ],
+      "difficulty": "Básico",
+      "question_type": "OPCION_MULTIPLE",
+      "question": "¿Qué pide la voz femenina a las otras mujeres si encuentran al amado?",
+      "opcion_a": "Que le comuniquen la intensidad de su anhelo por él",
+      "opcion_b": "Que le exijan regresar al palacio",
+      "opcion_c": "Que oculten toda información sobre ella",
+      "opcion_d": "Que le entreguen una recompensa económica",
+      "correct_option": "A",
+      "correct_answer": "Que le comuniquen la intensidad de su anhelo por él",
+      "explanation": "La petición transforma la ausencia en un mensaje de búsqueda y deseo. Las otras mujeres funcionan aquí como posibles mediadoras del encuentro.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-CAN-0024",
+      "book": "Cantar de los Cantares",
+      "chapter": 5,
+      "verse_start": 9,
+      "verse_end": 16,
+      "reference": "Cantar de los Cantares 5:9-16",
+      "category": "AT_GENERAL",
+      "subcategory": "ADMIRACION_DEL_AMADO",
+      "characters": [
+        "Amada",
+        "Amado"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "OPCION_MULTIPLE",
+      "question": "¿Cómo responde la voz femenina cuando le preguntan qué hace especial al amado?",
+      "opcion_a": "Con una descripción extensa que resalta su apariencia, dignidad y carácter admirable",
+      "opcion_b": "Con una lista de propiedades que posee",
+      "opcion_c": "Con una explicación de su origen militar",
+      "opcion_d": "Con una crítica a su comportamiento",
+      "correct_option": "A",
+      "correct_answer": "Con una descripción extensa que resalta su apariencia, dignidad y carácter admirable",
+      "explanation": "La respuesta desarrolla un retrato poético acumulativo del amado. El propósito es mostrar por qué ocupa un lugar singular para la voz femenina.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-CAN-0025",
+      "book": "Cantar de los Cantares",
+      "chapter": 5,
+      "verse_start": 16,
+      "verse_end": 16,
+      "reference": "Cantar de los Cantares 5:16",
+      "category": "AT_GENERAL",
+      "subcategory": "AMOR_Y_AMISTAD",
+      "characters": [
+        "Amada",
+        "Amado"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "OPCION_MULTIPLE",
+      "question": "¿Qué dimensión añade la voz femenina al describir al amado también como su amigo?",
+      "opcion_a": "Presenta la relación como vínculo de cercanía y compañerismo, además de admiración",
+      "opcion_b": "Reduce la relación a una alianza política",
+      "opcion_c": "Niega cualquier dimensión afectiva",
+      "opcion_d": "Convierte al amado en una figura distante",
+      "correct_option": "A",
+      "correct_answer": "Presenta la relación como vínculo de cercanía y compañerismo, además de admiración",
+      "explanation": "El término de amistad amplía el retrato del vínculo. La relación no aparece únicamente como atracción, sino también como cercanía personal y compañerismo.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-CAN-0026",
+      "book": "Cantar de los Cantares",
+      "chapter": 6,
+      "verse_start": 1,
+      "verse_end": 3,
+      "reference": "Cantar de los Cantares 6:1-3",
+      "category": "AT_GENERAL",
+      "subcategory": "REENCUENTRO_Y_PERTENENCIA",
+      "characters": [
+        "Amada",
+        "Amado"
+      ],
+      "difficulty": "Básico",
+      "question_type": "OPCION_MULTIPLE",
+      "question": "¿Qué muestra la respuesta sobre el lugar donde se encuentra el amado y la afirmación de pertenencia mutua?",
+      "opcion_a": "Que la búsqueda desemboca nuevamente en orientación, cercanía y reciprocidad",
+      "opcion_b": "Que la relación ha terminado definitivamente",
+      "opcion_c": "Que el amado se ha marchado a otra nación",
+      "opcion_d": "Que ambos renuncian a volver a encontrarse",
+      "correct_option": "A",
+      "correct_answer": "Que la búsqueda desemboca nuevamente en orientación, cercanía y reciprocidad",
+      "explanation": "El pasaje responde a la búsqueda anterior y recupera el motivo de pertenencia mutua. La escena transmite continuidad del vínculo después de la distancia.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-CAN-0027",
+      "book": "Cantar de los Cantares",
+      "chapter": 6,
+      "verse_start": 4,
+      "verse_end": 7,
+      "reference": "Cantar de los Cantares 6:4-7",
+      "category": "AT_GENERAL",
+      "subcategory": "BELLEZA_Y_ASOMBRO",
+      "characters": [
+        "Amada",
+        "Amado"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "OPCION_MULTIPLE",
+      "question": "¿Qué efecto produce combinar comparaciones de belleza con imágenes que inspiran respeto o asombro?",
+      "opcion_a": "Presenta a la amada como atractiva y a la vez impresionante en su presencia",
+      "opcion_b": "Describe una amenaza militar literal",
+      "opcion_c": "Transforma la escena en un juicio legal",
+      "opcion_d": "Niega la admiración expresada anteriormente",
+      "correct_option": "A",
+      "correct_answer": "Presenta a la amada como atractiva y a la vez impresionante en su presencia",
+      "explanation": "El lenguaje combina belleza con fuerza visual. La poesía evita una admiración plana y presenta a la amada como una presencia capaz de impresionar.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-CAN-0028",
+      "book": "Cantar de los Cantares",
+      "chapter": 6,
+      "verse_start": 8,
+      "verse_end": 9,
+      "reference": "Cantar de los Cantares 6:8-9",
+      "category": "AT_GENERAL",
+      "subcategory": "SINGULARIDAD",
+      "characters": [
+        "Amada",
+        "Amado"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "OPCION_MULTIPLE",
+      "question": "¿Qué se destaca al mencionar muchas mujeres y luego presentar a una como única?",
+      "opcion_a": "La singularidad de la amada dentro de la valoración del amado",
+      "opcion_b": "Una competencia oficial por un cargo político",
+      "opcion_c": "Un censo de familias de Jerusalén",
+      "opcion_d": "La obligación de elegir por sorteo",
+      "correct_option": "A",
+      "correct_answer": "La singularidad de la amada dentro de la valoración del amado",
+      "explanation": "La enumeración sirve como contraste para subrayar preferencia y singularidad. La atención del pasaje se concentra en el valor excepcional que el amado atribuye a una persona.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-CAN-0029",
+      "book": "Cantar de los Cantares",
+      "chapter": 6,
+      "verse_start": 13,
+      "verse_end": 13,
+      "reference": "Cantar de los Cantares 6:13",
+      "category": "AT_GENERAL",
+      "subcategory": "ADMIRACION_PUBLICA",
+      "characters": [
+        "Sulamita"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "OPCION_MULTIPLE",
+      "question": "¿Qué reacción provoca la Sulamita en el cierre de esta sección?",
+      "opcion_a": "Se le pide que regrese para poder contemplarla nuevamente",
+      "opcion_b": "Se le ordena abandonar la región",
+      "opcion_c": "Se la acusa de haber interrumpido una ceremonia",
+      "opcion_d": "Se le exige entregar una propiedad",
+      "correct_option": "A",
+      "correct_answer": "Se le pide que regrese para poder contemplarla nuevamente",
+      "explanation": "La repetición de la invitación a volver muestra interés y admiración por su presencia. El pasaje no necesita resolver todas las preguntas sobre identidad de los hablantes para conservar ese sentido básico.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-CAN-0030",
+      "book": "Cantar de los Cantares",
+      "chapter": 7,
+      "verse_start": 1,
+      "verse_end": 5,
+      "reference": "Cantar de los Cantares 7:1-5",
+      "category": "AT_GENERAL",
+      "subcategory": "IMAGENES_DE_ADMIRACION",
+      "characters": [
+        "Amada",
+        "Amado"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "OPCION_MULTIPLE",
+      "question": "¿Qué recurso domina la descripción de la amada al inicio de esta sección?",
+      "opcion_a": "Comparaciones con obras artesanales, formas naturales y elementos valiosos",
+      "opcion_b": "Un informe médico detallado",
+      "opcion_c": "Una lista de posesiones familiares",
+      "opcion_d": "Una descripción de armamento",
+      "correct_option": "A",
+      "correct_answer": "Comparaciones con obras artesanales, formas naturales y elementos valiosos",
+      "explanation": "La sección mantiene el lenguaje figurado característico del poema. Las comparaciones celebran belleza y armonía sin requerir una lectura literal o gráfica.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-CAN-0031",
+      "book": "Cantar de los Cantares",
+      "chapter": 7,
+      "verse_start": 6,
+      "verse_end": 9,
+      "reference": "Cantar de los Cantares 7:6-9",
+      "category": "AT_GENERAL",
+      "subcategory": "DELEITE_Y_ADMIRACION",
+      "characters": [
+        "Amada",
+        "Amado"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "OPCION_MULTIPLE",
+      "question": "¿Qué tono domina cuando el amado expresa cuánto le agrada la belleza de la amada?",
+      "opcion_a": "Gozo, admiración y deleite en la relación",
+      "opcion_b": "Temor ante una amenaza",
+      "opcion_c": "Indiferencia y cansancio",
+      "opcion_d": "Reproche por una deuda",
+      "correct_option": "A",
+      "correct_answer": "Gozo, admiración y deleite en la relación",
+      "explanation": "El pasaje intensifica el tono positivo de admiración. Su función principal es expresar deleite afectivo dentro de la relación.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-CAN-0032",
+      "book": "Cantar de los Cantares",
+      "chapter": 7,
+      "verse_start": 10,
+      "verse_end": 10,
+      "reference": "Cantar de los Cantares 7:10",
+      "category": "AT_GENERAL",
+      "subcategory": "PERTENENCIA_Y_DESEO",
+      "characters": [
+        "Amada",
+        "Amado"
+      ],
+      "difficulty": "Básico",
+      "question_type": "OPCION_MULTIPLE",
+      "question": "¿Qué añade la voz femenina a la idea de pertenencia mutua en esta sección?",
+      "opcion_a": "Afirma que el deseo del amado se dirige hacia ella",
+      "opcion_b": "Afirma que el amado desea abandonar la relación",
+      "opcion_c": "Declara que la relación depende de un acuerdo económico",
+      "opcion_d": "Indica que ambos deben permanecer separados",
+      "correct_option": "A",
+      "correct_answer": "Afirma que el deseo del amado se dirige hacia ella",
+      "explanation": "El verso combina pertenencia con deseo recíproco. La afirmación refuerza la mutualidad que aparece repetidamente a lo largo del poema.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-CAN-0033",
+      "book": "Cantar de los Cantares",
+      "chapter": 7,
+      "verse_start": 11,
+      "verse_end": 13,
+      "reference": "Cantar de los Cantares 7:11-13",
+      "category": "AT_GENERAL",
+      "subcategory": "AMOR_Y_NATURALEZA",
+      "characters": [
+        "Amada",
+        "Amado"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "OPCION_MULTIPLE",
+      "question": "¿Qué propósito tiene la invitación a salir al campo, pasar por las aldeas y observar las viñas?",
+      "opcion_a": "Compartir tiempo juntos en un entorno de crecimiento y expresar allí el amor",
+      "opcion_b": "Inspeccionar impuestos de una propiedad real",
+      "opcion_c": "Preparar una defensa militar",
+      "opcion_d": "Buscar un lugar para vivir separados",
+      "correct_option": "A",
+      "correct_answer": "Compartir tiempo juntos en un entorno de crecimiento y expresar allí el amor",
+      "explanation": "La escena une naturaleza, crecimiento y relación. El recorrido por campos y viñas funciona como espacio compartido para la cercanía de los amantes.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-CAN-0034",
+      "book": "Cantar de los Cantares",
+      "chapter": 8,
+      "verse_start": 1,
+      "verse_end": 2,
+      "reference": "Cantar de los Cantares 8:1-2",
+      "category": "AT_GENERAL",
+      "subcategory": "AFECTO_Y_ENTORNO_SOCIAL",
+      "characters": [
+        "Amada",
+        "Amado"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "OPCION_MULTIPLE",
+      "question": "¿Qué preocupación social aparece cuando la voz femenina imagina poder mostrar afecto públicamente sin recibir reproche?",
+      "opcion_a": "El deseo de expresar cercanía sin que el entorno la censure",
+      "opcion_b": "La intención de ocultar al amado de toda persona",
+      "opcion_c": "El deseo de convertir la relación en una alianza comercial",
+      "opcion_d": "La necesidad de obtener un título real",
+      "correct_option": "A",
+      "correct_answer": "El deseo de expresar cercanía sin que el entorno la censure",
+      "explanation": "La escena reconoce que las expresiones públicas de afecto están condicionadas por normas sociales. El deseo de la voz femenina apunta a una cercanía que no sea objeto de desprecio.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-CAN-0035",
+      "book": "Cantar de los Cantares",
+      "chapter": 8,
+      "verse_start": 5,
+      "verse_end": 5,
+      "reference": "Cantar de los Cantares 8:5",
+      "category": "AT_GENERAL",
+      "subcategory": "APOYO_Y_CERCANIA",
+      "characters": [
+        "Amada",
+        "Amado"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "OPCION_MULTIPLE",
+      "question": "¿Qué comunica la imagen de una persona que llega apoyándose en su amado?",
+      "opcion_a": "Cercanía, confianza y compañía durante el camino",
+      "opcion_b": "Dominio militar sobre otra persona",
+      "opcion_c": "Independencia absoluta de toda relación",
+      "opcion_d": "Una competencia deportiva",
+      "correct_option": "A",
+      "correct_answer": "Cercanía, confianza y compañía durante el camino",
+      "explanation": "La imagen es breve pero significativa: el apoyo físico funciona poéticamente como señal de compañía y cercanía. No es necesario convertirla en una afirmación de dependencia total.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-CAN-0036",
+      "book": "Cantar de los Cantares",
+      "chapter": 8,
+      "verse_start": 6,
+      "verse_end": 6,
+      "reference": "Cantar de los Cantares 8:6",
+      "category": "AT_GENERAL",
+      "subcategory": "FUERZA_DEL_AMOR",
+      "characters": [
+        "Amada",
+        "Amado"
+      ],
+      "difficulty": "Experto",
+      "question_type": "OPCION_MULTIPLE",
+      "question": "¿Qué expresa la imagen de colocar al amado como un sello sobre el corazón y el brazo?",
+      "opcion_a": "El deseo de un vínculo profundo, visible y duradero cuya fuerza se compara con realidades inevitables",
+      "opcion_b": "Una obligación de marcar físicamente a la otra persona",
+      "opcion_c": "Un contrato de propiedad sobre bienes materiales",
+      "opcion_d": "Una señal de rango militar",
+      "correct_option": "A",
+      "correct_answer": "El deseo de un vínculo profundo, visible y duradero cuya fuerza se compara con realidades inevitables",
+      "explanation": "El sello comunica pertenencia y permanencia, mientras las comparaciones posteriores intensifican la fuerza del amor. La imagen debe leerse poéticamente, no como instrucción literal de posesión.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-CAN-0037",
+      "book": "Cantar de los Cantares",
+      "chapter": 8,
+      "verse_start": 7,
+      "verse_end": 7,
+      "reference": "Cantar de los Cantares 8:7",
+      "category": "AT_GENERAL",
+      "subcategory": "VALOR_DEL_AMOR",
+      "characters": [
+        "Amada",
+        "Amado"
+      ],
+      "difficulty": "Básico",
+      "question_type": "OPCION_MULTIPLE",
+      "question": "¿Qué dos ideas se expresan al hablar de grandes aguas y de ofrecer riquezas a cambio del amor?",
+      "opcion_a": "Que el amor verdadero no se apaga fácilmente ni puede comprarse con bienes",
+      "opcion_b": "Que el amor depende de controlar recursos naturales",
+      "opcion_c": "Que toda relación debe medirse por su costo económico",
+      "opcion_d": "Que la riqueza garantiza permanencia afectiva",
+      "correct_option": "A",
+      "correct_answer": "Que el amor verdadero no se apaga fácilmente ni puede comprarse con bienes",
+      "explanation": "El pasaje utiliza dos contrastes fuertes: fuerzas externas no extinguen el amor y el dinero no puede adquirirlo. Así se subraya su resistencia y su valor no comercial.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-CAN-0038",
+      "book": "Cantar de los Cantares",
+      "chapter": 8,
+      "verse_start": 8,
+      "verse_end": 10,
+      "reference": "Cantar de los Cantares 8:8-10",
+      "category": "AT_GENERAL",
+      "subcategory": "MADUREZ_Y_PROTECCION",
+      "characters": [
+        "Familia",
+        "Amada"
+      ],
+      "difficulty": "Avanzado",
+      "question_type": "OPCION_MULTIPLE",
+      "question": "¿Qué preocupación expresa la familia al hablar de una hermana menor que todavía debe madurar?",
+      "opcion_a": "Cómo protegerla y acompañar responsablemente su desarrollo futuro",
+      "opcion_b": "Cómo enviarla inmediatamente lejos de la familia",
+      "opcion_c": "Cómo convertirla en responsable de una viña real",
+      "opcion_d": "Cómo evitar que reciba cualquier educación",
+      "correct_option": "A",
+      "correct_answer": "Cómo protegerla y acompañar responsablemente su desarrollo futuro",
+      "explanation": "La escena refleja preocupación familiar por la madurez y el futuro de una joven. Conviene formularla en términos de protección y desarrollo, sin sexualizar innecesariamente las imágenes del pasaje.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-CAN-0039",
+      "book": "Cantar de los Cantares",
+      "chapter": 8,
+      "verse_start": 11,
+      "verse_end": 12,
+      "reference": "Cantar de los Cantares 8:11-12",
+      "category": "AT_GENERAL",
+      "subcategory": "VIÑA_Y_RESPONSABILIDAD",
+      "characters": [
+        "Salomón",
+        "Amada"
+      ],
+      "difficulty": "Experto",
+      "question_type": "OPCION_MULTIPLE",
+      "question": "¿Qué contraste aparece entre la viña de Salomón administrada por otros y la viña que la voz femenina considera propia?",
+      "opcion_a": "Una diferencia entre una propiedad gestionada mediante pago y aquello que ella afirma mantener bajo su propia responsabilidad",
+      "opcion_b": "Una disputa por tierras conquistadas en guerra",
+      "opcion_c": "Una orden para abandonar toda actividad agrícola",
+      "opcion_d": "Una prohibición de poseer bienes",
+      "correct_option": "A",
+      "correct_answer": "Una diferencia entre una propiedad gestionada mediante pago y aquello que ella afirma mantener bajo su propia responsabilidad",
+      "explanation": "El contraste económico distingue la viña administrada para producir pago de la viña que la voz femenina declara como suya. La imagen también dialoga con motivos personales de viña presentes desde el inicio del poema.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    },
+    {
+      "id": "NQB-AT-CAN-0040",
+      "book": "Cantar de los Cantares",
+      "chapter": 8,
+      "verse_start": 13,
+      "verse_end": 14,
+      "reference": "Cantar de los Cantares 8:13-14",
+      "category": "AT_GENERAL",
+      "subcategory": "CIERRE_Y_DESEO_DE_PRESENCIA",
+      "characters": [
+        "Amada",
+        "Amado"
+      ],
+      "difficulty": "Intermedio",
+      "question_type": "OPCION_MULTIPLE",
+      "question": "¿Cómo termina el poema en relación con la voz y la presencia del amado?",
+      "opcion_a": "Con deseo de oírse mutuamente y una invitación final a que el amado venga con rapidez",
+      "opcion_b": "Con una ruptura definitiva y silenciosa",
+      "opcion_c": "Con una orden de regresar al palacio sin volver a encontrarse",
+      "opcion_d": "Con una explicación genealógica",
+      "correct_option": "A",
+      "correct_answer": "Con deseo de oírse mutuamente y una invitación final a que el amado venga con rapidez",
+      "explanation": "El cierre mantiene abierto el deseo de presencia en vez de terminar con una separación fría. La invitación final conserva el tono de anhelo, movimiento y relación que atraviesa el poema.",
+      "additional_references": [],
+      "eligible_modes": [
+        "AT",
+        "AMBOS"
+      ]
+    }
+  ]
+}

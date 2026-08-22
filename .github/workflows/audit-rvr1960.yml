@@ -4,6 +4,7 @@ on:
   push:
     branches: [rvr1960-audit, main, audit-genesis-full-rvr1960]
     paths:
+      - "tools/bible_extractor/song-of-songs-master-input.json"
       - "tools/bible_extractor/ecclesiastes-master-input.json"
       - "tools/bible_extractor/proverbs-master-input.json"
       - "tools/bible_extractor/psalms-master-input.json"
@@ -33,6 +34,7 @@ on:
   pull_request:
     branches: [main]
     paths:
+      - "tools/bible_extractor/song-of-songs-master-input.json"
       - "tools/bible_extractor/ecclesiastes-master-input.json"
       - "tools/bible_extractor/proverbs-master-input.json"
       - "tools/bible_extractor/psalms-master-input.json"
@@ -64,7 +66,7 @@ on:
       input_file:
         description: "Ruta del archivo de entrada de preguntas"
         required: true
-        default: "tools/bible_extractor/ecclesiastes-master-input.json"
+        default: "tools/bible_extractor/song-of-songs-master-input.json"
         type: string
 
 permissions:
@@ -93,7 +95,9 @@ jobs:
         run: |
           INPUT_FILE="${{ inputs.input_file || '' }}"
           if [ -z "$INPUT_FILE" ]; then
-            if [ -f "tools/bible_extractor/ecclesiastes-master-input.json" ]; then
+            if [ -f "tools/bible_extractor/song-of-songs-master-input.json" ]; then
+              INPUT_FILE="tools/bible_extractor/song-of-songs-master-input.json"
+            elif [ -f "tools/bible_extractor/ecclesiastes-master-input.json" ]; then
               INPUT_FILE="tools/bible_extractor/ecclesiastes-master-input.json"
             elif [ -f "tools/bible_extractor/proverbs-master-input.json" ]; then
               INPUT_FILE="tools/bible_extractor/proverbs-master-input.json"
@@ -143,7 +147,10 @@ jobs:
             fi
           fi
 
-          if [[ "$INPUT_FILE" == *"ecclesiastes"* ]] || [[ "$INPUT_FILE" == *"eclesiastes"* ]] || [[ "$INPUT_FILE" == *"eclesiastés"* ]]; then
+          if [[ "$INPUT_FILE" == *"song-of-songs"* ]] || [[ "$INPUT_FILE" == *"cantares"* ]] || [[ "$INPUT_FILE" == *"cantar"* ]]; then
+            OUTPUT_DIR="build/audit/song_of_songs"
+            ARTIFACT_NAME="auditoria-cantar-rvr1960-${{ github.run_number }}"
+          elif [[ "$INPUT_FILE" == *"ecclesiastes"* ]] || [[ "$INPUT_FILE" == *"eclesiastes"* ]] || [[ "$INPUT_FILE" == *"eclesiastés"* ]]; then
             OUTPUT_DIR="build/audit/ecclesiastes"
             ARTIFACT_NAME="auditoria-eclesiastes-rvr1960-${{ github.run_number }}"
           elif [[ "$INPUT_FILE" == *"proverbs"* ]] || [[ "$INPUT_FILE" == *"proverbios"* ]] || [[ "$INPUT_FILE" == *"proverbio"* ]]; then

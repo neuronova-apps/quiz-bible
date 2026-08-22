@@ -61,6 +61,7 @@ JOB_PATH = Path(__file__).parent / "job-master-input.json"
 PSALMS_PATH = Path(__file__).parent / "psalms-master-input.json"
 PROVERBS_PATH = Path(__file__).parent / "proverbs-master-input.json"
 ECCLESIASTES_PATH = Path(__file__).parent / "ecclesiastes-master-input.json"
+SONG_OF_SONGS_PATH = Path(__file__).parent / "song-of-songs-master-input.json"
 
 
 class TestAuditorCanonical(unittest.TestCase):
@@ -189,6 +190,12 @@ class TestAuditorCanonical(unittest.TestCase):
         else:
             cls.ecclesiastes_questions = {}
 
+        if SONG_OF_SONGS_PATH.exists():
+            raw_sos = json.loads(SONG_OF_SONGS_PATH.read_text(encoding="utf-8"))
+            cls.song_of_songs_questions = {q["id"]: q for q in (raw_sos.get("questions", []) if isinstance(raw_sos, dict) else raw_sos)}
+        else:
+            cls.song_of_songs_questions = {}
+
     def setUp(self) -> None:
         self.temp_dir = Path(tempfile.mkdtemp())
 
@@ -278,6 +285,10 @@ class TestAuditorCanonical(unittest.TestCase):
     def get_ecclesiastes_question(self, qid: str) -> dict:
         self.assertIn(qid, self.ecclesiastes_questions, f"ID '{qid}' no encontrado en ecclesiastes-master-input.json")
         return copy.deepcopy(self.ecclesiastes_questions[qid])
+
+    def get_song_of_songs_question(self, qid: str) -> dict:
+        self.assertIn(qid, self.song_of_songs_questions, f"ID '{qid}' no encontrado en song-of-songs-master-input.json")
+        return copy.deepcopy(self.song_of_songs_questions[qid])
 
     # --- TEST GLOBAL DE CONSISTENCIA DE IDs Y REFERENCIAS ---
 
@@ -2216,6 +2227,63 @@ class TestAuditorCanonical(unittest.TestCase):
             self.assertEqual(q.get("correct_answer"), q.get("opcion_a"))
             self.assertEqual(q.get("question_type"), "MULTIPLE_CHOICE")
         self.assertEqual(len(chapters_seen), 12, f"Se esperaban 12 capítulos cubiertos, hallados {len(chapters_seen)}")
+
+    # --- TESTS PARA CANTAR DE LOS CANTARES ---
+
+    def test_detect_book_key_song_of_songs(self) -> None:
+        """Verifica la detección automática de clave para Cantar de los Cantares."""
+        spec_sos = {"questions": [{"id": "NQB-AT-CAN-0001", "book": "Cantar de los Cantares"}]}
+        self.assertEqual(detect_book_key(spec_sos), "song_of_songs")
+
+        spec_cantares = {"questions": [{"id": "NQB-AT-CAN-0001", "book": "Cantares"}]}
+        self.assertEqual(detect_book_key(spec_cantares), "song_of_songs")
+
+        spec_cantar = {"questions": [{"id": "NQB-AT-CAN-0001", "book": "Cantar"}]}
+        self.assertEqual(detect_book_key(spec_cantar), "song_of_songs")
+
+        spec_en = {"questions": [{"id": "NQB-AT-CAN-0001", "book": "Song of Songs"}]}
+        self.assertEqual(detect_book_key(spec_en), "song_of_songs")
+
+        spec_solomon = {"questions": [{"id": "NQB-AT-CAN-0001", "book": "Song of Solomon"}]}
+        self.assertEqual(detect_book_key(spec_solomon), "song_of_songs")
+
+        spec_libro = {"questions": [{"id": "NQB-AT-CAN-0001", "book": "Libro de los Cantares"}]}
+        self.assertEqual(detect_book_key(spec_libro), "song_of_songs")
+
+    def test_song_of_songs_book_config_and_aliases(self) -> None:
+        """Verifica configuración canónica de Cantar de los Cantares: 8 capítulos, 1 bloque."""
+        self.assertIn("song_of_songs", BOOK_CONFIGS)
+        cfg = BOOK_CONFIGS["song_of_songs"]
+        self.assertEqual(cfg["canonical_name"], "Cantar de los Cantares")
+        self.assertEqual(cfg["api_name"], "Cantares")
+        self.assertEqual(cfg["total_chapters"], 8)
+        self.assertEqual(len(cfg["blocks"]), 1)
+        self.assertEqual(cfg["blocks"][0], (1, 8, "song-of-songs-01-08.json"))
+        self.assertTrue({"cantar de los cantares", "cantares", "cantar", "song of songs"}.issubset(cfg["aliases"]))
+
+    def test_global_canonical_id_reference_integrity_song_of_songs(self) -> None:
+        """Verifica consistencia de IDs, referencias y campos en Cantar de los Cantares (40 preguntas, 8/8 capítulos cubiertos)."""
+        if not self.song_of_songs_questions:
+            self.skipTest("song-of-songs-master-input.json no disponible")
+        self.assertEqual(len(self.song_of_songs_questions), 40)
+        chapters_seen = set()
+        for qid, q in self.song_of_songs_questions.items():
+            ref = q.get("reference", "")
+            ch = q.get("chapter")
+            self.assertIsNotNone(ch)
+            self.assertTrue(1 <= ch <= 8, f"Capítulo {ch} fuera del rango 1..8 en {qid}")
+            chapters_seen.add(ch)
+            start = q.get("verse_start")
+            end = q.get("verse_end", start)
+            expected_suffix = f"{ch}:{start}" if start == end else f"{ch}:{start}-{end}"
+            self.assertTrue(
+                expected_suffix in ref or ref.endswith(expected_suffix),
+                f"Referencia inconsistente en {qid}: ref='{ref}', esperada terminada en '{expected_suffix}'"
+            )
+            self.assertEqual(q.get("correct_option"), "A")
+            self.assertEqual(q.get("correct_answer"), q.get("opcion_a"))
+            self.assertEqual(q.get("category"), "AT_GENERAL")
+        self.assertEqual(len(chapters_seen), 8, f"Se esperaban 8 capítulos cubiertos, hallados {len(chapters_seen)}")
 
 
 if __name__ == "__main__":
