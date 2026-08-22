@@ -448,6 +448,29 @@ BOOK_CONFIGS: dict[str, dict[str, Any]] = {
             "jerusalen", "jerusalén", "en-gadi", "engadi", "en gadi", "sarón", "saron", "hermón", "hermon", "senir", "amana", "tirsa", "damasco", "hesbon", "hesbón", "bat-rabim", "carmelo", "galilea", "sion", "sión"
         },
     },
+    "isaiah": {
+        "canonical_name": "Isaías",
+        "api_name": "Isaías",
+        "aliases": {
+            "isaías", "isaias", "isaiah", "is", "isa", "libro de isaías", "libro de isaias"
+        },
+        "total_chapters": 66,
+        "blocks": [
+            (1, 10, "isaiah-01-10.json"),
+            (11, 20, "isaiah-11-20.json"),
+            (21, 30, "isaiah-21-30.json"),
+            (31, 40, "isaiah-31-40.json"),
+            (41, 50, "isaiah-41-50.json"),
+            (51, 60, "isaiah-51-60.json"),
+            (61, 66, "isaiah-61-66.json"),
+        ],
+        "default_output_dir": "build/audit/isaiah",
+        "ambient_places": {
+            "jerusalen", "jerusalén", "juda", "judá", "israel", "sion", "sión", "asiria", "babilonia", "egipto", "etiopia", "etiopía",
+            "moab", "damasco", "siria", "tiro", "sidon", "sidón", "filistea", "edom", "arabia", "cedar", "elam", "media", "cush",
+            "tarso", "tarsis", "sinai", "sinaí", "libano", "líbano", "carmelo", "saron", "sarón", "basán", "basan"
+        },
+    },
 }
 
 STOPWORDS = {
@@ -541,6 +564,8 @@ BIBLE_PERSONAJES = {
     "job", "elifaz", "bildad", "zofar", "eliu", "eliú", "baraquel", "jemima", "cesia", "keren-hapuc", "kerenhapuc",
     # Proverbios
     "agur", "lemuel",
+    # Isaías
+    "sebna", "merodac-baladan", "merodac-baladán", "merodacbaladan", "merodac",
     # Otros comunes
     "david", "saul", "samuel", "nabucodonosor", "pablo", "pedro", "juan", "jesus", "mateo", "marcos",
     "lucas", "esteban", "timoteo",

@@ -62,6 +62,7 @@ PSALMS_PATH = Path(__file__).parent / "psalms-master-input.json"
 PROVERBS_PATH = Path(__file__).parent / "proverbs-master-input.json"
 ECCLESIASTES_PATH = Path(__file__).parent / "ecclesiastes-master-input.json"
 SONG_OF_SONGS_PATH = Path(__file__).parent / "song-of-songs-master-input.json"
+ISAIAH_PATH = Path(__file__).parent / "isaiah-master-input.json"
 
 
 class TestAuditorCanonical(unittest.TestCase):
@@ -196,6 +197,12 @@ class TestAuditorCanonical(unittest.TestCase):
         else:
             cls.song_of_songs_questions = {}
 
+        if ISAIAH_PATH.exists():
+            raw_isa = json.loads(ISAIAH_PATH.read_text(encoding="utf-8"))
+            cls.isaiah_questions = {q["id"]: q for q in (raw_isa.get("questions", []) if isinstance(raw_isa, dict) else raw_isa)}
+        else:
+            cls.isaiah_questions = {}
+
     def setUp(self) -> None:
         self.temp_dir = Path(tempfile.mkdtemp())
 
@@ -289,6 +296,10 @@ class TestAuditorCanonical(unittest.TestCase):
     def get_song_of_songs_question(self, qid: str) -> dict:
         self.assertIn(qid, self.song_of_songs_questions, f"ID '{qid}' no encontrado en song-of-songs-master-input.json")
         return copy.deepcopy(self.song_of_songs_questions[qid])
+
+    def get_isaiah_question(self, qid: str) -> dict:
+        self.assertIn(qid, self.isaiah_questions, f"ID '{qid}' no encontrado en isaiah-master-input.json")
+        return copy.deepcopy(self.isaiah_questions[qid])
 
     # --- TEST GLOBAL DE CONSISTENCIA DE IDs Y REFERENCIAS ---
 
@@ -2284,6 +2295,71 @@ class TestAuditorCanonical(unittest.TestCase):
             self.assertEqual(q.get("correct_answer"), q.get("opcion_a"))
             self.assertEqual(q.get("category"), "AT_GENERAL")
         self.assertEqual(len(chapters_seen), 8, f"Se esperaban 8 capítulos cubiertos, hallados {len(chapters_seen)}")
+
+    # --- TESTS PARA ISAÍAS ---
+
+    def test_detect_book_key_isaiah(self) -> None:
+        """Verifica la detección automática de clave para Isaías (con y sin tilde)."""
+        spec_isa = {"questions": [{"id": "NQB-AT-ISA-0001", "book": "Isaías"}]}
+        self.assertEqual(detect_book_key(spec_isa), "isaiah")
+
+        spec_notilde = {"questions": [{"id": "NQB-AT-ISA-0001", "book": "Isaias"}]}
+        self.assertEqual(detect_book_key(spec_notilde), "isaiah")
+
+        spec_alias = {"questions": [{"id": "NQB-AT-ISA-0001", "book": "isaias"}]}
+        self.assertEqual(detect_book_key(spec_alias), "isaiah")
+
+        spec_en = {"questions": [{"id": "NQB-AT-ISA-0001", "book": "Isaiah"}]}
+        self.assertEqual(detect_book_key(spec_en), "isaiah")
+
+        spec_libro = {"questions": [{"id": "NQB-AT-ISA-0001", "book": "Libro de Isaías"}]}
+        self.assertEqual(detect_book_key(spec_libro), "isaiah")
+
+    def test_isaiah_book_config_and_aliases(self) -> None:
+        """Verifica configuración canónica de Isaías: 66 capítulos, 7 bloques."""
+        self.assertIn("isaiah", BOOK_CONFIGS)
+        cfg = BOOK_CONFIGS["isaiah"]
+        self.assertEqual(cfg["canonical_name"], "Isaías")
+        self.assertEqual(cfg["api_name"], "Isaías")
+        self.assertEqual(cfg["total_chapters"], 66)
+        self.assertEqual(len(cfg["blocks"]), 7)
+        self.assertEqual(cfg["blocks"][0], (1, 10, "isaiah-01-10.json"))
+        self.assertEqual(cfg["blocks"][6], (61, 66, "isaiah-61-66.json"))
+        self.assertTrue({"isaías", "isaias", "isaiah"}.issubset(cfg["aliases"]))
+
+    def test_global_canonical_id_reference_integrity_isaiah(self) -> None:
+        """Verifica consistencia de IDs, referencias y metadatos en Isaías (90 preguntas, 66/66 capítulos cubiertos, 11 con additional_references, 16 totales)."""
+        if not self.isaiah_questions:
+            self.skipTest("isaiah-master-input.json no disponible")
+        self.assertEqual(len(self.isaiah_questions), 90)
+        chapters_seen = set()
+        questions_with_add_refs = 0
+        total_add_refs = 0
+        for qid, q in self.isaiah_questions.items():
+            ref = q.get("reference", "")
+            ch = q.get("chapter")
+            self.assertIsNotNone(ch)
+            self.assertTrue(1 <= ch <= 66, f"Capítulo {ch} fuera del rango 1..66 en {qid}")
+            chapters_seen.add(ch)
+            start = q.get("verse_start")
+            end = q.get("verse_end", start)
+            expected_suffix = f"{ch}:{start}" if start == end else f"{ch}:{start}-{end}"
+            self.assertTrue(
+                expected_suffix in ref or ref.endswith(expected_suffix),
+                f"Referencia inconsistente en {qid}: ref='{ref}', esperada terminada en '{expected_suffix}'"
+            )
+            self.assertEqual(q.get("correct_option"), "A")
+            self.assertEqual(q.get("correct_answer"), q.get("opcion_a"))
+            self.assertEqual(q.get("question_type"), "MULTIPLE_CHOICE")
+
+            add_refs = q.get("additional_references", [])
+            if len(add_refs) > 0:
+                questions_with_add_refs += 1
+                total_add_refs += len(add_refs)
+
+        self.assertEqual(len(chapters_seen), 66, f"Se esperaban 66 capítulos cubiertos, hallados {len(chapters_seen)}")
+        self.assertEqual(questions_with_add_refs, 11, f"Se esperaban 11 preguntas con additional_references, halladas {questions_with_add_refs}")
+        self.assertEqual(total_add_refs, 16, f"Se esperaban 16 referencias adicionales en total, halladas {total_add_refs}")
 
 
 if __name__ == "__main__":
