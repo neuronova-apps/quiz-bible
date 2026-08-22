@@ -4,6 +4,7 @@ on:
   push:
     branches: [rvr1960-audit, main, audit-genesis-full-rvr1960]
     paths:
+      - "tools/bible_extractor/nehemiah-master-input.json"
       - "tools/bible_extractor/ezra-master-input.json"
       - "tools/bible_extractor/genesis-master-input.json"
       - "tools/bible_extractor/exodus-master-input.json"
@@ -27,6 +28,7 @@ on:
   pull_request:
     branches: [main]
     paths:
+      - "tools/bible_extractor/nehemiah-master-input.json"
       - "tools/bible_extractor/ezra-master-input.json"
       - "tools/bible_extractor/genesis-master-input.json"
       - "tools/bible_extractor/exodus-master-input.json"
@@ -52,7 +54,7 @@ on:
       input_file:
         description: "Ruta del archivo de entrada de preguntas"
         required: true
-        default: "tools/bible_extractor/ezra-master-input.json"
+        default: "tools/bible_extractor/nehemiah-master-input.json"
         type: string
 
 permissions:
@@ -81,7 +83,9 @@ jobs:
         run: |
           INPUT_FILE="${{ inputs.input_file || '' }}"
           if [ -z "$INPUT_FILE" ]; then
-            if [ -f "tools/bible_extractor/ezra-master-input.json" ]; then
+            if [ -f "tools/bible_extractor/nehemiah-master-input.json" ]; then
+              INPUT_FILE="tools/bible_extractor/nehemiah-master-input.json"
+            elif [ -f "tools/bible_extractor/ezra-master-input.json" ]; then
               INPUT_FILE="tools/bible_extractor/ezra-master-input.json"
             elif [ -f "tools/bible_extractor/2chronicles-master-input.json" ]; then
               INPUT_FILE="tools/bible_extractor/2chronicles-master-input.json"
@@ -119,7 +123,10 @@ jobs:
             fi
           fi
 
-          if [[ "$INPUT_FILE" == *"ezra"* ]] || [[ "$INPUT_FILE" == *"esdras"* ]]; then
+          if [[ "$INPUT_FILE" == *"nehemiah"* ]] || [[ "$INPUT_FILE" == *"nehemias"* ]]; then
+            OUTPUT_DIR="build/audit/nehemiah"
+            ARTIFACT_NAME="auditoria-nehemias-rvr1960-${{ github.run_number }}"
+          elif [[ "$INPUT_FILE" == *"ezra"* ]] || [[ "$INPUT_FILE" == *"esdras"* ]]; then
             OUTPUT_DIR="build/audit/ezra"
             ARTIFACT_NAME="auditoria-esdras-rvr1960-${{ github.run_number }}"
           elif [[ "$INPUT_FILE" == *"2chronicles"* ]] || [[ "$INPUT_FILE" == *"2-chronicles"* ]] || [[ "$INPUT_FILE" == *"2_chronicles"* ]] || [[ "$INPUT_FILE" == *"2cronicas"* ]] || [[ "$INPUT_FILE" == *"2-cronicas"* ]]; then

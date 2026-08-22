@@ -55,6 +55,7 @@ KINGS2_PATH = Path(__file__).parent / "2kings-master-input.json"
 CHRONICLES1_PATH = Path(__file__).parent / "1chronicles-master-input.json"
 CHRONICLES2_PATH = Path(__file__).parent / "2chronicles-master-input.json"
 EZRA_PATH = Path(__file__).parent / "ezra-master-input.json"
+NEHEMIAH_PATH = Path(__file__).parent / "nehemiah-master-input.json"
 
 
 class TestAuditorCanonical(unittest.TestCase):
@@ -147,6 +148,12 @@ class TestAuditorCanonical(unittest.TestCase):
         else:
             cls.ezra_questions = {}
 
+        if NEHEMIAH_PATH.exists():
+            raw_neh = json.loads(NEHEMIAH_PATH.read_text(encoding="utf-8"))
+            cls.nehemiah_questions = {q["id"]: q for q in (raw_neh.get("questions", []) if isinstance(raw_neh, dict) else raw_neh)}
+        else:
+            cls.nehemiah_questions = {}
+
     def setUp(self) -> None:
         self.temp_dir = Path(tempfile.mkdtemp())
 
@@ -212,6 +219,10 @@ class TestAuditorCanonical(unittest.TestCase):
     def get_ezra_question(self, qid: str) -> dict:
         self.assertIn(qid, self.ezra_questions, f"ID '{qid}' no encontrado en ezra-master-input.json")
         return copy.deepcopy(self.ezra_questions[qid])
+
+    def get_nehemiah_question(self, qid: str) -> dict:
+        self.assertIn(qid, self.nehemiah_questions, f"ID '{qid}' no encontrado en nehemiah-master-input.json")
+        return copy.deepcopy(self.nehemiah_questions[qid])
 
     # --- TEST GLOBAL DE CONSISTENCIA DE IDs Y REFERENCIAS ---
 
@@ -1858,6 +1869,49 @@ class TestAuditorCanonical(unittest.TestCase):
         res44 = evaluate_question(q44, v44, book_key="ezra")
         self.assertNotEqual(res44["estado"], "REQUIERE_CORRECCION")
         self.assertEqual(res44["controles_superados"]["control_nombres_propios"], "PASS")
+
+    # --- TESTS PARA NEHEMÍAS ---
+
+    def test_detect_book_key_nehemiah(self) -> None:
+        """Verifica la detección automática de clave para Nehemías."""
+        spec_neh = {"questions": [{"id": "NQB-AT-NEH-0001", "book": "Nehemías"}]}
+        self.assertEqual(detect_book_key(spec_neh), "nehemiah")
+
+        spec_alias = {"questions": [{"id": "NQB-AT-NEH-0001", "book": "nehemias"}]}
+        self.assertEqual(detect_book_key(spec_alias), "nehemiah")
+
+        spec_en = {"questions": [{"id": "NQB-AT-NEH-0001", "book": "Nehemiah"}]}
+        self.assertEqual(detect_book_key(spec_en), "nehemiah")
+
+        spec_libro = {"questions": [{"id": "NQB-AT-NEH-0001", "book": "Libro de Nehemías"}]}
+        self.assertEqual(detect_book_key(spec_libro), "nehemiah")
+
+    def test_nehemiah_book_config_and_aliases(self) -> None:
+        """Verifica configuración canónica de Nehemías: 13 capítulos, 2 bloques."""
+        self.assertIn("nehemiah", BOOK_CONFIGS)
+        cfg = BOOK_CONFIGS["nehemiah"]
+        self.assertEqual(cfg["canonical_name"], "Nehemías")
+        self.assertEqual(cfg["api_name"], "Nehemías")
+        self.assertEqual(cfg["total_chapters"], 13)
+        self.assertEqual(len(cfg["blocks"]), 2)
+        self.assertEqual(cfg["blocks"][0], (1, 10, "nehemiah-01-10.json"))
+        self.assertEqual(cfg["blocks"][1], (11, 13, "nehemiah-11-13.json"))
+        self.assertTrue({"nehemías", "nehemias", "nehemiah", "neh"}.issubset(cfg["aliases"]))
+
+    def test_global_canonical_id_reference_integrity_nehemiah(self) -> None:
+        """Verifica consistencia de IDs y referencias en Nehemías."""
+        if not self.nehemiah_questions:
+            self.skipTest("nehemiah-master-input.json no disponible")
+        for qid, q in self.nehemiah_questions.items():
+            ref = q.get("reference", "")
+            ch = q.get("chapter")
+            start = q.get("verse_start")
+            end = q.get("verse_end", start)
+            expected_suffix = f"{ch}:{start}" if start == end else f"{ch}:{start}-{end}"
+            self.assertTrue(
+                expected_suffix in ref or ref.endswith(expected_suffix),
+                f"Referencia inconsistente en {qid}: ref='{ref}', esperada terminada en '{expected_suffix}'"
+            )
 
 
 if __name__ == "__main__":
