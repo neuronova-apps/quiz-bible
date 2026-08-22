@@ -471,6 +471,29 @@ BOOK_CONFIGS: dict[str, dict[str, Any]] = {
             "tarso", "tarsis", "sinai", "sinaí", "libano", "líbano", "carmelo", "saron", "sarón", "basán", "basan"
         },
     },
+    "jeremiah": {
+        "canonical_name": "Jeremías",
+        "api_name": "Jeremías",
+        "aliases": {
+            "jeremías", "jeremias", "jeremiah", "jer", "libro de jeremías", "libro de jeremias"
+        },
+        "total_chapters": 52,
+        "blocks": [
+            (1, 10, "jeremiah-01-10.json"),
+            (11, 20, "jeremiah-11-20.json"),
+            (21, 30, "jeremiah-21-30.json"),
+            (31, 40, "jeremiah-31-40.json"),
+            (41, 50, "jeremiah-41-50.json"),
+            (51, 52, "jeremiah-51-52.json"),
+        ],
+        "default_output_dir": "build/audit/jeremiah",
+        "ambient_places": {
+            "jerusalen", "jerusalén", "juda", "judá", "israel", "sion", "sión", "babilonia", "egipto", "anatot", "mizpa", "tahat",
+            "tafnes", "migdol", "nof", "patros", "rieti", "ribla", "ramá", "rama", "tecoa", "siloh", "silo", "betel", "bet-el",
+            "eufrates", "topet", "hinom", "valle de hinom", "valle de ben-hinom", "moab", "amon", "amón", "edom",
+            "damasco", "hazor", "cedar", "elam"
+        },
+    },
 }
 
 STOPWORDS = {
@@ -566,6 +589,8 @@ BIBLE_PERSONAJES = {
     "agur", "lemuel",
     # Isaías
     "sebna", "merodac-baladan", "merodac-baladán", "merodacbaladan", "merodac",
+    # Jeremías
+    "baruc", "ebed-melec", "ebedmelec", "pasur", "recabitas",
     # Otros comunes
     "david", "saul", "samuel", "nabucodonosor", "pablo", "pedro", "juan", "jesus", "mateo", "marcos",
     "lucas", "esteban", "timoteo",

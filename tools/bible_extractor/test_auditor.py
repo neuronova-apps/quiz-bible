@@ -63,6 +63,7 @@ PROVERBS_PATH = Path(__file__).parent / "proverbs-master-input.json"
 ECCLESIASTES_PATH = Path(__file__).parent / "ecclesiastes-master-input.json"
 SONG_OF_SONGS_PATH = Path(__file__).parent / "song-of-songs-master-input.json"
 ISAIAH_PATH = Path(__file__).parent / "isaiah-master-input.json"
+JEREMIAH_PATH = Path(__file__).parent / "jeremiah-master-input.json"
 
 
 class TestAuditorCanonical(unittest.TestCase):
@@ -203,6 +204,12 @@ class TestAuditorCanonical(unittest.TestCase):
         else:
             cls.isaiah_questions = {}
 
+        if JEREMIAH_PATH.exists():
+            raw_jer = json.loads(JEREMIAH_PATH.read_text(encoding="utf-8"))
+            cls.jeremiah_questions = {q["id"]: q for q in (raw_jer.get("questions", []) if isinstance(raw_jer, dict) else raw_jer)}
+        else:
+            cls.jeremiah_questions = {}
+
     def setUp(self) -> None:
         self.temp_dir = Path(tempfile.mkdtemp())
 
@@ -300,6 +307,10 @@ class TestAuditorCanonical(unittest.TestCase):
     def get_isaiah_question(self, qid: str) -> dict:
         self.assertIn(qid, self.isaiah_questions, f"ID '{qid}' no encontrado en isaiah-master-input.json")
         return copy.deepcopy(self.isaiah_questions[qid])
+
+    def get_jeremiah_question(self, qid: str) -> dict:
+        self.assertIn(qid, self.jeremiah_questions, f"ID '{qid}' no encontrado en jeremiah-master-input.json")
+        return copy.deepcopy(self.jeremiah_questions[qid])
 
     # --- TEST GLOBAL DE CONSISTENCIA DE IDs Y REFERENCIAS ---
 
@@ -2360,6 +2371,71 @@ class TestAuditorCanonical(unittest.TestCase):
         self.assertEqual(len(chapters_seen), 66, f"Se esperaban 66 capítulos cubiertos, hallados {len(chapters_seen)}")
         self.assertEqual(questions_with_add_refs, 11, f"Se esperaban 11 preguntas con additional_references, halladas {questions_with_add_refs}")
         self.assertEqual(total_add_refs, 16, f"Se esperaban 16 referencias adicionales en total, halladas {total_add_refs}")
+
+    # --- TESTS PARA JEREMÍAS ---
+
+    def test_detect_book_key_jeremiah(self) -> None:
+        """Verifica la detección automática de clave para Jeremías (con y sin tilde)."""
+        spec_jer = {"questions": [{"id": "NQB-AT-JER-0001", "book": "Jeremías"}]}
+        self.assertEqual(detect_book_key(spec_jer), "jeremiah")
+
+        spec_notilde = {"questions": [{"id": "NQB-AT-JER-0001", "book": "Jeremias"}]}
+        self.assertEqual(detect_book_key(spec_notilde), "jeremiah")
+
+        spec_alias = {"questions": [{"id": "NQB-AT-JER-0001", "book": "jeremias"}]}
+        self.assertEqual(detect_book_key(spec_alias), "jeremiah")
+
+        spec_en = {"questions": [{"id": "NQB-AT-JER-0001", "book": "Jeremiah"}]}
+        self.assertEqual(detect_book_key(spec_en), "jeremiah")
+
+        spec_libro = {"questions": [{"id": "NQB-AT-JER-0001", "book": "Libro de Jeremías"}]}
+        self.assertEqual(detect_book_key(spec_libro), "jeremiah")
+
+    def test_jeremiah_book_config_and_aliases(self) -> None:
+        """Verifica configuración canónica de Jeremías: 52 capítulos, 6 bloques."""
+        self.assertIn("jeremiah", BOOK_CONFIGS)
+        cfg = BOOK_CONFIGS["jeremiah"]
+        self.assertEqual(cfg["canonical_name"], "Jeremías")
+        self.assertEqual(cfg["api_name"], "Jeremías")
+        self.assertEqual(cfg["total_chapters"], 52)
+        self.assertEqual(len(cfg["blocks"]), 6)
+        self.assertEqual(cfg["blocks"][0], (1, 10, "jeremiah-01-10.json"))
+        self.assertEqual(cfg["blocks"][5], (51, 52, "jeremiah-51-52.json"))
+        self.assertTrue({"jeremías", "jeremias", "jeremiah"}.issubset(cfg["aliases"]))
+
+    def test_global_canonical_id_reference_integrity_jeremiah(self) -> None:
+        """Verifica consistencia de IDs, referencias y metadatos en Jeremías (79 preguntas, 52/52 capítulos cubiertos, 4 con additional_references, 8 totales)."""
+        if not self.jeremiah_questions:
+            self.skipTest("jeremiah-master-input.json no disponible")
+        self.assertEqual(len(self.jeremiah_questions), 79)
+        chapters_seen = set()
+        questions_with_add_refs = 0
+        total_add_refs = 0
+        for qid, q in self.jeremiah_questions.items():
+            ref = q.get("reference", "")
+            ch = q.get("chapter")
+            self.assertIsNotNone(ch)
+            self.assertTrue(1 <= ch <= 52, f"Capítulo {ch} fuera del rango 1..52 en {qid}")
+            chapters_seen.add(ch)
+            start = q.get("verse_start")
+            end = q.get("verse_end", start)
+            expected_suffix = f"{ch}:{start}" if start == end else f"{ch}:{start}-{end}"
+            self.assertTrue(
+                expected_suffix in ref or ref.endswith(expected_suffix),
+                f"Referencia inconsistente en {qid}: ref='{ref}', esperada terminada en '{expected_suffix}'"
+            )
+            self.assertEqual(q.get("correct_option"), "A")
+            self.assertEqual(q.get("correct_answer"), q.get("opcion_a"))
+            self.assertEqual(q.get("question_type"), "MULTIPLE_CHOICE")
+
+            add_refs = q.get("additional_references", [])
+            if len(add_refs) > 0:
+                questions_with_add_refs += 1
+                total_add_refs += len(add_refs)
+
+        self.assertEqual(len(chapters_seen), 52, f"Se esperaban 52 capítulos cubiertos, hallados {len(chapters_seen)}")
+        self.assertEqual(questions_with_add_refs, 4, f"Se esperaban 4 preguntas con additional_references, halladas {questions_with_add_refs}")
+        self.assertEqual(total_add_refs, 8, f"Se esperaban 8 referencias adicionales en total, halladas {total_add_refs}")
 
 
 if __name__ == "__main__":
