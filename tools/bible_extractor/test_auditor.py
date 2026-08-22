@@ -57,6 +57,7 @@ CHRONICLES2_PATH = Path(__file__).parent / "2chronicles-master-input.json"
 EZRA_PATH = Path(__file__).parent / "ezra-master-input.json"
 NEHEMIAH_PATH = Path(__file__).parent / "nehemiah-master-input.json"
 ESTHER_PATH = Path(__file__).parent / "esther-master-input.json"
+JOB_PATH = Path(__file__).parent / "job-master-input.json"
 
 
 class TestAuditorCanonical(unittest.TestCase):
@@ -161,6 +162,12 @@ class TestAuditorCanonical(unittest.TestCase):
         else:
             cls.esther_questions = {}
 
+        if JOB_PATH.exists():
+            raw_job = json.loads(JOB_PATH.read_text(encoding="utf-8"))
+            cls.job_questions = {q["id"]: q for q in (raw_job.get("questions", []) if isinstance(raw_job, dict) else raw_job)}
+        else:
+            cls.job_questions = {}
+
     def setUp(self) -> None:
         self.temp_dir = Path(tempfile.mkdtemp())
 
@@ -234,6 +241,10 @@ class TestAuditorCanonical(unittest.TestCase):
     def get_esther_question(self, qid: str) -> dict:
         self.assertIn(qid, self.esther_questions, f"ID '{qid}' no encontrado en esther-master-input.json")
         return copy.deepcopy(self.esther_questions[qid])
+
+    def get_job_question(self, qid: str) -> dict:
+        self.assertIn(qid, self.job_questions, f"ID '{qid}' no encontrado en job-master-input.json")
+        return copy.deepcopy(self.job_questions[qid])
 
     # --- TEST GLOBAL DE CONSISTENCIA DE IDs Y REFERENCIAS ---
 
@@ -1958,6 +1969,50 @@ class TestAuditorCanonical(unittest.TestCase):
             self.skipTest("esther-master-input.json no disponible")
         self.assertEqual(len(self.esther_questions), 50)
         for qid, q in self.esther_questions.items():
+            ref = q.get("reference", "")
+            ch = q.get("chapter")
+            start = q.get("verse_start")
+            end = q.get("verse_end", start)
+            expected_suffix = f"{ch}:{start}" if start == end else f"{ch}:{start}-{end}"
+            self.assertTrue(
+                expected_suffix in ref or ref.endswith(expected_suffix),
+                f"Referencia inconsistente en {qid}: ref='{ref}', esperada terminada en '{expected_suffix}'"
+            )
+
+    # --- TESTS PARA JOB ---
+
+    def test_detect_book_key_job(self) -> None:
+        """Verifica la detección automática de clave para Job."""
+        spec_job = {"questions": [{"id": "NQB-AT-JOB-0001", "book": "Job"}]}
+        self.assertEqual(detect_book_key(spec_job), "job")
+
+        spec_alias = {"questions": [{"id": "NQB-AT-JOB-0001", "book": "job"}]}
+        self.assertEqual(detect_book_key(spec_alias), "job")
+
+        spec_libro = {"questions": [{"id": "NQB-AT-JOB-0001", "book": "Libro de Job"}]}
+        self.assertEqual(detect_book_key(spec_libro), "job")
+
+    def test_job_book_config_and_aliases(self) -> None:
+        """Verifica configuración canónica de Job: 42 capítulos, 5 bloques."""
+        self.assertIn("job", BOOK_CONFIGS)
+        cfg = BOOK_CONFIGS["job"]
+        self.assertEqual(cfg["canonical_name"], "Job")
+        self.assertEqual(cfg["api_name"], "Job")
+        self.assertEqual(cfg["total_chapters"], 42)
+        self.assertEqual(len(cfg["blocks"]), 5)
+        self.assertEqual(cfg["blocks"][0], (1, 10, "job-01-10.json"))
+        self.assertEqual(cfg["blocks"][1], (11, 20, "job-11-20.json"))
+        self.assertEqual(cfg["blocks"][2], (21, 30, "job-21-30.json"))
+        self.assertEqual(cfg["blocks"][3], (31, 40, "job-31-40.json"))
+        self.assertEqual(cfg["blocks"][4], (41, 42, "job-41-42.json"))
+        self.assertTrue({"job", "libro de job"}.issubset(cfg["aliases"]))
+
+    def test_global_canonical_id_reference_integrity_job(self) -> None:
+        """Verifica consistencia de IDs y referencias en Job."""
+        if not self.job_questions:
+            self.skipTest("job-master-input.json no disponible")
+        self.assertEqual(len(self.job_questions), 60)
+        for qid, q in self.job_questions.items():
             ref = q.get("reference", "")
             ch = q.get("chapter")
             start = q.get("verse_start")
