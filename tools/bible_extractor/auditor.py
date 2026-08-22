@@ -417,6 +417,22 @@ BOOK_CONFIGS: dict[str, dict[str, Any]] = {
             "jerusalen", "jerusalén", "juda", "judá", "israel", "sion", "sión", "egipto"
         },
     },
+    "ecclesiastes": {
+        "canonical_name": "Eclesiastés",
+        "api_name": "Eclesiastés",
+        "aliases": {
+            "eclesiastes", "eclesiastés", "ecclesiastes", "ecl", "ec", "libro de eclesiastes", "libro de eclesiastés"
+        },
+        "total_chapters": 12,
+        "blocks": [
+            (1, 10, "ecclesiastes-01-10.json"),
+            (11, 12, "ecclesiastes-11-12.json"),
+        ],
+        "default_output_dir": "build/audit/ecclesiastes",
+        "ambient_places": {
+            "jerusalen", "jerusalén", "israel", "juda", "judá"
+        },
+    },
 }
 
 STOPWORDS = {

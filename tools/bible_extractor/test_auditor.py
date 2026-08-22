@@ -60,6 +60,7 @@ ESTHER_PATH = Path(__file__).parent / "esther-master-input.json"
 JOB_PATH = Path(__file__).parent / "job-master-input.json"
 PSALMS_PATH = Path(__file__).parent / "psalms-master-input.json"
 PROVERBS_PATH = Path(__file__).parent / "proverbs-master-input.json"
+ECCLESIASTES_PATH = Path(__file__).parent / "ecclesiastes-master-input.json"
 
 
 class TestAuditorCanonical(unittest.TestCase):
@@ -182,6 +183,12 @@ class TestAuditorCanonical(unittest.TestCase):
         else:
             cls.proverbs_questions = {}
 
+        if ECCLESIASTES_PATH.exists():
+            raw_ecl = json.loads(ECCLESIASTES_PATH.read_text(encoding="utf-8"))
+            cls.ecclesiastes_questions = {q["id"]: q for q in (raw_ecl.get("questions", []) if isinstance(raw_ecl, dict) else raw_ecl)}
+        else:
+            cls.ecclesiastes_questions = {}
+
     def setUp(self) -> None:
         self.temp_dir = Path(tempfile.mkdtemp())
 
@@ -267,6 +274,10 @@ class TestAuditorCanonical(unittest.TestCase):
     def get_proverbs_question(self, qid: str) -> dict:
         self.assertIn(qid, self.proverbs_questions, f"ID '{qid}' no encontrado en proverbs-master-input.json")
         return copy.deepcopy(self.proverbs_questions[qid])
+
+    def get_ecclesiastes_question(self, qid: str) -> dict:
+        self.assertIn(qid, self.ecclesiastes_questions, f"ID '{qid}' no encontrado en ecclesiastes-master-input.json")
+        return copy.deepcopy(self.ecclesiastes_questions[qid])
 
     # --- TEST GLOBAL DE CONSISTENCIA DE IDs Y REFERENCIAS ---
 
@@ -2150,6 +2161,61 @@ class TestAuditorCanonical(unittest.TestCase):
                 f"Referencia inconsistente en {qid}: ref='{ref}', esperada terminada en '{expected_suffix}'"
             )
         self.assertEqual(len(chapters_seen), 31, f"Se esperaban 31 capítulos cubiertos, hallados {len(chapters_seen)}")
+
+    # --- TESTS PARA ECLESIASTÉS ---
+
+    def test_detect_book_key_ecclesiastes(self) -> None:
+        """Verifica la detección automática de clave para Eclesiastés (con y sin tilde)."""
+        spec_ecl = {"questions": [{"id": "NQB-AT-ECL-0001", "book": "Eclesiastés"}]}
+        self.assertEqual(detect_book_key(spec_ecl), "ecclesiastes")
+
+        spec_notilde = {"questions": [{"id": "NQB-AT-ECL-0001", "book": "Eclesiastes"}]}
+        self.assertEqual(detect_book_key(spec_notilde), "ecclesiastes")
+
+        spec_alias = {"questions": [{"id": "NQB-AT-ECL-0001", "book": "eclesiastes"}]}
+        self.assertEqual(detect_book_key(spec_alias), "ecclesiastes")
+
+        spec_en = {"questions": [{"id": "NQB-AT-ECL-0001", "book": "Ecclesiastes"}]}
+        self.assertEqual(detect_book_key(spec_en), "ecclesiastes")
+
+        spec_libro = {"questions": [{"id": "NQB-AT-ECL-0001", "book": "Libro de Eclesiastés"}]}
+        self.assertEqual(detect_book_key(spec_libro), "ecclesiastes")
+
+    def test_ecclesiastes_book_config_and_aliases(self) -> None:
+        """Verifica configuración canónica de Eclesiastés: 12 capítulos, 2 bloques."""
+        self.assertIn("ecclesiastes", BOOK_CONFIGS)
+        cfg = BOOK_CONFIGS["ecclesiastes"]
+        self.assertEqual(cfg["canonical_name"], "Eclesiastés")
+        self.assertEqual(cfg["api_name"], "Eclesiastés")
+        self.assertEqual(cfg["total_chapters"], 12)
+        self.assertEqual(len(cfg["blocks"]), 2)
+        self.assertEqual(cfg["blocks"][0], (1, 10, "ecclesiastes-01-10.json"))
+        self.assertEqual(cfg["blocks"][1], (11, 12, "ecclesiastes-11-12.json"))
+        self.assertTrue({"eclesiastes", "eclesiastés", "ecclesiastes"}.issubset(cfg["aliases"]))
+
+    def test_global_canonical_id_reference_integrity_ecclesiastes(self) -> None:
+        """Verifica consistencia de IDs, referencias y tipos en Eclesiastés (49 preguntas, 12/12 capítulos cubiertos)."""
+        if not self.ecclesiastes_questions:
+            self.skipTest("ecclesiastes-master-input.json no disponible")
+        self.assertEqual(len(self.ecclesiastes_questions), 49)
+        chapters_seen = set()
+        for qid, q in self.ecclesiastes_questions.items():
+            ref = q.get("reference", "")
+            ch = q.get("chapter")
+            self.assertIsNotNone(ch)
+            self.assertTrue(1 <= ch <= 12, f"Capítulo {ch} fuera del rango 1..12 en {qid}")
+            chapters_seen.add(ch)
+            start = q.get("verse_start")
+            end = q.get("verse_end", start)
+            expected_suffix = f"{ch}:{start}" if start == end else f"{ch}:{start}-{end}"
+            self.assertTrue(
+                expected_suffix in ref or ref.endswith(expected_suffix),
+                f"Referencia inconsistente en {qid}: ref='{ref}', esperada terminada en '{expected_suffix}'"
+            )
+            self.assertEqual(q.get("correct_option"), "A")
+            self.assertEqual(q.get("correct_answer"), q.get("opcion_a"))
+            self.assertEqual(q.get("question_type"), "MULTIPLE_CHOICE")
+        self.assertEqual(len(chapters_seen), 12, f"Se esperaban 12 capítulos cubiertos, hallados {len(chapters_seen)}")
 
 
 if __name__ == "__main__":
