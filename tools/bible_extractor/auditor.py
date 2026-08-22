@@ -334,6 +334,21 @@ BOOK_CONFIGS: dict[str, dict[str, Any]] = {
             "jericó", "jerico", "zonoa", "bet-sur", "betsur", "queila", "keila"
         },
     },
+    "esther": {
+        "canonical_name": "Ester",
+        "api_name": "Ester",
+        "aliases": {
+            "ester", "esther", "est", "libro de ester", "libro de esther"
+        },
+        "total_chapters": 10,
+        "blocks": [
+            (1, 10, "esther-01-10.json"),
+        ],
+        "default_output_dir": "build/audit/esther",
+        "ambient_places": {
+            "susa", "persia", "media", "india", "etiopia", "etiopía", "babilonia", "jerusalen", "jerusalén", "juda", "judá"
+        },
+    },
 }
 
 STOPWORDS = {
@@ -413,7 +428,7 @@ BIBLE_PERSONAJES = {
     "quenanias", "quenanías", "jedutun", "jedutún", "pedaias", "pedaías", "zorobabel",
     "merib-baal", "meribbaal", "sealtiel", "isbaal", "satanas", "satanás", "jeconias", "jeconías",
     "sisac", "iddo", "zera", "amarias", "amarías", "zebadias", "zebadías", "jahaziel", "conanias", "conanías", "necao", "ciro", "jeremias", "jeremías",
-    # Esdras y Nehemías
+    # Esdras, Nehemías y Ester
     "esdras", "sesbasar", "mitridates", "mitrídates", "jesua", "jesúa", "hageo", "tatnai",
     "setar-boznai", "setarboznai", "dario", "darío", "artajerjes", "secanias", "secanías",
     "meremot", "jozabad", "noadias", "noadías", "serebias", "serebías", "hasabias", "hasabías",
@@ -421,6 +436,9 @@ BIBLE_PERSONAJES = {
     "johanan", "eliasib", "josadac", "salatiel", "seraias", "jehiel", "sanbalat", "tobias", "tobías", "gesem",
     "nehemias", "nehemías", "hacalias", "hacalías", "hanani", "hananias", "hananías",
     "sebanías", "sebanias", "patahias", "patahías",
+    "ester", "mardoqueo", "asuero", "vasti", "aman", "amán", "zeres", "hegai", "hege",
+    "hatac", "memucan", "memucán", "harbona", "bigtan", "bigtán", "bigtana", "teres",
+    "jair", "simei", "cis", "marsena", "admeta", "tarso", "carsena", "setar",
     # Otros comunes
     "david", "saul", "samuel", "nabucodonosor", "pablo", "pedro", "juan", "jesus", "mateo", "marcos",
     "lucas", "esteban", "timoteo",
@@ -459,7 +477,7 @@ BIBLE_PLACES = {
     "cison", "cisón", "monte tabor", "tabor", "ofra", "jezreel", "valle de jezreel", "harod", "fuente de harod",
     "more", "collado de more", "tabat", "abel-mehola", "sucot", "peniel", "karkor", "piraton", "timnat", "zora",
     "estaol", "ascalon", "ascalón", "ecron", "ecrón", "asdod", "gibea", "gabaa", "rama", "mizpa", "en-dor", "endor", "meguido", "megido",
-    # 1 Samuel, 2 Samuel, 1 Reyes, 2 Reyes, 1 Crónicas, 2 Crónicas, Esdras y Nehemías
+    # 1 Samuel, 2 Samuel, 1 Reyes, 2 Reyes, 1 Crónicas, 2 Crónicas, Esdras, Nehemías y Ester
     "bet-semes", "betsemes", "jabes", "jabes de galaad", "nob", "adulam", "keila", "siclag",
     "bet-san", "bet-sán", "carmel", "en-gadi", "engadi", "guilboa", "gilboa", "monte gilboa",
     "baal-perazim", "baalperazim", "abel-bet-maaca", "tecoa", "mahanaim", "raba", "rabá", "gesur",
@@ -468,7 +486,7 @@ BIBLE_PLACES = {
     "sarepta", "querit", "arroyo de querit", "ramot de galaad", "tirse", "samaria", "tiro", "sidon", "sidón", "tisbe",
     "sunem", "afec", "sela", "jocteel", "hamat", "arpat", "sefarvaim", "ribla", "ninive", "nínive", "asiria", "valle de la sal", "siloe", "siloé",
     "sihor", "jebus", "jebús", "beraca", "valle de beraca", "ahava", "rio ahava", "río ahava", "casifia", "ecbatana", "achmetha", "persia",
-    "susa", "valle de ono", "ono", "opla", "ofel", "zonoa", "bet-sur", "betsur"
+    "susa", "valle de ono", "ono", "opla", "ofel", "zonoa", "bet-sur", "betsur", "media", "india", "etiopia", "etiopía"
 }
 
 # Raíces de parentesco y lemas
