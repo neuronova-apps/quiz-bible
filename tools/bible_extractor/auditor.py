@@ -368,6 +368,37 @@ BOOK_CONFIGS: dict[str, dict[str, Any]] = {
             "uz", "tierra de uz", "teman", "temán", "sua", "súa", "naamat", "saba", "caldea", "ofir", "jerusalen", "jerusalén"
         },
     },
+    "psalms": {
+        "canonical_name": "Salmos",
+        "api_name": "Salmos",
+        "aliases": {
+            "salmos", "salmo", "psalms", "psalm", "libro de salmos", "libro de los salmos"
+        },
+        "total_chapters": 150,
+        "blocks": [
+            (1, 10, "psalms-001-010.json"),
+            (11, 20, "psalms-011-020.json"),
+            (21, 30, "psalms-021-030.json"),
+            (31, 40, "psalms-031-040.json"),
+            (41, 50, "psalms-041-050.json"),
+            (51, 60, "psalms-051-060.json"),
+            (61, 70, "psalms-061-070.json"),
+            (71, 80, "psalms-071-080.json"),
+            (81, 90, "psalms-081-090.json"),
+            (91, 100, "psalms-091-100.json"),
+            (101, 110, "psalms-101-110.json"),
+            (111, 120, "psalms-111-120.json"),
+            (121, 130, "psalms-121-130.json"),
+            (131, 140, "psalms-131-140.json"),
+            (141, 150, "psalms-141-150.json"),
+        ],
+        "default_output_dir": "build/audit/psalms",
+        "ambient_places": {
+            "jerusalen", "jerusalén", "sion", "sión", "juda", "judá", "israel", "egipto", "babilonia", "sinai", "sinaí",
+            "hermon", "hermón", "cades", "efrata", "galilea", "jordan", "jordán", "siria", "tiro", "sidon", "sidón",
+            "filistea", "moab", "edom", "galaad", "sirion", "senir", "basan", "basán"
+        },
+    },
 }
 
 STOPWORDS = {
